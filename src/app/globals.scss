@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 修改滚动条样式 */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-bg);
+  border-radius: 2.5px;
+  transition: .35s background-color;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover);
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
