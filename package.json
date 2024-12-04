@@ -23,11 +23,13 @@
     "@remixicon/react": "^4.5.0",
     "ahooks": "^3.8.1",
     "antd": "^5.22.3",
+    "dayjs": "^1.11.13",
     "lodash-es": "^4.17.21",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
@@ -37,6 +39,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/store": "^2.0.5",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^9.1.0",
@@ -44,7 +47,6 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
-    "postcss": "^8",
     "prettier": "^3.4.1",
     "release-it": "^17.10.0",
     "sass": "^1.82.0",

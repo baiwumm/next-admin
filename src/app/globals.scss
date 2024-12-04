@@ -10,6 +10,14 @@
   }
 }
 
+.link-hover {
+  color: inherit;
+  transition: .3s color;
+  &:hover {
+    color: var(--ant-color-link);
+  }
+}
+
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
   width: 5px;

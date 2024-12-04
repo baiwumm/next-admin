@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-04 09:17:34
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-04 16:26:23
+ * @LastEditTime: 2024-12-04 17:22:25
  * @Description: 头部布局
  */
 'use client';
@@ -11,17 +11,18 @@ import { RiIndentDecrease, RiIndentIncrease, RiMoonFill, RiSunFill } from '@remi
 import { Button, Flex, Layout, theme } from 'antd';
 
 import { THEME } from '@/enums';
+import useStore from '@/store';
 
 const { Header } = Layout;
 
 type GlobalHeaderProps = {
   collapsed: boolean;
   setCollapsed: () => void;
-  isDark: boolean;
-  setThemeMode: (value: App.ThemeMode) => void;
 };
 
-export default function GlobalHeader({ collapsed, setCollapsed, isDark, setThemeMode }: GlobalHeaderProps) {
+export default function GlobalHeader({ collapsed, setCollapsed }: GlobalHeaderProps) {
+  const { isDark, setTheme } = useStore();
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -33,7 +34,7 @@ export default function GlobalHeader({ collapsed, setCollapsed, isDark, setTheme
   // 切换动画
   async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
     if (!enableTransitions()) {
-      setThemeMode(isDark ? THEME.LIGHT : THEME.DARK);
+      setTheme(isDark() ? THEME.LIGHT : THEME.DARK);
       return;
     }
 
@@ -43,15 +44,15 @@ export default function GlobalHeader({ collapsed, setCollapsed, isDark, setTheme
     ];
 
     await document.startViewTransition(async () => {
-      setThemeMode(isDark ? THEME.LIGHT : THEME.DARK);
+      setTheme(isDark() ? THEME.LIGHT : THEME.DARK);
     }).ready;
 
     document.documentElement.animate(
-      { clipPath: !isDark ? clipPath.reverse() : clipPath },
+      { clipPath: !isDark() ? clipPath.reverse() : clipPath },
       {
         duration: 300,
         easing: 'ease-in',
-        pseudoElement: `::view-transition-${!isDark ? 'old' : 'new'}(root)`,
+        pseudoElement: `::view-transition-${!isDark() ? 'old' : 'new'}(root)`,
       },
     );
   }
@@ -72,7 +73,7 @@ export default function GlobalHeader({ collapsed, setCollapsed, isDark, setTheme
           <Button
             type="text"
             size="large"
-            icon={isDark ? <RiMoonFill size={20} /> : <RiSunFill size={20} />}
+            icon={isDark() ? <RiMoonFill size={20} /> : <RiSunFill size={20} />}
             onClick={toggleDark}
           />
         </Flex>

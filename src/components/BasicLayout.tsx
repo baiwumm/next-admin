@@ -2,20 +2,20 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-04 09:17:34
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-04 16:24:31
+ * @LastEditTime: 2024-12-04 17:12:50
  * @Description: 主体布局
  */
 'use client';
 
-import { useBoolean, useLocalStorageState } from 'ahooks';
-import { App, ConfigProvider, Layout, theme } from 'antd';
-import { eq, toNumber } from 'lodash-es';
+import { useBoolean } from 'ahooks';
+import { App, ConfigProvider, Layout, theme as antdTheme } from 'antd';
+import { toNumber } from 'lodash-es';
 
 import GlobalContent from '@/components/GlobalContent'; // 主体布局
 import GlobalFooter from '@/components/GlobalFooter'; // 底部布局
 import GlobalHeader from '@/components/GlobalHeader'; // 头部布局
 import SliderMenu from '@/components/SliderMenu'; // 左侧菜单
-import { LOCAL_KEY, THEME } from '@/enums';
+import useStore from '@/store';
 
 const layoutStyle = {
   overflow: 'hidden',
@@ -28,37 +28,27 @@ type BasicLayoutProps = {
 };
 
 export default function BasicLayout({ children }: BasicLayoutProps) {
+  const { isDark } = useStore();
   // 菜单是否折叠
   const [collapsed, { toggle: setCollapsed }] = useBoolean(false);
-  // 主题模式
-  const [themeMode, setThemeMode] = useLocalStorageState<App.ThemeMode>(LOCAL_KEY.THEME, {
-    defaultValue: (process.env.NEXT_PUBLIC_THEME_MODE as App.ThemeMode) || THEME.LIGHT,
-  });
-  // 是否是暗黑主题
-  const isDark = eq(themeMode, THEME.DARK);
   return (
     <ConfigProvider
       theme={{
         cssVar: true, // 开启 CSS 变量模式
         hashed: false, // 关闭 hash 减小样式体积
-        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        algorithm: isDark() ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
       }}
     >
       <App>
         <Layout style={layoutStyle} hasSider>
-          <SliderMenu themeMode={themeMode || THEME.LIGHT} collapsed={collapsed} />
+          <SliderMenu collapsed={collapsed} />
           <Layout
             style={{
               marginInlineStart: collapsed ? 80 : toNumber(process.env.NEXT_PUBLIC_SLIDE_MENU_WIDTH),
               transition: '.3s all ease',
             }}
           >
-            <GlobalHeader
-              collapsed={collapsed}
-              setCollapsed={setCollapsed}
-              isDark={isDark}
-              setThemeMode={setThemeMode}
-            />
+            <GlobalHeader collapsed={collapsed} setCollapsed={setCollapsed} />
             <GlobalContent>{children}</GlobalContent>
             <GlobalFooter />
           </Layout>
