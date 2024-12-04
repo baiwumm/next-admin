@@ -2,26 +2,57 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-04 09:13:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-04 09:27:59
+ * @LastEditTime: 2024-12-04 15:20:35
  * @Description: 左侧菜单
  */
 'use client';
 
-import { Layout } from 'antd';
+import { Layout, Menu, type MenuProps } from 'antd';
+import { usePathname, useRouter } from 'next/navigation';
+
+import MenuList from '@/constants/menu';
 
 const { Sider } = Layout;
 
 const siderStyle: React.CSSProperties = {
-  textAlign: 'center',
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#1677ff',
+  overflow: 'auto',
+  height: '100vh',
+  position: 'fixed',
+  insetInlineStart: 0,
+  top: 0,
+  bottom: 0,
 };
 
-export default function SiderMenu() {
+type SiderMenuProps = {
+  themeMode: App.ThemeMode;
+  collapsed: boolean;
+};
+
+export default function SiderMenu({ themeMode, collapsed }: SiderMenuProps) {
+  // 路由跳转
+  const router = useRouter();
+  // 当前激活的菜单
+  const pathname = usePathname();
+  // 点击菜单回调
+  const handleMenuClick: MenuProps['onClick'] = (e) => {
+    router.push(e.key);
+  };
   return (
-    <Sider width="256" style={siderStyle}>
-      Sider
+    <Sider
+      width={process.env.NEXT_PUBLIC_SLIDE_MENU_WIDTH}
+      theme={themeMode}
+      trigger={null}
+      collapsible
+      collapsed={collapsed}
+      style={siderStyle}
+    >
+      <Menu
+        theme={themeMode}
+        mode="inline"
+        items={MenuList}
+        onClick={handleMenuClick}
+        defaultSelectedKeys={[pathname]}
+      />
     </Sider>
   );
 }

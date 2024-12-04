@@ -2,10 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-03 17:09:02
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-04 09:31:36
+ * @LastEditTime: 2024-12-04 10:45:37
  * @Description: 布局文件
  */
-import './globals.css';
+import './globals.scss';
+import 'antd/dist/reset.css';
 
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata } from 'next';

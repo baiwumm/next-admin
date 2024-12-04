@@ -21,15 +21,19 @@
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.2",
     "@remixicon/react": "^4.5.0",
+    "ahooks": "^3.8.1",
     "antd": "^5.22.3",
+    "lodash-es": "^4.17.21",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "store": "^2.0.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@release-it/conventional-changelog": "^9.0.3",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
