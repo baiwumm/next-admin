@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-04 09:17:34
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-04 17:22:25
+ * @LastEditTime: 2024-12-05 09:36:29
  * @Description: 头部布局
  */
 'use client';
 
-import { RiIndentDecrease, RiIndentIncrease, RiMoonFill, RiSunFill } from '@remixicon/react';
-import { Button, Flex, Layout, theme } from 'antd';
+import { RiIndentDecrease, RiIndentIncrease, RiMoonFill, RiSunFill, RiUserFill } from '@remixicon/react';
+import { Avatar, Button, Flex, Layout, theme, Tooltip } from 'antd';
 
 import { THEME } from '@/enums';
 import useStore from '@/store';
@@ -69,13 +69,19 @@ export default function GlobalHeader({ collapsed, setCollapsed }: GlobalHeaderPr
             height: 64,
           }}
         />
-        <Flex>
-          <Button
-            type="text"
-            size="large"
-            icon={isDark() ? <RiMoonFill size={20} /> : <RiSunFill size={20} />}
-            onClick={toggleDark}
-          />
+        <Flex gap="small" align="center">
+          <Tooltip title={`${isDark() ? '白天' : '暗黑'}模式`}>
+            <Button
+              type="text"
+              size="large"
+              icon={isDark() ? <RiMoonFill size={20} /> : <RiSunFill size={20} />}
+              onClick={toggleDark}
+            />
+          </Tooltip>
+          <Flex gap="small" align="center">
+            <Avatar size={32} icon={<RiUserFill />} />
+            <span>白雾茫茫丶</span>
+          </Flex>
         </Flex>
       </Flex>
     </Header>
