@@ -1,10 +1,5 @@
-import { Button, Tag } from "antd";
+import { Button } from '@nextui-org/button';
 
 export default function Home() {
-  return (
-    <div className="App">
-      <Button type="primary">Button</Button>
-      <Tag>111</Tag>
-    </div>
-  );
+  return <Button>Press me</Button>;
 }

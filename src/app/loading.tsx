@@ -1,16 +1,17 @@
 /*
  * @Author: 白雾茫茫丶<baiwumm.com>
- * @Date: 2024-05-28 15:10:40
+ * @Date: 2024-12-06 10:31:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-04 17:29:54
+ * @LastEditTime: 2024-12-06 10:31:28
  * @Description: 全局 Loading
  */
-import { Flex, Spin } from 'antd';
+
+import { Spinner } from '@nextui-org/react';
 
 export default function Loading() {
   return (
-    <Flex align="center" gap="middle" justify="center" style={{ height: '100%' }}>
-      <Spin />
-    </Flex>
+    <div className="flex justify-center items-center min-h-60">
+      <Spinner label="Loading..." color="primary" />
+    </div>
   );
 }
