@@ -1,6 +1,6 @@
 {
   "name": "next-admin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "author": {
     "name": "baiwumm",
@@ -15,7 +15,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V",
+    "release": "release-it"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
