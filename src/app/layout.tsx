@@ -2,15 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:05:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-09 09:38:10
+ * @LastEditTime: 2024-12-09 09:51:17
  * @Description: 布局文件
  */
 import './globals.scss';
 
 import type { Metadata } from 'next';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 import AppSideBar from '@/components/AppSideBar';
+import ThemeModeButton from '@/components/ThemeModeButton';
+import ThemeProvider from '@/components/ThemeProvider';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -35,12 +36,12 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <body>
-        <NextThemesProvider attribute="class" defaultTheme="light">
+        <ThemeProvider attribute="class" defaultTheme="light">
           <SidebarProvider>
             <AppSideBar />
             <SidebarInset>
-              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b">
-                <div className="flex items-center gap-2 px-4">
+              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b justify-between px-4">
+                <div className="flex items-center gap-2">
                   <SidebarTrigger className="-ml-1" />
                   <Separator orientation="vertical" className="mr-2 h-4" />
                   <Breadcrumb>
@@ -55,11 +56,12 @@ export default function RootLayout({
                     </BreadcrumbList>
                   </Breadcrumb>
                 </div>
+                <ThemeModeButton />
               </header>
               <main className="p-4">{children}</main>
             </SidebarInset>
           </SidebarProvider>
-        </NextThemesProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --scrollbar-bg:rgba(0, 0, 0, .15);
-  --scrollbar-hover: rgba(0, 0, 0, .25);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --scrollbar-bg:rgba(255, 255, 255, .45);
-    --scrollbar-hover: rgba(255, 255, 255, .25);
-  }
-}
-
 .link-hover {
   color: inherit;
   transition: .3s color;
@@ -94,6 +82,8 @@
     --sidebar-accent-foreground:240 5.9% 10%;
     --sidebar-border:220 13% 91%;
     --sidebar-ring:217.2 91.2% 59.8%;
+    --scrollbar-bg:rgba(0, 0, 0, .15);
+     --scrollbar-hover: rgba(0, 0, 0, .25);
   }
   .dark {
     --background:240 10% 3.9%;
@@ -128,6 +118,8 @@
     --sidebar-accent-foreground:240 4.8% 95.9%;
     --sidebar-border:240 3.7% 15.9%;
     --sidebar-ring:217.2 91.2% 59.8%;
+    --scrollbar-bg:rgba(255, 255, 255, .45);
+    --scrollbar-hover: rgba(255, 255, 255, .25);
   }
 }
 
