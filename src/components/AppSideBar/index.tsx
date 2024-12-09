@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 13:54:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-06 16:38:39
+ * @LastEditTime: 2024-12-09 16:31:03
  * @Description: 侧边菜单排版
  */
 'use client';
@@ -38,7 +38,7 @@ export default function AppSideBar({ ...props }: React.ComponentProps<typeof Sid
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <div className="flex items-center gap-2 cursor-pointer">
-                <Image src="/logo.svg" width={50} height={50} alt="logo" />
+                <Image src="/logo.svg" width={40} height={40} alt="logo" />
                 <span className="truncate font-semibold">{process.env.NEXT_PUBLIC_PROJECT_NAME}</span>
               </div>
             </SidebarMenuButton>
