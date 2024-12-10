@@ -10,6 +10,7 @@
 import { map } from 'lodash-es';
 import { ChevronRight } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -23,7 +24,6 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
 import MenuList from '@/constants/MenuList';
-import { useTranslations } from 'next-intl';
 
 export default function NavMain() {
   const t = useTranslations('Route');

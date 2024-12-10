@@ -19,7 +19,6 @@ export default function LangSwitch() {
 
   // 切换语言
   function onChangeLang(value: Locale) {
-    console.log('切换语言', value);
     const locale = value as Locale;
     setLocale(locale);
   }
