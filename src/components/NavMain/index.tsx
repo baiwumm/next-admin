@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-06 16:41:26
+ * @LastEditTime: 2024-12-10 10:53:50
  * @Description: 菜单布局
  */
 'use client';
@@ -23,8 +23,10 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
 import MenuList from '@/constants/MenuList';
+import { useTranslations } from 'next-intl';
 
 export default function NavMain() {
+  const t = useTranslations('Route');
   // 路由跳转
   const router = useRouter();
   // 当前激活的菜单
@@ -47,12 +49,12 @@ export default function NavMain() {
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
-                  tooltip={name}
+                  tooltip={t(name)}
                   isActive={activeKey === path}
                   onClick={() => handleMenuClick(path, redirect)}
                 >
                   {icon}
-                  <span>{name}</span>
+                  <span>{t(name)}</span>
                   {children?.length ? (
                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                   ) : null}
@@ -65,7 +67,7 @@ export default function NavMain() {
                       <SidebarMenuSubButton asChild onClick={() => handleMenuClick(subItem.path, subItem.redirect)}>
                         <a onClick={() => handleMenuClick(path, redirect)} className="cursor-pointer">
                           {subItem.icon}
-                          <span>{subItem.name}</span>
+                          <span>{t(subItem.name)}</span>
                         </a>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>

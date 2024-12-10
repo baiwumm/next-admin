@@ -1,0 +1,8 @@
+{
+  "Route":{
+    "about":"About",
+    "dashboard":"Dashboard",
+    "system-manage":"System Manage",
+    "internationalization":"Internationalization"
+  }
+}

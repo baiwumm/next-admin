@@ -1,5 +1,5 @@
-import { Button } from '@nextui-org/button';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
-  return <Button>Press me</Button>;
+  return <Button>首页</Button>;
 }
