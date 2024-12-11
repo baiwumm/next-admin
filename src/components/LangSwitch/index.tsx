@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 09:29:29
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-10 10:34:39
+ * @LastEditTime: 2024-12-10 17:21:58
  * @Description: 多语言切换
  */
 'use client';
@@ -24,7 +24,7 @@ export default function LangSwitch() {
   }
   return (
     <Button variant="ghost" size="icon" onClick={() => onChangeLang(locale === ZH ? EN : ZH)}>
-      {locale === ZH ? 'CN' : 'EN'}
+      {locale === ZH ? '中' : 'EN'}
       <span className="sr-only">Toggle Lang</span>
     </Button>
   );

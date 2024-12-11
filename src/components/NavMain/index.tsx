@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-10 10:53:50
+ * @LastEditTime: 2024-12-11 11:00:41
  * @Description: 菜单布局
  */
 'use client';
@@ -23,7 +23,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
-import MenuList from '@/constants/MenuList';
+import { MenuIconMap, MenuList } from '@/constants/MenuConfig';
 
 export default function NavMain() {
   const t = useTranslations('Route');
@@ -33,9 +33,12 @@ export default function NavMain() {
   const pathname = usePathname();
   const [activeKey, setActiveKey] = useState(pathname);
 
+  // 判断当前菜单是否激活
+  const isActive = (path: string) => activeKey === path;
+
   // 点击菜单回调
-  const handleMenuClick = (path: string, redirect = '') => {
-    if (redirect) {
+  const handleMenuClick = (path: string, hasChdilren = false) => {
+    if (hasChdilren) {
       return;
     }
     router.push(path);
@@ -44,16 +47,16 @@ export default function NavMain() {
   return (
     <SidebarGroup>
       <SidebarMenu>
-        {map(MenuList, ({ path, icon, name, redirect, children = [] }) => (
-          <Collapsible key={path} asChild defaultOpen={activeKey === path} className="group/collapsible">
+        {map(MenuList, ({ path, name, children = [] }) => (
+          <Collapsible key={path} asChild defaultOpen={activeKey.includes(path)} className="group/collapsible">
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
                   tooltip={t(name)}
-                  isActive={activeKey === path}
-                  onClick={() => handleMenuClick(path, redirect)}
+                  isActive={isActive(path)}
+                  onClick={() => handleMenuClick(path, !!children.length)}
                 >
-                  {icon}
+                  {MenuIconMap[name]}
                   <span>{t(name)}</span>
                   {children?.length ? (
                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -61,18 +64,27 @@ export default function NavMain() {
                 </SidebarMenuButton>
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <SidebarMenuSub>
-                  {map(children, (subItem) => (
-                    <SidebarMenuSubItem key={subItem.path}>
-                      <SidebarMenuSubButton asChild onClick={() => handleMenuClick(subItem.path, subItem.redirect)}>
-                        <a onClick={() => handleMenuClick(path, redirect)} className="cursor-pointer">
-                          {subItem.icon}
-                          <span>{t(subItem.name)}</span>
-                        </a>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ))}
-                </SidebarMenuSub>
+                {children?.length ? (
+                  <SidebarMenuSub>
+                    {map(children, (subItem) => (
+                      <SidebarMenuSubItem key={subItem.path}>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={isActive(subItem.path)}
+                          onClick={() => handleMenuClick(subItem.path, !!subItem.children?.length)}
+                        >
+                          <a
+                            onClick={() => handleMenuClick(subItem.path, !!subItem.children?.length)}
+                            className="cursor-pointer"
+                          >
+                            {MenuIconMap[subItem.name]}
+                            <span>{t(subItem.name)}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))}
+                  </SidebarMenuSub>
+                ) : null}
               </CollapsibleContent>
             </SidebarMenuItem>
           </Collapsible>
