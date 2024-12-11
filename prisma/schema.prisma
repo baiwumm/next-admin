@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 系统管理 - 国际化
+model Internalization {
+  id            String          @id @default(uuid()) // 主键
+  name          String          // 键
+  parentId      String?  
+  parent        Internalization?       @relation(name: "InternalizationHierarchy", fields: [parentId], references: [id])
+  zh          String?         // 中文
+  en          String?         // 英文
+  createdAt     DateTime        @default(now()) // 创建时间
+  updatedAt     DateTime        @updatedAt // 更新时间
+  children      Internalization[]      @relation(name: "InternalizationHierarchy")
+}
