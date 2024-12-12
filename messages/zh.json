@@ -4,5 +4,29 @@
     "dashboard":"仪表盘",
     "system-manage":"系统管理",
     "internationalization":"国际化"
+  },
+  "Pages":{
+    "internationalization":{
+      "name":"国际化字段",
+      "zh":"中文",
+      "en":"英文"
+    }
+  },
+  "Global":{
+    "createdAt":"创建时间",
+    "noData":"暂无数据",
+    "column-setting":"列设置",
+    "operation":"操作",
+    "edit":"编辑",
+    "delete":"删除",
+    "asc":"升序",
+    "desc":"降序",
+    "hide":"隐藏",
+    "reset":"重置",
+    "search":"搜索",
+    "add":"新增",
+    "loading":"加载中...",
+    "enter":"请输入",
+    "select":"请选择"
   }
 }

@@ -4,5 +4,29 @@
     "dashboard":"Dashboard",
     "system-manage":"System Manage",
     "internationalization":"Internationalization"
+  },
+  "Pages":{
+    "internationalization":{
+      "name":"Name",
+      "zh":"Chinese",
+      "en":"English"
+    }
+  },
+  "Global":{
+    "createdAt":"CreatedAt",
+    "noData":"No results",
+    "column-setting":"Column Setting",
+    "operation":"Operation",
+    "edit":"Edit",
+    "delete":"Delete",
+    "asc":"Asc",
+    "desc":"Desc",
+    "hide":"Hide",
+    "reset":"Reset",
+    "search":"Search",
+    "add":"Add",
+    "loading":"Loading...",
+    "enter":"Please enter",
+    "select":"Please select"
   }
 }
