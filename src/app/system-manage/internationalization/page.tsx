@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 10:47:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 14:51:40
+ * @LastEditTime: 2024-12-13 18:01:18
  * @Description: 国际化
  */
 'use client';
@@ -11,7 +11,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import { forEach, get } from 'lodash-es';
-import { FilePenLine, Loader2, SquareMinus, SquarePlus, Trash2 } from 'lucide-react';
+import { Loader2, SquareMinus, SquarePlus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -19,6 +19,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import ColumnSorting from '@/components/DataTable/ColumnSorting';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { UNIFORM_TEXT } from '@/enums';
 import {
@@ -29,6 +30,7 @@ import {
 } from '@/services/system-manage/internationalization';
 import { isSuccess } from '@/utils';
 
+import ColumnOperation from './components/CloumnOperation';
 import DataTable from './components/DataTable';
 import { formSchema, searchFormSchema } from './components/formSchema';
 import SaveDialog from './components/SaveDialog';
@@ -138,33 +140,33 @@ export default function Internationalization() {
     {
       accessorKey: 'zh',
       header: t('internationalization.zh'),
-      cell: ({ row }) => row.getValue('zh') || UNIFORM_TEXT.NULL,
+      cell: ({ row }) =>
+        row.getValue('zh') ? <Badge variant="secondary">{row.getValue('zh')}</Badge> : UNIFORM_TEXT.NULL,
     },
     {
       accessorKey: 'en',
       header: t('internationalization.en'),
-      cell: ({ row }) => row.getValue('en') || UNIFORM_TEXT.NULL,
+      cell: ({ row }) =>
+        row.getValue('zh') ? <Badge variant="secondary">{row.getValue('en')}</Badge> : UNIFORM_TEXT.NULL,
     },
     {
       accessorKey: 'createdAt',
       header: ({ column }) => <ColumnSorting column={column} title={tGlobal('createdAt')} />,
+      size: 100,
       cell: ({ row }) => dayjs(row.getValue('createdAt')).format('YYYY-MM-DD HH:mm:ss'),
     },
     {
       accessorKey: 'operation',
       header: tGlobal('operation'),
-      cell: ({ row }) => (
-        <>
-          <Button variant="ghost" size="sm" onClick={() => handleEdit(row.original)}>
-            <FilePenLine />
-            {tGlobal('edit')}
+      size: 50,
+      cell: ({ row }) =>
+        delLoading && id === row.original.id ? (
+          <Button variant="ghost" disabled>
+            <Loader2 className="animate-spin" />
           </Button>
-          <Button variant="ghost" size="sm" disabled={delLoading} onClick={() => handleDelete(row.original.id)}>
-            {delLoading && id === row.original.id ? <Loader2 className="animate-spin" /> : <Trash2 />}
-            {tGlobal('delete')}
-          </Button>
-        </>
-      ),
+        ) : (
+          <ColumnOperation row={row.original} handleEdit={handleEdit} handleDelete={handleDelete} />
+        ),
     },
   ];
 

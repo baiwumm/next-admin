@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 15:20:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-12 14:34:07
+ * @LastEditTime: 2024-12-13 18:06:29
  * @Description: 表格列表
  */
 'use client';
@@ -62,8 +62,8 @@ export default function DataTable({ columns, data, loading = false, refresh, set
   });
 
   return (
-    <div>
-      <div className="flex justify-between items-center pb-4">
+    <div className="flex flex-col gap-4">
+      <div className="flex justify-between items-center">
         <div className="flex items-center gap-2 flex-wrap">
           <HeaderSearch loading={loading} refresh={refresh} form={form} />
           <Button variant="outline" size="sm" className="border-dashed" onClick={() => setOpen(true)}>
@@ -81,7 +81,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-center">
+                    <TableHead key={header.id} className="text-center" style={{ width: `${header.getSize()}px` }}>
                       {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
