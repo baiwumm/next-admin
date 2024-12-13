@@ -52,3 +52,8 @@ export const convertFlatDataToTree = <T extends { id: any; parentId?: any }>(
 
   return cleanUpEmptyChildren(roots);
 };
+
+/**
+ * @description: 判断请求是否成功
+ */
+export const isSuccess = (code: number) => code === RESPONSE_CODE.SUCCESS;

@@ -27,6 +27,7 @@
     "add":"新增",
     "loading":"加载中...",
     "enter":"请输入",
-    "select":"请选择"
+    "select":"请选择",
+    "submit":"提交"
   }
 }

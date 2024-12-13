@@ -26,5 +26,8 @@ declare namespace App {
     type Internalization = import('@prisma/client').Internalization;
     /** @description: 查询参数 */
     type InternalizationSearchParams = Partial<Pick<Internalization, 'name' | 'zh'>>;
+    /** @description: 保存参数 */
+    type InternalizationSaveParams = Partial<Pick<Internalization, 'id' | 'parentId' | 'zh' | 'en'>> &
+      Pick<Internalization, 'name'>;
   }
 }

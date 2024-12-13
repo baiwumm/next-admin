@@ -27,6 +27,7 @@
     "add":"Add",
     "loading":"Loading...",
     "enter":"Please enter",
-    "select":"Please select"
+    "select":"Please select",
+    "submit":"Submit"
   }
 }

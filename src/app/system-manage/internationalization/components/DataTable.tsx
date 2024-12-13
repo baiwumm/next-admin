@@ -20,26 +20,26 @@ import { Loader2, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Fragment } from 'react';
+import type { UseFormReturn } from 'react-hook-form';
+import { z } from 'zod';
 
 import ColumnVisiable from '@/components/DataTable/ColumnVisiable';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
+import { searchFormSchema } from './formSchema';
 import HeaderSearch from './HeaderSearch'; // 顶部搜索
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface DataTableProps {
+  columns: ColumnDef<App.SystemManage.Internalization, unknown>[];
+  data: App.SystemManage.Internalization[];
   loading: boolean;
-  refresh: (params?: App.SystemManage.InternalizationSearchParams) => void;
+  refresh: () => void;
+  setOpen: (open: boolean) => void;
+  form: UseFormReturn<z.infer<typeof searchFormSchema>>;
 }
 
-export default function DataTable<TData, TValue>({
-  columns,
-  data,
-  loading = false,
-  refresh,
-}: DataTableProps<TData, TValue>) {
+export default function DataTable({ columns, data, loading = false, refresh, setOpen, form }: DataTableProps) {
   const t = useTranslations('Global');
 
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -65,8 +65,8 @@ export default function DataTable<TData, TValue>({
     <div>
       <div className="flex justify-between items-center pb-4">
         <div className="flex items-center gap-2 flex-wrap">
-          <HeaderSearch loading={loading} refresh={refresh} />
-          <Button variant="outline" size="sm" className="border-dashed">
+          <HeaderSearch loading={loading} refresh={refresh} form={form} />
+          <Button variant="outline" size="sm" className="border-dashed" onClick={() => setOpen(true)}>
             <Plus />
             {t('add')}
           </Button>

@@ -28,3 +28,8 @@ export enum RESPONSE_MSG {
 export enum UNIFORM_TEXT {
   NULL = '--',
 }
+
+/** @description: localstorage key */
+export enum LOCALSTORAGE_KEY {
+  TOKEN = 'token',
+}

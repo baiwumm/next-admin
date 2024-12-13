@@ -2,41 +2,119 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 10:47:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-12 14:25:50
+ * @LastEditTime: 2024-12-13 14:51:40
  * @Description: 国际化
  */
 'use client';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ColumnDef } from '@tanstack/react-table';
+import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
-import { FilePenLine, SquareMinus, SquarePlus, Trash2 } from 'lucide-react';
+import { forEach, get } from 'lodash-es';
+import { FilePenLine, Loader2, SquareMinus, SquarePlus, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
 
 import ColumnSorting from '@/components/DataTable/ColumnSorting';
 import { Button } from '@/components/ui/button';
-import { RESPONSE_CODE, UNIFORM_TEXT } from '@/enums';
+import { UNIFORM_TEXT } from '@/enums';
+import {
+  addInternalization,
+  delInternalization,
+  getInternalizationList,
+  updateInternalization,
+} from '@/services/system-manage/internationalization';
+import { isSuccess } from '@/utils';
 
 import DataTable from './components/DataTable';
+import { formSchema, searchFormSchema } from './components/formSchema';
+import SaveDialog from './components/SaveDialog';
 export default function Internationalization() {
   const t = useTranslations('Pages');
   const tGlobal = useTranslations('Global');
-  const [dataSource, setDataSource] = useState<App.SystemManage.Internalization[]>([]);
-  // 搜索 loading
-  const [loading, setLoading] = useState(false);
+  // 显示弹窗
+  const [open, setOpen] = useState(false);
+  // 编辑时的 id
+  const [id, setId] = useState('');
+
+  // 搜索表单实例
+  const searchForm = useForm<z.infer<typeof searchFormSchema>>({
+    resolver: zodResolver(searchFormSchema),
+    defaultValues: {
+      name: '',
+      zh: '',
+    },
+  });
+
+  // 表单实例
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      zh: '',
+      en: '',
+    },
+  });
 
   // 获取列表数据
-  const getData = async (params = {}) => {
-    setLoading(true);
-    const query = new URLSearchParams(params);
-    const response = await fetch(`/api/system-manage/internationalization?${query}`);
-    if (response.status === RESPONSE_CODE.SUCCESS) {
-      const { code, data = [] }: App.Common.IResponse = await response.json();
-      if (code === RESPONSE_CODE.SUCCESS) {
-        setDataSource(data);
-      }
-    }
-    setLoading(false);
+  const {
+    data: dataSource = [],
+    loading,
+    run,
+  } = useRequest(async () => {
+    const params = searchForm.getValues();
+    return get(await getInternalizationList(params), 'data', []);
+  });
+
+  // 退出弹窗
+  const handleCancel = () => {
+    setId('');
+    form.reset();
+    setOpen(false);
   };
+
+  // 新增/编辑国际化
+  const { loading: saveLoading, run: runSave } = useRequest(id ? updateInternalization : addInternalization, {
+    manual: true,
+    onSuccess: ({ code, msg }) => {
+      if (isSuccess(code)) {
+        toast.success(msg);
+        handleCancel();
+        run();
+      }
+    },
+  });
+
+  // 删除国际化
+  const { loading: delLoading, run: runDel } = useRequest(delInternalization, {
+    manual: true,
+    onSuccess: ({ code, msg }) => {
+      setId('');
+      if (isSuccess(code)) {
+        toast.success(msg);
+        run();
+      }
+    },
+  });
+
+  // 编辑回调
+  const handleEdit = (row: App.SystemManage.Internalization) => {
+    setId(row.id);
+    forEach(['name', 'zh', 'en'], (key: keyof z.infer<typeof formSchema>) => {
+      form.setValue(key, row[key] || '');
+    });
+    setOpen(true);
+  };
+
+  // 删除回调
+  const handleDelete = (id: string) => {
+    setId(id);
+    runDel(id);
+  };
+
   const columns: ColumnDef<App.SystemManage.Internalization>[] = [
     {
       accessorKey: 'name',
@@ -77,19 +155,41 @@ export default function Internationalization() {
       header: tGlobal('operation'),
       cell: ({ row }) => (
         <>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="sm" onClick={() => handleEdit(row.original)}>
             <FilePenLine />
+            {tGlobal('edit')}
           </Button>
-          <Button variant="ghost" size="icon">
-            <Trash2 />
+          <Button variant="ghost" size="sm" disabled={delLoading} onClick={() => handleDelete(row.original.id)}>
+            {delLoading && id === row.original.id ? <Loader2 className="animate-spin" /> : <Trash2 />}
+            {tGlobal('delete')}
           </Button>
         </>
       ),
     },
   ];
 
-  useEffect(() => {
-    getData();
-  }, []);
-  return <DataTable columns={columns} data={dataSource} loading={loading} refresh={getData} />;
+  // 表单提交
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    runSave({ id: id || undefined, ...values });
+  };
+  return (
+    <>
+      <DataTable
+        columns={columns}
+        data={dataSource}
+        loading={loading}
+        refresh={run}
+        setOpen={setOpen}
+        form={searchForm}
+      />
+      <SaveDialog
+        open={open}
+        form={form}
+        onSubmit={onSubmit}
+        id={id}
+        loading={saveLoading}
+        handleCancel={handleCancel}
+      />
+    </>
+  );
 }

@@ -5,42 +5,30 @@
  * @LastEditTime: 2024-12-12 11:00:30
  * @Description: 头部搜索
  */
-import { zodResolver } from '@hookform/resolvers/zod';
 import { RotateCcw, Search } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useForm } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
+import { searchFormSchema } from './formSchema';
+
 type HeaderSearchProps = {
   loading: boolean;
   refresh: (params?: App.SystemManage.InternalizationSearchParams) => void;
+  form: UseFormReturn<z.infer<typeof searchFormSchema>>;
 };
 
-export default function HeaderSearch({ loading = false, refresh }: HeaderSearchProps) {
+export default function HeaderSearch({ loading = false, refresh, form }: HeaderSearchProps) {
   const t = useTranslations('Pages');
   const tGlobal = useTranslations('Global');
 
-  const formSchema = z.object({
-    name: z.string().optional(),
-    zh: z.string().optional(),
-  });
-
-  // 创建表单实例
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      zh: '',
-    },
-  });
-
   // 表单提交
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof searchFormSchema>) => {
     refresh(values);
   };
 
