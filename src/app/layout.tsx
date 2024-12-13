@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:05:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 14:24:37
+ * @LastEditTime: 2024-12-13 16:33:12
  * @Description: 布局文件
  */
 import './globals.scss';
@@ -12,6 +12,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import AppSideBar from '@/components/AppSideBar';
+import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalHeader from '@/components/GlobalHeader'; // 头部布局
 import ThemeProvider from '@/components/ThemeProvider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
@@ -42,9 +43,11 @@ export default async function RootLayout({
                 <main className="p-4">{children}</main>
               </SidebarInset>
             </SidebarProvider>
+            {/* 全局 Loading */}
+            <FullLoading />
           </ThemeProvider>
         </NextIntlClientProvider>
-        <Toaster richColors position="top-center" />
+        <Toaster position="top-center" />
       </body>
     </html>
   );
