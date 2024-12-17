@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 10:47:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 18:01:18
+ * @LastEditTime: 2024-12-17 14:16:03
  * @Description: 国际化
  */
 'use client';
@@ -55,6 +55,7 @@ export default function Internationalization() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      parentId: undefined,
       name: '',
       zh: '',
       en: '',
@@ -105,7 +106,7 @@ export default function Internationalization() {
   // 编辑回调
   const handleEdit = (row: App.SystemManage.Internalization) => {
     setId(row.id);
-    forEach(['name', 'zh', 'en'], (key: keyof z.infer<typeof formSchema>) => {
+    forEach(['parentId', 'name', 'zh', 'en'], (key: keyof z.infer<typeof formSchema>) => {
       form.setValue(key, row[key] || '');
     });
     setOpen(true);
@@ -121,6 +122,7 @@ export default function Internationalization() {
     {
       accessorKey: 'name',
       header: t('internationalization.name'),
+      size: 120,
       cell: ({ row }) => {
         const depth = row.subRows?.[0]?.depth - 1 || 0;
         return row.getCanExpand() ? (
@@ -130,24 +132,24 @@ export default function Internationalization() {
             ) : (
               <SquarePlus size={18} onClick={row.getToggleExpandedHandler()} className="cursor-pointer" />
             )}
-            {row.getValue('name')}
+            <Badge variant="secondary">{row.getValue('name')}</Badge>
           </div>
         ) : (
-          row.getValue('name')
+          <Badge variant="secondary">{row.getValue('name')}</Badge>
         );
       },
     },
     {
       accessorKey: 'zh',
       header: t('internationalization.zh'),
-      cell: ({ row }) =>
-        row.getValue('zh') ? <Badge variant="secondary">{row.getValue('zh')}</Badge> : UNIFORM_TEXT.NULL,
+      size: 100,
+      cell: ({ row }) => row.getValue('zh') || UNIFORM_TEXT.NULL,
     },
     {
       accessorKey: 'en',
       header: t('internationalization.en'),
-      cell: ({ row }) =>
-        row.getValue('zh') ? <Badge variant="secondary">{row.getValue('en')}</Badge> : UNIFORM_TEXT.NULL,
+      size: 100,
+      cell: ({ row }) => row.getValue('en') || UNIFORM_TEXT.NULL,
     },
     {
       accessorKey: 'createdAt',
@@ -191,6 +193,7 @@ export default function Internationalization() {
         id={id}
         loading={saveLoading}
         handleCancel={handleCancel}
+        dataSource={dataSource}
       />
     </>
   );

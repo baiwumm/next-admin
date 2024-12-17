@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 15:20:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 18:06:29
+ * @LastEditTime: 2024-12-17 09:48:43
  * @Description: 表格列表
  */
 'use client';
@@ -25,6 +25,7 @@ import { z } from 'zod';
 
 import ColumnVisiable from '@/components/DataTable/ColumnVisiable';
 import { Button } from '@/components/ui/button';
+import { Empty } from '@/components/ui/empty';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 import { searchFormSchema } from './formSchema';
@@ -60,9 +61,8 @@ export default function DataTable({ columns, data, loading = false, refresh, set
       sorting,
     },
   });
-
   return (
-    <div className="flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2 flex-wrap">
           <HeaderSearch loading={loading} refresh={refresh} form={form} />
@@ -74,7 +74,12 @@ export default function DataTable({ columns, data, loading = false, refresh, set
         {/* 列设置项 */}
         <ColumnVisiable table={table} field="internationalization" />
       </div>
-      <div className="rounded-md border">
+      <div className={`relative rounded-md border transition-opacity opacity-${loading ? '50' : '100'}`}>
+        {loading ? (
+          <div className="absolute flex justify-center items-center w-full h-full z-50">
+            <Loader2 className="animate-spin" />
+          </div>
+        ) : null}
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -90,15 +95,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
             ))}
           </TableHeader>
           <TableBody>
-            {loading ? (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  <div className="flex justify-center">
-                    <Loader2 className="animate-spin" />
-                  </div>
-                </TableCell>
-              </TableRow>
-            ) : table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <Fragment key={row.id}>
                   <TableRow data-state={row.getIsSelected() && 'selected'}>
@@ -113,7 +110,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  {t('noData')}
+                  <Empty />
                 </TableCell>
               </TableRow>
             )}

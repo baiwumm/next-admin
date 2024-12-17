@@ -2,18 +2,22 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-12 17:22:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 14:23:14
+ * @LastEditTime: 2024-12-17 14:09:49
  * @Description: 新增编辑弹窗
  */
+import { map } from 'lodash-es';
 import { Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Fragment } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Empty } from '@/components/ui/empty';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { formSchema } from './formSchema';
 
@@ -24,6 +28,7 @@ type SaveDialogProps = {
   id: string;
   loading: boolean;
   handleCancel: VoidFunction;
+  dataSource: App.SystemManage.Internalization[];
 };
 
 export default function SaveDialog({
@@ -33,6 +38,7 @@ export default function SaveDialog({
   id,
   loading = false,
   handleCancel,
+  dataSource = [],
 }: SaveDialogProps) {
   const t = useTranslations('Pages');
   const tGlobal = useTranslations('Global');
@@ -51,6 +57,44 @@ export default function SaveDialog({
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="parentId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{tGlobal('parent')}</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder={tGlobal('select')} />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {dataSource?.length ? (
+                        <SelectGroup>
+                          {map(dataSource, ({ id, name, children = [] }) => (
+                            <Fragment key={id}>
+                              <SelectItem value={id}>{name}</SelectItem>
+                              {children.length
+                                ? map(children, (child) => (
+                                    <SelectItem key={child.id} value={child.id} className="indent-2.5">
+                                      {child.zh || child.name}
+                                    </SelectItem>
+                                  ))
+                                : null}
+                            </Fragment>
+                          ))}
+                        </SelectGroup>
+                      ) : (
+                        <Empty />
+                      )}
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>{tGlobal('parentTip')}</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="name"
@@ -81,7 +125,6 @@ export default function SaveDialog({
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -98,7 +141,6 @@ export default function SaveDialog({
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />

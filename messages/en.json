@@ -28,6 +28,8 @@
     "loading":"Loading...",
     "enter":"Please enter",
     "select":"Please select",
-    "submit":"Submit"
+    "submit":"Submit",
+    "parent":"Parent",
+    "parentTip":"The default is top-level"
   }
 }

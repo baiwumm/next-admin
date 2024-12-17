@@ -4,6 +4,7 @@ import { z } from 'zod';
  * @description: 新增/编辑表单
  */
 export const formSchema = z.object({
+  parentId: z.string().optional(),
   name: z
     .string()
     .trim()
@@ -20,14 +21,7 @@ export const formSchema = z.object({
       message: '字段中不能包含空格',
     })
     .optional(),
-  en: z
-    .string()
-    .trim()
-    .max(500, { message: '最多输入500个字符' })
-    .refine((val) => !/\s/.test(val), {
-      message: '字段中不能包含空格',
-    })
-    .optional(),
+  en: z.string().trim().max(500, { message: '最多输入500个字符' }).optional(),
 });
 
 /**
