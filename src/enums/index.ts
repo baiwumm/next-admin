@@ -33,3 +33,11 @@ export enum UNIFORM_TEXT {
 export enum LOCALSTORAGE_KEY {
   TOKEN = 'token',
 }
+
+/**
+ * @description: 国际化语言
+ */
+export enum LOCALES {
+  zh = 'zh', // 中文
+  en = 'en', // 英文
+}

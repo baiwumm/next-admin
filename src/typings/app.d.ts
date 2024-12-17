@@ -10,16 +10,22 @@ declare namespace App {
       total: number; // 总条数
     } & PaginatingParams;
     /** @description: 分页列表 */
-    type PaginatingQueryRecord<T = any> = {
+    type PaginatingQueryRecord<T = unknown> = {
       records: T[];
     } & PaginatingResponse;
     /** @description: 响应体 */
-    type IResponse<T = any> = {
+    type IResponse<T = unknown> = {
       code: number; // 状态码
       data: T; // 数据
       msg: string; // 消息
       timestamp: number; // 时间戳
     };
+    /** @description: 国际化语言 */
+    type Langs = 'zh' | 'en';
+  }
+  namespace Auth {
+    /** @description: 国际化层级数据 */
+    type Locales = Record<Common.Langs, unknown>;
   }
   namespace SystemManage {
     /** @description: 国际化 */

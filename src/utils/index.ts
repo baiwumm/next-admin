@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { RESPONSE_CODE, RESPONSE_MSG } from '@/enums';
+import { LOCALES, RESPONSE_CODE, RESPONSE_MSG } from '@/enums';
 
 /**
  * @description: 统一返回体
@@ -15,11 +15,11 @@ export const responseMessage = (
  * @description: 将扁平数据转换为树形结构
  */
 type TreeNode<T> = T & { children?: TreeNode<T>[] };
-export const convertFlatDataToTree = <T extends { id: any; parentId?: any }>(
+export const convertFlatDataToTree = <T extends { id: string; parentId?: string }>(
   flatData: T[],
-  rootId?: any,
+  rootId?: string,
 ): TreeNode<T>[] => {
-  const map: Record<any, TreeNode<T>> = {};
+  const map: Record<string, TreeNode<T>> = {};
   const roots: TreeNode<T>[] = [];
 
   // 将所有节点添加到 map 中，以 id 作为 key
@@ -51,6 +51,41 @@ export const convertFlatDataToTree = <T extends { id: any; parentId?: any }>(
     }));
 
   return cleanUpEmptyChildren(roots);
+};
+
+/**
+ * @description: 将树形树形转成层级对象
+ */
+export const convertToLocalization = (data: App.SystemManage.Internalization[]): App.Auth.Locales => {
+  const result: App.Auth.Locales = {
+    zh: {},
+    en: {},
+  };
+
+  function buildNestedObject(
+    item: App.SystemManage.Internalization & {
+      children?: App.SystemManage.Internalization[];
+    },
+    obj: Record<string, any>,
+    lang: App.Common.Langs,
+  ) {
+    if (item.children) {
+      obj[item.name] = {};
+      for (const child of item.children) {
+        buildNestedObject(child, obj[item.name], lang);
+      }
+    } else {
+      obj[item.name] = item[lang];
+    }
+  }
+
+  for (const lang of Object.values(LOCALES)) {
+    for (const item of data) {
+      buildNestedObject(item, result[lang], lang);
+    }
+  }
+
+  return result;
 };
 
 /**
