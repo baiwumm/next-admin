@@ -31,6 +31,7 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
+    "@remixicon/react": "^4.6.0",
     "@tanstack/react-table": "^8.20.5",
     "ahooks": "^3.8.4",
     "axios": "^1.7.9",
