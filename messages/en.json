@@ -31,5 +31,9 @@
     "submit":"Submit",
     "parent":"Parent",
     "parentTip":"The default is top-level"
+  },
+  "App":{
+    "light":"Light Mode",
+    "dark":"Dark Mode"
   }
 }

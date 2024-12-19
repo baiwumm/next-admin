@@ -2,18 +2,23 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-09 09:43:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-09 10:02:07
+ * @LastEditTime: 2024-12-19 10:36:18
  * @Description: 主题切换按钮
  */
 'use client';
 
-import { Moon, Sun } from 'lucide-react';
+import { Tooltip } from '@nextui-org/react';
+import { RiMoonLine, RiSunLine } from '@remixicon/react';
+import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/components/ui/button';
 
 export default function ThemeModeButton() {
+  const t = useTranslations('App');
   const { theme, setTheme } = useTheme();
+
+  const isDark = theme === 'dark';
 
   // 判断是否支持 startViewTransition API
   const enableTransitions = () =>
@@ -21,8 +26,6 @@ export default function ThemeModeButton() {
 
   // 切换动画
   async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
-    const isDark = theme === 'dark';
-
     if (!enableTransitions()) {
       setTheme(theme === 'light' ? 'dark' : 'light');
       return;
@@ -48,10 +51,12 @@ export default function ThemeModeButton() {
   }
 
   return (
-    <Button variant="ghost" size="icon" onClick={toggleDark}>
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+    <Tooltip showArrow content={isDark ? t('dark') : t('light')} placement="bottom">
+      <Button variant="ghost" size="icon" onClick={toggleDark}>
+        <RiSunLine className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <RiMoonLine className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+    </Tooltip>
   );
 }

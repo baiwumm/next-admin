@@ -31,5 +31,9 @@
     "submit":"提交",
     "parent":"父级",
     "parentTip":"不选默认为顶级"
+  },
+  "App":{
+    "light":"浅色模式",
+    "dark":"深色模式"
   }
 }
