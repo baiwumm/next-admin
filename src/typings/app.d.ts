@@ -26,6 +26,12 @@ declare namespace App {
   namespace Auth {
     /** @description: 国际化层级数据 */
     type Locales = Record<Common.Langs, unknown>;
+    /** @description: 掘金参数 */
+    type JuejinParams = {
+      user_id: string;
+      sort_type: number;
+      cursor: string;
+    };
   }
   namespace SystemManage {
     /** @description: 国际化 */
