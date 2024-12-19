@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:05:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 09:07:18
+ * @LastEditTime: 2024-12-19 16:35:14
  * @Description: 布局文件
  */
 import './globals.scss';
@@ -37,6 +37,8 @@ export default async function RootLayout({
         <NextUIProvider>
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider attribute="class" defaultTheme="light">
+              {/* 全局 Loading */}
+              <FullLoading />
               <SidebarProvider>
                 <AppSideBar />
                 <SidebarInset>
@@ -45,8 +47,6 @@ export default async function RootLayout({
                   <main className="p-4">{children}</main>
                 </SidebarInset>
               </SidebarProvider>
-              {/* 全局 Loading */}
-              <FullLoading />
             </ThemeProvider>
           </NextIntlClientProvider>
           <Toaster position="top-center" />
