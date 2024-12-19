@@ -2,14 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-18 15:38:15
+ * @LastEditTime: 2024-12-19 10:20:48
  * @Description: 总销售额卡片
  */
 'use client';
 
+import { Spinner } from '@nextui-org/react';
 import { useMount, useSetState } from 'ahooks';
 import { random, toNumber } from 'lodash-es';
-import { ArrowDown, ArrowUp, Loader2, RotateCcw } from 'lucide-react';
+import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 
@@ -64,7 +65,7 @@ export default function SaleCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         {data.loading ? (
           <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Loader2 className="animate-spin" />
+            <Spinner />
           </div>
         ) : null}
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-18 15:43:05
+ * @LastEditTime: 2024-12-19 10:22:04
  * @Description: 客户满意度
  */
+import { Spinner } from '@nextui-org/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { random, toNumber } from 'lodash-es';
-import { ArrowDown, ArrowUp, Loader2, RotateCcw } from 'lucide-react';
+import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer } from 'recharts';
@@ -99,7 +100,7 @@ export default function SatisfactionCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         {data.loading ? (
           <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Loader2 className="animate-spin" />
+            <Spinner />
           </div>
         ) : null}
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

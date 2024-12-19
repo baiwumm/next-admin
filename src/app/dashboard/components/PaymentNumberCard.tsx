@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-18 14:58:17
+ * @LastEditTime: 2024-12-19 10:21:35
  * @Description: 支付笔数
  */
+import { Spinner } from '@nextui-org/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { map, random, sum, toNumber } from 'lodash-es';
-import { ArrowDown, ArrowUp, Loader2, RotateCcw } from 'lucide-react';
+import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer } from 'recharts';
@@ -91,7 +92,7 @@ export default function PaymentNumberCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         {data.loading ? (
           <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Loader2 className="animate-spin" />
+            <Spinner />
           </div>
         ) : null}
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
