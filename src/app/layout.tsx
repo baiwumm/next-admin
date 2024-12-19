@@ -2,11 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:05:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 16:33:12
+ * @LastEditTime: 2024-12-19 09:07:18
  * @Description: 布局文件
  */
 import './globals.scss';
 
+import { NextUIProvider } from '@nextui-org/react';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -33,21 +34,23 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="light">
-            <SidebarProvider>
-              <AppSideBar />
-              <SidebarInset>
-                {/* 头部布局 */}
-                <GlobalHeader />
-                <main className="p-4">{children}</main>
-              </SidebarInset>
-            </SidebarProvider>
-            {/* 全局 Loading */}
-            <FullLoading />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-        <Toaster position="top-center" />
+        <NextUIProvider>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider attribute="class" defaultTheme="light">
+              <SidebarProvider>
+                <AppSideBar />
+                <SidebarInset>
+                  {/* 头部布局 */}
+                  <GlobalHeader />
+                  <main className="p-4">{children}</main>
+                </SidebarInset>
+              </SidebarProvider>
+              {/* 全局 Loading */}
+              <FullLoading />
+            </ThemeProvider>
+          </NextIntlClientProvider>
+          <Toaster position="top-center" />
+        </NextUIProvider>
       </body>
     </html>
   );

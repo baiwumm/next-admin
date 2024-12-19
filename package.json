@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@nextui-org/react": "^2.6.8",
     "@prisma/client": "6.0.1",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.1",
@@ -47,6 +48,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.0",
+    "react-resizable-panels": "^2.1.7",
     "recharts": "^2.15.0",
     "sonner": "^1.7.1",
     "store": "^2.0.12",
