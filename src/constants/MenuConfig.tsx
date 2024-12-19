@@ -5,7 +5,7 @@
  * @LastEditTime: 2024-12-11 10:58:45
  * @Description: 菜单配置文件
  */
-import { Globe, Info, MonitorPause, Settings } from 'lucide-react';
+import { RiApps2AiLine, RiGlobalLine, RiInformationLine, RiSettings2Line } from '@remixicon/react';
 
 import { ROUTES_NAME } from '@/enums';
 
@@ -40,8 +40,8 @@ export const MenuList: MenuListType[] = [
  * @description: 菜单图标映射
  */
 export const MenuIconMap: Record<ROUTES_NAME, React.ReactNode> = {
-  [ROUTES_NAME.DASHBOARD]: <MonitorPause />,
-  [ROUTES_NAME.SYSTEM_MANAGE]: <Settings />,
-  [ROUTES_NAME.INTERNATIONALIZATION]: <Globe />,
-  [ROUTES_NAME.ABOUT]: <Info />,
+  [ROUTES_NAME.DASHBOARD]: <RiApps2AiLine />,
+  [ROUTES_NAME.SYSTEM_MANAGE]: <RiSettings2Line />,
+  [ROUTES_NAME.INTERNATIONALIZATION]: <RiGlobalLine />,
+  [ROUTES_NAME.ABOUT]: <RiInformationLine />,
 };

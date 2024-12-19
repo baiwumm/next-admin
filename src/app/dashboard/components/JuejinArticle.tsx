@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 10:05:48
+ * @LastEditTime: 2024-12-19 11:14:05
  * @Description: 掘金文章列表
  */
 'use client';
 
 import { Pagination, Spinner, Tooltip, User } from '@nextui-org/react';
+import { RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import { ceil, get, map, take, toString } from 'lodash-es';
-import { Clock } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { Badge } from '@/components/ui/badge';
@@ -30,18 +30,23 @@ export default function JuejinArticle() {
     data: juejinArticleList,
     run: fetchJuejinArticleList,
     loading,
-  } = useRequest(async (params) => {
-    const common = {
-      sort_type: 2,
-      user_id: '1917147257534279',
-    };
-    const result = await getJuejinArticle({
-      ...params,
-      ...common,
-    });
-    setTotal(get(result, 'data.total', 0));
-    return take(get(result, 'data.records', []), pageSize);
-  });
+  } = useRequest(
+    async (params) => {
+      const common = {
+        sort_type: 2,
+        user_id: '1917147257534279',
+      };
+      const result = await getJuejinArticle({
+        ...params,
+        ...common,
+      });
+      setTotal(get(result, 'data.total', 0));
+      return take(get(result, 'data.records', []), pageSize);
+    },
+    {
+      manual: true,
+    },
+  );
 
   useEffect(() => {
     fetchJuejinArticleList({ cursor: toString(pageSize * (currentPage - 1)) });
@@ -68,7 +73,7 @@ export default function JuejinArticle() {
               }}
               description={
                 <div className="flex items-center gap-1 text-xs font-medium mt-1">
-                  <Clock size={13} />
+                  <RiTimeLine size={14} />
                   阅读时间：{get(article_info, 'read_time', '')}
                 </div>
               }

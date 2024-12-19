@@ -6,10 +6,10 @@
  * @Description: 客户满意度
  */
 import { Spinner } from '@nextui-org/react';
+import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { random, toNumber } from 'lodash-es';
-import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer } from 'recharts';
@@ -86,9 +86,9 @@ export default function SatisfactionCard() {
     // 创建一个包含随机箭头组件的数组
     const randomArrows = Array.from({ length: 2 }).map(() =>
       random() < 0.5 ? (
-        <ArrowDown key={random()} size={16} color="#F5222D" />
+        <RiArrowDownLine key={random()} size={16} color="#F5222D" />
       ) : (
-        <ArrowUp key={random()} size={16} color="#52C41A" />
+        <RiArrowUpLine key={random()} size={16} color="#52C41A" />
       ),
     );
 
@@ -112,7 +112,7 @@ export default function SatisfactionCard() {
               </div>
             </div>
           </CardTitle>
-          <RotateCcw
+          <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => reset()}
           />

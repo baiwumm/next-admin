@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 10:20:48
+ * @LastEditTime: 2024-12-19 12:05:24
  * @Description: 总销售额卡片
  */
 'use client';
 
 import { Spinner } from '@nextui-org/react';
+import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import { random, toNumber } from 'lodash-es';
-import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 
@@ -51,9 +51,9 @@ export default function SaleCard() {
     // 创建一个包含随机箭头组件的数组
     const randomArrows = Array.from({ length: 3 }).map(() =>
       random() < 0.5 ? (
-        <ArrowDown key={random()} size={16} color="#F5222D" />
+        <RiArrowDownLine key={random()} size={16} color="#F5222D" />
       ) : (
-        <ArrowUp key={random()} size={16} color="#52C41A" />
+        <RiArrowUpLine key={random()} size={16} color="#52C41A" />
       ),
     );
 
@@ -70,7 +70,7 @@ export default function SaleCard() {
         ) : null}
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">总销售额</CardTitle>
-          <RotateCcw
+          <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => initData()}
           />

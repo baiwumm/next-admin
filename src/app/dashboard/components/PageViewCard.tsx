@@ -2,14 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 10:20:02
+ * @LastEditTime: 2024-12-19 12:03:34
  * @Description: 访问量
  */
 import { Spinner } from '@nextui-org/react';
+import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { map, random, sum, toNumber } from 'lodash-es';
-import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer } from 'recharts';
@@ -81,9 +81,9 @@ export default function PageViewCard() {
 
     setArrow(
       random() < 0.5 ? (
-        <ArrowDown key={random()} size={16} color="#F5222D" />
+        <RiArrowDownLine key={random()} size={16} color="#F5222D" />
       ) : (
-        <ArrowUp key={random()} size={16} color="#52C41A" />
+        <RiArrowUpLine key={random()} size={16} color="#52C41A" />
       ),
     );
   });
@@ -104,7 +104,7 @@ export default function PageViewCard() {
               </div>
             </div>
           </CardTitle>
-          <RotateCcw
+          <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => reset()}
           />

@@ -2,16 +2,17 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 10:47:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-17 14:16:03
+ * @LastEditTime: 2024-12-19 14:22:17
  * @Description: 国际化
  */
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Spinner } from '@nextui-org/react';
+import { RiAddCircleLine, RiIndeterminateCircleLine } from '@remixicon/react';
 import { ColumnDef } from '@tanstack/react-table';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import { forEach, get } from 'lodash-es';
-import { Loader2, SquareMinus, SquarePlus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -20,7 +21,6 @@ import { z } from 'zod';
 
 import ColumnSorting from '@/components/DataTable/ColumnSorting';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { UNIFORM_TEXT } from '@/enums';
 import {
   addInternalization,
@@ -107,7 +107,7 @@ export default function Internationalization() {
   const handleEdit = (row: App.SystemManage.Internalization) => {
     setId(row.id);
     forEach(['parentId', 'name', 'zh', 'en'], (key: keyof z.infer<typeof formSchema>) => {
-      form.setValue(key, row[key] || '');
+      form.setValue(key, row[key] || undefined);
     });
     setOpen(true);
   };
@@ -128,9 +128,13 @@ export default function Internationalization() {
         return row.getCanExpand() ? (
           <div className={`flex justify-center gap-2 items-center ml-${depth}`}>
             {row.getIsExpanded() ? (
-              <SquareMinus size={18} onClick={row.getToggleExpandedHandler()} className="cursor-pointer" />
+              <RiIndeterminateCircleLine
+                size={18}
+                onClick={row.getToggleExpandedHandler()}
+                className="cursor-pointer"
+              />
             ) : (
-              <SquarePlus size={18} onClick={row.getToggleExpandedHandler()} className="cursor-pointer" />
+              <RiAddCircleLine size={18} onClick={row.getToggleExpandedHandler()} className="cursor-pointer" />
             )}
             <Badge variant="secondary">{row.getValue('name')}</Badge>
           </div>
@@ -163,9 +167,7 @@ export default function Internationalization() {
       size: 50,
       cell: ({ row }) =>
         delLoading && id === row.original.id ? (
-          <Button variant="ghost" disabled>
-            <Loader2 className="animate-spin" />
-          </Button>
+          <Spinner size="sm" />
         ) : (
           <ColumnOperation row={row.original} handleEdit={handleEdit} handleDelete={handleDelete} />
         ),

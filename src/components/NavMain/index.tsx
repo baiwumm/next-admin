@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-11 11:00:41
+ * @LastEditTime: 2024-12-19 14:28:49
  * @Description: 菜单布局
  */
 'use client';
 
+import { RiArrowRightSLine } from '@remixicon/react';
 import { map } from 'lodash-es';
-import { ChevronRight } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -59,7 +59,7 @@ export default function NavMain() {
                   {MenuIconMap[name]}
                   <span>{t(name)}</span>
                   {children?.length ? (
-                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    <RiArrowRightSLine className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                   ) : null}
                 </SidebarMenuButton>
               </CollapsibleTrigger>

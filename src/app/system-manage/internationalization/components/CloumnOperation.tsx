@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-13 16:58:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 17:59:28
+ * @LastEditTime: 2024-12-19 14:08:50
  * @Description: 列项操作
  */
 'use client';
 
-import { FilePenLine, MoreHorizontal, Trash2 } from 'lucide-react';
+import { RiDeleteBinLine, RiEditLine, RiMoreLine } from '@remixicon/react';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
@@ -31,18 +31,18 @@ export default function ColumnOperation({ row, handleEdit, handleDelete }: DataT
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="flex h-8 w-8 p-0 data-[state=open]:bg-muted mx-auto">
-          <MoreHorizontal />
+          <RiMoreLine />
           <span className="sr-only">Open menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem onClick={() => handleEdit(row)}>
-          <FilePenLine />
+          <RiEditLine />
           {t('edit')}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => handleDelete(row.id)}>
-          <Trash2 />
+          <RiDeleteBinLine />
           {t('delete')}
         </DropdownMenuItem>
       </DropdownMenuContent>

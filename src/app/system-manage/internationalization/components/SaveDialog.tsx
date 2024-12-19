@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-12 17:22:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-17 14:09:49
+ * @LastEditTime: 2024-12-19 14:20:56
  * @Description: 新增编辑弹窗
  */
+import { Spinner } from '@nextui-org/react';
 import { map } from 'lodash-es';
-import { Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Fragment } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
@@ -145,7 +145,7 @@ export default function SaveDialog({
               )}
             />
             <Button type="submit" disabled={loading} className="w-full">
-              {loading ? <Loader2 className="animate-spin" /> : null}
+              {loading ? <Spinner size="sm" color="secondary" /> : null}
               {tGlobal('submit')}
             </Button>
           </form>

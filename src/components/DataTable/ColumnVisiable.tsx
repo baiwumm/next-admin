@@ -2,14 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 16:47:55
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-12 09:47:34
+ * @LastEditTime: 2024-12-19 14:27:00
  * @Description: 列项隐藏设置
  */
 'use client';
 
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
+import { RiEqualizer2Line } from '@remixicon/react';
 import { Table } from '@tanstack/react-table';
-import { Settings2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
@@ -32,7 +32,7 @@ export default function ColumnVisiable<TData>({ table, field }: DataTableViewOpt
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="ml-auto h-8 lg:flex">
-          <Settings2 />
+          <RiEqualizer2Line />
           {tGlobal('column-setting')}
         </Button>
       </DropdownMenuTrigger>

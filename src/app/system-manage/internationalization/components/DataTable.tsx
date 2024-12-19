@@ -2,10 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 15:20:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-17 09:48:43
+ * @LastEditTime: 2024-12-19 14:10:02
  * @Description: 表格列表
  */
 'use client';
+import { Spinner } from '@nextui-org/react';
+import { RiAddLine } from '@remixicon/react';
 import {
   ColumnDef,
   flexRender,
@@ -16,7 +18,6 @@ import {
   useReactTable,
   VisibilityState,
 } from '@tanstack/react-table';
-import { Loader2, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Fragment } from 'react';
@@ -67,7 +68,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
         <div className="flex items-center gap-2 flex-wrap">
           <HeaderSearch loading={loading} refresh={refresh} form={form} />
           <Button variant="outline" size="sm" className="border-dashed" onClick={() => setOpen(true)}>
-            <Plus />
+            <RiAddLine />
             {t('add')}
           </Button>
         </div>
@@ -77,7 +78,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
       <div className={`relative rounded-md border transition-opacity opacity-${loading ? '50' : '100'}`}>
         {loading ? (
           <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Loader2 className="animate-spin" />
+            <Spinner />
           </div>
         ) : null}
         <Table>
