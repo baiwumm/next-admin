@@ -9,7 +9,7 @@ import { NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
 import { prisma } from '@/lib/prisma';
-import { convertFlatDataToTree, convertToLocalization, responseMessage } from '@/utils';
+import { convertFlatDataToTree, convertToLocalization, responseMessage } from '@/lib/utils';
 
 /**
  * @description: 获取国际化数据层级数据

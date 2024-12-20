@@ -1,11 +1,10 @@
 'use client';
 
+import { cn } from '@nextui-org/react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { RiCloseLine } from '@remixicon/react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
-
-import { cn } from '@/lib/utils';
 
 const Sheet = SheetPrimitive.Root;
 

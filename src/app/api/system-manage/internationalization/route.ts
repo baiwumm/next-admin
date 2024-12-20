@@ -2,14 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 10:07:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-11 15:04:33
+ * @LastEditTime: 2024-12-20 09:56:42
  * @Description: 国际化模块
  */
 import { type NextRequest, NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
 import { prisma } from '@/lib/prisma';
-import { convertFlatDataToTree, responseMessage } from '@/utils';
+import { convertFlatDataToTree, responseMessage } from '@/lib/utils';
 
 /**
  * @description: 查询国际化列表

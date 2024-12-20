@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@nextui-org/react';
 import { Slot } from '@radix-ui/react-slot';
 import { RiMenuUnfoldLine } from '@remixicon/react';
 import { cva, VariantProps } from 'class-variance-authority';
@@ -12,7 +13,6 @@ import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

@@ -4,7 +4,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { RiCloseLine } from '@remixicon/react';
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@nextui-org/react';
 
 const Dialog = DialogPrimitive.Root;
 

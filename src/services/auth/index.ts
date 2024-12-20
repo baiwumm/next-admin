@@ -5,7 +5,7 @@
  * @LastEditTime: 2024-12-18 17:25:19
  * @Description: 权限模块
  */
-import { httpRequest } from '@/utils/request';
+import { httpRequest } from '@/lib/request';
 
 /**
  * @description: 获取掘金文章列表

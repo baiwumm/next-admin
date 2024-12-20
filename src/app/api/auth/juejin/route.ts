@@ -9,7 +9,7 @@ import { get } from 'lodash-es';
 import { type NextRequest, NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
-import { responseMessage } from '@/utils';
+import { responseMessage } from '@/lib/utils';
 
 /**
  * @description: 获取掘金列表

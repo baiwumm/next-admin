@@ -28,7 +28,7 @@ import {
   getInternalizationList,
   updateInternalization,
 } from '@/services/system-manage/internationalization';
-import { isSuccess } from '@/utils';
+import { isSuccess } from '@/lib/utils';
 
 import ColumnOperation from './components/CloumnOperation';
 import DataTable from './components/DataTable';

@@ -1,9 +1,8 @@
 'use client';
 
+import { cn } from '@nextui-org/react';
 import { RiDraggable } from '@remixicon/react';
 import * as ResizablePrimitive from 'react-resizable-panels';
-
-import { cn } from '@/lib/utils';
 
 const ResizablePanelGroup = ({ className, ...props }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
   <ResizablePrimitive.PanelGroup

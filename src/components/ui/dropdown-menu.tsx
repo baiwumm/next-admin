@@ -1,10 +1,9 @@
 'use client';
 
+import { cn } from '@nextui-org/react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { RiArrowRightSLine, RiCheckLine, RiCircleFill } from '@remixicon/react';
 import * as React from 'react';
-
-import { cn } from '@/lib/utils';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
