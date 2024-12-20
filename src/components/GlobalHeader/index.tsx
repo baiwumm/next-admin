@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 11:10:47
+ * @LastEditTime: 2024-12-20 16:31:01
  * @Description: 头部布局
  */
 'use client';
@@ -13,6 +13,7 @@ import { map } from 'lodash-es';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
+import FullScreen from '@/components/FullScreen';
 import LangSwitch from '@/components/LangSwitch';
 import ThemeModeButton from '@/components/ThemeModeButton';
 import { SidebarTrigger } from '@/components/ui/sidebar';
@@ -33,12 +34,13 @@ export default function GlobalHeader() {
               key={path}
               startContent={<div className="breadcrumb-icon">{MenuIconMap[path as ROUTES_NAME]}</div>}
             >
-              {t(path)}
+              {t(path as ROUTES_NAME)}
             </BreadcrumbItem>
           ))}
         </Breadcrumbs>
       </div>
       <div className="flex gap-2">
+        <FullScreen />
         <ThemeModeButton />
         <LangSwitch />
       </div>

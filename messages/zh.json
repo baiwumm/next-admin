@@ -39,6 +39,8 @@
   },
   "App":{
     "light":"浅色模式",
-    "dark":"深色模式"
+    "dark":"深色模式",
+    "full-screen":"全屏",
+    "exit-full-screen":"退出全屏"
   }
 }
