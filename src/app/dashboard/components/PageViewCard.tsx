@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 12:03:34
+ * @LastEditTime: 2024-12-20 14:32:22
  * @Description: 访问量
  */
-import { Spinner } from '@nextui-org/react';
+import { cn, Spinner } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
@@ -89,13 +89,13 @@ export default function PageViewCard() {
   });
   return (
     <Card>
-      <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
+      <div className={cn('relative transition-opacity', `opacity-${data.loading ? '50' : '100'}`)}>
         {data.loading ? (
           <div className="absolute flex justify-center items-center w-full h-full z-50">
             <Spinner />
           </div>
         ) : null}
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">
               <div className="text-sm font-medium">访问量</div>
@@ -105,7 +105,7 @@ export default function PageViewCard() {
             </div>
           </CardTitle>
           <RiResetRightLine
-            className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
+            className={cn(`h-4 w-4 text-muted-foreground cursor-pointer `, data.loading ? 'animate-spin' : '')}
             onClick={() => reset()}
           />
         </CardHeader>
@@ -120,7 +120,7 @@ export default function PageViewCard() {
             </ChartContainer>
           </ResponsiveContainer>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="pb-2">
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <span>日访问量占比</span>
             {arrow}

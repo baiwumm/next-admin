@@ -68,7 +68,7 @@ export default function SaleCard() {
             <Spinner />
           </div>
         ) : null}
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle className="text-sm font-medium">总销售额</CardTitle>
           <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
@@ -93,7 +93,7 @@ export default function SaleCard() {
           </div>
           <Separator className="mt-4" />
         </CardContent>
-        <CardFooter>
+        <CardFooter className="pb-2">
           <div className="flex items-center gap-1 text-xs text-muted-foreground mt-2">
             <span>前年同期业绩完成率</span>
             {arrows[2]}

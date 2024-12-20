@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 10:22:04
+ * @LastEditTime: 2024-12-20 14:38:06
  * @Description: 客户满意度
  */
 import { Spinner } from '@nextui-org/react';
@@ -103,7 +103,7 @@ export default function SatisfactionCard() {
             <Spinner />
           </div>
         ) : null}
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">
               <div className="text-sm font-medium">客户满意度</div>
@@ -128,7 +128,7 @@ export default function SatisfactionCard() {
             </ChartContainer>
           </ResponsiveContainer>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="pb-2">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <div className="flex items-center gap-1 ">
               <span>日同比</span>

@@ -13,14 +13,7 @@ export const formSchema = z.object({
     .refine((val) => !/\s/.test(val), {
       message: '字段中不能包含空格',
     }),
-  zh: z
-    .string()
-    .trim()
-    .max(500, { message: '最多输入500个字符' })
-    .refine((val) => !/\s/.test(val), {
-      message: '字段中不能包含空格',
-    })
-    .optional(),
+  zh: z.string().trim().max(500, { message: '最多输入500个字符' }).optional(),
   en: z.string().trim().max(500, { message: '最多输入500个字符' }).optional(),
 });
 

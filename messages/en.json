@@ -10,6 +10,11 @@
       "name":"Name",
       "zh":"Chinese",
       "en":"English"
+    },
+    "dashboard":{
+      "get-latest":"Get Latest",
+      "github-log":"Github Commits",
+      "committed":"Committed"
     }
   },
   "Global":{

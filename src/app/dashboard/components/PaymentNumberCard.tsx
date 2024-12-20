@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 12:04:40
+ * @LastEditTime: 2024-12-20 14:34:56
  * @Description: 支付笔数
  */
 import { Spinner } from '@nextui-org/react';
@@ -95,7 +95,7 @@ export default function PaymentNumberCard() {
             <Spinner />
           </div>
         ) : null}
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">
               <div className="text-sm font-medium">支付笔数</div>
@@ -120,7 +120,7 @@ export default function PaymentNumberCard() {
             </ChartContainer>
           </ResponsiveContainer>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="pb-2">
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <span>转化率</span>
             {arrow}

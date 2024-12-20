@@ -10,6 +10,11 @@
       "name":"国际化字段",
       "zh":"中文",
       "en":"英文"
+    },
+    "dashboard":{
+      "get-latest":"获取最新",
+      "github-log":"Github 提交日志",
+      "committed":"提交于"
     }
   },
   "Global":{
