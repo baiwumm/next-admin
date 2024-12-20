@@ -2,18 +2,18 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 12:05:24
+ * @LastEditTime: 2024-12-20 17:14:44
  * @Description: 总销售额卡片
  */
 'use client';
 
-import { Spinner } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import { random, toNumber } from 'lodash-es';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 
+import ContentLoading from '@/components/ContentLoading';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
@@ -63,11 +63,7 @@ export default function SaleCard() {
   return (
     <Card>
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
-        {data.loading ? (
-          <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Spinner />
-          </div>
-        ) : null}
+        <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle className="text-sm font-medium">总销售额</CardTitle>
           <RiResetRightLine

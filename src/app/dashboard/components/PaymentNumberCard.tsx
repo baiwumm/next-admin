@@ -2,10 +2,9 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 14:34:56
+ * @LastEditTime: 2024-12-20 17:13:42
  * @Description: 支付笔数
  */
-import { Spinner } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
@@ -14,6 +13,7 @@ import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer } from 'recharts';
 
+import ContentLoading from '@/components/ContentLoading';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 
@@ -90,11 +90,7 @@ export default function PaymentNumberCard() {
   return (
     <Card>
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
-        {data.loading ? (
-          <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Spinner />
-          </div>
-        ) : null}
+        <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">

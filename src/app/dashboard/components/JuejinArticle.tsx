@@ -2,18 +2,19 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 16:56:03
+ * @LastEditTime: 2024-12-20 17:10:44
  * @Description: 掘金文章列表
  */
 'use client';
 
-import { cn, Pagination, Spinner, Tooltip, User } from '@nextui-org/react';
+import { cn, Pagination, Tooltip, User } from '@nextui-org/react';
 import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import { ceil, get, map, take, toString } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
+import ContentLoading from '@/components/ContentLoading';
 import { Badge } from '@/components/ui/badge';
 import { Empty } from '@/components/ui/empty';
 import { getJuejinArticle } from '@/services/auth';
@@ -54,12 +55,8 @@ export default function JuejinArticle() {
     fetchJuejinArticleList({ cursor: toString(pageSize * (currentPage - 1)) });
   }, [currentPage, fetchJuejinArticleList]);
   return (
-    <div className={cn('relative flex flex-col gap-3 pr-4 min-h-[100px]', `opacity-${loading ? '50' : '100'}`)}>
-      {loading ? (
-        <div className="absolute flex justify-center items-center w-full h-full z-50">
-          <Spinner />
-        </div>
-      ) : null}
+    <div className={cn('relative flex flex-col gap-3 pr-4', `opacity-${loading ? '50' : '100'}`)}>
+      <ContentLoading loading={loading} />
       {juejinArticleList?.length ? (
         map(juejinArticleList || [], ({ article_id, author_user_info, article_info, tags }: any) => {
           // 文章内容

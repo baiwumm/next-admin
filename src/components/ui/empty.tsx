@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-16 15:13:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-17 09:14:21
+ * @LastEditTime: 2024-12-20 17:12:03
  * @Description: 空状态
  */
 import { useTranslations } from 'next-intl';
@@ -17,7 +17,7 @@ type EmptyProps = {
 function Empty({ fill = '#CCCCCC', size = 64, width, height }: EmptyProps) {
   const t = useTranslations('Global');
   return (
-    <div className="flex flex-col items-center justify-center h-full py-4">
+    <div className="flex flex-col items-center justify-center h-full py-4 min-h-[100px]">
       <svg
         viewBox="0 0 1050 1024"
         version="1.1"

@@ -19,13 +19,7 @@ export default function Dashboard() {
       {/* 指标卡片 */}
       <StatisticChart />
       {/* 掘金文章列表 */}
-      <ResizablePanelGroup
-        direction="horizontal"
-        onLayout={(sizes: number[]) => {
-          document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(sizes)}`;
-        }}
-        className="items-stretch"
-      >
+      <ResizablePanelGroup direction="horizontal" className="items-stretch">
         <ResizablePanel defaultSize={60} minSize={30}>
           <JuejinArticle />
         </ResizablePanel>

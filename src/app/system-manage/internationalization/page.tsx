@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 10:47:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 14:22:17
+ * @LastEditTime: 2024-12-20 17:17:47
  * @Description: 国际化
  */
 'use client';
@@ -22,13 +22,13 @@ import { z } from 'zod';
 import ColumnSorting from '@/components/DataTable/ColumnSorting';
 import { Badge } from '@/components/ui/badge';
 import { UNIFORM_TEXT } from '@/enums';
+import { isSuccess } from '@/lib/utils';
 import {
   addInternalization,
   delInternalization,
   getInternalizationList,
   updateInternalization,
 } from '@/services/system-manage/internationalization';
-import { isSuccess } from '@/lib/utils';
 
 import ColumnOperation from './components/CloumnOperation';
 import DataTable from './components/DataTable';

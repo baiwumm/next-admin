@@ -10,7 +10,7 @@
 // 引入中文语言包
 import 'dayjs/locale/zh-cn';
 
-import { Avatar, Chip, cn, Listbox, ListboxItem, Spinner, Tooltip } from '@nextui-org/react';
+import { Avatar, Chip, cn, Listbox, ListboxItem, Tooltip } from '@nextui-org/react';
 import { RiGitCommitLine, RiResetRightLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
@@ -18,6 +18,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { get, map } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 
+import ContentLoading from '@/components/ContentLoading';
 import { Empty } from '@/components/ui/empty';
 import { isSuccess } from '@/lib/utils';
 // dayjs 相对时间
@@ -59,15 +60,11 @@ export default function GithubCommit() {
   return (
     <div
       className={cn(
-        'relative border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100 ml-4 min-h-[100px]',
+        'relative border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100 ml-4',
         `opacity-${loading ? '50' : '100'}`,
       )}
     >
-      {loading ? (
-        <div className="absolute flex justify-center w-full items-center h-full z-50">
-          <Spinner />
-        </div>
-      ) : null}
+      <ContentLoading loading={loading} />
       {commitList?.length ? (
         <Listbox aria-label={t('dashboard.github-log')} variant="faded" topContent={renderTopContent}>
           {map(commitList, (item) => (

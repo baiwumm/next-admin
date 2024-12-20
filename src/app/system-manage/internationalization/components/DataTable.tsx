@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 15:20:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 14:10:02
+ * @LastEditTime: 2024-12-20 17:18:44
  * @Description: 表格列表
  */
 'use client';
-import { Spinner } from '@nextui-org/react';
+
 import { RiAddLine } from '@remixicon/react';
 import {
   ColumnDef,
@@ -24,6 +24,7 @@ import { Fragment } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
+import ContentLoading from '@/components/ContentLoading';
 import ColumnVisiable from '@/components/DataTable/ColumnVisiable';
 import { Button } from '@/components/ui/button';
 import { Empty } from '@/components/ui/empty';
@@ -76,11 +77,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
         <ColumnVisiable table={table} field="internationalization" />
       </div>
       <div className={`relative rounded-md border transition-opacity opacity-${loading ? '50' : '100'}`}>
-        {loading ? (
-          <div className="absolute flex justify-center items-center w-full h-full z-50">
-            <Spinner />
-          </div>
-        ) : null}
+        <ContentLoading loading={loading} />
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
