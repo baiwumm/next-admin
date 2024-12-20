@@ -2,14 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 14:53:56
+ * @LastEditTime: 2024-12-20 16:56:03
  * @Description: 掘金文章列表
  */
 'use client';
 
 import { cn, Pagination, Spinner, Tooltip, User } from '@nextui-org/react';
-import { RiTimeLine } from '@remixicon/react';
+import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
+import dayjs from 'dayjs';
 import { ceil, get, map, take, toString } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
@@ -74,9 +75,19 @@ export default function JuejinArticle() {
                   src: get(author_user_info, 'avatar_large'),
                 }}
                 description={
-                  <div className="flex items-center gap-1 text-xs font-medium mt-1">
-                    <RiTimeLine size={14} />
-                    阅读时间：{get(article_info, 'read_time', '')}
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 text-xs font-medium mt-1">
+                      <RiTimeLine size={14} />
+                      阅读：{get(article_info, 'read_time', '')}
+                    </div>
+                    <div className="flex items-center gap-1 text-xs font-medium mt-1">
+                      <RiArticleLine size={14} />
+                      发表于：{dayjs(parseInt(get(article_info, 'ctime'), 10) * 1000).format('YYYY-MM-DD HH:mm')}
+                    </div>
+                    <div className="flex items-center gap-1 text-xs font-medium mt-1">
+                      <RiFontSize2 size={14} />
+                      字数：{get(article_info, 'content_count', 0)}
+                    </div>
                   </div>
                 }
                 name={<div className="font-semibold">{get(article_info, 'title', '')}</div>}
