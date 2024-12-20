@@ -15,13 +15,13 @@ datasource db {
 
 // 系统管理 - 国际化
 model Internalization {
-  id            String          @id @default(uuid()) // 主键
-  name          String          // 键
-  parentId      String?  
+  id            String                 @id @default(uuid()) // 主键
+  name          String                 // 键
+  parentId      String?                // 父级
   parent        Internalization?       @relation(name: "InternalizationHierarchy", fields: [parentId], references: [id])
-  zh          String?         // 中文
-  en          String?         // 英文
-  createdAt     DateTime        @default(now()) // 创建时间
-  updatedAt     DateTime        @updatedAt // 更新时间
+  zh            String?                // 中文
+  en            String?                // 英文
+  createdAt     DateTime               @default(now()) // 创建时间
+  updatedAt     DateTime               @updatedAt // 更新时间
   children      Internalization[]      @relation(name: "InternalizationHierarchy")
 }

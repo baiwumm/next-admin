@@ -12,46 +12,52 @@ export const responseMessage = (
 ): App.Common.IResponse => ({ data, msg, code, timestamp: dayjs().valueOf() });
 
 /**
- * @description: 将扁平数据转换为树形结构
+ * 将扁平数据转换为树形结构。
+ * @param items - 扁平数据数组。
+ * @param rootId - 可选的根节点 ID，默认为 null 表示查找顶级节点。
+ * @returns 树形结构的节点数组。
  */
-type TreeNode<T> = T & { children?: TreeNode<T>[] };
-export const convertFlatDataToTree = <T extends { id: string; parentId?: string }>(
-  flatData: T[],
-  rootId?: string,
-): TreeNode<T>[] => {
-  const map: Record<string, TreeNode<T>> = {};
+// 定义一个泛型接口来描述节点的最小属性要求
+interface NodeBase {
+  id: string;
+  parentId?: string | null;
+}
+
+// 树节点类型定义，扩展了泛型 T 以包含 children 属性
+type TreeNode<T extends NodeBase> = Omit<T, 'children'> & {
+  children?: TreeNode<T>[];
+};
+export function convertFlatDataToTree<T extends NodeBase>(items: T[]): TreeNode<T>[] {
+  const map = new Map<string, TreeNode<T>>();
   const roots: TreeNode<T>[] = [];
 
-  // 将所有节点添加到 map 中，以 id 作为 key
-  flatData.forEach((node) => {
-    map[node.id] = { ...node } as TreeNode<T>; // 明确类型转换为 TreeNode<T>
-  });
+  // 首先将所有项放入 Map 中，以便快速查找
+  for (const item of items) {
+    const node: TreeNode<T> = { ...item };
+    map.set(node.id, node);
+  }
 
-  // 遍历所有节点，构建树形结构
-  flatData.forEach((node) => {
-    const parentNode = map[node.parentId ?? rootId];
-    if (parentNode) {
-      let children = parentNode.children;
-      if (!children) {
-        children = [];
-        Object.assign(parentNode, { children }); // 添加 children 属性
-      }
-      children.push(map[node.id]);
+  // 再次遍历所有项，构建父子关系
+  for (const item of items) {
+    const node = map.get(item.id)!;
+
+    if (item.parentId === undefined || item.parentId === null) {
+      // 如果没有父节点，则认为是根节点
+      roots.push(node);
     } else {
-      // 如果找不到父节点，将当前节点作为根节点
-      roots.push(map[node.id]);
+      const parent = map.get(item.parentId);
+      if (parent) {
+        // 如果存在父节点，则添加到父节点的 children 数组中
+        if (!parent.children) {
+          parent.children = [];
+        }
+        parent.children!.push(node);
+      }
     }
-  });
+  }
 
-  // 移除空的 children 属性
-  const cleanUpEmptyChildren = (nodes: TreeNode<T>[]): TreeNode<T>[] =>
-    nodes.map((node) => ({
-      ...node,
-      children: node.children && node.children.length > 0 ? cleanUpEmptyChildren(node.children) : undefined,
-    }));
-
-  return cleanUpEmptyChildren(roots);
-};
+  return roots;
+}
 
 /**
  * @description: 将树形树形转成层级对象

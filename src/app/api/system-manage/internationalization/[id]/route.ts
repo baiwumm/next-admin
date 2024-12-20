@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 import { responseMessage } from '@/lib/utils';
 
 /**

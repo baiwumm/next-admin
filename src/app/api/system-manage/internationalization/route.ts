@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-11 10:07:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 09:56:42
+ * @LastEditTime: 2024-12-20 15:20:54
  * @Description: 国际化模块
  */
+import { Prisma } from '@prisma/client';
 import { type NextRequest, NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 import { convertFlatDataToTree, responseMessage } from '@/lib/utils';
 
 /**
@@ -21,7 +22,7 @@ export async function GET(request: NextRequest) {
   const name = searchParams.get('name'); // 获取单个参数
   const zh = searchParams.get('zh'); // 获取所有同名参数
   // 条件判断
-  const where: Record<string, any> = {}; // 查询参数
+  const where: Prisma.InternalizationWhereInput = {}; // 查询参数
   // 模糊查询
   if (name) {
     where['name'] = { contains: name, mode: 'insensitive' };
