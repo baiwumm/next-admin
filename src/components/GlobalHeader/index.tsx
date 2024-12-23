@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 10:26:15
+ * @LastEditTime: 2024-12-23 11:08:46
  * @Description: 头部布局
  */
 'use client';
@@ -13,6 +13,7 @@ import { map } from 'lodash-es';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
+import BackTop from '@/components/BackTop';
 import FullScreen from '@/components/FullScreen';
 import LangSwitch from '@/components/LangSwitch';
 import ThemeModeButton from '@/components/ThemeModeButton';
@@ -43,6 +44,7 @@ export default function GlobalHeader() {
         <FullScreen />
         <ThemeModeButton />
         <LangSwitch />
+        <BackTop />
       </div>
     </header>
   );
