@@ -2,7 +2,7 @@
 
 import { cn } from '@nextui-org/react';
 import { Slot } from '@radix-ui/react-slot';
-import { RiMenuUnfoldLine } from '@remixicon/react';
+import { RiMenuFoldLine, RiMenuUnfoldLine } from '@remixicon/react';
 import { cva, VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
@@ -220,7 +220,7 @@ Sidebar.displayName = 'Sidebar';
 
 const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.ComponentProps<typeof Button>>(
   ({ className, onClick, ...props }, ref) => {
-    const { toggleSidebar } = useSidebar();
+    const { open, toggleSidebar } = useSidebar();
 
     return (
       <Button
@@ -235,7 +235,12 @@ const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.C
         }}
         {...props}
       >
-        <RiMenuUnfoldLine />
+        <RiMenuUnfoldLine
+          className={cn('rotate-0 scale-100 transition-all duration-300', open ? '-rotate-90 scale-0' : '')}
+        />
+        <RiMenuFoldLine
+          className={cn('absolute rotate-90 scale-0 transition-all duration-300', open ? 'rotate-0 scale-100' : '')}
+        />
         <span className="sr-only">Toggle Sidebar</span>
       </Button>
     );
