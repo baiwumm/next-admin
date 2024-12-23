@@ -48,6 +48,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.0",
     "react-resizable-panels": "^2.1.7",
+    "react-viewer": "^3.2.2",
     "recharts": "^2.15.0",
     "sonner": "^1.7.1",
     "store": "^2.0.12",
