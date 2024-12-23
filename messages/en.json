@@ -3,7 +3,9 @@
     "about":"About",
     "dashboard":"Dashboard",
     "system-manage":"System Manage",
-    "internationalization":"Internationalization"
+    "internationalization":"Internationalization",
+    "features":"Features",
+    "viewer":"Viewer"
   },
   "Pages":{
     "internationalization":{

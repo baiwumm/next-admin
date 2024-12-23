@@ -16,6 +16,12 @@
   height:1rem;
 }
 
+// 图片预览
+.react-viewer-list>li>img{
+  object-fit: cover !important;
+  margin-left: 0 !important;
+}
+
 @keyframes loaderBefore {
   0% {
    width: 0.5em;

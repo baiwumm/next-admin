@@ -6,6 +6,8 @@ export enum ROUTES_NAME {
   ABOUT = 'about',
   SYSTEM_MANAGE = 'system-manage',
   INTERNATIONALIZATION = 'internationalization',
+  FEATURES = 'features',
+  VIEWER = 'viewer',
 }
 
 /**

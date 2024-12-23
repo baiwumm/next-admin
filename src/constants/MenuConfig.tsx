@@ -2,10 +2,17 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:54:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-11 10:58:45
+ * @LastEditTime: 2024-12-23 15:23:21
  * @Description: 菜单配置文件
  */
-import { RiApps2AiLine, RiGlobalLine, RiInformationLine, RiSettings2Line } from '@remixicon/react';
+import {
+  RiApps2AiLine,
+  RiFlowerLine,
+  RiGlobalLine,
+  RiImageAddLine,
+  RiInformationLine,
+  RiSettings2Line,
+} from '@remixicon/react';
 
 import { ROUTES_NAME } from '@/enums';
 
@@ -19,6 +26,16 @@ export const MenuList: MenuListType[] = [
   {
     path: `/${ROUTES_NAME.DASHBOARD}`,
     name: ROUTES_NAME.DASHBOARD,
+  },
+  {
+    path: `/${ROUTES_NAME.FEATURES}`,
+    name: ROUTES_NAME.FEATURES,
+    children: [
+      {
+        path: `/${ROUTES_NAME.FEATURES}/${ROUTES_NAME.VIEWER}`,
+        name: ROUTES_NAME.VIEWER,
+      },
+    ],
   },
   {
     path: `/${ROUTES_NAME.SYSTEM_MANAGE}`,
@@ -44,4 +61,6 @@ export const MenuIconMap: Record<ROUTES_NAME, React.ReactNode> = {
   [ROUTES_NAME.SYSTEM_MANAGE]: <RiSettings2Line />,
   [ROUTES_NAME.INTERNATIONALIZATION]: <RiGlobalLine />,
   [ROUTES_NAME.ABOUT]: <RiInformationLine />,
+  [ROUTES_NAME.FEATURES]: <RiFlowerLine />,
+  [ROUTES_NAME.VIEWER]: <RiImageAddLine />,
 };
