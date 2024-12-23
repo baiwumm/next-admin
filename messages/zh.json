@@ -15,6 +15,10 @@
       "get-latest":"获取最新",
       "github-log":"Github 提交日志",
       "committed":"提交于"
+    },
+    "about":{
+      "dependencies":"生产环境依赖",
+      "dev-dependencies":"开发环境依赖"
     }
   },
   "Global":{

@@ -15,6 +15,10 @@
       "get-latest":"Get Latest",
       "github-log":"Github Commits",
       "committed":"Committed"
+    },
+    "about":{
+      "dependencies":"Dependencies",
+      "dev-dependencies":"DevDependencies"
     }
   },
   "Global":{
