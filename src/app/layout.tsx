@@ -14,6 +14,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 
 import AppSideBar from '@/components/AppSideBar';
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
+import GlobalFooter from '@/components/GlobalFooter'; // 底部版权
 import GlobalHeader from '@/components/GlobalHeader'; // 头部布局
 import ThemeProvider from '@/components/ThemeProvider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
@@ -45,6 +46,8 @@ export default async function RootLayout({
                   {/* 头部布局 */}
                   <GlobalHeader />
                   <main className="p-4">{children}</main>
+                  {/* 底部版权 */}
+                  <GlobalFooter />
                 </SidebarInset>
               </SidebarProvider>
             </ThemeProvider>

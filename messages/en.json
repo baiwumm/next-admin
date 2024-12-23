@@ -45,6 +45,9 @@
     "light":"Light Mode",
     "dark":"Dark Mode",
     "full-screen":"Full Screen",
-    "exit-full-screen":"Exit Full Screen"
+    "exit-full-screen":"Exit Full Screen",
+    "website-statistics":"Website Statistics",
+    "wechat":"Wechat",
+    "blog":"Blog"
   }
 }

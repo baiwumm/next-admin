@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 16:31:01
+ * @LastEditTime: 2024-12-23 10:26:15
  * @Description: 头部布局
  */
 'use client';
@@ -39,7 +39,7 @@ export default function GlobalHeader() {
           ))}
         </Breadcrumbs>
       </div>
-      <div className="flex gap-2">
+      <div className="flex">
         <FullScreen />
         <ThemeModeButton />
         <LangSwitch />
