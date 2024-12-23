@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 17:10:44
+ * @LastEditTime: 2024-12-23 11:35:20
  * @Description: 掘金文章列表
  */
 'use client';
@@ -12,6 +12,7 @@ import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import { ceil, get, map, take, toString } from 'lodash-es';
+import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 import ContentLoading from '@/components/ContentLoading';
@@ -20,6 +21,7 @@ import { Empty } from '@/components/ui/empty';
 import { getJuejinArticle } from '@/services/auth';
 
 export default function JuejinArticle() {
+  const t = useTranslations('Pages');
   // 固定几条
   const pageSize = 5;
   // 当前第几页
@@ -75,15 +77,16 @@ export default function JuejinArticle() {
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1 text-xs font-medium mt-1">
                       <RiTimeLine size={14} />
-                      阅读：{get(article_info, 'read_time', '')}
+                      {t('dashboard.read')}：{get(article_info, 'read_time', '')}
                     </div>
                     <div className="flex items-center gap-1 text-xs font-medium mt-1">
                       <RiArticleLine size={14} />
-                      发表于：{dayjs(parseInt(get(article_info, 'ctime'), 10) * 1000).format('YYYY-MM-DD HH:mm')}
+                      {t('dashboard.published')}：
+                      {dayjs(parseInt(get(article_info, 'ctime'), 10) * 1000).format('YYYY-MM-DD HH:mm')}
                     </div>
                     <div className="flex items-center gap-1 text-xs font-medium mt-1">
                       <RiFontSize2 size={14} />
-                      字数：{get(article_info, 'content_count', 0)}
+                      {t('dashboard.words')}：{get(article_info, 'content_count', 0)}
                     </div>
                   </div>
                 }

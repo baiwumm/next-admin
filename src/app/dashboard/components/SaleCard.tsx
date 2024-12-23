@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 17:14:44
+ * @LastEditTime: 2024-12-23 13:47:15
  * @Description: 总销售额卡片
  */
 'use client';
@@ -10,6 +10,7 @@
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import { random, toNumber } from 'lodash-es';
+import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 
@@ -18,6 +19,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Separator } from '@/components/ui/separator';
 
 export default function SaleCard() {
+  const t = useTranslations('Pages.dashboard');
   const [arrows, setArrows] = useState<ReactNode[]>([]);
 
   // 总销售额数据
@@ -65,7 +67,7 @@ export default function SaleCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
-          <CardTitle className="text-sm font-medium">总销售额</CardTitle>
+          <CardTitle className="text-sm font-medium">{t('sales-total')}</CardTitle>
           <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => initData()}
@@ -77,12 +79,12 @@ export default function SaleCard() {
           </div>
           <div className="flex items-center gap-2 text-xs text-muted-foreground mt-6">
             <div className="flex items-center gap-1 ">
-              <span>日同比</span>
+              <span>{t('daily')}</span>
               {arrows[0]}
               <CountUp end={data.date} suffix="%" />
             </div>
             <div className="flex items-center gap-1 ">
-              <span>周同比</span>
+              <span>{t('week')}</span>
               {arrows[1]}
               <CountUp end={data.week} suffix="%" />
             </div>
@@ -91,7 +93,7 @@ export default function SaleCard() {
         </CardContent>
         <CardFooter className="pb-2">
           <div className="flex items-center gap-1 text-xs text-muted-foreground mt-2">
-            <span>前年同期业绩完成率</span>
+            <span>{t('sales-complete-rate')}</span>
             {arrows[2]}
             <CountUp end={data.complete} suffix="%" />
           </div>

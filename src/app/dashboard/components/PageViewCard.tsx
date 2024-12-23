@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 14:32:22
+ * @LastEditTime: 2024-12-23 13:50:58
  * @Description: 访问量
  */
 import { cn } from '@nextui-org/react';
@@ -10,6 +10,7 @@ import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/rea
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { map, random, sum, toNumber } from 'lodash-es';
+import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer } from 'recharts';
@@ -24,6 +25,7 @@ type ChartData = {
 };
 
 export default function PageViewCard() {
+  const t = useTranslations('Pages.dashboard');
   const [arrow, setArrow] = useState<ReactNode | null>(null);
 
   // 访问量数据
@@ -67,7 +69,7 @@ export default function PageViewCard() {
   // 图表配置
   const chartConfig = {
     value: {
-      label: '访问量',
+      label: t('page-view'),
       color: 'hsl(var(--chart-2))',
     },
   } satisfies ChartConfig;
@@ -95,7 +97,7 @@ export default function PageViewCard() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">
-              <div className="text-sm font-medium">访问量</div>
+              <div className="text-sm font-medium">{t('page-view')}</div>
               <div className="text-2xl font-bold">
                 <CountUp end={sum(map(chartData, 'value'))} separator="," />
               </div>
@@ -119,7 +121,7 @@ export default function PageViewCard() {
         </CardContent>
         <CardFooter className="pb-2">
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <span>日访问量占比</span>
+            <span>{t('daily-visits')}</span>
             {arrow}
             <CountUp end={data.complete} suffix="%" />
           </div>

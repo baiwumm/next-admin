@@ -12,6 +12,18 @@
       "en":"English"
     },
     "dashboard":{
+      "sales-total":"Gross sales",
+      "sales-complete-rate":"completion rate last year",
+      "daily":"Daily on-year",
+      "week":"Weekly on-year",
+      "page-view":"Page View",
+      "daily-visits":"Daily Visits",
+      "payment-number":"Payment Number",
+      "conversion-rate":"Conversion Rate",
+      "customer-satisfaction":"Customer Satisfaction",
+      "read":"Read",
+      "published":"Published",
+      "words":"Words",
       "get-latest":"Get Latest",
       "github-log":"Github Commits",
       "committed":"Committed"

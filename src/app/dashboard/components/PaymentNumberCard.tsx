@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 17:13:42
+ * @LastEditTime: 2024-12-23 13:54:26
  * @Description: 支付笔数
  */
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { map, random, sum, toNumber } from 'lodash-es';
+import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer } from 'recharts';
@@ -23,6 +24,7 @@ type ChartData = {
 };
 
 export default function PaymentNumberCard() {
+  const t = useTranslations('Pages.dashboard');
   const [arrow, setArrow] = useState<ReactNode | null>(null);
 
   // 支付笔数数据
@@ -66,7 +68,7 @@ export default function PaymentNumberCard() {
   // 图表配置
   const chartConfig = {
     value: {
-      label: '支付笔数',
+      label: t('payment-number'),
       color: 'hsl(var(--chart-2))',
     },
   } satisfies ChartConfig;
@@ -94,7 +96,7 @@ export default function PaymentNumberCard() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">
-              <div className="text-sm font-medium">支付笔数</div>
+              <div className="text-sm font-medium">{t('payment-number')}</div>
               <div className="text-2xl font-bold">
                 <CountUp end={sum(map(chartData, 'value'))} separator="," />
               </div>
@@ -118,7 +120,7 @@ export default function PaymentNumberCard() {
         </CardContent>
         <CardFooter className="pb-2">
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <span>转化率</span>
+            <span>{t('conversion-rate')}</span>
             {arrow}
             <CountUp end={data.complete} suffix="%" />
           </div>

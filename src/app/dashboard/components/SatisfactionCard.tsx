@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-20 17:15:46
+ * @LastEditTime: 2024-12-23 13:56:34
  * @Description: 客户满意度
  */
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { random, toNumber } from 'lodash-es';
+import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer } from 'recharts';
@@ -23,6 +24,7 @@ type ChartData = {
 };
 
 export default function SatisfactionCard() {
+  const t = useTranslations('Pages.dashboard');
   const [arrows, setArrows] = useState<ReactNode[]>([]);
 
   // 客户满意度数据
@@ -70,7 +72,7 @@ export default function SatisfactionCard() {
   // 图表配置
   const chartConfig = {
     value: {
-      label: '客户满意度',
+      label: t('customer-satisfaction'),
       color: 'hsl(var(--chart-2))',
     },
   } satisfies ChartConfig;
@@ -102,7 +104,7 @@ export default function SatisfactionCard() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <CardTitle>
             <div className="flex items-center gap-2">
-              <div className="text-sm font-medium">客户满意度</div>
+              <div className="text-sm font-medium">{t('customer-satisfaction')}</div>
               <div className="text-2xl font-bold">
                 <CountUp end={data.total} suffix="%" />
               </div>
@@ -127,12 +129,12 @@ export default function SatisfactionCard() {
         <CardFooter className="pb-2">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <div className="flex items-center gap-1 ">
-              <span>日同比</span>
+              <span>{t('daily')}</span>
               {arrows[0]}
               <CountUp end={data.date} suffix="%" />
             </div>
             <div className="flex items-center gap-1 ">
-              <span>周同比</span>
+              <span>{t('week')}</span>
               {arrows[1]}
               <CountUp end={data.week} suffix="%" />
             </div>

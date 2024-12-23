@@ -12,6 +12,18 @@
       "en":"英文"
     },
     "dashboard":{
+      "sales-total":"总销售额",
+      "sales-complete-rate":"前年同期业绩完成率",
+      "daily":"日同比",
+      "week":"周同比",
+      "page-view":"访问量",
+      "daily-visits":"日访问量",
+      "payment-number":"支付笔数",
+      "conversion-rate":"转化率",
+      "customer-satisfaction":"客户满意度",
+      "read":"阅读",
+      "published":"发布于",
+      "words":"字数",
       "get-latest":"获取最新",
       "github-log":"Github 提交日志",
       "committed":"提交于"
