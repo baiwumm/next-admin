@@ -13,6 +13,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// User - status
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+// User - sex
+enum Sex {
+  FEMALE
+  MALE
+}
+
+// 系统管理 - 用户管理
+model User {
+  id            String          @id @default(uuid()) // 主键
+  userName      String          @unique // 用户名
+  password      String          // 密码
+  cnName        String          // 中文名
+  email         String          @unique // 电子邮箱
+  phone         String          @unique // 手机号
+  sex           Sex             @default(FEMALE) // 性别
+  status        Status          @default(ACTIVE) // 状态
+  sort          Int             // 排序
+  token         String?         // token
+  tags          String[]        @default([]) // 标签
+  loginCount    Int             @default(0) // 登录次数
+  lastIp        String?         // 最后登录ip
+  lastLoginAt   DateTime?       // 最后登录时间
+  createdAt     DateTime        @default(now()) // 创建时间
+  updatedAt     DateTime        @updatedAt // 更新时间
+}
+
 // 系统管理 - 国际化
 model Internalization {
   id            String                 @id @default(uuid()) // 主键
