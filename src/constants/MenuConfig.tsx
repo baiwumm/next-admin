@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:54:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 15:23:21
+ * @LastEditTime: 2024-12-23 17:25:39
  * @Description: 菜单配置文件
  */
 import {
@@ -12,6 +12,7 @@ import {
   RiImageAddLine,
   RiInformationLine,
   RiSettings2Line,
+  RiUserLine,
 } from '@remixicon/react';
 
 import { ROUTES_NAME } from '@/enums';
@@ -42,6 +43,10 @@ export const MenuList: MenuListType[] = [
     name: ROUTES_NAME.SYSTEM_MANAGE,
     children: [
       {
+        path: `/${ROUTES_NAME.SYSTEM_MANAGE}/${ROUTES_NAME.USER_MANAGE}`,
+        name: ROUTES_NAME.USER_MANAGE,
+      },
+      {
         path: `/${ROUTES_NAME.SYSTEM_MANAGE}/${ROUTES_NAME.INTERNATIONALIZATION}`,
         name: ROUTES_NAME.INTERNATIONALIZATION,
       },
@@ -63,4 +68,5 @@ export const MenuIconMap: Record<ROUTES_NAME, React.ReactNode> = {
   [ROUTES_NAME.ABOUT]: <RiInformationLine />,
   [ROUTES_NAME.FEATURES]: <RiFlowerLine />,
   [ROUTES_NAME.VIEWER]: <RiImageAddLine />,
+  [ROUTES_NAME.USER_MANAGE]: <RiUserLine />,
 };

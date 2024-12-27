@@ -8,6 +8,7 @@ export enum ROUTES_NAME {
   INTERNATIONALIZATION = 'internationalization',
   FEATURES = 'features',
   VIEWER = 'viewer',
+  USER_MANAGE = 'user-manage',
 }
 
 /**
@@ -42,4 +43,20 @@ export enum LOCALSTORAGE_KEY {
 export enum LOCALES {
   zh = 'zh', // 中文
   en = 'en', // 英文
+}
+
+/**
+ * @description: 性别
+ */
+export enum SEX {
+  FEMALE = 'FEMALE', // 女
+  MALE = 'MALE', // 男
+}
+
+/**
+ * @description: 状态
+ */
+export enum STATUS {
+  ACTIVE = 'ACTIVE', // 正常
+  INACTIVE = 'INACTIVE', // 禁用
 }

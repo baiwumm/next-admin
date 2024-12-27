@@ -5,7 +5,8 @@
     "system-manage":"系统管理",
     "internationalization":"国际化",
     "features":"功能页",
-    "viewer":"图片预览"
+    "viewer":"图片预览",
+    "user-manage":"用户管理"
   },
   "Pages":{
     "internationalization":{
@@ -33,13 +34,23 @@
     "about":{
       "dependencies":"生产环境依赖",
       "dev-dependencies":"开发环境依赖"
+    },
+    "user-manage":{
+      "title":"用户",
+      "userName":"用户名",
+      "cnName":"中文名",
+      "email":"邮箱",
+      "emailError":"邮箱格式不正确",
+      "phone":"手机号码",
+      "phoneError":"手机号码格式不正确",
+      "sex":"性别"
     }
   },
   "Global":{
     "createdAt":"创建时间",
     "noData":"暂无数据",
     "column-setting":"列设置",
-    "operation":"操作",
+    "action":"操作",
     "edit":"编辑",
     "delete":"删除",
     "asc":"升序",
@@ -53,7 +64,15 @@
     "select":"请选择",
     "submit":"提交",
     "parent":"父级",
-    "parentTip":"不选默认为顶级"
+    "parentTip":"不选默认为顶级",
+    "emptyField":"请填写此字段",
+    "man":"男",
+    "women":"女",
+    "status":"状态",
+    "statusActive":"正常",
+    "statusInactive":"禁用",
+    "sort":"排序",
+    "close":"关闭"
   },
   "App":{
     "light":"浅色模式",

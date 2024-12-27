@@ -162,8 +162,8 @@ export default function Internationalization() {
       cell: ({ row }) => dayjs(row.getValue('createdAt')).format('YYYY-MM-DD HH:mm:ss'),
     },
     {
-      accessorKey: 'operation',
-      header: tGlobal('operation'),
+      accessorKey: 'action',
+      header: tGlobal('action'),
       size: 50,
       cell: ({ row }) =>
         delLoading && id === row.original.id ? (

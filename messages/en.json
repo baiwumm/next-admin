@@ -5,7 +5,8 @@
     "system-manage":"System Manage",
     "internationalization":"Internationalization",
     "features":"Features",
-    "viewer":"Viewer"
+    "viewer":"Viewer",
+    "user-manage":"User Manage"
   },
   "Pages":{
     "internationalization":{
@@ -33,13 +34,23 @@
     "about":{
       "dependencies":"Dependencies",
       "dev-dependencies":"DevDependencies"
+    },
+    "user-manage":{
+      "title":"User",
+      "userName":"User Name",
+      "cnName":"Chinese Name",
+      "email":"Email",
+      "emailError":"The Email format is incorrect",
+      "phone":"Phone",
+      "phoneError":"The mobile phone number format is incorrect",
+      "sex":"Sex"
     }
   },
   "Global":{
     "createdAt":"CreatedAt",
     "noData":"No results",
     "column-setting":"Column Setting",
-    "operation":"Operation",
+    "action":"Action",
     "edit":"Edit",
     "delete":"Delete",
     "asc":"Asc",
@@ -53,7 +64,15 @@
     "select":"Please select",
     "submit":"Submit",
     "parent":"Parent",
-    "parentTip":"The default is top-level"
+    "parentTip":"The default is top-level",
+    "emptyField":"Please fill in this field",
+    "man":"Man",
+    "women":"Women",
+    "status":"Status",
+    "statusActive":"Active",
+    "statusInactive":"Inactive",
+    "sort":"Sort",
+    "close":"Close"
   },
   "App":{
     "light":"Light Mode",
