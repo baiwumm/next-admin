@@ -2,60 +2,56 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 17:21:49
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-27 17:53:47
+ * @LastEditTime: 2024-12-30 15:30:43
  * @Description: 用户管理
  */
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useDisclosure } from '@nextui-org/react';
-import { useRequest } from 'ahooks';
-import { forEach, get } from 'lodash-es';
+import { useRequest, useSetState } from 'ahooks';
+import { get, keys, pick } from 'lodash-es';
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
-import { z } from 'zod';
 
 import { isSuccess } from '@/lib/utils';
-import { addUser, delUser, getUserList, updateUser } from '@/services/system-manage/user-manage';
+import { delUser, getUserList } from '@/services/system-manage/user-manage';
 
-import { formSchema, searchFormSchema } from './components/formSchema';
-import HeaderSearch from './components/HeaderSearch';
 import SaveModal from './components/SaveModal';
 import TableTemplate from './components/TableTemplate';
 
 export default function UserManage() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-  // 固定几条
-  const pageSize = 5;
-  // 当前第几页
-  const [currentPage, setCurrentPage] = useState(1);
   // 文章条数
   const [total, setTotal] = useState(1);
   // 当前用户 id
   const [userId, setUserId] = useState('');
-  // 搜索表单实例
-  const searchForm = useForm<z.infer<typeof searchFormSchema>>({
-    resolver: zodResolver(searchFormSchema),
-    defaultValues: {
-      userName: '',
-    },
+  // 搜索表单
+  const [searchParams, setSearchParams] = useSetState<App.SystemManage.UserSearchParams>({
+    current: 1, // 当前页码
+    size: 5, // 每页条数
+    userName: '', // 用户名
+    phone: '', // 手机号码
   });
 
-  // 表单实例
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      userName: '',
-      cnName: '',
-      email: '',
-      phone: '',
-      sex: 'MALE',
-      status: 'ACTIVE',
-      sort: 1,
-      password: '',
-    },
-  });
+  // 新增/编辑表单
+  const initFormData: App.SystemManage.UserSaveParams = {
+    userName: '',
+    cnName: '',
+    email: '',
+    phone: '',
+    sex: 'MALE',
+    status: 'ACTIVE',
+    sort: 1,
+    password: '',
+  };
+  const [formData, setFormData] = useSetState<App.SystemManage.UserSaveParams>(initFormData);
+
+  // 退出弹窗回调
+  const handleCancel = () => {
+    setUserId('');
+    setFormData(initFormData);
+    onClose();
+  };
 
   // 获取用户列表
   const {
@@ -63,32 +59,18 @@ export default function UserManage() {
     loading,
     run,
   } = useRequest(async () => {
-    const params = searchForm.getValues();
-    const res = get(
-      await getUserList({
-        ...params,
-        current: currentPage,
-        size: pageSize,
-      }),
-      'data',
-      {},
-    );
+    const res = get(await getUserList(searchParams), 'data', {});
     setTotal(get(res, 'total', 1));
     return get(res, 'records', []);
   });
 
-  // 新增/编辑用户
-  const { loading: saveLoading, runAsync: runSave } = useRequest(userId ? updateUser : addUser, {
-    manual: true,
-  });
-
   // 删除用户
-  const { loading: delLoading, runAsync: runDel } = useRequest(delUser, {
+  const { loading: delLoading, run: runDel } = useRequest(delUser, {
     manual: true,
     onSuccess: ({ code, msg }) => {
+      setUserId('');
       if (isSuccess(code)) {
         toast.success(msg);
-        setUserId('');
         run();
       }
     },
@@ -97,9 +79,7 @@ export default function UserManage() {
   // 编辑回调
   const handleEdit = (row: App.SystemManage.User) => {
     setUserId(row.id);
-    forEach(Object.keys(formSchema.shape) as (keyof typeof formSchema.shape)[], (key) => {
-      form.setValue(key, row[key]);
-    });
+    setFormData(pick(row, keys(initFormData)) as App.SystemManage.UserSaveParams);
     onOpen();
   };
 
@@ -111,21 +91,18 @@ export default function UserManage() {
 
   useEffect(() => {
     run();
-  }, [currentPage, run]);
+  }, [searchParams.current, run]);
 
   return (
     <div className="flex flex-col gap-4">
-      <HeaderSearch loading={loading} refresh={run} form={searchForm} onOpen={onOpen} />
       <TableTemplate
         userList={userList}
         loading={loading}
         total={total}
-        pageSize={pageSize}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
         handleEdit={handleEdit}
         refresh={run}
-        form={searchForm}
         onOpen={onOpen}
         delLoading={delLoading}
         handleDelete={handleDelete}
@@ -134,13 +111,12 @@ export default function UserManage() {
       <SaveModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        saveLoading={saveLoading}
-        runSave={runSave}
         refresh={run}
         onClose={onClose}
-        form={form}
         userId={userId}
-        setUserId={setUserId}
+        formData={formData}
+        setFormData={setFormData}
+        handleCancel={handleCancel}
       />
     </div>
   );

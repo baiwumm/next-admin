@@ -2,12 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-27 17:41:27
+ * @LastEditTime: 2024-12-30 15:05:40
  * @Description: 表格列表
  */
 'use client';
 
 import {
+  Button,
   Chip,
   Dropdown,
   DropdownItem,
@@ -27,20 +28,22 @@ import {
 import { RiDeleteBinLine, RiEditLine, RiEqualizer2Line, RiMenLine, RiWomenLine } from '@remixicon/react';
 import { ceil, map } from 'lodash-es';
 import { useTranslations } from 'next-intl';
-import { Key, useCallback, useMemo, useState } from 'react';
+import { Key, ReactNode, useCallback, useMemo, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import { Empty } from '@/components/ui/empty';
 import { SEX, STATUS } from '@/enums';
 
 import HeaderSearch, { type HeaderSearchProps } from './HeaderSearch';
 
+type Column = {
+  key: string;
+  label: string;
+  render?: (row: App.SystemManage.User) => ReactNode;
+};
+
 type TableTemplateProps = {
   userList: App.SystemManage.User[];
   total: number;
-  pageSize: number; // 每条页数
-  currentPage: number; // 页码
-  setCurrentPage: (page: number) => void;
   handleEdit: (row: App.SystemManage.User) => void;
   delLoading: boolean;
   handleDelete: (id: string) => void;
@@ -50,13 +53,11 @@ type TableTemplateProps = {
 export default function TableTemplate({
   userList = [],
   loading = false,
+  searchParams,
+  setSearchParams,
   total = 1,
-  pageSize = 5,
-  currentPage = 1,
-  setCurrentPage,
   handleEdit,
   refresh,
-  form,
   onOpen,
   delLoading = false,
   handleDelete,
@@ -65,7 +66,7 @@ export default function TableTemplate({
   const t = useTranslations('Pages.user-manage');
   const tGlobal = useTranslations('Global');
   // 列配置项
-  const columns = [
+  const columns: Column[] = [
     { key: 'userName', label: t('userName') },
     { key: 'cnName', label: t('cnName') },
     { key: 'sex', label: t('sex') },
@@ -83,10 +84,16 @@ export default function TableTemplate({
   // 渲染顶部
   const renderTopContent = (
     <div className="flex items-center justify-between">
-      <HeaderSearch loading={loading} refresh={refresh} form={form} onOpen={onOpen} />
+      <HeaderSearch
+        loading={loading}
+        refresh={refresh}
+        onOpen={onOpen}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
       <Dropdown>
         <DropdownTrigger className="hidden sm:flex">
-          <Button variant="outline" size="sm">
+          <Button variant="ghost" size="sm" className="border">
             <RiEqualizer2Line size={18} />
             {tGlobal('column-setting')}
           </Button>
@@ -107,6 +114,12 @@ export default function TableTemplate({
     </div>
   );
 
+  // 切换分页回调
+  const handleChangePage = (page: number) => {
+    setSearchParams({ current: page });
+    refresh();
+  };
+
   // 渲染底部
   const renderBottomContent = useMemo(() => {
     return (
@@ -115,18 +128,17 @@ export default function TableTemplate({
           loop
           showControls
           size="sm"
-          initialPage={currentPage}
-          total={ceil(total / pageSize)}
-          onChange={setCurrentPage}
+          initialPage={searchParams.current}
+          total={ceil(total / searchParams.size)}
+          onChange={handleChangePage}
         />
       </div>
     );
-  }, [currentPage, total, pageSize, setCurrentPage]);
+  }, [searchParams, total]);
   // 自定义列
   const renderCell = useCallback(
     (user: App.SystemManage.User, columnKey: Key) => {
       const cellValue = getKeyValue(user, columnKey as keyof App.SystemManage.User);
-
       switch (columnKey) {
         case 'userName':
           return (
@@ -165,17 +177,24 @@ export default function TableTemplate({
         case 'action':
           return (
             <div className="flex gap-2 items-center justify-center">
-              <Button variant="outline" size="icon" onClick={() => handleEdit(user)} className="w-6 h-6">
-                <RiEditLine size={14} />
+              <Button
+                variant="shadow"
+                size="sm"
+                onPress={() => handleEdit(user)}
+                startContent={<RiEditLine size={14} />}
+              >
+                {tGlobal('edit')}
               </Button>
               <Button
-                variant="destructive"
-                size="icon"
+                variant="shadow"
+                size="sm"
+                color="danger"
                 disabled={delLoading}
-                className="w-6 h-6"
-                onClick={() => handleDelete(user.id)}
+                onPress={() => handleDelete(user.id)}
+                isLoading={delLoading && userId === user.id}
+                startContent={<RiDeleteBinLine size={14} />}
               >
-                {delLoading && user.id === userId ? <Spinner size="sm" /> : <RiDeleteBinLine size={14} />}
+                {tGlobal('delete')}
               </Button>
             </div>
           );
@@ -183,7 +202,7 @@ export default function TableTemplate({
           return cellValue;
       }
     },
-    [handleEdit, tGlobal],
+    [delLoading, handleDelete, handleEdit, tGlobal, userId],
   );
   return (
     <Table
@@ -201,8 +220,13 @@ export default function TableTemplate({
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody items={userList} isLoading={loading} loadingContent={<Spinner />} emptyContent={<Empty />}>
-        {(item: App.SystemManage.User) => (
+      <TableBody
+        items={userList}
+        isLoading={loading || delLoading}
+        loadingContent={<Spinner />}
+        emptyContent={<Empty />}
+      >
+        {(item) => (
           <TableRow key={item.id}>{(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>

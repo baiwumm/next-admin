@@ -25,6 +25,7 @@ export async function GET(request: NextRequest) {
     const size = searchParams.get('size') || '10';
     const current = searchParams.get('current') || '1';
     const userName = searchParams.get('userName');
+    const phone = searchParams.get('phone');
     // 分页处理，这里获取到的分页是字符串，需要转换成整数
     const take = toNumber(size);
     const skip = (toNumber(current) - 1) * take;
@@ -33,6 +34,9 @@ export async function GET(request: NextRequest) {
     // 模糊查询
     if (userName) {
       where['userName'] = { contains: userName, mode: 'insensitive' };
+    }
+    if (phone) {
+      where['phone'] = { contains: phone, mode: 'insensitive' };
     }
     const records = await prisma.user.findMany({
       skip,

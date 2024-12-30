@@ -2,74 +2,70 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 11:31:29
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-27 17:34:40
+ * @LastEditTime: 2024-12-30 15:28:56
  * @Description: 顶部搜索
  */
-import { Spinner } from '@nextui-org/react';
+import { Button, Input, Spinner } from '@nextui-org/react';
 import { RiAddLine, RiResetLeftLine, RiSearchLine } from '@remixicon/react';
+import { SetState } from 'ahooks/es/useSetState';
 import { useTranslations } from 'next-intl';
-import { UseFormReturn } from 'react-hook-form';
-import { z } from 'zod';
-
-import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-
-import { searchFormSchema } from './formSchema';
 
 export type HeaderSearchProps = {
   loading: boolean;
-  refresh: (params?: App.SystemManage.UserSearchParams) => void;
-  form: UseFormReturn<z.infer<typeof searchFormSchema>>;
+  refresh: () => void;
   onOpen: VoidFunction;
+  searchParams: App.SystemManage.UserSearchParams;
+  setSearchParams: SetState<App.SystemManage.UserSearchParams>;
 };
 
-export default function HeaderSearch({ loading = false, refresh, form, onOpen }: HeaderSearchProps) {
+export default function HeaderSearch({
+  loading = false,
+  refresh,
+  onOpen,
+  searchParams,
+  setSearchParams,
+}: HeaderSearchProps) {
   const t = useTranslations('Pages');
   const tGlobal = useTranslations('Global');
 
-  // 表单提交
-  const onSubmit = (values: z.infer<typeof searchFormSchema>) => {
-    refresh(values);
-  };
-
   // 表单重置
   const resetForm = () => {
-    form.reset();
-    refresh();
+    setSearchParams({
+      userName: '',
+      phone: '',
+    });
+    setTimeout(() => {
+      refresh();
+    });
   };
   return (
     <div className="flex items-center gap-2 flex-wrap">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2 items-center flex-wrap">
-          <FormField
-            control={form.control}
-            name="userName"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    placeholder={`${tGlobal('enter')}${t('user-manage.userName')}`}
-                    className="h-8 w-[150px] lg:w-[250px]"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button variant="outline" size="sm" disabled={loading} type="submit">
-            {loading ? <Spinner size="sm" /> : <RiSearchLine />}
-            {tGlobal('search')}
-          </Button>
-        </form>
-      </Form>
-      <Button variant="outline" size="sm" onClick={resetForm}>
-        <RiResetLeftLine />
+      <Input
+        value={searchParams.userName}
+        isClearable
+        placeholder={`${tGlobal('enter')}${t('user-manage.userName')}`}
+        className="w-[150px] lg:w-[250px]"
+        size="sm"
+        onValueChange={(value) => setSearchParams({ userName: value })}
+      />
+      <Input
+        value={searchParams.phone}
+        isClearable
+        placeholder={`${tGlobal('enter')}${t('user-manage.phone')}`}
+        className="w-[150px] lg:w-[250px]"
+        size="sm"
+        onValueChange={(value) => setSearchParams({ phone: value })}
+      />
+      <Button variant="ghost" size="sm" disabled={loading} onPress={refresh} className="border">
+        {loading ? <Spinner size="sm" /> : <RiSearchLine size={18} />}
+        {tGlobal('search')}
+      </Button>
+      <Button variant="ghost" size="sm" onPress={resetForm} className="border">
+        <RiResetLeftLine size={18} />
         {tGlobal('reset')}
       </Button>
-      <Button variant="outline" size="sm" className="border-dashed" onClick={onOpen}>
-        <RiAddLine />
+      <Button variant="ghost" size="sm" className="border border-dashed" onPress={onOpen}>
+        <RiAddLine size={18} />
         {tGlobal('add')}
       </Button>
     </div>

@@ -43,7 +43,10 @@
       "emailError":"The Email format is incorrect",
       "phone":"Phone",
       "phoneError":"The mobile phone number format is incorrect",
-      "sex":"Sex"
+      "sex":"Sex",
+      "password":"Password",
+      "confirmPassword":"Confirm Password",
+      "validateConfirmPassword":"The two password entries are inconsistent"
     }
   },
   "Global":{
