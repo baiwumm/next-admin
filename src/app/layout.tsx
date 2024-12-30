@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:05:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 16:35:14
+ * @LastEditTime: 2024-12-30 16:46:08
  * @Description: 布局文件
  */
 import './globals.scss';
@@ -16,6 +16,7 @@ import AppSideBar from '@/components/AppSideBar';
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalFooter from '@/components/GlobalFooter'; // 底部版权
 import GlobalHeader from '@/components/GlobalHeader'; // 头部布局
+import PageAnimatePresence from '@/components/PageAnimatePresence';
 import ThemeProvider from '@/components/ThemeProvider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/sonner';
@@ -45,7 +46,7 @@ export default async function RootLayout({
                 <SidebarInset>
                   {/* 头部布局 */}
                   <GlobalHeader />
-                  <main className="p-4">{children}</main>
+                  <PageAnimatePresence>{children}</PageAnimatePresence>
                   {/* 底部版权 */}
                   <GlobalFooter />
                 </SidebarInset>
