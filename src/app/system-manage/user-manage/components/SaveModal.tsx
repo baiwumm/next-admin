@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 16:32:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-30 15:23:27
+ * @LastEditTime: 2024-12-30 15:47:57
  * @Description: 新增编辑弹窗
  */
 'use client';
@@ -20,12 +20,12 @@ import {
   RadioGroup,
 } from '@nextui-org/react';
 import { type Sex, type Status } from '@prisma/client';
-import { RiCellphoneLine, RiMailLine } from '@remixicon/react';
+import { RiCellphoneLine, RiEyeLine, RiEyeOffLine, RiMailLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import { SetState } from 'ahooks/es/useSetState';
 import { omit, toNumber, toString } from 'lodash-es';
 import { useTranslations } from 'next-intl';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 
 import { SEX, STATUS } from '@/enums';
@@ -56,6 +56,11 @@ export default function SaveModal({
   const t = useTranslations('Pages.user-manage');
   const tGlobal = useTranslations('Global');
 
+  // 密码是否可见
+  const [isPwdVisible, setIsPwdVisible] = useState(false);
+
+  const togglePwdVisibility = () => setIsPwdVisible(!isPwdVisible);
+
   // 新增/编辑用户
   const { loading: saveLoading, run: runSave } = useRequest(userId ? updateUser : addUser, {
     manual: true,
@@ -83,7 +88,7 @@ export default function SaveModal({
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl" onClose={handleCancel} backdrop="blur">
       <Form validationBehavior="native" onSubmit={onSubmit}>
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
               <ModalHeader className="flex flex-col gap-1">
                 {`${userId ? tGlobal('edit') : tGlobal('add')}`}
@@ -191,26 +196,38 @@ export default function SaveModal({
                       <Input
                         value={formData.password}
                         name="password"
-                        isClearable
                         isRequired
                         label={t('password')}
                         labelPlacement="outside"
                         placeholder={tGlobal('enter') + t('password')}
                         size="sm"
                         maxLength={32}
-                        type="password"
+                        type={isPwdVisible ? 'password' : 'text'}
                         onValueChange={(value) => setFormData({ password: value })}
+                        endContent={
+                          <button
+                            aria-label="toggle password visibility"
+                            className="focus:outline-none"
+                            type="button"
+                            onClick={togglePwdVisibility}
+                          >
+                            {isPwdVisible ? (
+                              <RiEyeLine size={16} className="text-default-400 pointer-events-none" />
+                            ) : (
+                              <RiEyeOffLine size={16} className="text-default-400 pointer-events-none" />
+                            )}
+                          </button>
+                        }
                       />
                       <Input
                         name="confirmPassword"
-                        isClearable
                         isRequired
                         label={t('confirmPassword')}
                         labelPlacement="outside"
                         placeholder={tGlobal('enter') + t('confirmPassword')}
                         size="sm"
                         maxLength={32}
-                        type="password"
+                        type={isPwdVisible ? 'password' : 'text'}
                         validate={(value) => {
                           if (!value) {
                             return tGlobal('emptyField');
@@ -220,6 +237,20 @@ export default function SaveModal({
                           }
                           return null;
                         }}
+                        endContent={
+                          <button
+                            aria-label="toggle password visibility"
+                            className="focus:outline-none"
+                            type="button"
+                            onClick={togglePwdVisibility}
+                          >
+                            {isPwdVisible ? (
+                              <RiEyeLine size={16} className="text-default-400 pointer-events-none" />
+                            ) : (
+                              <RiEyeOffLine size={16} className="text-default-400 pointer-events-none" />
+                            )}
+                          </button>
+                        }
                       />
                     </>
                   )}
@@ -241,9 +272,6 @@ export default function SaveModal({
               <ModalFooter>
                 <Button color="primary" type="submit" isLoading={saveLoading} size="sm">
                   {tGlobal('submit')}
-                </Button>
-                <Button color="danger" variant="light" onPress={onClose} size="sm">
-                  {tGlobal('close')}
                 </Button>
               </ModalFooter>
             </>
