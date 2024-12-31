@@ -37,6 +37,7 @@ model User {
   status        Status          @default(ACTIVE) // 状态
   sort          Int             // 排序
   token         String?         // token
+  avatar        String?         // 用户头像
   tags          String[]        @default([]) // 标签
   loginCount    Int             @default(0) // 登录次数
   lastIp        String?         // 最后登录ip
