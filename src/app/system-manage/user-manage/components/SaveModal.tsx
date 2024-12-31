@@ -2,12 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 16:32:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-30 15:47:57
+ * @LastEditTime: 2024-12-31 15:32:34
  * @Description: 新增编辑弹窗
  */
 'use client';
 
 import {
+  Avatar,
   Button,
   Form,
   Input,
@@ -25,12 +26,14 @@ import { useRequest } from 'ahooks';
 import { SetState } from 'ahooks/es/useSetState';
 import { omit, toNumber, toString } from 'lodash-es';
 import { useTranslations } from 'next-intl';
-import { FormEvent, useState } from 'react';
+import { ChangeEventHandler, FormEvent, useState } from 'react';
 import { toast } from 'sonner';
 
+import ContentLoading from '@/components/ContentLoading';
 import { SEX, STATUS } from '@/enums';
 import { isSuccess } from '@/lib/utils';
 import { addUser, updateUser } from '@/services/system-manage/user-manage';
+import { uploadFile } from '@/services/upload';
 
 type SaveModalProps = {
   isOpen: boolean;
@@ -41,6 +44,8 @@ type SaveModalProps = {
   formData: App.SystemManage.UserSaveParams;
   setFormData: SetState<App.SystemManage.UserSaveParams>;
   handleCancel: VoidFunction;
+  avatar?: string;
+  setAvatar: (avatar: string | undefined) => void;
 };
 
 export default function SaveModal({
@@ -52,6 +57,8 @@ export default function SaveModal({
   formData,
   setFormData,
   handleCancel,
+  avatar,
+  setAvatar,
 }: SaveModalProps) {
   const t = useTranslations('Pages.user-manage');
   const tGlobal = useTranslations('Global');
@@ -74,6 +81,27 @@ export default function SaveModal({
     },
   });
 
+  // 上传头像
+  const { loading: uploadLoading, run: runUploadAvatar } = useRequest(uploadFile, {
+    manual: true,
+    onSuccess: ({ code, data }) => {
+      if (isSuccess(code)) {
+        setAvatar(data.url);
+      }
+    },
+  });
+
+  // 图片上传回调
+  const handleFileChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      // 创建一个 FormData 对象
+      const formData = new FormData();
+      formData.append('file', file);
+      runUploadAvatar(formData);
+    }
+  };
+
   // 表单提交
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -82,10 +110,19 @@ export default function SaveModal({
       id: userId || undefined,
       ...omit(data, 'confirmPassword'),
       sort: toNumber(sort),
+      avatar,
     } as App.SystemManage.UserSaveParams);
   };
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl" onClose={handleCancel} backdrop="blur">
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+      size="2xl"
+      onClose={handleCancel}
+      backdrop="blur"
+      isDismissable={false}
+      isKeyboardDismissDisabled={true}
+    >
       <Form validationBehavior="native" onSubmit={onSubmit}>
         <ModalContent>
           {() => (
@@ -95,6 +132,20 @@ export default function SaveModal({
                 {t('title')}
               </ModalHeader>
               <ModalBody>
+                <div className="flex justify-center items-center flex-col gap-4">
+                  <div className={`relative opacity-${uploadLoading ? '50' : '100'}`}>
+                    <ContentLoading loading={uploadLoading} />
+                    <Avatar className="w-28 h-28 text-large" src={avatar} />
+                  </div>
+                  <Input
+                    name="avatar"
+                    type="file"
+                    accept="image/*"
+                    className="w-20"
+                    onChange={handleFileChange}
+                    size="sm"
+                  />
+                </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Input
                     value={formData.userName}
@@ -270,7 +321,13 @@ export default function SaveModal({
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" type="submit" isLoading={saveLoading} size="sm">
+                <Button
+                  color="primary"
+                  type="submit"
+                  isLoading={saveLoading}
+                  disabled={saveLoading || uploadLoading}
+                  size="sm"
+                >
                   {tGlobal('submit')}
                 </Button>
               </ModalFooter>

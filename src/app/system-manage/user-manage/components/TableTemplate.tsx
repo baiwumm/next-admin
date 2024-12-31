@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-30 15:05:40
+ * @LastEditTime: 2024-12-31 15:05:22
  * @Description: 表格列表
  */
 'use client';
@@ -143,7 +143,7 @@ export default function TableTemplate({
         case 'userName':
           return (
             <User
-              avatarProps={{ radius: 'full', size: 'sm' }}
+              avatarProps={{ radius: 'full', size: 'sm', src: user.avatar || undefined }}
               classNames={{
                 description: 'text-default-500',
               }}

@@ -42,7 +42,7 @@ declare namespace App {
       phone?: string;
     };
     /** @description: 保存参数 */
-    type UserSaveParams = Partial<Pick<User, 'id'>> &
+    type UserSaveParams = Partial<Pick<User, 'id' | 'avatar'>> &
       Pick<User, 'userName' | 'password' | 'cnName' | 'email' | 'phone' | 'sex' | 'status' | 'sort'>;
     /** @description: 国际化 */
     type Internalization = import('@prisma/client').Internalization;

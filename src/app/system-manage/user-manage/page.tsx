@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 17:21:49
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-30 15:30:43
+ * @LastEditTime: 2024-12-31 15:22:14
  * @Description: 用户管理
  */
 'use client';
@@ -28,10 +28,12 @@ export default function UserManage() {
   // 搜索表单
   const [searchParams, setSearchParams] = useSetState<App.SystemManage.UserSearchParams>({
     current: 1, // 当前页码
-    size: 5, // 每页条数
+    size: 8, // 每页条数
     userName: '', // 用户名
     phone: '', // 手机号码
   });
+  // 用户头像
+  const [avatar, setAvatar] = useState<string | undefined>();
 
   // 新增/编辑表单
   const initFormData: App.SystemManage.UserSaveParams = {
@@ -49,6 +51,7 @@ export default function UserManage() {
   // 退出弹窗回调
   const handleCancel = () => {
     setUserId('');
+    setAvatar(undefined);
     setFormData(initFormData);
     onClose();
   };
@@ -80,6 +83,9 @@ export default function UserManage() {
   const handleEdit = (row: App.SystemManage.User) => {
     setUserId(row.id);
     setFormData(pick(row, keys(initFormData)) as App.SystemManage.UserSaveParams);
+    if (row.avatar) {
+      setAvatar(row.avatar);
+    }
     onOpen();
   };
 
@@ -117,6 +123,8 @@ export default function UserManage() {
         formData={formData}
         setFormData={setFormData}
         handleCancel={handleCancel}
+        avatar={avatar}
+        setAvatar={setAvatar}
       />
     </div>
   );
