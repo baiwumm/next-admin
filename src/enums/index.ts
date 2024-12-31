@@ -5,7 +5,6 @@ export enum ROUTES_NAME {
   DASHBOARD = 'dashboard',
   ABOUT = 'about',
   SYSTEM_MANAGE = 'system-manage',
-  INTERNATIONALIZATION = 'internationalization',
   FEATURES = 'features',
   VIEWER = 'viewer',
   USER_MANAGE = 'user-manage',

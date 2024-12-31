@@ -8,7 +8,6 @@
 import {
   RiApps2AiLine,
   RiFlowerLine,
-  RiGlobalLine,
   RiImageAddLine,
   RiInformationLine,
   RiSettings2Line,
@@ -46,10 +45,6 @@ export const MenuList: MenuListType[] = [
         path: `/${ROUTES_NAME.SYSTEM_MANAGE}/${ROUTES_NAME.USER_MANAGE}`,
         name: ROUTES_NAME.USER_MANAGE,
       },
-      {
-        path: `/${ROUTES_NAME.SYSTEM_MANAGE}/${ROUTES_NAME.INTERNATIONALIZATION}`,
-        name: ROUTES_NAME.INTERNATIONALIZATION,
-      },
     ],
   },
   {
@@ -64,7 +59,6 @@ export const MenuList: MenuListType[] = [
 export const MenuIconMap: Record<ROUTES_NAME, React.ReactNode> = {
   [ROUTES_NAME.DASHBOARD]: <RiApps2AiLine />,
   [ROUTES_NAME.SYSTEM_MANAGE]: <RiSettings2Line />,
-  [ROUTES_NAME.INTERNATIONALIZATION]: <RiGlobalLine />,
   [ROUTES_NAME.ABOUT]: <RiInformationLine />,
   [ROUTES_NAME.FEATURES]: <RiFlowerLine />,
   [ROUTES_NAME.VIEWER]: <RiImageAddLine />,
