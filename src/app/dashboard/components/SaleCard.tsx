@@ -2,11 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 13:47:15
+ * @LastEditTime: 2025-01-02 09:19:40
  * @Description: 总销售额卡片
  */
 'use client';
 
+import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import { random, toNumber } from 'lodash-es';
@@ -15,8 +16,6 @@ import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 
 import ContentLoading from '@/components/ContentLoading';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 
 export default function SaleCard() {
   const t = useTranslations('Pages.dashboard');
@@ -67,13 +66,13 @@ export default function SaleCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
-          <CardTitle className="text-sm font-medium">{t('sales-total')}</CardTitle>
+          <div className="text-sm font-medium">{t('sales-total')}</div>
           <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => initData()}
           />
         </CardHeader>
-        <CardContent className="pb-4">
+        <CardBody className="pb-4">
           <div className="text-2xl font-bold">
             <CountUp end={data.total} prefix="¥" separator="," decimals={2} />
           </div>
@@ -89,9 +88,9 @@ export default function SaleCard() {
               <CountUp end={data.week} suffix="%" />
             </div>
           </div>
-          <Separator className="mt-4" />
-        </CardContent>
-        <CardFooter className="pb-2">
+        </CardBody>
+        <Divider />
+        <CardFooter className="pb-2 pt-1">
           <div className="flex items-center gap-1 text-xs text-muted-foreground mt-2">
             <span>{t('sales-complete-rate')}</span>
             {arrows[2]}

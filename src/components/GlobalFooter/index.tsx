@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 09:55:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 10:47:19
+ * @LastEditTime: 2025-01-02 10:07:00
  * @Description: 底部版权信息
  */
 'use client';
 
-import { Link, Spacer, Tooltip } from '@nextui-org/react';
+import { Button, Link, Spacer, Tooltip } from '@nextui-org/react';
 import {
   type RemixiconComponentType,
   RiBarChart2Line,
@@ -18,8 +18,6 @@ import {
 } from '@remixicon/react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-
-import { Button } from '@/components/ui/button';
 
 export default function GlobalFooter() {
   const t = useTranslations('App');
@@ -35,9 +33,8 @@ export default function GlobalFooter() {
   // 渲染社交图标
   const renderSocial = (tip: string, url: string = '', Icon: RemixiconComponentType) => (
     <Tooltip showArrow content={tip} placement="top">
-      <Button variant="ghost" size="icon" onClick={() => window.open(url)}>
-        <Icon />
-        <span className="sr-only">Social Link</span>
+      <Button variant="light" size="sm" isIconOnly onPress={() => window.open(url)}>
+        <Icon size={16} />
       </Button>
     </Tooltip>
   );

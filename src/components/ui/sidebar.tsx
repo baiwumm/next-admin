@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextui-org/react';
+import { cn, Tooltip } from '@nextui-org/react';
 import { Slot } from '@radix-ui/react-slot';
 import { RiMenuFoldLine, RiMenuUnfoldLine } from '@remixicon/react';
 import { cva, VariantProps } from 'class-variance-authority';
@@ -11,7 +11,6 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
@@ -109,22 +108,20 @@ const SidebarProvider = React.forwardRef<
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <TooltipProvider delayDuration={0}>
-        <div
-          style={
-            {
-              '--sidebar-width': SIDEBAR_WIDTH,
-              '--sidebar-width-icon': SIDEBAR_WIDTH_ICON,
-              ...style,
-            } as React.CSSProperties
-          }
-          className={cn('group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar', className)}
-          ref={ref}
-          {...props}
-        >
-          {children}
-        </div>
-      </TooltipProvider>
+      <div
+        style={
+          {
+            '--sidebar-width': SIDEBAR_WIDTH,
+            '--sidebar-width-icon': SIDEBAR_WIDTH_ICON,
+            ...style,
+          } as React.CSSProperties
+        }
+        className={cn('group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar', className)}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </div>
     </SidebarContext.Provider>
   );
 });
@@ -194,7 +191,7 @@ const Sidebar = React.forwardRef<
       />
       <div
         className={cn(
-          'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
+          'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex dark:border-default-100',
           side === 'left'
             ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
             : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
@@ -445,7 +442,7 @@ const SidebarMenuButton = React.forwardRef<
   React.ComponentProps<'button'> & {
     asChild?: boolean;
     isActive?: boolean;
-    tooltip?: string | React.ComponentProps<typeof TooltipContent>;
+    tooltip?: string | React.ComponentProps<any>;
   } & VariantProps<typeof sidebarMenuButtonVariants>
 >(({ asChild = false, isActive = false, variant = 'default', size = 'default', tooltip, className, ...props }, ref) => {
   const Comp = asChild ? Slot : 'button';
@@ -473,9 +470,8 @@ const SidebarMenuButton = React.forwardRef<
   }
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>{button}</TooltipTrigger>
-      <TooltipContent side="right" align="center" hidden={state !== 'collapsed' || isMobile} {...tooltip} />
+    <Tooltip showArrow content={tooltip.children} placement="right">
+      {button}
     </Tooltip>
   );
 });

@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 11:35:20
+ * @LastEditTime: 2025-01-02 09:24:04
  * @Description: 掘金文章列表
  */
 'use client';
 
-import { cn, Pagination, Tooltip, User } from '@nextui-org/react';
+import { Chip, cn, Pagination, Tooltip, User } from '@nextui-org/react';
 import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
@@ -16,7 +16,6 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 import ContentLoading from '@/components/ContentLoading';
-import { Badge } from '@/components/ui/badge';
 import { Empty } from '@/components/ui/empty';
 import { getJuejinArticle } from '@/services/auth';
 
@@ -64,9 +63,9 @@ export default function JuejinArticle() {
           // 文章内容
           const content = get(article_info, 'brief_content', '');
           return (
-            <button
+            <div
               key={article_id}
-              className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
+              className="flex flex-col items-start gap-2 p-3 text-left text-sm transition-all hover:bg-slate-100 dark:hover:bg-default-100 cursor-pointer rounded-small border-small dark:border-default-100"
               onClick={() => window.open(`https://juejin.cn/post/${article_id}`)}
             >
               <User
@@ -98,13 +97,13 @@ export default function JuejinArticle() {
               {tags.length ? (
                 <div className="flex items-center gap-2">
                   {map(tags, (tag) => (
-                    <Badge key={tag.tag_id} variant="secondary">
+                    <Chip key={tag.tag_id} size="sm" variant="flat">
                       {tag.tag_name}
-                    </Badge>
+                    </Chip>
                   ))}
                 </div>
               ) : null}
-            </button>
+            </div>
           );
         })
       ) : (

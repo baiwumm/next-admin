@@ -2,9 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 13:54:26
+ * @LastEditTime: 2025-01-02 08:58:57
  * @Description: 支付笔数
  */
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
@@ -15,7 +16,6 @@ import CountUp from 'react-countup';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 import ContentLoading from '@/components/ContentLoading';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 
 type ChartData = {
@@ -94,20 +94,18 @@ export default function PaymentNumberCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
-          <CardTitle>
-            <div className="flex items-center gap-2">
-              <div className="text-sm font-medium">{t('payment-number')}</div>
-              <div className="text-2xl font-bold">
-                <CountUp end={sum(map(chartData, 'value'))} separator="," />
-              </div>
+          <div className="flex items-center gap-2">
+            <div className="text-sm font-medium">{t('payment-number')}</div>
+            <div className="text-2xl font-bold">
+              <CountUp end={sum(map(chartData, 'value'))} separator="," />
             </div>
-          </CardTitle>
+          </div>
           <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => reset()}
           />
         </CardHeader>
-        <CardContent className="pb-4">
+        <CardBody className="pb-4">
           <ResponsiveContainer width="100%" height={80}>
             <ChartContainer config={chartConfig}>
               <BarChart accessibilityLayer data={chartData}>
@@ -117,8 +115,8 @@ export default function PaymentNumberCard() {
               </BarChart>
             </ChartContainer>
           </ResponsiveContainer>
-        </CardContent>
-        <CardFooter className="pb-2">
+        </CardBody>
+        <CardFooter className="pb-2 pt-0">
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <span>{t('conversion-rate')}</span>
             {arrow}

@@ -2,9 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 13:56:34
+ * @LastEditTime: 2025-01-02 08:59:35
  * @Description: 客户满意度
  */
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
@@ -15,7 +16,6 @@ import CountUp from 'react-countup';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer } from 'recharts';
 
 import ContentLoading from '@/components/ContentLoading';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 
 type ChartData = {
@@ -102,20 +102,18 @@ export default function SatisfactionCard() {
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
-          <CardTitle>
-            <div className="flex items-center gap-2">
-              <div className="text-sm font-medium">{t('customer-satisfaction')}</div>
-              <div className="text-2xl font-bold">
-                <CountUp end={data.total} suffix="%" />
-              </div>
+          <div className="flex items-center gap-2">
+            <div className="text-sm font-medium">{t('customer-satisfaction')}</div>
+            <div className="text-2xl font-bold">
+              <CountUp end={data.total} suffix="%" />
             </div>
-          </CardTitle>
+          </div>
           <RiResetRightLine
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => reset()}
           />
         </CardHeader>
-        <CardContent className="pb-4">
+        <CardBody className="pb-4">
           <ResponsiveContainer width="100%" height={80}>
             <ChartContainer config={chartConfig}>
               <LineChart accessibilityLayer data={chartData}>
@@ -125,8 +123,8 @@ export default function SatisfactionCard() {
               </LineChart>
             </ChartContainer>
           </ResponsiveContainer>
-        </CardContent>
-        <CardFooter className="pb-2">
+        </CardBody>
+        <CardFooter className="pb-2 pt-0">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <div className="flex items-center gap-1 ">
               <span>{t('daily')}</span>

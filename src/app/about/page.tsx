@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-04 09:59:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-31 10:36:45
+ * @LastEditTime: 2025-01-02 09:44:00
  * @Description: 关于
  */
 import { Alert, Card, CardBody, CardHeader, Chip, Divider } from '@nextui-org/react';
@@ -28,10 +28,13 @@ export default function About() {
               <Alert
                 key={key}
                 hideIcon
+                color="primary"
                 title={
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold">{key}</span>
-                    <Chip size="sm">{pkg.dependencies[key]}</Chip>
+                    <Chip size="sm" color="primary">
+                      {pkg.dependencies[key]}
+                    </Chip>
                   </div>
                 }
               />
@@ -50,10 +53,13 @@ export default function About() {
               <Alert
                 key={key}
                 hideIcon
+                color="primary"
                 title={
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold">{key}</span>
-                    <Chip size="sm">{pkg.devDependencies[key]}</Chip>
+                    <Chip size="sm" color="primary">
+                      {pkg.devDependencies[key]}
+                    </Chip>
                   </div>
                 }
               />

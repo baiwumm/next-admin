@@ -2,17 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-09 09:43:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 10:36:18
+ * @LastEditTime: 2025-01-02 11:35:34
  * @Description: 主题切换按钮
  */
 'use client';
 
-import { Tooltip } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 import { RiMoonLine, RiSunLine } from '@remixicon/react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
-
-import { Button } from '@/components/ui/button';
+import { MouseEventHandler } from 'react';
 
 export default function ThemeModeButton() {
   const t = useTranslations('App');
@@ -25,7 +24,7 @@ export default function ThemeModeButton() {
     'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
 
   // 切换动画
-  async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
+  const toggleDark: MouseEventHandler<HTMLButtonElement> = async ({ clientX: x, clientY: y }) => {
     if (!enableTransitions()) {
       setTheme(theme === 'light' ? 'dark' : 'light');
       return;
@@ -48,14 +47,16 @@ export default function ThemeModeButton() {
         pseudoElement: `::view-transition-${!isDark ? 'old' : 'new'}(root)`,
       },
     );
-  }
+  };
 
   return (
     <Tooltip showArrow content={isDark ? t('dark') : t('light')} placement="bottom">
-      <Button variant="ghost" size="icon" onClick={toggleDark}>
-        <RiSunLine className="rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
-        <RiMoonLine className="absolute rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
-        <span className="sr-only">Toggle theme</span>
+      <Button variant="light" size="sm" isIconOnly onClick={toggleDark}>
+        <RiSunLine size={16} className="rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
+        <RiMoonLine
+          size={16}
+          className="absolute rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100"
+        />
       </Button>
     </Tooltip>
   );

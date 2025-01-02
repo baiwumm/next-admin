@@ -2,23 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:50:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 11:21:19
+ * @LastEditTime: 2025-01-02 11:21:59
  * @Description: 用户下拉选项
  */
 'use client';
 
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User } from '@nextui-org/react';
 import { RiExpandUpDownLine, RiIdCardLine, RiLogoutBoxRLine } from '@remixicon/react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
 
 export default function NavUser({
@@ -35,55 +26,42 @@ export default function NavUser({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        <Dropdown backdrop="blur" placement={isMobile ? 'bottom' : 'right'}>
+          <DropdownTrigger>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foregroun"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={`/${user.avatar}`} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
-              </div>
+              <User
+                avatarProps={{
+                  src: `/${user.avatar}`,
+                  size: 'sm',
+                }}
+                description={user.email}
+                name={user.name}
+              />
               <RiExpandUpDownLine className="ml-auto size-4" />
             </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-            side={isMobile ? 'bottom' : 'right'}
-            align="end"
-            sideOffset={4}
-          >
-            <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={`/${user.avatar}`} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
-                </div>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <RiIdCardLine />
-                个人中心
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <RiLogoutBoxRLine />
+          </DropdownTrigger>
+          <DropdownMenu className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg">
+            <DropdownItem key="user" className="p-0 font-normal" showDivider>
+              <User
+                avatarProps={{
+                  src: `/${user.avatar}`,
+                  size: 'sm',
+                }}
+                description={user.email}
+                name={user.name}
+              />
+            </DropdownItem>
+            <DropdownItem key="personal-center" startContent={<RiIdCardLine size={16} />} showDivider>
+              个人中心
+            </DropdownItem>
+            <DropdownItem key="logout" startContent={<RiLogoutBoxRLine size={16} />}>
               退出登录
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </SidebarMenuItem>
     </SidebarMenu>
   );

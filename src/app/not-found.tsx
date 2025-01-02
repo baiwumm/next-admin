@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 10:31:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-06 10:32:02
+ * @LastEditTime: 2025-01-02 12:05:20
  * @Description: 404页面
  */
 
+import { Button } from '@nextui-org/react';
 import Link from 'next/link';
-
-import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
