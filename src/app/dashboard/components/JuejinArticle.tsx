@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 09:24:04
+ * @LastEditTime: 2025-01-02 16:29:46
  * @Description: 掘金文章列表
  */
 'use client';
 
-import { Chip, cn, Pagination, Tooltip, User } from '@nextui-org/react';
+import { Chip, cn, Pagination, User } from '@nextui-org/react';
 import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
@@ -91,9 +91,7 @@ export default function JuejinArticle() {
                 }
                 name={<div className="font-semibold">{get(article_info, 'title', '')}</div>}
               />
-              <Tooltip content={<div className="max-w-[600px]">{content}</div>}>
-                <div className="line-clamp-2 text-xs text-muted-foreground leading-5">{content}</div>
-              </Tooltip>
+              <div className="line-clamp-2 text-xs text-muted-foreground leading-5">{content}</div>
               {tags.length ? (
                 <div className="flex items-center gap-2">
                   {map(tags, (tag) => (
