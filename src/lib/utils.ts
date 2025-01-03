@@ -61,41 +61,6 @@ export function convertFlatDataToTree<T extends NodeBase>(items: T[]): TreeNode<
 }
 
 /**
- * @description: 将树形树形转成层级对象
- */
-export const convertToLocalization = (data: App.SystemManage.Internalization[]): App.Auth.Locales => {
-  const result: App.Auth.Locales = {
-    zh: {},
-    en: {},
-  };
-
-  function buildNestedObject(
-    item: App.SystemManage.Internalization & {
-      children?: App.SystemManage.Internalization[];
-    },
-    obj: Record<string, any>,
-    lang: App.Common.Langs,
-  ) {
-    if (item.children) {
-      obj[item.name] = {};
-      for (const child of item.children) {
-        buildNestedObject(child, obj[item.name], lang);
-      }
-    } else {
-      obj[item.name] = item[lang];
-    }
-  }
-
-  for (const lang of Object.values(LOCALES)) {
-    for (const item of data) {
-      buildNestedObject(item, result[lang], lang);
-    }
-  }
-
-  return result;
-};
-
-/**
  * @description: 判断请求是否成功
  */
 export const isSuccess = (code: number) => code === RESPONSE_CODE.SUCCESS;

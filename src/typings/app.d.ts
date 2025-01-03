@@ -34,7 +34,7 @@ declare namespace App {
     };
   }
   namespace SystemManage {
-    /** @description: 国际化 */
+    /** @description: 用户管理 */
     type User = import('@prisma/client').User;
     /** @description: 查询参数 */
     type UserSearchParams = Common.PaginatingParams & {
@@ -44,15 +44,5 @@ declare namespace App {
     /** @description: 保存参数 */
     type UserSaveParams = Partial<Pick<User, 'id' | 'avatar'>> &
       Pick<User, 'userName' | 'password' | 'cnName' | 'email' | 'phone' | 'sex' | 'status' | 'sort'>;
-    /** @description: 国际化 */
-    type Internalization = import('@prisma/client').Internalization;
-    /** @description: 查询参数 */
-    type InternalizationSearchParams = {
-      name?: string;
-      zh?: string;
-    };
-    /** @description: 保存参数 */
-    type InternalizationSaveParams = Partial<Pick<Internalization, 'id' | 'parentId' | 'zh' | 'en'>> &
-      Pick<Internalization, 'name'>;
   }
 }
