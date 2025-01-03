@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 09:55:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 10:07:00
+ * @LastEditTime: 2025-01-03 14:09:27
  * @Description: 底部版权信息
  */
 'use client';
 
-import { Button, Link, Spacer, Tooltip } from '@nextui-org/react';
+import { Button, Image, Link, Spacer, Tooltip } from '@nextui-org/react';
 import {
   type RemixiconComponentType,
   RiBarChart2Line,
@@ -16,7 +16,6 @@ import {
   RiQuillPenLine,
   RiWechatLine,
 } from '@remixicon/react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 export default function GlobalFooter() {
@@ -50,7 +49,7 @@ export default function GlobalFooter() {
         </div>
         <div className="flex border-gray-200 dark:border-gray-800 w-full border-t border-solid"></div>
       </div>
-      <div className="flex justify-between items-center px-4 md:px-8 lg:px-24 py-2 max-sm:flex-col -mt-2.5">
+      <div className="flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 max-sm:flex-col -mt-2.5">
         {/* 备案 */}
         <div className="flex items-center gap-3 max-sm:flex-col">
           {renderIcp('https://beian.miit.gov.cn/#/Integrated/index', '/icp.png', process.env.NEXT_PUBLIC_SITE_ICP)}
