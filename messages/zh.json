@@ -5,6 +5,7 @@
     "system-manage":"系统管理",
     "internationalization":"国际化",
     "features":"功能页",
+    "captcha":"验证码",
     "viewer":"图片预览",
     "user-manage":"用户管理"
   },
@@ -47,7 +48,20 @@
       "password":"密码",
       "confirmPassword":"确认密码",
       "validateConfirmPassword":"两次密码输入不一致"
-    }
+    },
+    "captcha":{
+      "rotateCode": "图片旋转验证码",
+      "slideCodeSuccess": "验证成功，耗时 {seconds} 秒！",
+      "slideCode": "滑块验证码",
+      "pointsCode": "点选验证码",
+      "puzzleCode": "拼图验证码",
+      "operationCode": "运算验证码",
+      "subTitle": "验证码的主要用途是为了防止自动化程序（如机器人、爬虫等）恶意访问网站或应用程序，从而保护系统的安全性和数据的完整性，单纯前端的验证是不安全的，因为可以直接通过接口请求",
+      "verifyError": "很遗憾，答案错误，请再试一次",
+      "verifySuccess": "恭喜您，答案正确！",
+      "verify": "验证",
+      "graphicCode": "图形验证码"
+  }
   },
   "Global":{
     "createdAt":"创建时间",

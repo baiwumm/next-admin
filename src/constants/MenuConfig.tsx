@@ -11,6 +11,7 @@ import {
   RiImageAddLine,
   RiInformationLine,
   RiSettings2Line,
+  RiTerminalBoxLine,
   RiUserLine,
 } from '@remixicon/react';
 
@@ -31,6 +32,10 @@ export const MenuList: MenuListType[] = [
     path: `/${ROUTES_NAME.FEATURES}`,
     name: ROUTES_NAME.FEATURES,
     children: [
+      {
+        path: `/${ROUTES_NAME.FEATURES}/${ROUTES_NAME.CAPTCHA}`,
+        name: ROUTES_NAME.CAPTCHA,
+      },
       {
         path: `/${ROUTES_NAME.FEATURES}/${ROUTES_NAME.VIEWER}`,
         name: ROUTES_NAME.VIEWER,
@@ -61,6 +66,7 @@ export const MenuIconMap: Record<ROUTES_NAME, React.ReactNode> = {
   [ROUTES_NAME.SYSTEM_MANAGE]: <RiSettings2Line />,
   [ROUTES_NAME.ABOUT]: <RiInformationLine />,
   [ROUTES_NAME.FEATURES]: <RiFlowerLine />,
+  [ROUTES_NAME.CAPTCHA]: <RiTerminalBoxLine />,
   [ROUTES_NAME.VIEWER]: <RiImageAddLine />,
   [ROUTES_NAME.USER_MANAGE]: <RiUserLine />,
 };

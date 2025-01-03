@@ -5,6 +5,7 @@
     "system-manage":"System Manage",
     "internationalization":"Internationalization",
     "features":"Features",
+    "captcha":"Captcha",
     "viewer":"Viewer",
     "user-manage":"User Manage"
   },
@@ -47,7 +48,20 @@
       "password":"Password",
       "confirmPassword":"Confirm Password",
       "validateConfirmPassword":"The two password entries are inconsistent"
-    }
+    },
+    "captcha":{
+      "rotateCode": "Rotate Code",
+      "slideCodeSuccess": "The verification succeeds, taking {seconds} seconds!",
+      "slideCode": "Slide Code",
+      "pointsCode": "Points Code",
+      "puzzleCode": "Puzzle Code",
+      "operationCode": "Operational verification code",
+      "subTitle": "The main purpose of captCHA is to prevent automated programs (such as robots, crawlers, etc.) from accessing websites or applications maliciously, so as to protect the security of the system and the integrity of the data. Simple front-end verification is not secure, because it can be requested directly through the interface",
+      "verifyError": "Unfortunately, the answer is wrong. Please try again",
+      "verifySuccess": "Congratulations, the answer is correct!",
+      "verify": "Verify",
+      "graphicCode": "Graphic verification code"
+  }
   },
   "Global":{
     "createdAt":"CreatedAt",

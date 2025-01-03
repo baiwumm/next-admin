@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { sampleSize } from 'lodash-es';
+import { random, sampleSize } from 'lodash-es';
 
 import { LOCALES, RESPONSE_CODE, RESPONSE_MSG } from '@/enums';
 
@@ -113,4 +113,33 @@ export const getRandomImg = (size = 1) => {
   // 获取图片集合
   const result = sampleSize(images, size);
   return result.length === 1 ? result[0] : result;
+};
+
+/** @description: 生成随机颜色 */
+export const randomColor = (min = 0, max = 255) => {
+  // 生成三个介于 0 到 255 之间的随机数作为 RGB 的值
+  const r = random(min, max);
+  const g = random(min, max);
+  const b = random(min, max);
+  return `rgb(${r},${g},${b})`;
+};
+
+/** @description: 验证码字符 */
+export const codeChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+/**
+ * @description: 生成随机的汉字数组
+ * @param {number} count
+ */
+export const generateRandomHanziArray = (count = 1) => {
+  const minCode = 0x4e00; // 汉字 Unicode 范围的最小值
+  const maxCode = 0x9fff; // 汉字 Unicode 范围的最大值
+
+  const hanziArray = [];
+  for (let i = 0; i < count; i++) {
+    const randomCode = random(minCode, maxCode);
+    hanziArray.push(String.fromCodePoint(randomCode));
+  }
+
+  return hanziArray;
 };

@@ -1,0 +1,28 @@
+.dv_text{
+  position: absolute;
+  top:0;
+  user-select: none;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, var(--textColor)),
+    color-stop(0.4, var(--textColor)),
+    color-stop(0.5, #fff),
+    color-stop(0.6, var(--textColor)),
+    color-stop(1, var(--textColor))
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-size-adjust: none;
+  animation: slidetounlock 3s infinite;
+}
+
+@keyframes slidetounlock {
+  0% {
+    background-position: var(--pwidth) 0;
+  }
+  100% {
+    background-position: var(--width) 0;
+  }
+}
