@@ -13,35 +13,72 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// User - status
-enum Status {
-  ACTIVE
-  INACTIVE
-}
-
-// User - sex
-enum Sex {
-  FEMALE
-  MALE
-}
-
-// 系统管理 - 用户管理
 model User {
-  id            String          @id @default(uuid()) // 主键
-  userName      String          @unique // 用户名
-  password      String          // 密码
-  cnName        String          // 中文名
-  email         String          @unique // 电子邮箱
-  phone         String          @unique // 手机号
-  sex           Sex             @default(FEMALE) // 性别
-  status        Status          @default(ACTIVE) // 状态
-  sort          Int             // 排序
-  token         String?         // token
-  avatar        String?         // 用户头像
-  tags          String[]        @default([]) // 标签
-  loginCount    Int             @default(0) // 登录次数
-  lastIp        String?         // 最后登录ip
-  lastLoginAt   DateTime?       // 最后登录时间
-  createdAt     DateTime        @default(now()) // 创建时间
-  updatedAt     DateTime        @updatedAt // 更新时间
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([provider, providerAccountId])
+}
+ 
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@id([identifier, token])
+}
+ 
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([userId, credentialID])
 }
