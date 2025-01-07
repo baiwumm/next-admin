@@ -38,11 +38,8 @@ declare namespace App {
     type User = import('@prisma/client').User;
     /** @description: 查询参数 */
     type UserSearchParams = Common.PaginatingParams & {
-      userName?: string;
-      phone?: string;
+      name?: string;
+      email?: string;
     };
-    /** @description: 保存参数 */
-    type UserSaveParams = Partial<Pick<User, 'id' | 'avatar'>> &
-      Pick<User, 'userName' | 'password' | 'cnName' | 'email' | 'phone' | 'sex' | 'status' | 'sort'>;
   }
 }

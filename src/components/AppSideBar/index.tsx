@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 13:54:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-09 16:31:03
+ * @LastEditTime: 2025-01-06 12:13:01
  * @Description: 侧边菜单排版
  */
 'use client';
@@ -21,14 +21,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-
-const data = {
-  user: {
-    name: '谢明伟',
-    email: 'baiwumm@foxmail.com',
-    avatar: 'logo.svg',
-  },
-};
 
 export default function AppSideBar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -49,7 +41,7 @@ export default function AppSideBar({ ...props }: React.ComponentProps<typeof Sid
         <NavMain />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   );

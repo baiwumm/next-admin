@@ -6,33 +6,26 @@
  * @Description: 顶部搜索
  */
 import { Button, Input, Spinner } from '@nextui-org/react';
-import { RiAddLine, RiResetLeftLine, RiSearchLine } from '@remixicon/react';
+import { RiResetLeftLine, RiSearchLine } from '@remixicon/react';
 import { SetState } from 'ahooks/es/useSetState';
 import { useTranslations } from 'next-intl';
 
 export type HeaderSearchProps = {
   loading: boolean;
   refresh: () => void;
-  onOpen: VoidFunction;
   searchParams: App.SystemManage.UserSearchParams;
   setSearchParams: SetState<App.SystemManage.UserSearchParams>;
 };
 
-export default function HeaderSearch({
-  loading = false,
-  refresh,
-  onOpen,
-  searchParams,
-  setSearchParams,
-}: HeaderSearchProps) {
+export default function HeaderSearch({ loading = false, refresh, searchParams, setSearchParams }: HeaderSearchProps) {
   const t = useTranslations('Pages');
   const tGlobal = useTranslations('Global');
 
   // 表单重置
   const resetForm = () => {
     setSearchParams({
-      userName: '',
-      phone: '',
+      name: '',
+      email: '',
     });
     setTimeout(() => {
       refresh();
@@ -41,20 +34,20 @@ export default function HeaderSearch({
   return (
     <div className="flex items-center gap-2 flex-wrap">
       <Input
-        value={searchParams.userName}
+        value={searchParams.name}
         isClearable
-        placeholder={`${tGlobal('enter')}${t('user-manage.userName')}`}
+        placeholder={`${tGlobal('enter')}${t('user-manage.title')}`}
         className="w-[150px] lg:w-[250px]"
         size="sm"
-        onValueChange={(value) => setSearchParams({ userName: value })}
+        onValueChange={(value) => setSearchParams({ name: value })}
       />
       <Input
-        value={searchParams.phone}
+        value={searchParams.email}
         isClearable
-        placeholder={`${tGlobal('enter')}${t('user-manage.phone')}`}
+        placeholder={`${tGlobal('enter')}${t('user-manage.email')}`}
         className="w-[150px] lg:w-[250px]"
         size="sm"
-        onValueChange={(value) => setSearchParams({ phone: value })}
+        onValueChange={(value) => setSearchParams({ email: value })}
       />
       <Button variant="ghost" size="sm" disabled={loading} onPress={refresh} className="border">
         {loading ? <Spinner size="sm" /> : <RiSearchLine size={18} />}
@@ -63,10 +56,6 @@ export default function HeaderSearch({
       <Button variant="ghost" size="sm" onPress={resetForm} className="border">
         <RiResetLeftLine size={18} />
         {tGlobal('reset')}
-      </Button>
-      <Button variant="ghost" size="sm" className="border border-dashed" onPress={onOpen}>
-        <RiAddLine size={18} />
-        {tGlobal('add')}
       </Button>
     </div>
   );

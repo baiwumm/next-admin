@@ -1,5 +1,7 @@
 {
   "Route":{
+    "login":"Login",
+    "logout":"Logout",
     "about":"About",
     "dashboard":"Dashboard",
     "system-manage":"System Manage",
@@ -7,7 +9,9 @@
     "features":"Features",
     "captcha":"Captcha",
     "viewer":"Viewer",
-    "user-manage":"User Manage"
+    "user-manage":"User Manage",
+    "personal-center":"Personal Center",
+    "/_not-found":"404"
   },
   "Pages":{
     "internationalization":{
@@ -38,16 +42,7 @@
     },
     "user-manage":{
       "title":"User",
-      "userName":"User Name",
-      "cnName":"Chinese Name",
-      "email":"Email",
-      "emailError":"The Email format is incorrect",
-      "phone":"Phone",
-      "phoneError":"The mobile phone number format is incorrect",
-      "sex":"Sex",
-      "password":"Password",
-      "confirmPassword":"Confirm Password",
-      "validateConfirmPassword":"The two password entries are inconsistent"
+      "email":"Email"
     },
     "captcha":{
       "rotateCode": "Rotate Code",
