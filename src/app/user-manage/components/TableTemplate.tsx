@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-31 15:05:22
+ * @LastEditTime: 2025-01-08 14:43:33
  * @Description: 表格列表
  */
 'use client';
@@ -26,7 +26,6 @@ import {
 } from '@nextui-org/react';
 import { RiEqualizer2Line } from '@remixicon/react';
 import dayjs from 'dayjs';
-import { ceil, map } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo, useState } from 'react';
 
@@ -61,7 +60,7 @@ export default function TableTemplate({
     { key: 'createdAt', label: tGlobal('createdAt') },
   ];
   // 列设置
-  const [visibleColumns, setVisibleColumns] = useState(new Set(map(columns, 'key')));
+  const [visibleColumns, setVisibleColumns] = useState(new Set(columns.map((v) => v.key)));
   const headerColumns = useMemo(() => {
     return columns.filter((column) => Array.from(visibleColumns).includes(column.key));
   }, [visibleColumns]);
@@ -108,7 +107,7 @@ export default function TableTemplate({
           showControls
           size="sm"
           initialPage={searchParams.current}
-          total={ceil(total / searchParams.size)}
+          total={Math.ceil(total / searchParams.size)}
           onChange={handleChangePage}
         />
       </div>

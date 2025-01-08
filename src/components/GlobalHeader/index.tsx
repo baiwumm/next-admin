@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 11:08:46
+ * @LastEditTime: 2025-01-08 14:44:43
  * @Description: 头部布局
  */
 'use client';
 
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
 import { Divider } from '@nextui-org/react';
-import { map } from 'lodash-es';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
@@ -30,7 +29,7 @@ export default function GlobalHeader() {
         <SidebarTrigger className="-ml-1" />
         <Divider orientation="vertical" className="mr-2 h-4" />
         <Breadcrumbs>
-          {map(segments, (path) => (
+          {segments.map((path) => (
             <BreadcrumbItem
               key={path}
               startContent={<div className="breadcrumb-icon">{MenuIconMap[path as ROUTES_NAME]}</div>}

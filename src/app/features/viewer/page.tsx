@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 15:23:52
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 16:50:20
+ * @LastEditTime: 2025-01-08 14:41:34
  * @Description: 图片预览
  */
 'use client';
 
 import { Card, CardBody, CardHeader, Divider, Image, Link } from '@nextui-org/react';
 import { useMount } from 'ahooks';
-import { map } from 'lodash-es';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -38,7 +37,7 @@ export default function Viewer() {
 
   // 图片列表
   const imgList = () =>
-    map(getRandomImg(20), (src: string) => ({
+    (getRandomImg(20) as string[]).map((src: string) => ({
       src,
       downloadUrl: src,
     }));
@@ -72,7 +71,7 @@ export default function Viewer() {
       <Divider />
       <CardBody>
         <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
-          {map(images, (item: ImageDecorator, i: number) => (
+          {images.map((item: ImageDecorator, i: number) => (
             <Image
               key={item.src}
               src={item.src}

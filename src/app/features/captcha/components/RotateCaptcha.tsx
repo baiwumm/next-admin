@@ -3,14 +3,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-14 16:17:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-03 11:36:20
+ * @LastEditTime: 2025-01-08 15:49:02
  * @Description: 图片旋转验证码
  */
 import { cn, Image } from '@nextui-org/react';
 import { RiArrowRightDoubleLine, RiCheckboxCircleLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
-import { divide, round, subtract } from 'lodash-es';
 import { CSSProperties, FC, type MouseEventHandler, RefObject, useImperativeHandle, useRef } from 'react';
 
 import styles from './rotate.module.scss';
@@ -42,7 +41,7 @@ type RotateCaptchaProps = {
   maxDegree?: number; // 最大旋转角度
   move?: () => void; // 开始拖拽回调
   fail?: () => void; // 验证失败回调
-  success?: (seconds: number) => void; // 验证成功回调
+  success?: (seconds: string) => void; // 验证成功回调
 };
 
 type State = {
@@ -160,7 +159,7 @@ const RotateCaptcha: FC<RotateCaptchaProps> = ({
       progressBarRef.current.style.color = '#fff';
       progressBarRef.current.style.fontSize = textSize;
     }
-    success?.(round(divide(subtract(state.endTime, state.startTime), 1000), 2));
+    success?.(((state.endTime - state.startTime) / 1000).toFixed(2));
   };
 
   // 拖拽结束回调

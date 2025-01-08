@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-20 09:19:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-23 09:13:59
+ * @LastEditTime: 2025-01-08 14:36:29
  * @Description: Github 提交日志
  */
 'use client';
@@ -15,11 +15,11 @@ import { RiGitCommitLine, RiResetRightLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { get, map } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 
 import ContentLoading from '@/components/ContentLoading';
 import { Empty } from '@/components/ui/empty';
+import { get } from '@/lib/radash';
 import { isSuccess } from '@/lib/utils';
 // dayjs 相对时间
 dayjs.locale('zh-cn');
@@ -67,7 +67,7 @@ export default function GithubCommit() {
       <ContentLoading loading={loading} />
       {commitList?.length ? (
         <Listbox aria-label={t('dashboard.github-log')} variant="faded" topContent={renderTopContent}>
-          {map(commitList, (item) => (
+          {commitList.map((item) => (
             <ListboxItem key={item.sha} showDivider textValue={item.sha} onPress={() => window.open(item.html_url)}>
               <div className="flex flex-col gap-1">
                 <div className="flex gap-2 items-center">

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { random, sampleSize } from 'lodash-es';
 
-import { LOCALES, RESPONSE_CODE, RESPONSE_MSG } from '@/enums';
+import { RESPONSE_CODE, RESPONSE_MSG } from '@/enums';
+import { random, sample } from '@/lib/radash';
 
 /**
  * @description: 统一返回体
@@ -76,7 +76,10 @@ export const getRandomImg = (size = 1) => {
     images.push(`/images/${i}.jpg`);
   }
   // 获取图片集合
-  const result = sampleSize(images, size);
+  const result = [];
+  for (let i = 0; i < size; i++) {
+    result[i] = sample(images);
+  }
   return result.length === 1 ? result[0] : result;
 };
 

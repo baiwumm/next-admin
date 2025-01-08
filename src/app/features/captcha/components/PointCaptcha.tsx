@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-11 16:00:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-03 11:03:38
+ * @LastEditTime: 2025-01-08 15:40:20
  * @Description: 点选验证码
  */
 import { Alert, Button } from '@nextui-org/react';
 import { useMount, useSetState } from 'ahooks';
-import { cloneDeep, difference, every, join, map, random, sample, shuffle } from 'lodash-es';
 import { FC, type MouseEvent, RefObject, useImperativeHandle, useRef } from 'react';
 
 import ContentLoading from '@/components/ContentLoading';
+import { random, sample, shuffle } from '@/lib/radash';
 import { generateRandomHanziArray, randomColor } from '@/lib/utils';
 
 export type PointCaptchaRef = {
@@ -110,7 +110,7 @@ const PointCaptcha: FC<PointCaptchaProps> = ({
       const dy = Math.abs(point.y - checkPoint.y);
       return dx <= rangeValue && dy <= rangeValue;
     }
-    return every(canvasPoints, (point: Point, index: number) => isWithinRange(point, checkPoints[index]));
+    return canvasPoints.every((point: Point, index: number) => isWithinRange(point, checkPoints[index]));
   };
 
   // 打乱数组，并删除最后一个元素
@@ -184,8 +184,7 @@ const PointCaptcha: FC<PointCaptchaProps> = ({
     // 开始绘制文字
     for (let i = 1; i <= defaultNum; i += 1) {
       // 加入不重复的文字
-      fontChars[i - 1] = sample(difference(fontStr, fontChars)) as string;
-
+      fontChars[i - 1] = sample(fontStr.filter((v) => !fontChars.includes(v))) as string;
       ctx.font = `${random(fontSizeMin, fontSizeMax)}px SimHei`; // 随机生成字体大小
       ctx.fillStyle = randomColor();
 
@@ -210,7 +209,7 @@ const PointCaptcha: FC<PointCaptchaProps> = ({
 
     // 设置提示语
     setState({
-      text: `请顺序点击【${join(map(shuffleCanvasPoints, 'char'), ',')}】`,
+      text: `请顺序点击【${shuffleCanvasPoints.map((v) => v.char).join(',')}】`,
     });
 
     return shuffleCanvasPoints;
@@ -248,7 +247,7 @@ const PointCaptcha: FC<PointCaptchaProps> = ({
     if (state.result) {
       return;
     }
-    const checkPoints = cloneDeep(state.checkPoints);
+    const checkPoints = JSON.parse(JSON.stringify(state.checkPoints));
     // 判断用户点击的坐标是否大于校对的数量
     if (state.checkPoints.length < checkNum) {
       // 获取相对于 canvas 的坐标
@@ -317,7 +316,7 @@ const PointCaptcha: FC<PointCaptchaProps> = ({
         >
           <ContentLoading loading={state.loading} />
           <canvas ref={canvasRef} width={width} height={height} onClick={canvasClick} />
-          {map(state.checkPoints, (point: CanvasPoints, index: number) => (
+          {state.checkPoints.map((point: Point, index: number) => (
             <div
               key={index}
               className="absolute z-50"

@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 14:28:49
+ * @LastEditTime: 2025-01-08 14:42:18
  * @Description: 菜单布局
  */
 'use client';
 
 import { RiArrowRightSLine } from '@remixicon/react';
-import { map } from 'lodash-es';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -47,7 +46,7 @@ export default function NavMain() {
   return (
     <SidebarGroup>
       <SidebarMenu>
-        {map(MenuList, ({ path, name, children = [] }) => (
+        {MenuList.map(({ path, name, children = [] }) => (
           <Collapsible key={path} asChild defaultOpen={activeKey.includes(path)} className="group/collapsible">
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
@@ -66,7 +65,7 @@ export default function NavMain() {
               <CollapsibleContent>
                 {children?.length ? (
                   <SidebarMenuSub>
-                    {map(children, (subItem) => (
+                    {children.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.path}>
                         <SidebarMenuSubButton
                           asChild

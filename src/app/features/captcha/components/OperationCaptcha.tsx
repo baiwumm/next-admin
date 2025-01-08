@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-10 17:55:30
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-10-11 15:24:47
+ * @LastEditTime: 2025-01-08 15:23:24
  * @Description: 运算验证码
  */
 import { useMount } from 'ahooks';
-import { add, multiply, random, subtract } from 'lodash-es';
 import { FC, RefObject, useImperativeHandle, useState } from 'react';
 
+import { random } from '@/lib/radash';
 import { randomColor } from '@/lib/utils';
 
 export type OperationCaptchaRef = {
@@ -81,7 +81,7 @@ const OperationCaptcha: FC<OperationCaptchaProps> = ({
 
     switch (tmparith) {
       case 1:
-        setResult(add(num1, num2));
+        setResult(num1 + num2);
         codeShow = `${num1} + ${num2} = ?`;
         break;
       case 2:
@@ -90,11 +90,11 @@ const OperationCaptcha: FC<OperationCaptchaProps> = ({
           num1 = num2;
           num2 = tmpnum;
         }
-        setResult(subtract(num1, num2));
+        setResult(num1 - num2);
         codeShow = `${num1} - ${num2} = ?`;
         break;
       default:
-        setResult(multiply(num1, num2));
+        setResult(num1 * num2);
         codeShow = `${num1} × ${num2} = ?`;
         break;
     }

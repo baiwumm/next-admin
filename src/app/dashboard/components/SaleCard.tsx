@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 09:19:40
+ * @LastEditTime: 2025-01-08 15:04:43
  * @Description: 总销售额卡片
  */
 'use client';
@@ -10,12 +10,12 @@
 import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
-import { random, toNumber } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
 
 import ContentLoading from '@/components/ContentLoading';
+import { random } from '@/lib/radash';
 
 export default function SaleCard() {
   const t = useTranslations('Pages.dashboard');
@@ -37,10 +37,10 @@ export default function SaleCard() {
     });
     setTimeout(() => {
       setData({
-        total: random(10000000, 100000000, true),
-        date: toNumber(random(1, 100, true).toFixed(2)),
-        week: toNumber(random(1, 100, true).toFixed(2)),
-        complete: toNumber(random(1, 100, true).toFixed(2)),
+        total: random(10000000, 100000000),
+        date: random(1, 100),
+        week: random(1, 100),
+        complete: random(1, 100),
         loading: false,
       });
     }, 1500);
@@ -51,10 +51,10 @@ export default function SaleCard() {
 
     // 创建一个包含随机箭头组件的数组
     const randomArrows = Array.from({ length: 3 }).map(() =>
-      random() < 0.5 ? (
-        <RiArrowDownLine key={random()} size={16} color="#F5222D" />
+      random(0, 1) < 0.5 ? (
+        <RiArrowDownLine key={random(0, 1)} size={16} color="#F5222D" />
       ) : (
-        <RiArrowUpLine key={random()} size={16} color="#52C41A" />
+        <RiArrowUpLine key={random(0, 1)} size={16} color="#52C41A" />
       ),
     );
 

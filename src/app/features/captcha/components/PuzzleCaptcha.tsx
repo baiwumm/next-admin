@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-14 17:57:23
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-03 13:52:36
+ * @LastEditTime: 2025-01-08 15:21:50
  * @Description: 拼图验证码
  */
 import { RiArrowRightDoubleLine, RiResetLeftLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
-import { random, sample, sum } from 'lodash-es';
 import React, { FC, type MouseEventHandler, ReactNode, RefObject, useImperativeHandle, useRef, useState } from 'react';
 
 import ContentLoading from '@/components/ContentLoading';
+import { random, sample, sum } from '@/lib/radash';
 import { getRandomImg } from '@/lib/utils';
 
 export type PuzzleCaptchaRef = {

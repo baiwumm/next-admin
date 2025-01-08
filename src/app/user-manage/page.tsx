@@ -8,9 +8,9 @@
 'use client';
 
 import { useRequest, useSetState } from 'ahooks';
-import { get } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
+import { get } from '@/lib/radash';
 import { getUserList } from '@/services/user-manage';
 
 import TableTemplate from './components/TableTemplate';

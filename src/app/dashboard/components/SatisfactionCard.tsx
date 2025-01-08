@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 08:59:35
+ * @LastEditTime: 2025-01-08 15:06:15
  * @Description: 客户满意度
  */
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
-import { random, toNumber } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
@@ -17,6 +16,7 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer } from 'recharts';
 
 import ContentLoading from '@/components/ContentLoading';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { random } from '@/lib/radash';
 
 type ChartData = {
   month: string;
@@ -44,9 +44,9 @@ export default function SatisfactionCard() {
     });
     setTimeout(() => {
       setData({
-        total: toNumber(random(1, 100, true).toFixed(2)),
-        date: toNumber(random(1, 100, true).toFixed(2)),
-        week: toNumber(random(1, 100, true).toFixed(2)),
+        total: random(1, 100),
+        date: random(1, 100),
+        week: random(1, 100),
         loading: false,
       });
     }, 1500);
@@ -87,10 +87,10 @@ export default function SatisfactionCard() {
 
     // 创建一个包含随机箭头组件的数组
     const randomArrows = Array.from({ length: 2 }).map(() =>
-      random() < 0.5 ? (
-        <RiArrowDownLine key={random()} size={16} color="#F5222D" />
+      random(0, 1) < 0.5 ? (
+        <RiArrowDownLine key={random(0, 1)} size={16} color="#F5222D" />
       ) : (
-        <RiArrowUpLine key={random()} size={16} color="#52C41A" />
+        <RiArrowUpLine key={random(0, 1)} size={16} color="#52C41A" />
       ),
     );
 

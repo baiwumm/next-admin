@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 08:58:57
+ * @LastEditTime: 2025-01-08 15:00:13
  * @Description: 支付笔数
  */
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
-import { map, random, sum, toNumber } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 import CountUp from 'react-countup';
@@ -17,6 +16,7 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 import ContentLoading from '@/components/ContentLoading';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { random, sum } from '@/lib/radash';
 
 type ChartData = {
   month: string;
@@ -42,7 +42,7 @@ export default function PaymentNumberCard() {
     });
     setTimeout(() => {
       setData({
-        complete: toNumber(random(1, 100, true).toFixed(2)),
+        complete: random(1, 100),
         loading: false,
       });
     }, 1500);
@@ -82,10 +82,10 @@ export default function PaymentNumberCard() {
     reset();
 
     setArrow(
-      random() < 0.5 ? (
-        <RiArrowDownLine key={random()} size={16} color="#F5222D" />
+      random(0, 1) < 0.5 ? (
+        <RiArrowDownLine key={random(0, 1)} size={16} color="#F5222D" />
       ) : (
-        <RiArrowUpLine key={random()} size={16} color="#52C41A" />
+        <RiArrowUpLine key={random(0, 1)} size={16} color="#52C41A" />
       ),
     );
   });
@@ -97,7 +97,7 @@ export default function PaymentNumberCard() {
           <div className="flex items-center gap-2">
             <div className="text-sm font-medium">{t('payment-number')}</div>
             <div className="text-2xl font-bold">
-              <CountUp end={sum(map(chartData, 'value'))} separator="," />
+              <CountUp end={sum(chartData.map((v) => v.value))} separator="," />
             </div>
           </div>
           <RiResetRightLine

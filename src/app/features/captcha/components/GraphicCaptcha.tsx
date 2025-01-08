@@ -2,15 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-10 16:35:52
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 16:47:59
+ * @LastEditTime: 2025-01-08 15:31:45
  * @Description: 图形验证码
  */
 'use client';
 
 import { useMount } from 'ahooks';
-import { join, random, times } from 'lodash-es';
 import { RefObject, useEffect, useImperativeHandle, useState } from 'react';
 
+import { random } from '@/lib/radash';
 import { codeChars, randomColor } from '@/lib/utils';
 
 export type GraphicCaptchaRef = {
@@ -45,13 +45,13 @@ export default function GraphicCaptcha({
   const [identifyCode, setIdentifyCode] = useState(''); // 图形验证码的值
 
   // 重置验证码
-  const resetIdentifyCode = () =>
-    setIdentifyCode(
-      join(
-        times(4, () => codeChars[random(0, codeChars.length)]),
-        '',
-      ),
-    );
+  const resetIdentifyCode = () => {
+    const result = [];
+    for (let i = 0; i < 4; i++) {
+      result.push(codeChars[random(0, codeChars.length)]);
+    }
+    return setIdentifyCode(result.join(''));
+  };
 
   /** @description: 绘制文字 */
   const drawText = (ctx: CanvasRenderingContext2D, txt: string, i: number) => {

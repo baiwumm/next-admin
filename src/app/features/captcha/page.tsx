@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-02 16:35:27
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-03 13:45:35
+ * @LastEditTime: 2025-01-08 14:45:11
  * @Description: 验证码
  */
 'use client';
 
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from '@nextui-org/react';
 import { useMount } from 'ahooks';
-import { toNumber } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 import { createRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -68,7 +67,7 @@ export default function Captcha() {
   // 验证运算验证码
   const checkOperationCaptcha = () => {
     if (operationCaptchaRef.current) {
-      validateCaptcha(!operationInput, toNumber(operationCaptchaRef.current.result) === toNumber(operationInput));
+      validateCaptcha(!operationInput, Number(operationCaptchaRef.current.result) === Number(operationInput));
     }
   };
 
@@ -78,7 +77,7 @@ export default function Captcha() {
   };
 
   // 滑块验证码成功回调
-  const onDragCaptchaSuccess = (seconds: number) => {
+  const onDragCaptchaSuccess = (seconds: string) => {
     toast.success(t('slideCodeSuccess', { seconds }));
   };
 
@@ -89,7 +88,7 @@ export default function Captcha() {
   };
 
   // 图片旋转验证码成功回调
-  const onRotateCaptchaSuccess = (seconds: number) => {
+  const onRotateCaptchaSuccess = (seconds: string) => {
     toast.success(t('slideCodeSuccess', { seconds }));
   };
 

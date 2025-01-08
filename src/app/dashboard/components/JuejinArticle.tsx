@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 16:29:46
+ * @LastEditTime: 2025-01-08 14:49:28
  * @Description: 掘金文章列表
  */
 'use client';
@@ -11,12 +11,12 @@ import { Chip, cn, Pagination, User } from '@nextui-org/react';
 import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
-import { ceil, get, map, take, toString } from 'lodash-es';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 import ContentLoading from '@/components/ContentLoading';
 import { Empty } from '@/components/ui/empty';
+import { get } from '@/lib/radash';
 import { getJuejinArticle } from '@/services/auth';
 
 export default function JuejinArticle() {
@@ -45,7 +45,7 @@ export default function JuejinArticle() {
         ...common,
       });
       setTotal(get(result, 'data.total', 0));
-      return take(get(result, 'data.records', []), pageSize);
+      return get(result, 'data.records', []).slice(0, pageSize);
     },
     {
       manual: true,
@@ -53,13 +53,13 @@ export default function JuejinArticle() {
   );
 
   useEffect(() => {
-    fetchJuejinArticleList({ cursor: toString(pageSize * (currentPage - 1)) });
+    fetchJuejinArticleList({ cursor: String(pageSize * (currentPage - 1)) });
   }, [currentPage, fetchJuejinArticleList]);
   return (
     <div className={cn('relative flex flex-col gap-3 pr-4', `opacity-${loading ? '50' : '100'}`)}>
       <ContentLoading loading={loading} />
       {juejinArticleList?.length ? (
-        map(juejinArticleList || [], ({ article_id, author_user_info, article_info, tags }: any) => {
+        juejinArticleList.map(({ article_id, author_user_info, article_info, tags }: any) => {
           // 文章内容
           const content = get(article_info, 'brief_content', '');
           return (
@@ -94,7 +94,7 @@ export default function JuejinArticle() {
               <div className="line-clamp-2 text-xs text-muted-foreground leading-5">{content}</div>
               {tags.length ? (
                 <div className="flex items-center gap-2">
-                  {map(tags, (tag) => (
+                  {tags.map((tag) => (
                     <Chip key={tag.tag_id} size="sm" variant="flat">
                       {tag.tag_name}
                     </Chip>
@@ -114,7 +114,7 @@ export default function JuejinArticle() {
           showControls
           size="sm"
           initialPage={currentPage}
-          total={ceil(total / pageSize)}
+          total={Math.ceil(total / pageSize)}
           onChange={setCurrentPage}
         />
       </div>

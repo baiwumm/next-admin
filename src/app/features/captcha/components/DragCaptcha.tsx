@@ -8,7 +8,6 @@
 import { RiArrowRightDoubleLine, RiCheckboxCircleLine, RiLockLine, RiLockUnlockLine } from '@remixicon/react';
 import { useMount } from 'ahooks';
 import dayjs from 'dayjs';
-import { divide, round, subtract } from 'lodash-es';
 import { FC, type MouseEventHandler, RefObject, useImperativeHandle, useRef, useState } from 'react';
 
 import styles from './darg.module.scss';
@@ -33,7 +32,7 @@ type DragCaptchaProps = {
   textColor?: string; // 文字颜色
   handlerMove?: () => void; // 拖拽开始回调
   passfail?: () => void; // 拖拽失败回调
-  passSuccess?: (seconds: number) => void; // 拖拽成功回调
+  passSuccess?: (seconds: string) => void; // 拖拽成功回调
 };
 
 const DragCaptcha: FC<DragCaptchaProps> = ({
@@ -83,7 +82,7 @@ const DragCaptcha: FC<DragCaptchaProps> = ({
     if (dragCaptchaRef.current) {
       dragCaptchaRef.current.style.setProperty('--textColor', '#fff');
     }
-    passSuccess?.(round(divide(subtract(dayjs().valueOf(), startTime), 1000), 2));
+    passSuccess?.(((dayjs().valueOf() - startTime) / 1000).toFixed(2));
   };
 
   // 拖拽移动回调

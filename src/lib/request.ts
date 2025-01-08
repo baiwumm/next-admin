@@ -2,16 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-13 09:24:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-13 11:08:12
+ * @LastEditTime: 2025-01-08 14:44:15
  * @Description: Axios 二次封装
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { assign, get } from 'lodash-es';
 import queryString from 'query-string';
 import { toast } from 'sonner';
 import storage from 'store';
 
 import { LOCALSTORAGE_KEY } from '@/enums';
+import { get } from '@/lib/radash';
 
 type Response<T = any> = App.Common.IResponse<T>;
 /**
@@ -31,7 +31,7 @@ request.interceptors.request.use(
     const token = storage.get(LOCALSTORAGE_KEY.TOKEN);
     // 设置请求头
     if (config?.headers && token) {
-      assign(config.headers, { Authorization: `Bearer ${token}` });
+      Object.assign(config.headers, { Authorization: `Bearer ${token}` });
     }
     return config;
   },

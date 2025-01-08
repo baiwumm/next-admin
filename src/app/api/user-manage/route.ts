@@ -2,12 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 17:34:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-07 15:14:54
+ * @LastEditTime: 2025-01-08 15:55:26
  * @Description: 用户管理模块
  */
 import { Prisma } from '@prisma/client';
-import bcryptjs from 'bcryptjs';
-import { toNumber } from 'lodash-es';
 import { type NextRequest, NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
@@ -27,8 +25,8 @@ export async function GET(request: NextRequest) {
     const name = searchParams.get('name');
     const email = searchParams.get('email');
     // 分页处理，这里获取到的分页是字符串，需要转换成整数
-    const take = toNumber(size);
-    const skip = (toNumber(current) - 1) * take;
+    const take = Number(size);
+    const skip = (Number(current) - 1) * take;
     // 条件判断
     const where: Prisma.UserWhereInput = {}; // 查询参数
     // 模糊查询
@@ -55,7 +53,7 @@ export async function GET(request: NextRequest) {
       responseMessage({
         records,
         total,
-        current: toNumber(current),
+        current: Number(current),
         size: take,
       }),
     );
