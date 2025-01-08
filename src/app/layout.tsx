@@ -12,6 +12,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
+import UmamiAnalytics from '@/components/Analytics/UmamiAnalytics'; // Umami Analytics
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalLayout from '@/components/GlobalLayout'; // 全局布局
 import ThemeProvider from '@/components/ThemeProvider';
@@ -31,6 +32,8 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
+      {/* umami - 站点统计分析 */}
+      <UmamiAnalytics />
       <body>
         <NextUIProvider>
           <NextIntlClientProvider messages={messages}>
