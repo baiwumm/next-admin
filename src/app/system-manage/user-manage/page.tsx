@@ -11,7 +11,7 @@ import { useRequest, useSetState } from 'ahooks';
 import { useEffect, useState } from 'react';
 
 import { get } from '@/lib/radash';
-import { getUserList } from '@/services/user-manage';
+import { getUserList } from '@/services/system-manage/user-manage';
 
 import TableTemplate from './components/TableTemplate';
 

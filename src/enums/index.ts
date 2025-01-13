@@ -7,6 +7,7 @@ export enum ROUTES_NAME {
   FEATURES = 'features',
   CAPTCHA = 'captcha',
   VIEWER = 'viewer',
+  SYSTEM_MANAGE = 'system-manage',
   USER_MANAGE = 'user-manage',
 }
 

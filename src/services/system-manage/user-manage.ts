@@ -11,5 +11,5 @@ import { httpRequest } from '@/lib/request';
  * @description: 获取用户列表
  */
 export const getUserList = (params?: App.SystemManage.UserSearchParams) => {
-  return httpRequest.get<App.SystemManage.User[]>('/user-manage', params);
+  return httpRequest.get<App.SystemManage.User[]>('/system-manage/user-manage', params);
 };
