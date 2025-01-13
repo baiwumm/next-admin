@@ -35,7 +35,9 @@ declare namespace App {
   }
   namespace SystemManage {
     /** @description: 用户管理 */
-    type User = import('@prisma/client').User;
+    type User = import('@prisma/client').User & {
+      accounts: import('@prisma/client').Account[];
+    };
     /** @description: 查询参数 */
     type UserSearchParams = Common.PaginatingParams & {
       name?: string;

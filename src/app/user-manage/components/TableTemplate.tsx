@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:43:33
+ * @LastEditTime: 2025-01-13 14:51:28
  * @Description: 表格列表
  */
 'use client';
 
 import {
   Button,
+  Chip,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -24,12 +25,13 @@ import {
   TableRow,
   User,
 } from '@nextui-org/react';
-import { RiEqualizer2Line } from '@remixicon/react';
+import { RiEqualizer2Line, RiGithubFill, RiGoogleFill } from '@remixicon/react';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo, useState } from 'react';
 
 import { Empty } from '@/components/ui/empty';
+import { GiteeFill } from '@/constants/icon';
 
 import HeaderSearch, { type HeaderSearchProps } from './HeaderSearch';
 
@@ -57,6 +59,7 @@ export default function TableTemplate({
   // 列配置项
   const columns: Column[] = [
     { key: 'userName', label: t('title') },
+    { key: 'provider', label: t('provider') },
     { key: 'createdAt', label: tGlobal('createdAt') },
   ];
   // 列设置
@@ -117,6 +120,13 @@ export default function TableTemplate({
   const renderCell = useCallback(
     (user: App.SystemManage.User, columnKey: Key) => {
       const cellValue = getKeyValue(user, columnKey as keyof App.SystemManage.User);
+
+      const providerIcon: Record<string, ReactNode> = {
+        github: <RiGithubFill size={18} />,
+        gitee: <GiteeFill size={18} />,
+        google: <RiGoogleFill size={18} />,
+      };
+      const firstAccount = user?.accounts?.[0];
       switch (columnKey) {
         case 'userName':
           return (
@@ -128,6 +138,12 @@ export default function TableTemplate({
               description={user.email}
               name={user.name}
             />
+          );
+        case 'provider':
+          return (
+            <Chip startContent={providerIcon[firstAccount?.provider]} variant="flat">
+              {firstAccount?.provider}
+            </Chip>
           );
         case 'createdAt':
           return dayjs(cellValue).format('YYYY-MM-DD HH:mm:ss');

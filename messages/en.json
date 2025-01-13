@@ -42,7 +42,8 @@
     },
     "user-manage":{
       "title":"User",
-      "email":"Email"
+      "email":"Email",
+      "provider":"Provider"
     },
     "captcha":{
       "rotateCode": "Rotate Code",

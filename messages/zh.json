@@ -42,7 +42,8 @@
     },
     "user-manage":{
       "title":"用户",
-      "email":"邮箱"
+      "email":"邮箱",
+      "provider":"认证平台"
     },
     "captcha":{
       "rotateCode": "图片旋转验证码",
