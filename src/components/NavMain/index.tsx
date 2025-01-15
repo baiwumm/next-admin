@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:42:18
+ * @LastEditTime: 2025-01-15 10:11:40
  * @Description: 菜单布局
  */
 'use client';
-
 import { RiArrowRightSLine } from '@remixicon/react';
+import { useRequest } from 'ahooks';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -22,7 +22,10 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
-import { MenuIconMap, MenuList } from '@/constants/MenuConfig';
+import { MenuIconMap } from '@/constants/icon';
+import { get } from '@/lib/radash';
+import { convertFlatDataToTree } from '@/lib/utils';
+import { getMenuList } from '@/services/system-manage/menu-manage';
 
 export default function NavMain() {
   const t = useTranslations('Route');
@@ -31,6 +34,12 @@ export default function NavMain() {
   // 当前激活的菜单
   const pathname = usePathname();
   const [activeKey, setActiveKey] = useState(pathname);
+
+  // 获取菜单列表
+  const { data: menuList = [] } = useRequest(async () => {
+    const res = get(await getMenuList(), 'data', []);
+    return convertFlatDataToTree(res);
+  });
 
   // 判断当前菜单是否激活
   const isActive = (path: string) => activeKey === path;
@@ -46,7 +55,7 @@ export default function NavMain() {
   return (
     <SidebarGroup>
       <SidebarMenu>
-        {MenuList.map(({ path, name, children = [] }) => (
+        {menuList.map(({ path, name, icon, children = [] }) => (
           <Collapsible key={path} asChild defaultOpen={activeKey.includes(path)} className="group/collapsible">
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
@@ -55,7 +64,7 @@ export default function NavMain() {
                   isActive={isActive(path)}
                   onClick={() => handleMenuClick(path, !!children.length)}
                 >
-                  {MenuIconMap[name]}
+                  {MenuIconMap[icon]}
                   <span>{t(name)}</span>
                   {children?.length ? (
                     <RiArrowRightSLine className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -76,7 +85,7 @@ export default function NavMain() {
                             onClick={() => handleMenuClick(subItem.path, !!subItem.children?.length)}
                             className="cursor-pointer"
                           >
-                            {MenuIconMap[subItem.name]}
+                            {MenuIconMap[subItem.icon]}
                             <span>{t(subItem.name)}</span>
                           </a>
                         </SidebarMenuSubButton>

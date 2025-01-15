@@ -11,7 +11,8 @@
     "viewer":"图片预览",
     "user-manage":"用户管理",
     "personal-center":"个人中心",
-    "/_not-found":"404"
+    "/_not-found":"404",
+    "menu-manage":"菜单管理"
   },
   "Pages":{
     "internationalization":{
@@ -57,7 +58,15 @@
       "verifySuccess": "恭喜您，答案正确！",
       "verify": "验证",
       "graphicCode": "图形验证码"
-  }
+    },
+    "menu-manage":{
+      "title":"菜单",
+      "name":"菜单名称",
+      "nameTip":"请填写国际化字段",
+      "path":"路由地址",
+      "icon":"图标",
+      "redirect":"重定向地址"
+    }
   },
   "Global":{
     "createdAt":"创建时间",

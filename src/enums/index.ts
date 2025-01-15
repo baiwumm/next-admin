@@ -9,6 +9,7 @@ export enum ROUTES_NAME {
   VIEWER = 'viewer',
   SYSTEM_MANAGE = 'system-manage',
   USER_MANAGE = 'user-manage',
+  MENU_MANAGE = 'menu-manage',
 }
 
 /**

@@ -1,3 +1,18 @@
+import {
+  RiApps2AiLine,
+  RiFlowerLine,
+  RiGroupLine,
+  RiImageAddLine,
+  RiInformationLine,
+  RiMenuLine,
+  RiSettings3Line,
+  RiTerminalBoxLine,
+} from '@remixicon/react';
+import { ReactNode } from 'react';
+
+/**
+ * @description: Gitee 图标
+ */
 export const GiteeFill = ({ fill = 'currentColor', size = 20 }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
@@ -7,4 +22,18 @@ export const GiteeFill = ({ fill = 'currentColor', size = 20 }) => {
       />
     </svg>
   );
+};
+
+/**
+ * @description: 菜单图标映射
+ */
+export const MenuIconMap: Record<string, ReactNode> = {
+  RiApps2AiLine: <RiApps2AiLine size={18} />,
+  RiInformationLine: <RiInformationLine size={18} />,
+  RiFlowerLine: <RiFlowerLine size={18} />,
+  RiTerminalBoxLine: <RiTerminalBoxLine size={18} />,
+  RiImageAddLine: <RiImageAddLine size={18} />,
+  RiSettings3Line: <RiSettings3Line size={18} />,
+  RiGroupLine: <RiGroupLine size={18} />,
+  RiMenuLine: <RiMenuLine size={18} />,
 };

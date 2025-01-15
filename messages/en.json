@@ -11,7 +11,8 @@
     "viewer":"Viewer",
     "user-manage":"User Manage",
     "personal-center":"Personal Center",
-    "/_not-found":"404"
+    "/_not-found":"404",
+    "menu-manage":"Menu Manage"
   },
   "Pages":{
     "internationalization":{
@@ -57,7 +58,15 @@
       "verifySuccess": "Congratulations, the answer is correct!",
       "verify": "Verify",
       "graphicCode": "Graphic verification code"
-  }
+    },
+    "menu-manage":{
+      "title":"Title",
+      "name":"Menu Name",
+      "nameTip":"Please fill in the internationalization field",
+      "path":"Path",
+      "icon":"Icon",
+      "redirect":"Redirect"
+    }
   },
   "Global":{
     "createdAt":"CreatedAt",

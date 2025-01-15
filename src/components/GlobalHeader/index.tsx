@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:44:43
+ * @LastEditTime: 2025-01-15 09:57:17
  * @Description: 头部布局
  */
 'use client';
@@ -17,7 +17,7 @@ import FullScreen from '@/components/FullScreen';
 import LangSwitch from '@/components/LangSwitch';
 import ThemeModeButton from '@/components/ThemeModeButton';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { MenuIconMap } from '@/constants/MenuConfig';
+import { MenuIconMap } from '@/constants/icon';
 import { ROUTES_NAME } from '@/enums';
 
 export default function GlobalHeader() {
