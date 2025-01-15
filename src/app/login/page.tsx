@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-03 15:45:52
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-07 11:08:01
+ * @LastEditTime: 2025-01-15 16:28:44
  * @Description: 登录页
  */
 import { Button, Card, CardBody, CardHeader, Divider, User } from '@nextui-org/react';
@@ -24,7 +24,7 @@ export default async function Login() {
         />
       </CardHeader>
       <Divider />
-      <CardBody>
+      <CardBody className="py-6">
         <div className="grid grid-cols-3 gap-4">
           <form
             action={async () => {
@@ -38,7 +38,6 @@ export default async function Login() {
               variant="ghost"
               startContent={<RiGithubFill />}
               className="border w-full"
-              size="sm"
             >
               Github
             </Button>
@@ -55,7 +54,6 @@ export default async function Login() {
               variant="ghost"
               startContent={<GiteeFill />}
               className="border w-full"
-              size="sm"
             >
               Gitee
             </Button>
@@ -72,7 +70,6 @@ export default async function Login() {
               variant="ghost"
               startContent={<RiGoogleFill />}
               className="border w-full"
-              size="sm"
             >
               Google
             </Button>

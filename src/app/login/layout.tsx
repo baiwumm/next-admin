@@ -2,6 +2,7 @@
 
 import { useMount, useUnmount } from 'ahooks';
 
+import GlobalFooter from '@/components/GlobalFooter'; // 底部版权
 import LangSwitch from '@/components/LangSwitch';
 import ThemeModeButton from '@/components/ThemeModeButton';
 import { useLayoutStore } from '@/store/layoutStore';
@@ -21,6 +22,9 @@ export default function LoginLayout({ children }: { children: React.ReactNode })
       <div className="flex absolute top-0 right-0">
         <ThemeModeButton />
         <LangSwitch />
+      </div>
+      <div className="absolute bottom-0 w-full">
+        <GlobalFooter />
       </div>
     </div>
   );
