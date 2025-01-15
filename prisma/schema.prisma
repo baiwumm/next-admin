@@ -82,3 +82,18 @@ model Authenticator {
  
   @@id([userId, credentialID])
 }
+
+// 系统管理 - 菜单管理
+model Menu {
+  id            String          @id @default(uuid()) // 主键
+  parentId      String?  
+  parent        Menu?           @relation(name: "MenuHierarchy", fields: [parentId], references: [id])
+  name          String          @unique // 路由名称
+  path          String          @unique // 路由地址
+  icon          String          // 菜单图标
+  redirect      String?         // 重定向地址
+  sort          Int             @default(1)// 排序
+  createdAt     DateTime        @default(now()) // 创建时间
+  updatedAt     DateTime        @updatedAt // 更新时间
+  children      Menu[]          @relation(name: "MenuHierarchy")
+}
