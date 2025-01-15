@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 10:11:40
+ * @LastEditTime: 2025-01-15 15:59:51
  * @Description: 菜单布局
  */
 'use client';
@@ -26,6 +26,7 @@ import { MenuIconMap } from '@/constants/icon';
 import { get } from '@/lib/radash';
 import { convertFlatDataToTree } from '@/lib/utils';
 import { getMenuList } from '@/services/system-manage/menu-manage';
+import { useUserStore } from '@/store/userStore';
 
 export default function NavMain() {
   const t = useTranslations('Route');
@@ -38,6 +39,7 @@ export default function NavMain() {
   // 获取菜单列表
   const { data: menuList = [] } = useRequest(async () => {
     const res = get(await getMenuList(), 'data', []);
+    useUserStore.setState({ menuList: res });
     return convertFlatDataToTree(res);
   });
 

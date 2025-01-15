@@ -60,7 +60,7 @@
       "graphicCode": "Graphic verification code"
     },
     "menu-manage":{
-      "title":"Title",
+      "title":"Menu",
       "name":"Menu Name",
       "nameTip":"Please fill in the internationalization field",
       "path":"Path",
