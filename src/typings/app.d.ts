@@ -22,6 +22,11 @@ declare namespace App {
     };
     /** @description: 国际化语言 */
     type Langs = 'zh' | 'en';
+    /** @description: 查询时间 */
+    type SearchTime = {
+      startTime?: number; // 开始时间
+      endTime?: number; // 结束时间
+    };
   }
   namespace Auth {
     /** @description: 国际化层级数据 */
@@ -43,5 +48,16 @@ declare namespace App {
       name?: string;
       email?: string;
     };
+    /** @description: 菜单管理 */
+    type Menu = import('@prisma/client').Menu & {
+      parent: null | Menu;
+    };
+    /** @description: 查询参数 */
+    type MenuSearchParams = Common.SearchTime & {
+      name?: string;
+    };
+    /** @description: 保存参数 */
+    type MenuSaveParams = Partial<Pick<Menu, 'id' | 'parentId' | 'redirect'>> &
+      Pick<Menu, 'name' | 'path' | 'icon' | 'sort'>;
   }
 }
