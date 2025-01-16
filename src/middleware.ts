@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-03 15:16:03
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 15:13:52
+ * @LastEditTime: 2025-01-16 14:29:05
  * @Description: 全局中间件
  */
 
@@ -53,6 +53,12 @@ export default auth(async (req: NextRequest) => {
     url.pathname = '/login';
     // 可选：将原始URL作为查询参数传递给登录页，以便登录后重定向回去
     url.searchParams.set('callbackUrl', req.nextUrl.pathname);
+    return NextResponse.redirect(url);
+  }
+
+  if (isLogin && req.nextUrl.pathname === '/') {
+    const url = req.nextUrl.clone();
+    url.pathname = '/dashboard';
     return NextResponse.redirect(url);
   }
 
