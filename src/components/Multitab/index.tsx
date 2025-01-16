@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-16 11:06:32
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 17:26:24
+ * @LastEditTime: 2025-01-16 17:36:15
  * @Description: 多标签页
  */
 import { Tab, Tabs } from '@nextui-org/react';
@@ -50,8 +50,8 @@ export default function Multitab() {
           <Tab
             key={route}
             title={
-              <div className="flex items-center space-x-2">
-                <Icon icon={menuItem?.icon} />
+              <div className="flex items-center space-x-1">
+                <Icon icon={menuItem?.icon} className="text-sm" />
                 <span>{t(menuItem?.name as ROUTES_NAME)}</span>
               </div>
             }
