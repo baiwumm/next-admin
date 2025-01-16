@@ -1,4 +1,25 @@
+# Changelog
 
+## 1.3.0 (2025-01-16)
+
+* feat: 顶部面包屑加上图标 ([6da9d92](https://github.com/baiwumm/next-admin/commit/6da9d92))
+* feat: 删除 .env 文件 ([4f037fe](https://github.com/baiwumm/next-admin/commit/4f037fe))
+* feat: 添加 Umami 统计分析代码 ([87d9a9b](https://github.com/baiwumm/next-admin/commit/87d9a9b))
+* feat: 移除 lodah-es 包，解决打包不兼容报错的问题 ([c105a58](https://github.com/baiwumm/next-admin/commit/c105a58))
+* feat(api): 新增菜单管理模块接口和路由 ([c5f696a](https://github.com/baiwumm/next-admin/commit/c5f696a))
+* feat(menu-manage): 完成《菜单管理》模块的功能交互开发 ([77ca95a](https://github.com/baiwumm/next-admin/commit/77ca95a))
+* feat(middleware): 用户登录访问域名直接跳转到首页，避免跳转404页面 ([25932c2](https://github.com/baiwumm/next-admin/commit/25932c2))
+* feat(Multitab): 新增路由多标签页显示 ([3c55f39](https://github.com/baiwumm/next-admin/commit/3c55f39))
+* feat(paisma): 更新模型 ([1118503](https://github.com/baiwumm/next-admin/commit/1118503))
+* feat(prisma): 新增 Menu 模型 ([2bd2521](https://github.com/baiwumm/next-admin/commit/2bd2521))
+* feat(user-manage): 新增 Provider 字段 ([e6e4ec5](https://github.com/baiwumm/next-admin/commit/e6e4ec5))
+* style(login): 登录页添加版权信息，样式调整 ([f9322e1](https://github.com/baiwumm/next-admin/commit/f9322e1))
+* ci(package.json): 升级 prisma 相关依赖版本 ([1b7d593](https://github.com/baiwumm/next-admin/commit/1b7d593))
+* ci(package.json): 新增 next-auth 相关包 ([5cef38f](https://github.com/baiwumm/next-admin/commit/5cef38f))
+* perf: 删除国际化模块相关代码 ([e810665](https://github.com/baiwumm/next-admin/commit/e810665))
+* perf: 文件夹结构整理 ([ca2c0e1](https://github.com/baiwumm/next-admin/commit/ca2c0e1))
+* fix: 解决国际化不能切换的问题 ([57a8290](https://github.com/baiwumm/next-admin/commit/57a8290))
+* refactor(user-manage): 基于 next-auth 重构《用户管理》模块 ([9abfe2c](https://github.com/baiwumm/next-admin/commit/9abfe2c))
 
 ## 1.2.0 (2025-01-03)
 
