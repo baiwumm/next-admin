@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 14:16:22
+ * @LastEditTime: 2025-01-16 17:25:37
  * @Description: 头部布局
  */
 'use client';
@@ -18,7 +18,7 @@ import LangSwitch from '@/components/LangSwitch';
 import Multitab from '@/components/Multitab';
 import ThemeModeButton from '@/components/ThemeModeButton';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { MenuIconMap } from '@/constants/icon';
+import { Icon } from '@iconify/react';
 import { ROUTES_NAME } from '@/enums';
 import { useUserStore } from '@/store/userStore';
 
@@ -41,7 +41,11 @@ export default function GlobalHeader() {
                 <BreadcrumbItem
                   key={path}
                   startContent={
-                    menuItem?.icon ? <div className="breadcrumb-icon">{MenuIconMap[menuItem.icon]}</div> : undefined
+                    menuItem?.icon ? (
+                      <div className="breadcrumb-icon">
+                        <Icon icon={menuItem.icon} />
+                      </div>
+                    ) : undefined
                   }
                 >
                   {t(path as ROUTES_NAME)}

@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:50:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-07 13:41:08
+ * @LastEditTime: 2025-01-16 17:02:58
  * @Description: 用户下拉选项
  */
 'use client';
+import { Icon } from '@iconify/react';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Spinner, User } from '@nextui-org/react';
-import { RiExpandUpDownLine, RiIdCardLine, RiLogoutBoxRLine } from '@remixicon/react';
 import { signOut, useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
@@ -50,17 +50,25 @@ export default function NavUser() {
               ) : (
                 renderUser
               )}
-              <RiExpandUpDownLine className="ml-auto size-4" />
+              <Icon icon="ri:expand-up-down-line" className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownTrigger>
           <DropdownMenu className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg">
             <DropdownItem key="user" className="p-0 font-normal" showDivider>
               {renderUser}
             </DropdownItem>
-            <DropdownItem key="personal-center" startContent={<RiIdCardLine size={16} />} showDivider>
+            <DropdownItem
+              key="personal-center"
+              startContent={<Icon icon="ri:id-card-line" className="size-4" />}
+              showDivider
+            >
               {t('personal-center')}
             </DropdownItem>
-            <DropdownItem key="logout" startContent={<RiLogoutBoxRLine size={16} />} onPress={() => handleLogout()}>
+            <DropdownItem
+              key="logout"
+              startContent={<Icon icon="ri:logout-box-r-line" className="size-4" />}
+              onPress={() => handleLogout()}
+            >
               {t('logout')}
             </DropdownItem>
           </DropdownMenu>

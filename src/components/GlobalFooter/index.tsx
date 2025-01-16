@@ -2,20 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 09:55:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-03 14:09:27
+ * @LastEditTime: 2025-01-16 16:56:15
  * @Description: 底部版权信息
  */
 'use client';
-
+import { Icon } from '@iconify/react';
 import { Button, Image, Link, Spacer, Tooltip } from '@nextui-org/react';
-import {
-  type RemixiconComponentType,
-  RiBarChart2Line,
-  RiGithubLine,
-  RiMailLine,
-  RiQuillPenLine,
-  RiWechatLine,
-} from '@remixicon/react';
 import { useTranslations } from 'next-intl';
 
 export default function GlobalFooter() {
@@ -30,10 +22,10 @@ export default function GlobalFooter() {
   );
 
   // 渲染社交图标
-  const renderSocial = (tip: string, url: string = '', Icon: RemixiconComponentType) => (
+  const renderSocial = (tip: string, url: string = '', icon: string) => (
     <Tooltip showArrow content={tip} placement="top">
       <Button variant="light" size="sm" isIconOnly onPress={() => window.open(url)}>
-        <Icon size={16} />
+        <Icon icon={icon} className="text-base" />
       </Button>
     </Tooltip>
   );
@@ -62,15 +54,15 @@ export default function GlobalFooter() {
         {/* 社交图标 */}
         <div className="max-sm:order-first flex items-center">
           {/* 网站统计 */}
-          {renderSocial(t('website-statistics'), process.env.NEXT_PUBLIC_SITE_STATISTICS, RiBarChart2Line)}
+          {renderSocial(t('website-statistics'), process.env.NEXT_PUBLIC_SITE_STATISTICS, 'ri:bar-chart-2-line')}
           {/* Github */}
-          {renderSocial('Github', `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`, RiGithubLine)}
+          {renderSocial('Github', `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`, 'ri:github-line')}
           {/* 微信 */}
-          {renderSocial(t('wechat'), process.env.NEXT_PUBLIC_AUTHOR_WECHAT, RiWechatLine)}
+          {renderSocial(t('wechat'), process.env.NEXT_PUBLIC_AUTHOR_WECHAT, 'ri:wechat-line')}
           {/* 邮箱 */}
-          {renderSocial('Email', `mailto:${process.env.NEXT_PUBLIC_AUTHOR_EMAIL}`, RiMailLine)}
+          {renderSocial('Email', `mailto:${process.env.NEXT_PUBLIC_AUTHOR_EMAIL}`, 'ri:mail-line')}
           {/* 博客 */}
-          {renderSocial(t('blog'), process.env.NEXT_PUBLIC_AUTHOR_BLOG, RiQuillPenLine)}
+          {renderSocial(t('blog'), process.env.NEXT_PUBLIC_AUTHOR_BLOG, 'ri:quill-pen-ai-line')}
         </div>
       </div>
     </footer>

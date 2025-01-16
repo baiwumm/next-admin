@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 15:00:13
+ * @LastEditTime: 2025-01-16 16:34:38
  * @Description: 支付笔数
  */
+import { Icon } from '@iconify/react';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
-import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
@@ -83,9 +83,9 @@ export default function PaymentNumberCard() {
 
     setArrow(
       random(0, 1) < 0.5 ? (
-        <RiArrowDownLine key={random(0, 1)} size={16} color="#F5222D" />
+        <Icon icon="ri:arrow-down-line" key={random(0, 1)} color="#F5222D" className="text-base" />
       ) : (
-        <RiArrowUpLine key={random(0, 1)} size={16} color="#52C41A" />
+        <Icon icon="ri:arrow-up-line" key={random(0, 1)} color="#52C41A" className="text-base" />
       ),
     );
   });
@@ -100,7 +100,8 @@ export default function PaymentNumberCard() {
               <CountUp end={sum(chartData.map((v) => v.value))} separator="," />
             </div>
           </div>
-          <RiResetRightLine
+          <Icon
+            icon="ri:reset-right-line"
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => reset()}
           />

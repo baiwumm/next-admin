@@ -1,8 +1,7 @@
 'use client';
-
+import { Icon } from '@iconify/react';
 import { cn, Tooltip } from '@nextui-org/react';
 import { Slot } from '@radix-ui/react-slot';
-import { RiMenuFoldLine, RiMenuUnfoldLine } from '@remixicon/react';
 import { cva, VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
@@ -232,10 +231,12 @@ const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.C
         }}
         {...props}
       >
-        <RiMenuUnfoldLine
+        <Icon
+          icon="ri:menu-unfold-line"
           className={cn('rotate-0 scale-100 transition-all duration-300', open ? '-rotate-90 scale-0' : '')}
         />
-        <RiMenuFoldLine
+        <Icon
+          icon="ri:menu-fold-line"
           className={cn('absolute rotate-90 scale-0 transition-all duration-300', open ? 'rotate-0 scale-100' : '')}
         />
         <span className="sr-only">Toggle Sidebar</span>

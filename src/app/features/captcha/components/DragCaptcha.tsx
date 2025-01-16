@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-11 10:58:33
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-02 17:40:46
+ * @LastEditTime: 2025-01-16 16:12:27
  * @Description: 滑块验证码
  */
-import { RiArrowRightDoubleLine, RiCheckboxCircleLine, RiLockLine, RiLockUnlockLine } from '@remixicon/react';
+import { Icon } from '@iconify/react';
 import { useMount } from 'ahooks';
 import dayjs from 'dayjs';
 import { FC, type MouseEventHandler, RefObject, useImperativeHandle, useRef, useState } from 'react';
@@ -202,7 +202,7 @@ const DragCaptcha: FC<DragCaptchaProps> = ({
         }}
       >
         <div className="flex justify-center items-center gap-2" style={{ color: isPassing ? '#fff' : textColor }}>
-          {isPassing ? <RiLockUnlockLine size={16} /> : <RiLockLine size={16} />}
+          <Icon icon={isPassing ? 'ri:lock-unlock-line' : 'ri:lock-line'} />
           {isPassing ? successText : text}
         </div>
       </div>
@@ -220,9 +220,9 @@ const DragCaptcha: FC<DragCaptchaProps> = ({
         onMouseDown={dragStart}
       >
         {isPassing ? (
-          <RiCheckboxCircleLine size={16} color={completedBg} />
+          <Icon icon="ri:checkbox-circle-line" color={completedBg} />
         ) : (
-          <RiArrowRightDoubleLine size={16} color="#000" />
+          <Icon icon="ri:arrow-right-double-line" />
         )}
       </div>
     </div>

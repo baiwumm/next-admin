@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 17:04:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:49:28
+ * @LastEditTime: 2025-01-16 16:28:25
  * @Description: 掘金文章列表
  */
 'use client';
 
+import { Icon } from '@iconify/react';
 import { Chip, cn, Pagination, User } from '@nextui-org/react';
-import { RiArticleLine, RiFontSize2, RiTimeLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
@@ -75,16 +75,16 @@ export default function JuejinArticle() {
                 description={
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1 text-xs font-medium mt-1">
-                      <RiTimeLine size={14} />
+                      <Icon icon="ri:time-line" className="text-sm" />
                       {t('dashboard.read')}：{get(article_info, 'read_time', '')}
                     </div>
                     <div className="flex items-center gap-1 text-xs font-medium mt-1">
-                      <RiArticleLine size={14} />
+                      <Icon icon="ri:article-line" className="text-sm" />
                       {t('dashboard.published')}：
                       {dayjs(parseInt(get(article_info, 'ctime'), 10) * 1000).format('YYYY-MM-DD HH:mm')}
                     </div>
                     <div className="flex items-center gap-1 text-xs font-medium mt-1">
-                      <RiFontSize2 size={14} />
+                      <Icon icon="ri:font-size-2" className="text-sm" />
                       {t('dashboard.words')}：{get(article_info, 'content_count', 0)}
                     </div>
                   </div>

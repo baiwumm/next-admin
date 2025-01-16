@@ -2,9 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-14 14:52:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 09:42:37
+ * @LastEditTime: 2025-01-16 17:17:07
  * @Description: 新增编辑弹窗
  */
+import { Icon } from '@iconify/react';
 import {
   Button,
   Form,
@@ -149,6 +150,8 @@ export default function SaveModal({
                     size="sm"
                     maxLength={200}
                     onValueChange={(value) => setFormData({ icon: value })}
+                    description={t('iconTip')}
+                    endContent={<Icon icon={formData.icon} />}
                   />
                   <Input
                     value={formData.redirect || ''}

@@ -1,7 +1,6 @@
 'use client';
-
+import { Icon } from '@iconify/react';
 import { cn } from '@nextui-org/react';
-import { RiDraggable } from '@remixicon/react';
 import * as ResizablePrimitive from 'react-resizable-panels';
 
 const ResizablePanelGroup = ({ className, ...props }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
@@ -29,7 +28,7 @@ const ResizableHandle = ({
   >
     {withHandle && (
       <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <RiDraggable className="h-2.5 w-2.5" />
+        <Icon icon="ri:draggable" className="h-2.5 w-2.5" />
       </div>
     )}
   </ResizablePrimitive.PanelResizeHandle>

@@ -65,6 +65,7 @@
       "nameTip":"请填写国际化字段",
       "path":"路由地址",
       "icon":"图标",
+      "iconTip":"请填写图标名称，如：ri:home-line",
       "redirect":"重定向地址"
     }
   },

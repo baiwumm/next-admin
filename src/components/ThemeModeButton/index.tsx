@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-09 09:43:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-03 13:55:48
+ * @LastEditTime: 2025-01-16 17:05:08
  * @Description: 主题切换按钮
  */
 'use client';
-
+import { Icon } from '@iconify/react';
 import { Tooltip } from '@nextui-org/react';
-import { RiMoonLine, RiSunLine } from '@remixicon/react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { MouseEventHandler } from 'react';
@@ -55,10 +54,13 @@ export default function ThemeModeButton() {
         className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent  outline-none text-tiny rounded-small px-0 gap-0 transition-transform-colors-opacity motion-reduce:transition-none bg-transparent text-default-foreground hover:bg-default/40 min-w-8 w-8 h-8"
         onClick={toggleDark}
       >
-        <RiSunLine size={16} className="rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
-        <RiMoonLine
-          size={16}
-          className="absolute rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100"
+        <Icon
+          icon="ri:sun-line"
+          className="rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0 size-4"
+        />
+        <Icon
+          icon="ri:moon-line"
+          className="absolute rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100 size-4"
         />
       </button>
     </Tooltip>

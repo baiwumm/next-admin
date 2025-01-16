@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-20 09:19:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:36:29
+ * @LastEditTime: 2025-01-16 16:24:55
  * @Description: Github 提交日志
  */
 'use client';
@@ -10,8 +10,8 @@
 // 引入中文语言包
 import 'dayjs/locale/zh-cn';
 
+import { Icon } from '@iconify/react';
 import { Avatar, Chip, cn, Listbox, ListboxItem, Tooltip } from '@nextui-org/react';
-import { RiGitCommitLine, RiResetRightLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -50,7 +50,8 @@ export default function GithubCommit() {
         {t('dashboard.github-log')}
       </Chip>
       <Tooltip content={t('dashboard.get-latest')}>
-        <RiResetRightLine
+        <Icon
+          icon="ri:reset-right-line"
           className={`h-4 w-4 text-muted-foreground cursor-pointer ${loading ? 'animate-spin' : ''}`}
           onClick={() => run()}
         />
@@ -71,7 +72,7 @@ export default function GithubCommit() {
             <ListboxItem key={item.sha} showDivider textValue={item.sha} onPress={() => window.open(item.html_url)}>
               <div className="flex flex-col gap-1">
                 <div className="flex gap-2 items-center">
-                  <RiGitCommitLine />
+                  <Icon icon="ri:git-commit-line" className="h-6 w-6" />
                   <div className="font-sm font-semibold">{item.commit.message}</div>
                 </div>
                 <div className="flex gap-2 items-center">

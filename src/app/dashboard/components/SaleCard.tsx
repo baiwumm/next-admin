@@ -6,9 +6,8 @@
  * @Description: 总销售额卡片
  */
 'use client';
-
+import { Icon } from '@iconify/react';
 import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react';
-import { RiArrowDownLine, RiArrowUpLine, RiResetRightLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
@@ -52,9 +51,9 @@ export default function SaleCard() {
     // 创建一个包含随机箭头组件的数组
     const randomArrows = Array.from({ length: 3 }).map(() =>
       random(0, 1) < 0.5 ? (
-        <RiArrowDownLine key={random(0, 1)} size={16} color="#F5222D" />
+        <Icon icon="ri:arrow-down-line" key={random(0, 1)} color="#F5222D" className="text-base" />
       ) : (
-        <RiArrowUpLine key={random(0, 1)} size={16} color="#52C41A" />
+        <Icon icon="ri:arrow-up-line" key={random(0, 1)} color="#52C41A" className="text-base" />
       ),
     );
 
@@ -67,7 +66,8 @@ export default function SaleCard() {
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
           <div className="text-sm font-medium">{t('sales-total')}</div>
-          <RiResetRightLine
+          <Icon
+            icon="ri:reset-right-line"
             className={`h-4 w-4 text-muted-foreground cursor-pointer ${data.loading ? 'animate-spin' : ''}`}
             onClick={() => initData()}
           />

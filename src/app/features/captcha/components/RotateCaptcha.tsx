@@ -3,11 +3,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-14 16:17:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 15:49:02
+ * @LastEditTime: 2025-01-16 16:17:07
  * @Description: 图片旋转验证码
  */
+import { Icon } from '@iconify/react';
 import { cn, Image } from '@nextui-org/react';
-import { RiArrowRightDoubleLine, RiCheckboxCircleLine } from '@remixicon/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { CSSProperties, FC, type MouseEventHandler, RefObject, useImperativeHandle, useRef } from 'react';
@@ -317,9 +317,9 @@ const RotateCaptcha: FC<RotateCaptchaProps> = ({
           onMouseDown={dragStart}
         >
           {state.isPassing ? (
-            <RiCheckboxCircleLine size={16} color={completedBg} />
+            <Icon icon="ri:checkbox-circle-line" color={completedBg} />
           ) : (
-            <RiArrowRightDoubleLine size={16} color="#000" />
+            <Icon icon="ri:arrow-right-double-line" />
           )}
         </div>
       </div>

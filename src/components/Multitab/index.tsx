@@ -2,15 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-16 11:06:32
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 13:43:48
+ * @LastEditTime: 2025-01-16 17:26:24
  * @Description: 多标签页
  */
 import { Tab, Tabs } from '@nextui-org/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-
-import { MenuIconMap } from '@/constants/icon';
+import { Icon } from '@iconify/react';
 import { ROUTES_NAME } from '@/enums';
 import { useUserStore } from '@/store/userStore';
 export default function Multitab() {
@@ -52,7 +51,7 @@ export default function Multitab() {
             key={route}
             title={
               <div className="flex items-center space-x-2">
-                {MenuIconMap[menuItem?.icon]}
+                <Icon icon={menuItem?.icon} />
                 <span>{t(menuItem?.name as ROUTES_NAME)}</span>
               </div>
             }

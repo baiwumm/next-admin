@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-14 11:17:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 09:36:23
+ * @LastEditTime: 2025-01-16 16:41:43
  * @Description: 菜单管理
  */
 'use client';
 
+import { Icon } from '@iconify/react';
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, useDisclosure } from '@nextui-org/react';
-import { RiEqualizer2Line } from '@remixicon/react';
 import { useRequest, useSetState } from 'ahooks';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -111,7 +111,7 @@ export default function MenuManage() {
         <Dropdown>
           <DropdownTrigger className="hidden sm:flex">
             <Button variant="ghost" size="sm" className="border">
-              <RiEqualizer2Line size={18} />
+              <Icon icon="ri:equalizer-2-line" className="text-lg" />
               {tGlobal('column-setting')}
             </Button>
           </DropdownTrigger>

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 15:23:52
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:41:34
+ * @LastEditTime: 2025-01-16 16:19:51
  * @Description: 图片预览
  */
 'use client';
@@ -73,7 +73,7 @@ export default function Viewer() {
         <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
           {images.map((item: ImageDecorator, i: number) => (
             <Image
-              key={item.src}
+              key={item.src + i}
               src={item.src}
               height={250}
               width="100%"

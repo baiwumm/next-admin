@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 13:39:41
+ * @LastEditTime: 2025-01-16 17:27:19
  * @Description: 菜单布局
  */
 'use client';
-import { RiArrowRightSLine } from '@remixicon/react';
+import { Icon } from '@iconify/react';
 import { useRequest } from 'ahooks';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -22,7 +22,6 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
-import { MenuIconMap } from '@/constants/icon';
 import { get } from '@/lib/radash';
 import { convertFlatDataToTree } from '@/lib/utils';
 import { getMenuList } from '@/services/system-manage/menu-manage';
@@ -70,10 +69,13 @@ export default function NavMain() {
                   isActive={isActive(path)}
                   onClick={() => handleMenuClick(path, !!children.length)}
                 >
-                  {MenuIconMap[icon]}
+                  <Icon icon={icon} />
                   <span>{t(name)}</span>
                   {children?.length ? (
-                    <RiArrowRightSLine className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    <Icon
+                      icon="ri:arrow-right-s-line"
+                      className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
+                    />
                   ) : null}
                 </SidebarMenuButton>
               </CollapsibleTrigger>
@@ -91,7 +93,7 @@ export default function NavMain() {
                             onClick={() => handleMenuClick(subItem.path, !!subItem.children?.length)}
                             className="cursor-pointer"
                           >
-                            {MenuIconMap[subItem.icon]}
+                            <Icon icon={subItem.icon} />
                             <span>{t(subItem.name)}</span>
                           </a>
                         </SidebarMenuSubButton>

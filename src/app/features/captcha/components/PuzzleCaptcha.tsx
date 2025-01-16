@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-14 17:57:23
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 15:21:50
+ * @LastEditTime: 2025-01-16 16:16:10
  * @Description: 拼图验证码
  */
-import { RiArrowRightDoubleLine, RiResetLeftLine } from '@remixicon/react';
+import { Icon } from '@iconify/react';
 import { useMount, useSetState } from 'ahooks';
 import React, { FC, type MouseEventHandler, ReactNode, RefObject, useImperativeHandle, useRef, useState } from 'react';
 
@@ -305,7 +305,7 @@ const PuzzleCaptcha: FC<PuzzleCaptchaProp> = ({
             }}
             onMouseDown={handleDragStart}
           >
-            <RiArrowRightDoubleLine size={18} color="#000" />
+            <Icon icon="ri:arrow-right-double-line" />
           </div>
         </div>
         <div className="opacity-65 select-none text-sm dark:text-slate-800" style={{ lineHeight: `${slideHeight}px` }}>
@@ -314,7 +314,7 @@ const PuzzleCaptcha: FC<PuzzleCaptchaProp> = ({
       </div>
       {/* 刷新按钮 */}
       <div onClick={handleRefresh} className="absolute right-1.5 top-1.5 cursor-pointer">
-        <RiResetLeftLine color="#fff" />
+        <Icon icon="ri:reset-left-line" color="#fff" />
       </div>
     </div>
   );

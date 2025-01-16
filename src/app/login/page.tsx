@@ -2,14 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-03 15:45:52
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 16:28:44
+ * @LastEditTime: 2025-01-16 16:39:50
  * @Description: 登录页
  */
+import { Icon } from '@iconify/react';
 import { Button, Card, CardBody, CardHeader, Divider, User } from '@nextui-org/react';
-import { RiGithubFill, RiGoogleFill } from '@remixicon/react';
 
 import { signIn } from '@/auth';
-import { GiteeFill } from '@/constants/icon';
 
 export default async function Login() {
   return (
@@ -36,7 +35,7 @@ export default async function Login() {
               type="submit"
               color="default"
               variant="ghost"
-              startContent={<RiGithubFill />}
+              startContent={<Icon icon="ri:github-fill" className="text-lg" />}
               className="border w-full"
             >
               Github
@@ -52,7 +51,7 @@ export default async function Login() {
               type="submit"
               color="default"
               variant="ghost"
-              startContent={<GiteeFill />}
+              startContent={<Icon icon="simple-icons:gitee" className="text-lg" />}
               className="border w-full"
             >
               Gitee
@@ -68,7 +67,7 @@ export default async function Login() {
               type="submit"
               color="default"
               variant="ghost"
-              startContent={<RiGoogleFill />}
+              startContent={<Icon icon="ri:google-fill" className="text-lg" />}
               className="border w-full"
             >
               Google

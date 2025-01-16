@@ -65,6 +65,7 @@
       "nameTip":"Please fill in the internationalization field",
       "path":"Path",
       "icon":"Icon",
+      "iconTip":"Enter the icon name, for example, ri:home-line",
       "redirect":"Redirect"
     }
   },

@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 11:31:29
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-14 16:02:12
+ * @LastEditTime: 2025-01-16 16:44:02
  * @Description: 顶部搜索
  */
+import { Icon } from '@iconify/react';
 import { parseDate } from '@internationalized/date';
 import { Button, DateRangePicker, Input, Spinner } from '@nextui-org/react';
-import { RiAddLine, RiResetLeftLine, RiSearchLine } from '@remixicon/react';
 import { SetState } from 'ahooks/es/useSetState';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
@@ -70,15 +70,15 @@ export default function HeaderSearch({
         }}
       />
       <Button variant="ghost" size="sm" disabled={loading} onPress={refresh} className="border">
-        {loading ? <Spinner size="sm" /> : <RiSearchLine size={18} />}
+        {loading ? <Spinner size="sm" /> : <Icon icon="ri:search-line" className="text-lg" />}
         {tGlobal('search')}
       </Button>
       <Button variant="ghost" size="sm" onPress={resetForm} className="border">
-        <RiResetLeftLine size={18} />
+        <Icon icon="ri:reset-left-line" className="text-lg" />
         {tGlobal('reset')}
       </Button>
       <Button variant="ghost" size="sm" onPress={onOpen} className="border">
-        <RiAddLine size={18} />
+        <Icon icon="ri:add-line" className="text-lg" />
         {tGlobal('add')}
       </Button>
     </div>

@@ -5,8 +5,8 @@
  * @LastEditTime: 2024-12-30 15:28:56
  * @Description: 顶部搜索
  */
+import { Icon } from '@iconify/react';
 import { Button, Input, Spinner } from '@nextui-org/react';
-import { RiResetLeftLine, RiSearchLine } from '@remixicon/react';
 import { SetState } from 'ahooks/es/useSetState';
 import { useTranslations } from 'next-intl';
 
@@ -50,11 +50,11 @@ export default function HeaderSearch({ loading = false, refresh, searchParams, s
         onValueChange={(value) => setSearchParams({ email: value })}
       />
       <Button variant="ghost" size="sm" disabled={loading} onPress={refresh} className="border">
-        {loading ? <Spinner size="sm" /> : <RiSearchLine size={18} />}
+        {loading ? <Spinner size="sm" /> : <Icon icon="ri:search-line" className="text-lg" />}
         {tGlobal('search')}
       </Button>
       <Button variant="ghost" size="sm" onPress={resetForm} className="border">
-        <RiResetLeftLine size={18} />
+        <Icon icon="ri:reset-left-line" className="text-lg" />
         {tGlobal('reset')}
       </Button>
     </div>

@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 09:28:39
+ * @LastEditTime: 2025-01-16 17:21:43
  * @Description: 表格列表
  */
 'use client';
-
+import { Icon } from '@iconify/react';
 import {
   Button,
   Chip,
@@ -19,13 +19,11 @@ import {
   TableHeader,
   TableRow,
 } from '@nextui-org/react';
-import { RiDeleteBinLine, RiEditLine } from '@remixicon/react';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo } from 'react';
 
 import { Empty } from '@/components/ui/empty';
-import { MenuIconMap } from '@/constants/icon';
 import { UNIFORM_TEXT } from '@/enums';
 
 export type Column = {
@@ -70,7 +68,11 @@ export default function TableTemplate({
         case 'name':
           return tRoute(cellValue);
         case 'icon':
-          return <div className="mx-auto text-slate-500 w-max">{MenuIconMap[cellValue] || cellValue}</div>;
+          return (
+            <div className="mx-auto text-slate-500 w-max text-xl">
+              <Icon icon={cellValue} />
+            </div>
+          );
         case 'parent':
           return row.parent ? tRoute(row.parent.name) : UNIFORM_TEXT.NULL;
         case 'sort':
@@ -86,7 +88,7 @@ export default function TableTemplate({
                 variant="shadow"
                 size="sm"
                 onPress={() => handleEdit(row)}
-                startContent={<RiEditLine size={14} />}
+                startContent={<Icon icon="ri:edit-line" className="text-sm" />}
               >
                 {tGlobal('edit')}
               </Button>
@@ -97,7 +99,7 @@ export default function TableTemplate({
                 disabled={delLoading}
                 onPress={() => handleDelete(row.id)}
                 isLoading={delLoading && menuId === row.id}
-                startContent={<RiDeleteBinLine size={14} />}
+                startContent={<Icon icon="ri:delete-bin-line" className="text-sm" />}
               >
                 {tGlobal('delete')}
               </Button>

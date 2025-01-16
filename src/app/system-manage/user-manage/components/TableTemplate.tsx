@@ -6,7 +6,7 @@
  * @Description: 表格列表
  */
 'use client';
-
+import { Icon } from '@iconify/react';
 import {
   Button,
   Chip,
@@ -25,13 +25,11 @@ import {
   TableRow,
   User,
 } from '@nextui-org/react';
-import { RiEqualizer2Line, RiGithubFill, RiGoogleFill } from '@remixicon/react';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo, useState } from 'react';
 
 import { Empty } from '@/components/ui/empty';
-import { GiteeFill } from '@/constants/icon';
 
 import HeaderSearch, { type HeaderSearchProps } from './HeaderSearch';
 
@@ -75,7 +73,7 @@ export default function TableTemplate({
       <Dropdown>
         <DropdownTrigger className="hidden sm:flex">
           <Button variant="ghost" size="sm" className="border">
-            <RiEqualizer2Line size={18} />
+            <Icon icon="ri:equalizer-2-line" className="text-lg" />
             {tGlobal('column-setting')}
           </Button>
         </DropdownTrigger>
@@ -122,9 +120,9 @@ export default function TableTemplate({
       const cellValue = getKeyValue(user, columnKey as keyof App.SystemManage.User);
 
       const providerIcon: Record<string, ReactNode> = {
-        github: <RiGithubFill size={18} />,
-        gitee: <GiteeFill size={18} />,
-        google: <RiGoogleFill size={18} />,
+        github: <Icon icon="ri:github-fill" className="text-lg" />,
+        gitee: <Icon icon="simple-icons:gitee" className="text-lg" />,
+        google: <Icon icon="ri:google-fill" className="text-lg" />,
       };
       const firstAccount = user?.accounts?.[0];
       switch (columnKey) {
