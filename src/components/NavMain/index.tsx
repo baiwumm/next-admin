@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-15 15:59:51
+ * @LastEditTime: 2025-01-16 13:39:41
  * @Description: 菜单布局
  */
 'use client';
@@ -10,7 +10,7 @@ import { RiArrowRightSLine } from '@remixicon/react';
 import { useRequest } from 'ahooks';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
@@ -54,6 +54,10 @@ export default function NavMain() {
     router.push(path);
     setActiveKey(path);
   };
+
+  useEffect(() => {
+    setActiveKey(pathname);
+  }, [pathname]);
   return (
     <SidebarGroup>
       <SidebarMenu>
