@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextui-org/react';
+import { cn } from '@heroui/react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import * as React from 'react';
 

@@ -5,7 +5,7 @@
  * @LastEditTime: 2025-01-08 15:40:20
  * @Description: 点选验证码
  */
-import { Alert, Button } from '@nextui-org/react';
+import { Alert, Button } from '@heroui/react';
 import { useMount, useSetState } from 'ahooks';
 import { FC, type MouseEvent, RefObject, useImperativeHandle, useRef } from 'react';
 

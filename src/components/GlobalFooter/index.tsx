@@ -7,7 +7,7 @@
  */
 'use client';
 import { Icon } from '@iconify/react';
-import { Button, Image, Link, Spacer, Tooltip } from '@nextui-org/react';
+import { Button, Image, Link, Spacer, Tooltip } from '@heroui/react';
 import { useTranslations } from 'next-intl';
 
 export default function GlobalFooter() {

@@ -6,7 +6,7 @@
  * @Description: 客户满意度
  */
 import { Icon } from '@iconify/react';
-import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, CardHeader } from '@heroui/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';

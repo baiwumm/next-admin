@@ -17,7 +17,7 @@ import {
   ModalHeader,
   Select,
   SelectItem,
-} from '@nextui-org/react';
+} from '@heroui/react';
 import { useRequest } from 'ahooks';
 import { SetState } from 'ahooks/es/useSetState';
 import { useTranslations } from 'next-intl';

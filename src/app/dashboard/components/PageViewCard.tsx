@@ -6,8 +6,8 @@
  * @Description: 访问量
  */
 import { Icon } from '@iconify/react';
-import { cn } from '@nextui-org/react';
-import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
+import { cn } from '@heroui/react';
+import { Card, CardBody, CardFooter, CardHeader } from '@heroui/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';

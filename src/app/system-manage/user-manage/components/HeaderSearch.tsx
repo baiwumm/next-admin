@@ -6,7 +6,7 @@
  * @Description: 顶部搜索
  */
 import { Icon } from '@iconify/react';
-import { Button, Input, Spinner } from '@nextui-org/react';
+import { Button, Input, Spinner } from '@heroui/react';
 import { SetState } from 'ahooks/es/useSetState';
 import { useTranslations } from 'next-intl';
 

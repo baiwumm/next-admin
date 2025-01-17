@@ -11,7 +11,7 @@
 import 'dayjs/locale/zh-cn';
 
 import { Icon } from '@iconify/react';
-import { Avatar, Chip, cn, Listbox, ListboxItem, Tooltip } from '@nextui-org/react';
+import { Avatar, Chip, cn, Listbox, ListboxItem, Tooltip } from '@heroui/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';

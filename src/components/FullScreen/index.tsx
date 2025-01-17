@@ -7,7 +7,7 @@
  */
 'use client';
 import { Icon } from '@iconify/react';
-import { Button, cn, Tooltip } from '@nextui-org/react';
+import { Button, cn, Tooltip } from '@heroui/react';
 import { useFullscreen } from 'ahooks';
 import { useTranslations } from 'next-intl';
 

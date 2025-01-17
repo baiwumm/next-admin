@@ -8,7 +8,7 @@
 'use client';
 
 import { Icon } from '@iconify/react';
-import { Chip, cn, Pagination, User } from '@nextui-org/react';
+import { Chip, cn, Pagination, User } from '@heroui/react';
 import { useRequest } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';

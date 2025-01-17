@@ -7,7 +7,7 @@
  */
 'use client';
 
-import { Card, CardBody, CardHeader, Divider, Image, Link } from '@nextui-org/react';
+import { Card, CardBody, CardHeader, Divider, Image, Link } from '@heroui/react';
 import { useMount } from 'ahooks';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';

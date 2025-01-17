@@ -7,7 +7,7 @@
  */
 'use client';
 import { Icon } from '@iconify/react';
-import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, CardHeader, Divider } from '@heroui/react';
 import { useMount, useSetState } from 'ahooks';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';

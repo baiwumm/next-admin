@@ -6,7 +6,7 @@
  * @Description: 登录页
  */
 import { Icon } from '@iconify/react';
-import { Button, Card, CardBody, CardHeader, Divider, User } from '@nextui-org/react';
+import { Button, Card, CardBody, CardHeader, Divider, User } from '@heroui/react';
 
 import { signIn } from '@/auth';
 

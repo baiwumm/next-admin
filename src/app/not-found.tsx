@@ -6,7 +6,7 @@
  * @Description: 404页面
  */
 
-import { Button } from '@nextui-org/react';
+import { Button } from '@heroui/react';
 import Link from 'next/link';
 
 export default function NotFound() {

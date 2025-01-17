@@ -7,8 +7,8 @@
  */
 'use client';
 
-import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
-import { Divider } from '@nextui-org/react';
+import { BreadcrumbItem, Breadcrumbs } from '@heroui/react';
+import { Divider } from '@heroui/react';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 

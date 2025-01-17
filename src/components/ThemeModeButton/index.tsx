@@ -7,7 +7,7 @@
  */
 'use client';
 import { Icon } from '@iconify/react';
-import { Tooltip } from '@nextui-org/react';
+import { Tooltip } from '@heroui/react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { MouseEventHandler } from 'react';

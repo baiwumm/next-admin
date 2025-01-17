@@ -5,7 +5,7 @@
  * @LastEditTime: 2024-12-19 16:31:39
  * @Description: 页面 Loading
  */
-import { Spinner } from '@nextui-org/react';
+import { Spinner } from '@heroui/react';
 
 export default function Loading() {
   return (

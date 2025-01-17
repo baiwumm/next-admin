@@ -7,7 +7,7 @@
  */
 'use client';
 
-import { Button, cn, Tooltip } from '@nextui-org/react';
+import { Button, cn, Tooltip } from '@heroui/react';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
 

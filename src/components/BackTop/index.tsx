@@ -7,7 +7,7 @@
  */
 'use client';
 
-import { CircularProgress, Tooltip } from '@nextui-org/react';
+import { CircularProgress, Tooltip } from '@heroui/react';
 import { useMount } from 'ahooks';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { useTranslations } from 'next-intl';

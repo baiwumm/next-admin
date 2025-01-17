@@ -5,7 +5,7 @@
  * @LastEditTime: 2025-01-08 14:39:23
  * @Description: 关于
  */
-import { Alert, Card, CardBody, CardHeader, Chip, Divider } from '@nextui-org/react';
+import { Alert, Card, CardBody, CardHeader, Chip, Divider } from '@heroui/react';
 import { useTranslations } from 'next-intl';
 
 import pkg from '../../../package.json';

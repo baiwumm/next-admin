@@ -7,7 +7,7 @@
  */
 import './globals.scss';
 
-import { NextUIProvider } from '@nextui-org/react';
+import { HeroUIProvider } from '@heroui/react';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -35,7 +35,7 @@ export default async function RootLayout({
       {/* umami - 站点统计分析 */}
       <UmamiAnalytics />
       <body>
-        <NextUIProvider>
+        <HeroUIProvider>
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider attribute="class" defaultTheme="light">
               {/* 全局 Loading */}
@@ -44,7 +44,7 @@ export default async function RootLayout({
             </ThemeProvider>
           </NextIntlClientProvider>
           <Toaster position="top-center" />
-        </NextUIProvider>
+        </HeroUIProvider>
       </body>
     </html>
   );

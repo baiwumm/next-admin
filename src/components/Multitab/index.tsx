@@ -5,7 +5,7 @@
  * @LastEditTime: 2025-01-16 17:36:15
  * @Description: 多标签页
  */
-import { Tab, Tabs } from '@nextui-org/react';
+import { Tab, Tabs } from '@heroui/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';

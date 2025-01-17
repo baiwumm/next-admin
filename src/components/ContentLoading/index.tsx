@@ -5,7 +5,7 @@
  * @LastEditTime: 2024-12-20 17:03:06
  * @Description: 内容盒子 Loading
  */
-import { Spinner } from '@nextui-org/react';
+import { Spinner } from '@heroui/react';
 
 type ContentLoadingProps = {
   loading: boolean;

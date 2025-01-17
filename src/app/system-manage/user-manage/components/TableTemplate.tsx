@@ -24,7 +24,7 @@ import {
   TableHeader,
   TableRow,
   User,
-} from '@nextui-org/react';
+} from '@heroui/react';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo, useState } from 'react';

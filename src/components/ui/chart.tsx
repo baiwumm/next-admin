@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@nextui-org/react';
+import { cn } from '@heroui/react';
 import * as React from 'react';
 import * as RechartsPrimitive from 'recharts';
 

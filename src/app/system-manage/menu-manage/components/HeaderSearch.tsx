@@ -7,7 +7,7 @@
  */
 import { Icon } from '@iconify/react';
 import { parseDate } from '@internationalized/date';
-import { Button, DateRangePicker, Input, Spinner } from '@nextui-org/react';
+import { Button, DateRangePicker, Input, Spinner } from '@heroui/react';
 import { SetState } from 'ahooks/es/useSetState';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';

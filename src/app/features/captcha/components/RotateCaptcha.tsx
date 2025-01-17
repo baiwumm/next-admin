@@ -7,7 +7,7 @@
  * @Description: 图片旋转验证码
  */
 import { Icon } from '@iconify/react';
-import { cn, Image } from '@nextui-org/react';
+import { cn, Image } from '@heroui/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { CSSProperties, FC, type MouseEventHandler, RefObject, useImperativeHandle, useRef } from 'react';

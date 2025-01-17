@@ -7,7 +7,7 @@
  */
 'use client';
 
-import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from '@nextui-org/react';
+import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from '@heroui/react';
 import { useMount } from 'ahooks';
 import { useTranslations } from 'next-intl';
 import { createRef, useState } from 'react';
