@@ -16,7 +16,8 @@
     "technical-document":"技术文档",
     "nextjs":"Next.js 文档",
     "heroui":"Heroui 文档",
-    "prisma":"Prisma 文档"
+    "prisma":"Prisma 文档",
+    "swiper":"Swiper"
   },
   "Pages":{
     "internationalization":{
@@ -71,6 +72,15 @@
       "icon":"图标",
       "iconTip":"请填写图标名称，如：ri:home-line",
       "redirect":"重定向地址"
+    },
+    "swiper":{
+      "cube":"方块",
+      "flip":"翻转",
+      "card":"卡片特效",
+      "coverflow":"3d 流翻转",
+      "thumbnail":"缩略图",
+      "creative":"创意效果",
+      "visual":"横向循环焦点图片展示"
     }
   },
   "Global":{

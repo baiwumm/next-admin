@@ -16,7 +16,8 @@
     "technical-document":"Technical Document",
     "nextjs":"Next.js Document",
     "heroui":"Heroui Document",
-    "prisma":"Prisma Document"
+    "prisma":"Prisma Document",
+    "swiper":"Swiper"
   },
   "Pages":{
     "internationalization":{
@@ -71,6 +72,15 @@
       "icon":"Icon",
       "iconTip":"Enter the icon name, for example, ri:home-line",
       "redirect":"Redirect"
+    },
+    "swiper":{
+      "cube":"Cube",
+      "flip":"Flip",
+      "card":"Card Effect",
+      "coverflow":"3d Effect",
+      "thumbnail":"Thumbnail",
+      "creative":"Creative",
+      "visual":"Horizontal loop focus picture display"
     }
   },
   "Global":{
