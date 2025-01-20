@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
+    "@heroui/react": "2.6.13",
     "@hookform/resolvers": "^3.9.1",
     "@iconify/react": "^5.2.0",
     "@internationalized/date": "^3.6.0",
-    "@heroui/react": "2.6.13",
     "@prisma/client": "^6.2.1",
     "@radix-ui/react-collapsible": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.4",
@@ -49,6 +49,7 @@
     "recharts": "^2.15.0",
     "sonner": "^1.7.1",
     "store": "^2.0.12",
+    "swiper": "^11.2.1",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^5.0.2"
   },
