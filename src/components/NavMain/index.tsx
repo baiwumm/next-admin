@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-20 10:37:52
+ * @LastEditTime: 2025-01-20 11:02:40
  * @Description: 菜单布局
  */
 'use client';
@@ -45,12 +45,15 @@ export default function NavMain() {
   // 判断当前菜单是否激活
   const isActive = (path: string) => activeKey === path;
 
+  // 判断是否是合法域名
+  const isLink = (path: string) => path.startsWith('https://') || path.startsWith('http://');
+
   // 点击菜单回调
   const handleMenuClick = (path: string, hasChdilren = false) => {
     if (hasChdilren) {
       return;
     }
-    if (path.startsWith('https://') || path.startsWith('http://')) {
+    if (isLink(path)) {
       window.open(path);
     } else {
       router.push(path);
@@ -75,6 +78,7 @@ export default function NavMain() {
                 >
                   <Icon icon={icon} />
                   <span>{t(name)}</span>
+                  {isLink(path) ? <Icon icon="ri:share-box-fill" /> : null}
                   {children?.length ? (
                     <Icon
                       icon="ri:arrow-right-s-line"
@@ -99,6 +103,7 @@ export default function NavMain() {
                           >
                             <Icon icon={subItem.icon} />
                             <span>{t(subItem.name)}</span>
+                            {isLink(subItem.path) ? <Icon icon="ri:share-box-fill" /> : null}
                           </a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
