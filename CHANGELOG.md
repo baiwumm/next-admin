@@ -1,5 +1,17 @@
 # Changelog
 
+## <small>1.3.1 (2025-01-20)</small>
+
+* style: 圆角属性调整 ([94c6e84](https://github.com/baiwumm/next-admin/commit/94c6e84))
+* style(Multitab): 样式调整 ([3b0a965](https://github.com/baiwumm/next-admin/commit/3b0a965))
+* feat: 新增《技术文档》菜单模块 ([46ab79c](https://github.com/baiwumm/next-admin/commit/46ab79c))
+* feat: add README.md ([e3a88a2](https://github.com/baiwumm/next-admin/commit/e3a88a2))
+* feat(NavMain): 新增新窗口打开图标 ([8ddc517](https://github.com/baiwumm/next-admin/commit/8ddc517))
+* feat(swiper): 新增《Swiper》菜单模块 ([2377cbd](https://github.com/baiwumm/next-admin/commit/2377cbd))
+* ci(package.json): 使用 @iconify/react 替换  @remixicon/react ([cb9a901](https://github.com/baiwumm/next-admin/commit/cb9a901))
+* ci(package.json): 新增 swiper 依赖包 ([c210bba](https://github.com/baiwumm/next-admin/commit/c210bba))
+* perf: nextui 迁移到 heroui ([d9a8f7f](https://github.com/baiwumm/next-admin/commit/d9a8f7f))
+
 ## 1.3.0 (2025-01-16)
 
 * feat: 顶部面包屑加上图标 ([6da9d92](https://github.com/baiwumm/next-admin/commit/6da9d92))
