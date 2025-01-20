@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 17:21:43
+ * @LastEditTime: 2025-01-20 18:04:37
  * @Description: 表格列表
  */
 'use client';
-import { Icon } from '@iconify/react';
 import {
   Button,
   Chip,
@@ -19,6 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo } from 'react';
@@ -112,7 +112,7 @@ export default function TableTemplate({
     [tGlobal],
   );
   return (
-    <Table isStriped aria-label="User Manage" topContentPlacement="outside">
+    <Table isStriped aria-label="Menu Manage" topContentPlacement="outside" radius="sm">
       <TableHeader columns={headerColumns}>
         {({ key, label, ...column }) => (
           <TableColumn key={key} align="center" {...column}>

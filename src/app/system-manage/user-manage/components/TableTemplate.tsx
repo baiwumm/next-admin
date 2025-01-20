@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-26 15:10:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-13 14:51:28
+ * @LastEditTime: 2025-01-20 18:03:36
  * @Description: 表格列表
  */
 'use client';
-import { Icon } from '@iconify/react';
 import {
   Button,
   Chip,
@@ -25,6 +24,7 @@ import {
   TableRow,
   User,
 } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { Key, ReactNode, useCallback, useMemo, useState } from 'react';
@@ -159,6 +159,7 @@ export default function TableTemplate({
       topContentPlacement="outside"
       bottomContent={renderBottomContent}
       bottomContentPlacement="outside"
+      radius="sm"
     >
       <TableHeader columns={headerColumns}>
         {({ key, label, ...column }) => (

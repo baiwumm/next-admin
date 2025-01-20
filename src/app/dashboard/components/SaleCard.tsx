@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:49:07
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 15:04:43
+ * @LastEditTime: 2025-01-20 17:55:33
  * @Description: 总销售额卡片
  */
 'use client';
-import { Icon } from '@iconify/react';
 import { Card, CardBody, CardFooter, CardHeader, Divider } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useMount, useSetState } from 'ahooks';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
@@ -61,7 +61,7 @@ export default function SaleCard() {
     setArrows(randomArrows);
   });
   return (
-    <Card>
+    <Card radius="sm">
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">

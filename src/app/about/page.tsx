@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-04 09:59:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:39:23
+ * @LastEditTime: 2025-01-20 17:57:52
  * @Description: 关于
  */
 import { Alert, Card, CardBody, CardHeader, Chip, Divider } from '@heroui/react';
@@ -16,7 +16,7 @@ export default function About() {
   const t = useTranslations('Pages');
   return (
     <div className="flex flex-col gap-4">
-      <Card>
+      <Card radius="sm">
         <CardHeader>
           <div className="font-bold">{t('about.dependencies')}</div>
         </CardHeader>
@@ -28,6 +28,7 @@ export default function About() {
                 key={key}
                 hideIcon
                 color="primary"
+                radius="sm"
                 title={
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold">{key}</span>
@@ -41,7 +42,7 @@ export default function About() {
           </div>
         </CardBody>
       </Card>
-      <Card>
+      <Card radius="sm">
         <CardHeader>
           <div className="font-bold">{t('about.dev-dependencies')}</div>
         </CardHeader>
@@ -53,6 +54,7 @@ export default function About() {
                 key={key}
                 hideIcon
                 color="primary"
+                radius="sm"
                 title={
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold">{key}</span>

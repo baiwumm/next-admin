@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-02 16:35:27
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-08 14:45:11
+ * @LastEditTime: 2025-01-20 17:59:59
  * @Description: 验证码
  */
 'use client';
@@ -116,7 +116,7 @@ export default function Captcha() {
   });
   return (
     <div className="flex flex-col gap-4">
-      <Card>
+      <Card radius="sm">
         <CardHeader>
           <h3 className="font-bold text-large">{tRoute('captcha')}</h3>
         </CardHeader>
@@ -126,7 +126,7 @@ export default function Captcha() {
       </Card>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {/* 图形验证码 */}
-        <Card>
+        <Card radius="sm">
           <CardHeader>
             <h4 className="font-bold text-large">{t('graphicCode')}</h4>
           </CardHeader>
@@ -155,7 +155,7 @@ export default function Captcha() {
           </CardFooter>
         </Card>
         {/* 运算验证码 */}
-        <Card>
+        <Card radius="sm">
           <CardHeader>
             <h4 className="font-bold text-large">{t('operationCode')}</h4>
           </CardHeader>
@@ -178,7 +178,7 @@ export default function Captcha() {
           </CardFooter>
         </Card>
         {/* 滑块验证码 */}
-        <Card>
+        <Card radius="sm">
           <CardHeader>
             <h4 className="font-bold text-large">{t('slideCode')}</h4>
           </CardHeader>
@@ -193,7 +193,7 @@ export default function Captcha() {
           </CardFooter>
         </Card>
         {/* 图片旋转验证码 */}
-        <Card>
+        <Card radius="sm">
           <CardHeader>
             <h4 className="font-bold text-large">{t('rotateCode')}</h4>
           </CardHeader>
@@ -208,7 +208,7 @@ export default function Captcha() {
           </CardFooter>
         </Card>
         {/* 拼图验证码 */}
-        <Card>
+        <Card radius="sm">
           <CardHeader>
             <h4 className="font-bold text-large">{t('puzzleCode')}</h4>
           </CardHeader>
@@ -223,7 +223,7 @@ export default function Captcha() {
           </CardFooter>
         </Card>
         {/* 点选验证码 */}
-        <Card>
+        <Card radius="sm">
           <CardHeader>
             <h4 className="font-bold text-large">{t('pointsCode')}</h4>
           </CardHeader>

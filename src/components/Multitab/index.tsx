@@ -6,10 +6,11 @@
  * @Description: 多标签页
  */
 import { Tab, Tabs } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { Icon } from '@iconify/react';
+
 import { ROUTES_NAME } from '@/enums';
 import { useUserStore } from '@/store/userStore';
 export default function Multitab() {

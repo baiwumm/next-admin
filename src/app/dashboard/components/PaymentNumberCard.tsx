@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 16:34:38
+ * @LastEditTime: 2025-01-20 17:55:02
  * @Description: 支付笔数
  */
-import { Icon } from '@iconify/react';
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
@@ -90,7 +90,7 @@ export default function PaymentNumberCard() {
     );
   });
   return (
-    <Card>
+    <Card radius="sm">
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">

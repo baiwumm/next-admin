@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-23 15:23:52
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 16:19:51
+ * @LastEditTime: 2025-01-20 18:01:36
  * @Description: 图片预览
  */
 'use client';
@@ -52,7 +52,7 @@ export default function Viewer() {
     setImages(imgList());
   });
   return (
-    <Card>
+    <Card radius="sm">
       <CardHeader>
         <div className="flex justify-between items-center w-full">
           <h1 className="text-xl font-bold">{t('viewer')}</h1>
@@ -79,7 +79,8 @@ export default function Viewer() {
               width="100%"
               onClick={() => handleClickImage(i)}
               alt="Image Viewer"
-              className="cursor-pointer object-cover rounded-md"
+              className="cursor-pointer object-cover"
+              radius="sm"
             />
           ))}
         </div>

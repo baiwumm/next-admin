@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-18 13:57:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 16:36:25
+ * @LastEditTime: 2025-01-20 17:54:19
  * @Description: 客户满意度
  */
-import { Icon } from '@iconify/react';
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
@@ -98,7 +98,7 @@ export default function SatisfactionCard() {
     setArrows(randomArrows);
   });
   return (
-    <Card>
+    <Card radius="sm">
       <div className={`relative transition-opacity opacity-${data.loading ? '50' : '100'}`}>
         <ContentLoading loading={data.loading} />
         <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
