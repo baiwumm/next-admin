@@ -12,7 +12,11 @@
     "user-manage":"User Manage",
     "personal-center":"Personal Center",
     "/_not-found":"404",
-    "menu-manage":"Menu Manage"
+    "menu-manage":"Menu Manage",
+    "technical-document":"Technical Document",
+    "nextjs":"Next.js Document",
+    "heroui":"Heroui Document",
+    "prisma":"Prisma Document"
   },
   "Pages":{
     "internationalization":{

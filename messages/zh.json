@@ -12,7 +12,11 @@
     "user-manage":"用户管理",
     "personal-center":"个人中心",
     "/_not-found":"404",
-    "menu-manage":"菜单管理"
+    "menu-manage":"菜单管理",
+    "technical-document":"技术文档",
+    "nextjs":"Next.js 文档",
+    "heroui":"Heroui 文档",
+    "prisma":"Prisma 文档"
   },
   "Pages":{
     "internationalization":{

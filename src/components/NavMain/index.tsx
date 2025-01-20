@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-06 14:47:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 17:27:19
+ * @LastEditTime: 2025-01-20 10:37:52
  * @Description: 菜单布局
  */
 'use client';
@@ -50,8 +50,12 @@ export default function NavMain() {
     if (hasChdilren) {
       return;
     }
-    router.push(path);
-    setActiveKey(path);
+    if (path.startsWith('https://') || path.startsWith('http://')) {
+      window.open(path);
+    } else {
+      router.push(path);
+      setActiveKey(path);
+    }
   };
 
   useEffect(() => {
