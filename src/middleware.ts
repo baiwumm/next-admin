@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-03 15:16:03
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-20 10:33:05
+ * @LastEditTime: 2025-01-21 14:44:44
  * @Description: 全局中间件
  */
 
@@ -29,9 +29,9 @@ export default auth(async (req: NextRequest) => {
       return NextResponse.json(responseMessage(null, '请先登录', -1));
     }
     // 如果不是GET请求，返回一个带有消息的响应
-    // if (!isProtectedRoute) {
-    //   return NextResponse.json(responseMessage(null, '演示系统，禁止操作', -1));
-    // }
+    if (!isProtectedRoute) {
+      return NextResponse.json(responseMessage(null, '演示系统，禁止操作', -1));
+    }
   }
 
   // 检查是否为不受保护的路由
