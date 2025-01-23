@@ -17,7 +17,8 @@
     "nextjs":"Next.js Document",
     "heroui":"Heroui Document",
     "prisma":"Prisma Document",
-    "swiper":"Swiper"
+    "swiper":"Swiper",
+    "charts":"Charts"
   },
   "Pages":{
     "internationalization":{
@@ -81,6 +82,14 @@
       "thumbnail":"Thumbnail",
       "creative":"Creative",
       "visual":"Horizontal loop focus picture display"
+    },
+    "charts":{
+      "area":"Area Chart",
+      "bar":"Bar Chart",
+      "line":"Line Chart",
+      "pie":"Pie Chart",
+      "radar":"Radar Chart",
+      "radial":"Radial Chart"
     }
   },
   "Global":{

@@ -1,18 +1,4 @@
 /**
- * @description: 路由枚举
- */
-export enum ROUTES_NAME {
-  DASHBOARD = 'dashboard',
-  ABOUT = 'about',
-  FEATURES = 'features',
-  CAPTCHA = 'captcha',
-  VIEWER = 'viewer',
-  SYSTEM_MANAGE = 'system-manage',
-  USER_MANAGE = 'user-manage',
-  MENU_MANAGE = 'menu-manage',
-}
-
-/**
  * @description: 请求状态码
  */
 export enum RESPONSE_CODE {

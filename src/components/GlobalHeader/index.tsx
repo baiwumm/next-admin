@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-12-10 11:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 17:25:37
+ * @LastEditTime: 2025-01-23 09:02:13
  * @Description: 头部布局
  */
 'use client';
 
 import { BreadcrumbItem, Breadcrumbs } from '@heroui/react';
 import { Divider } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
@@ -18,8 +19,6 @@ import LangSwitch from '@/components/LangSwitch';
 import Multitab from '@/components/Multitab';
 import ThemeModeButton from '@/components/ThemeModeButton';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { Icon } from '@iconify/react';
-import { ROUTES_NAME } from '@/enums';
 import { useUserStore } from '@/store/userStore';
 
 export default function GlobalHeader() {
@@ -48,7 +47,7 @@ export default function GlobalHeader() {
                     ) : undefined
                   }
                 >
-                  {t(path as ROUTES_NAME)}
+                  {t(path)}
                 </BreadcrumbItem>
               );
             })}

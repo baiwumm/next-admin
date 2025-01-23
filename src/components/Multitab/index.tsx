@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-01-16 11:06:32
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-01-16 17:36:15
+ * @LastEditTime: 2025-01-23 09:02:34
  * @Description: 多标签页
  */
 import { Tab, Tabs } from '@heroui/react';
@@ -11,7 +11,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-import { ROUTES_NAME } from '@/enums';
 import { useUserStore } from '@/store/userStore';
 export default function Multitab() {
   const t = useTranslations('Route');
@@ -53,7 +52,7 @@ export default function Multitab() {
             title={
               <div className="flex items-center space-x-1">
                 <Icon icon={menuItem?.icon} className="text-sm" />
-                <span>{t(menuItem?.name as ROUTES_NAME)}</span>
+                <span>{t(menuItem?.name)}</span>
               </div>
             }
           />

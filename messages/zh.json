@@ -17,7 +17,8 @@
     "nextjs":"Next.js 文档",
     "heroui":"Heroui 文档",
     "prisma":"Prisma 文档",
-    "swiper":"Swiper"
+    "swiper":"Swiper",
+    "charts":"图表"
   },
   "Pages":{
     "internationalization":{
@@ -81,6 +82,14 @@
       "thumbnail":"缩略图",
       "creative":"创意效果",
       "visual":"横向循环焦点图片展示"
+    },
+    "charts":{
+      "area":"面积图",
+      "bar":"柱状图",
+      "line":"折线图",
+      "pie":"饼图",
+      "radar":"雷达图",
+      "radial":"径向图"
     }
   },
   "Global":{
