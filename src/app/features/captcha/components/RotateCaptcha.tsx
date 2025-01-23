@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 /*
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2024-10-14 16:17:01
@@ -6,8 +5,8 @@
  * @LastEditTime: 2025-01-16 16:17:07
  * @Description: 图片旋转验证码
  */
-import { Icon } from '@iconify/react';
 import { cn, Image } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useMount, useSetState } from 'ahooks';
 import dayjs from 'dayjs';
 import { CSSProperties, FC, type MouseEventHandler, RefObject, useImperativeHandle, useRef } from 'react';

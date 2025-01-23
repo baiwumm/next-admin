@@ -6,8 +6,8 @@
  * @Description: 底部版权信息
  */
 'use client';
-import { Icon } from '@iconify/react';
 import { Button, Image, Link, Spacer, Tooltip } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useTranslations } from 'next-intl';
 
 export default function GlobalFooter() {

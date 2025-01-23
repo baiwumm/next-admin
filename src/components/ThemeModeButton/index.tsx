@@ -6,8 +6,8 @@
  * @Description: 主题切换按钮
  */
 'use client';
-import { Icon } from '@iconify/react';
 import { Tooltip } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { MouseEventHandler } from 'react';

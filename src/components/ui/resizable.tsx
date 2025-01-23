@@ -1,6 +1,6 @@
 'use client';
-import { Icon } from '@iconify/react';
 import { cn } from '@heroui/react';
+import { Icon } from '@iconify/react';
 import * as ResizablePrimitive from 'react-resizable-panels';
 
 const ResizablePanelGroup = ({ className, ...props }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
