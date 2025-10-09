@@ -1,0 +1,36 @@
+{
+  "name": "next-admin",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "baiwumm",
+    "email": "me@baiwumm.com",
+    "url": "https://baiwumm.com"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@heroui/react": "^2.8.5",
+    "framer-motion": "^12.23.22",
+    "next": "15.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "release-it": "^19.0.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
