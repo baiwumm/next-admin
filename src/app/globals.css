@@ -27,3 +27,82 @@ body {
   color: var(--foreground);
   font-family: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+@keyframes loaderBefore {
+  0% {
+   width: 0.5em;
+   box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+ 
+  35% {
+   width: 2.5em;
+   box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
+  }
+ 
+  70% {
+   width: 0.5em;
+   box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+ 
+  100% {
+   box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+ }
+ 
+ @keyframes loaderAfter {
+  0% {
+   height: 0.5em;
+   box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+ 
+  35% {
+   height: 2.5em;
+   box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
+  }
+ 
+  70% {
+   height: 0.5em;
+   box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
+  }
+ 
+  100% {
+   box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+ }
+
+/* 修改滚动条样式 */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-bg);
+  border-radius: 2.5px;
+  transition: .35s background-color;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover);
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 暗黑模式过渡动画 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}

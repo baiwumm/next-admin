@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import "./globals.css";
 import { HeroUIProvider } from "@heroui/react";
+import type { Metadata } from "next";
+
+import "./globals.css";
+import FullLoading from '@/components/FullLoading'; // 全局 Loading
 
 export const metadata: Metadata = {
   title: "Next Admin",
@@ -22,6 +24,8 @@ export default function RootLayout({
       </head>
       <body>
         <HeroUIProvider>
+          {/* 全局 Loading */}
+          <FullLoading />
           {children}
         </HeroUIProvider>
       </body>
