@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-10 13:52:21
+ * @LastEditTime: 2025-10-10 17:08:36
  * @Description: 头部布局
  */
 'use client';
@@ -28,6 +28,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation';
 import { type FC, useState } from 'react';
+
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 type MenuItem = {
   label: string;
@@ -145,6 +147,9 @@ const Header: FC = () => {
         ))}
       </NavbarContent>
       <NavbarContent as="div" justify="end">
+        {/* 主题切换 */}
+        <ThemeSwitcher />
+        {/* 用户头像 */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <User

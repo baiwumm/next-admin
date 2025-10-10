@@ -1,5 +1,6 @@
 import { HeroUIProvider } from "@heroui/react";
 import type { Metadata } from "next";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import "./globals.css";
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
@@ -25,10 +26,12 @@ export default function RootLayout({
       </head>
       <body>
         <HeroUIProvider>
-          {/* 全局 Loading */}
-          <FullLoading />
-          <Header />
-          {children}
+          <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
+            {/* 全局 Loading */}
+            <FullLoading />
+            <Header />
+            {children}
+          </NextThemesProvider>
         </HeroUIProvider>
       </body>
     </html>
