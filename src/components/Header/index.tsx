@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-10 13:41:31
+ * @LastEditTime: 2025-10-10 13:52:21
  * @Description: 头部布局
  */
 'use client';
@@ -84,7 +84,7 @@ const Header: FC = () => {
     }
   ]
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} classNames={{ wrapper: "!container" }}>
       {/* 菜单按钮 */}
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "关闭菜单" : "打开菜单"} />
@@ -103,6 +103,7 @@ const Header: FC = () => {
                   radius="sm"
                   variant={isActive(url) ? "flat" : "light"}
                   startContent={<Icon icon={icon} />}
+                  size='sm'
                 >
                   {label}
                 </Button>
@@ -134,6 +135,7 @@ const Header: FC = () => {
               radius="sm"
               variant={isActive(url) ? "flat" : "light"}
               startContent={<Icon icon={icon} />}
+              size='sm'
             >
               <Link href={url}>
                 {label}
@@ -172,6 +174,7 @@ const Header: FC = () => {
                 radius="sm"
                 variant="light"
                 startContent={<Icon icon={icon} />}
+                size='sm'
               >
                 {label}
               </Button>
@@ -182,6 +185,7 @@ const Header: FC = () => {
                   radius="sm"
                   variant={isActive(url) ? "flat" : "light"}
                   startContent={<Icon icon={icon} />}
+                  size='sm'
                 >
                   <Link href={url}>
                     {label}
