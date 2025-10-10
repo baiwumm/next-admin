@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
+import Header from '@/components/Header'; // 头部布局
 
 export const metadata: Metadata = {
   title: "Next Admin",
@@ -26,6 +27,7 @@ export default function RootLayout({
         <HeroUIProvider>
           {/* 全局 Loading */}
           <FullLoading />
+          <Header />
           {children}
         </HeroUIProvider>
       </body>
