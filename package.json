@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@heroui/react": "^2.8.5",
+    "@iconify-icon/react": "^3.0.1",
+    "es-toolkit": "^1.40.0",
     "framer-motion": "^12.23.22",
     "next": "15.5.4",
     "react": "19.1.0",
