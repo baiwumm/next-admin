@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-10 17:08:36
+ * @LastEditTime: 2025-10-30 17:25:38
  * @Description: 头部布局
  */
 'use client';
@@ -29,6 +29,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation';
 import { type FC, useState } from 'react';
 
+import FullScreen from '@/components/FullScreen'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 type MenuItem = {
@@ -95,7 +96,7 @@ const Header: FC = () => {
       <NavbarContent className="hidden sm:flex" justify="start">
         {NavbarBrandLogo}
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-2" justify="center">
         {map(menuItems, ({ label, url, icon, children }) => children?.length ? (
           <Dropdown key={url}>
             <NavbarItem>
@@ -146,9 +147,11 @@ const Header: FC = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      <NavbarContent as="div" justify="end">
+      <NavbarContent as="div" justify="end" className="hidden sm:flex gap-2">
         {/* 主题切换 */}
         <ThemeSwitcher />
+        {/* 全屏 */}
+        <FullScreen />
         {/* 用户头像 */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
