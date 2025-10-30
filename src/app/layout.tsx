@@ -5,6 +5,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import "./globals.css";
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import Header from '@/components/Header'; // 头部布局
+import PageAnimatePresence from '@/components/PageAnimatePresence'
 
 export const metadata: Metadata = {
   title: "Next Admin",
@@ -30,7 +31,9 @@ export default function RootLayout({
             {/* 全局 Loading */}
             <FullLoading />
             <Header />
-            {children}
+            <PageAnimatePresence>
+              {children}
+            </PageAnimatePresence>
           </NextThemesProvider>
         </HeroUIProvider>
       </body>

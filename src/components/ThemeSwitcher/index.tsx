@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 17:01:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-10 17:45:33
+ * @LastEditTime: 2025-10-30 13:47:27
  * @Description: 主题切换
  */
 'use client';
@@ -68,27 +68,26 @@ const ThemeSwitcher: FC = () => {
   }
   return (
     <Button isIconOnly aria-label="ThemeSwitcher" variant="light" radius="full">
-      <div
-        onClick={(e) => toggleDark(e)}
-        className="relative w-5 h-5"  // 设定父容器的大小，确保居中
-      >
-        {/* 日间图标 */}
-        <Icon
-          icon="bi:sun"
-          className={cn(
-            "text-lg transition-all duration-500 transform absolute top-0 left-0 w-full h-full",
-            !isLight ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-          )}
-        />
+      <div onClick={toggleDark} className="flex items-center justify-center w-full h-full">
+        <div className="relative w-5 h-5">
+          {/* 日间图标 */}
+          <Icon
+            icon="bi:sun"
+            className={cn(
+              "text-lg transition-all duration-500 transform absolute top-0 left-0 w-full h-full",
+              !isLight ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+            )}
+          />
 
-        {/* 夜间图标 */}
-        <Icon
-          icon="bi:moon"
-          className={cn(
-            "text-lg transition-all duration-500 transform absolute top-0 left-0 w-full h-full",
-            !isLight ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
-          )}
-        />
+          {/* 夜间图标 */}
+          <Icon
+            icon="bi:moon"
+            className={cn(
+              "text-lg transition-all duration-500 transform absolute top-0 left-0 w-full h-full",
+              !isLight ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+            )}
+          />
+        </div>
       </div>
     </Button>
   );
