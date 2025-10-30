@@ -2,15 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-30 14:15:02
+ * @LastEditTime: 2025-10-30 14:22:05
  * @Description: 路由退场动画
  */
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
-import { useContext, useRef } from "react";
+import { useContext, useMemo } from "react";
 
 // 冻结当前的 LayoutRouterContext，防止在动画期间被更新
 function FrozenRouter({ children }: { children: React.ReactNode }) {
