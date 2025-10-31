@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-31 08:58:52
+ * @LastEditTime: 2025-10-31 16:52:51
  * @Description: 头部布局
  */
 'use client';
@@ -64,6 +64,7 @@ const Header: FC<HeaderProps> = ({ locale }) => {
         width={36}
         height={36}
         alt="Logo"
+        className="rounded"
       />
       <p className="font-bold text-inherit ml-2 text-lg hidden sm:block">{process.env.NEXT_PUBLIC_APP_NAME}</p>
     </NavbarBrand>

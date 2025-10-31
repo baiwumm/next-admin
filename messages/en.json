@@ -4,5 +4,16 @@
     "administrative":"Administrative",
     "administrative-organization":"Organization",
     "administrative-post-manage":"PostManage"
+  },
+  "Pages":{
+    "Login":{
+      "submit":"Login",
+      "emial":"Email Address",
+      "emial-placeholder":"Enter your email",
+      "google":"Continue with Google",
+      "github":"Continue with Github",
+      "toast-title":"Your email address is: {email}",
+      "toast-description":"This feature is under development. Please log in using Github!"
+    }
   }
 }

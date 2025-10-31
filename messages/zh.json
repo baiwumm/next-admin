@@ -4,5 +4,16 @@
     "administrative":"智能行政",
     "administrative-organization":"组织管理",
     "administrative-post-manage":"岗位管理"
+  },
+  "Pages":{
+    "Login":{
+      "submit":"登录",
+      "emial":"邮箱地址",
+      "emial-placeholder":"请输入邮箱地址",
+      "google":"使用 Google 登录",
+      "github":"使用 Github 登录",
+      "toast-title":"您的邮箱地址是：{email}",
+      "toast-description":"此功能正在开发中,请使用 Github 登录!"
+    }
   }
 }

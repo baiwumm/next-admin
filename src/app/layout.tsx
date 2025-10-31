@@ -1,4 +1,4 @@
-import { HeroUIProvider } from "@heroui/react";
+import { HeroUIProvider, ToastProvider } from "@heroui/react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -6,8 +6,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import "./globals.css";
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
-import Header from '@/components/Header'; // 头部布局
-import PageAnimatePresence from '@/components/PageAnimatePresence'
+import GlobalLayout from '@/components/GlobalLayout'; // 全局布局
 import { type Locale } from '@/i18n/config'
 
 export const metadata: Metadata = {
@@ -35,12 +34,12 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <HeroUIProvider>
             <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
+              <ToastProvider />
               {/* 全局 Loading */}
               <FullLoading />
-              <Header locale={locale} />
-              <PageAnimatePresence>
+              <GlobalLayout locale={locale}>
                 {children}
-              </PageAnimatePresence>
+              </GlobalLayout>
             </NextThemesProvider>
           </HeroUIProvider>
         </NextIntlClientProvider>

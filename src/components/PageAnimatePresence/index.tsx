@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-30 14:22:05
+ * @LastEditTime: 2025-10-31 16:57:16
  * @Description: 路由退场动画
  */
 "use client";
@@ -46,7 +46,6 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
           duration: 0.5,
           ease: 'easeOut'
         }}
-        className="w-full min-h-screen"
       >
         <FrozenRouter>{children}</FrozenRouter>
       </motion.div>
