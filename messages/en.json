@@ -1,0 +1,8 @@
+{
+  "Route":{
+    "dashboard":"Dashboard",
+    "administrative":"Administrative",
+    "administrative-organization":"Organization",
+    "administrative-post-manage":"PostManage"
+  }
+}

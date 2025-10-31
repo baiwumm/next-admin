@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-30 17:25:38
+ * @LastEditTime: 2025-10-31 08:58:52
  * @Description: 头部布局
  */
 'use client';
@@ -27,10 +27,13 @@ import { map } from 'es-toolkit/compat';
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
 
 import FullScreen from '@/components/FullScreen'
+import LangSwitch from '@/components/LangSwitch'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
+import { type Locale } from '@/i18n/config'
 
 type MenuItem = {
   label: string;
@@ -39,7 +42,12 @@ type MenuItem = {
   children?: MenuItem[];
 }
 
-const Header: FC = () => {
+type HeaderProps = {
+  locale: Locale;
+}
+
+const Header: FC<HeaderProps> = ({ locale }) => {
+  const t = useTranslations('Route');
   const pathname = usePathname();
   const router = useRouter();
   const isActive = (url: string) => url === pathname || pathname.includes(url);
@@ -64,22 +72,22 @@ const Header: FC = () => {
   // 菜单数据
   const menuItems: MenuItem[] = [
     {
-      label: '控制台',
+      label: t('dashboard'),
       url: '/dashboard',
       icon: 'mdi:view-dashboard-outline'
     },
     {
-      label: '智能行政',
+      label: t('administrative'),
       url: "/administrative",
       icon: 'ri:quill-pen-line',
       children: [
         {
-          label: '组织管理',
+          label: t('administrative-organization'),
           url: '/administrative/organization',
           icon: 'ri:exchange-2-line'
         },
         {
-          label: '岗位管理',
+          label: t('administrative-post-manage'),
           url: '/administrative/post-manage',
           icon: 'ri:contacts-book-3-line'
         },
@@ -147,16 +155,18 @@ const Header: FC = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      <NavbarContent as="div" justify="end" className="hidden sm:flex gap-2">
+      <NavbarContent as="div" justify="end" className="flex gap-0">
         {/* 主题切换 */}
         <ThemeSwitcher />
         {/* 全屏 */}
         <FullScreen />
+        {/* 多语言 */}
+        <LangSwitch locale={locale} />
         {/* 用户头像 */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <User
-              className="transition-transform cursor-pointer"
+              className="transition-transform cursor-pointer ml-2"
               name="baiwumm"
               description='me@baiwumm.com'
               avatarProps={{

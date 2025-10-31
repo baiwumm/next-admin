@@ -1,0 +1,8 @@
+{
+  "Route":{
+    "dashboard":"控制台",
+    "administrative":"智能行政",
+    "administrative-organization":"组织管理",
+    "administrative-post-manage":"岗位管理"
+  }
+}
