@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/baiwumm/next-admin/compare/1.4.0...1.5.0) (2025-11-03)
+
+### ✨ Features | 新功能
+
+* 完成 supabase 认证登录和国际化配置 ([30db17d](https://github.com/baiwumm/next-admin/commit/30db17d8a1d4bb79fb72ceddd6b40cd83e8fa72a))
+* 新增 @supabase/ssr、@supabase/supabase-js 包 ([ae832b1](https://github.com/baiwumm/next-admin/commit/ae832b1680c8f70b623724c09537753b7d6e64af))
+
 ## [1.4.0](https://github.com/baiwumm/next-admin/compare/1.0.0...1.4.0) (2025-10-31)
 
 ### ✨ Features | 新功能
