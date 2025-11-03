@@ -3,17 +3,38 @@
     "dashboard":"Dashboard",
     "administrative":"Administrative",
     "administrative-organization":"Organization",
-    "administrative-post-manage":"PostManage"
+    "administrative-post-manage":"PostManage",
+    "personal-center":"Personal Center"
   },
   "Pages":{
     "Login":{
       "submit":"Login",
+      "login-now":"Login Now",
+      "register":"Register",
       "emial":"Email Address",
       "emial-placeholder":"Enter your email",
+      "password":"Password",
+      "password-placeholder":"Enter your password",
       "google":"Continue with Google",
       "github":"Continue with Github",
-      "toast-title":"Your email address is: {email}",
-      "toast-description":"This feature is under development. Please log in using Github!"
+      "login-error":"Login failed. Please try again later",
+      "signup":"Sign Up",
+      "signup-error":"Sign Up try again later",
+      "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
+      "need-account":"Need to create an account?"
     }
+  },
+  "Components":{
+    "Header":{
+      "logout":"Logout",
+      "logout-error":"Logout failed. Please try again later",
+      "close-menu":"Close Menu",
+      "open-menu":"Open Menu",
+      "anonymous-user":"Anonymous User"
+    }
+  },
+  "Common":{
+    "loading":"Loading...",
+    "user-error":"Failed to fetch user information. Please try again later"
   }
 }

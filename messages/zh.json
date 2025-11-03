@@ -3,17 +3,38 @@
     "dashboard":"控制台",
     "administrative":"智能行政",
     "administrative-organization":"组织管理",
-    "administrative-post-manage":"岗位管理"
+    "administrative-post-manage":"岗位管理",
+    "personal-center":"个人中心"
   },
   "Pages":{
     "Login":{
       "submit":"登录",
+      "login-now":"立即登录",
+      "register":"注册",
       "emial":"邮箱地址",
       "emial-placeholder":"请输入邮箱地址",
+      "password":"密码",
+      "password-placeholder":"请输入密码",
       "google":"使用 Google 登录",
       "github":"使用 Github 登录",
-      "toast-title":"您的邮箱地址是：{email}",
-      "toast-description":"此功能正在开发中,请使用 Github 登录!"
+      "login-error":"登录失败，请稍后重试",
+      "signup":"立即注册",
+      "signup-error":"注册失败，请稍后重试",
+      "signup-success":"提交成功，请到邮箱验证后登录",
+      "need-account":"需要创建一个账户？"
     }
+  },
+  "Components":{
+    "Header":{
+      "logout":"退出登录",
+      "logout-error":"退出登录失败，请稍后重试",
+      "close-menu":"关闭菜单",
+      "open-menu":"打开菜单",
+      "anonymous-user":"匿名用户"
+    }
+  },
+  "Common":{
+    "loading":"加载中...",
+    "user-error":"获取用户信息失败，请稍后重试"
   }
 }

@@ -2,11 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-31 16:52:51
+ * @LastEditTime: 2025-11-03 14:58:32
  * @Description: 头部布局
  */
 'use client';
 import {
+  addToast,
   Button,
   Dropdown,
   DropdownItem,
@@ -20,6 +21,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   type SharedSelection,
+  Spinner,
   User
 } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
@@ -33,7 +35,9 @@ import { type FC, useState } from 'react';
 import FullScreen from '@/components/FullScreen'
 import LangSwitch from '@/components/LangSwitch'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
+import { useSupabaseUser } from '@/hooks/useSupabaseUser'
 import { type Locale } from '@/i18n/config'
+import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser'
 
 type MenuItem = {
   label: string;
@@ -47,7 +51,10 @@ type HeaderProps = {
 }
 
 const Header: FC<HeaderProps> = ({ locale }) => {
-  const t = useTranslations('Route');
+  const supabase = getSupabaseBrowserClient()
+  const { user, loading } = useSupabaseUser()
+  const tR = useTranslations('Route');
+  const t = useTranslations('Components.Header');
   const pathname = usePathname();
   const router = useRouter();
   const isActive = (url: string) => url === pathname || pathname.includes(url);
@@ -73,33 +80,48 @@ const Header: FC<HeaderProps> = ({ locale }) => {
   // 菜单数据
   const menuItems: MenuItem[] = [
     {
-      label: t('dashboard'),
+      label: tR('dashboard'),
       url: '/dashboard',
       icon: 'mdi:view-dashboard-outline'
     },
     {
-      label: t('administrative'),
+      label: tR('administrative'),
       url: "/administrative",
       icon: 'ri:quill-pen-line',
       children: [
         {
-          label: t('administrative-organization'),
+          label: tR('administrative-organization'),
           url: '/administrative/organization',
           icon: 'ri:exchange-2-line'
         },
         {
-          label: t('administrative-post-manage'),
+          label: tR('administrative-post-manage'),
           url: '/administrative/post-manage',
           icon: 'ri:contacts-book-3-line'
         },
       ]
     }
   ]
+
+  // 退出登录
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut()
+    if (error) {
+      addToast({
+        title: t('logout-error'),
+        description: error.message,
+        color: 'danger'
+      });
+    } else {
+      // 登出后跳转登录页
+      router.replace('/login')
+    }
+  }
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} classNames={{ wrapper: "!container" }}>
       {/* 菜单按钮 */}
       <NavbarContent className="sm:hidden" justify="start">
-        <NavbarMenuToggle aria-label={isMenuOpen ? "关闭菜单" : "打开菜单"} />
+        <NavbarMenuToggle aria-label={isMenuOpen ? t('close-menu') : t('open-menu')} />
         {NavbarBrandLogo}
       </NavbarContent>
       <NavbarContent className="hidden sm:flex" justify="start">
@@ -164,24 +186,31 @@ const Header: FC<HeaderProps> = ({ locale }) => {
         {/* 多语言 */}
         <LangSwitch locale={locale} />
         {/* 用户头像 */}
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <User
-              className="transition-transform cursor-pointer ml-2"
-              name="baiwumm"
-              description='me@baiwumm.com'
-              avatarProps={{
-                src: "https://cdn.baiwumm.com/avatar.jpg",
-              }}
-            />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="settings" startContent={<Icon icon='mdi:card-account-details-outline' />}>个人中心</DropdownItem>
-            <DropdownItem key="logout" startContent={<Icon icon="mdi:logout" />}>
-              退出登录
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        {loading ? (
+          <Spinner size="sm" />
+        ) : (
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger>
+              <User
+                className="transition-transform cursor-pointer ml-2"
+                name={user?.user_metadata.full_name || t('anonymous-user')}
+                description={user?.email}
+                avatarProps={{
+                  showFallback: true,
+                  fallback: <Icon icon='ri:user-line' className="text-large" />,
+                  name: t('anonymous-user'),
+                  src: user?.user_metadata.avatar_url as string,
+                }}
+              />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownItem key="settings" startContent={<Icon icon='mdi:card-account-details-outline' />}>{tR('personal-center')}</DropdownItem>
+              <DropdownItem key="logout" startContent={<Icon icon="mdi:logout" />} onPress={handleLogout}>
+                {t('logout')}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        )}
       </NavbarContent>
 
       {/* 小屏幕下的菜单 */}
