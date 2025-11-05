@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-31 16:57:16
+ * @LastEditTime: 2025-11-03 16:05:48
  * @Description: 路由退场动画
  */
 "use client";
@@ -47,7 +47,11 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
           ease: 'easeOut'
         }}
       >
-        <FrozenRouter>{children}</FrozenRouter>
+        <FrozenRouter>
+          <div className='container mx-auto p-4 min-h-[calc(100vh-4rem)]'>
+            {children}
+          </div>
+        </FrozenRouter>
       </motion.div>
     </AnimatePresence>
   );

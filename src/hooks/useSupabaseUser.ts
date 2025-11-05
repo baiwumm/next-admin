@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-03 11:05:09
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-03 15:05:36
+ * @LastEditTime: 2025-11-03 15:48:25
  * @Description: 获取用户信息
  */
 'use client'
-import { addToast } from "@heroui/react";
 import type { User } from '@supabase/supabase-js'
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react'
@@ -26,11 +25,6 @@ export function useSupabaseUser() {
       const { data: { user }, error } = await supabase.auth.getUser()
       if (mounted) {
         if (error) {
-          addToast({
-            title: t('user-error'),
-            description: error.message,
-            color: 'danger'
-          });
           setUser(null)
         } else {
           setUser(user)

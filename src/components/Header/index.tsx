@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-03 14:58:32
+ * @LastEditTime: 2025-11-03 16:50:43
  * @Description: 头部布局
  */
 'use client';
@@ -35,16 +35,10 @@ import { type FC, useState } from 'react';
 import FullScreen from '@/components/FullScreen'
 import LangSwitch from '@/components/LangSwitch'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
+import { useMenus } from '@/hooks/useMenus'
 import { useSupabaseUser } from '@/hooks/useSupabaseUser'
 import { type Locale } from '@/i18n/config'
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser'
-
-type MenuItem = {
-  label: string;
-  url: string;
-  icon: string;
-  children?: MenuItem[];
-}
 
 type HeaderProps = {
   locale: Locale;
@@ -53,6 +47,7 @@ type HeaderProps = {
 const Header: FC<HeaderProps> = ({ locale }) => {
   const supabase = getSupabaseBrowserClient()
   const { user, loading } = useSupabaseUser()
+  const menus = useMenus()
   const tR = useTranslations('Route');
   const t = useTranslations('Components.Header');
   const pathname = usePathname();
@@ -76,32 +71,6 @@ const Header: FC<HeaderProps> = ({ locale }) => {
       <p className="font-bold text-inherit ml-2 text-lg hidden sm:block">{process.env.NEXT_PUBLIC_APP_NAME}</p>
     </NavbarBrand>
   );
-
-  // 菜单数据
-  const menuItems: MenuItem[] = [
-    {
-      label: tR('dashboard'),
-      url: '/dashboard',
-      icon: 'mdi:view-dashboard-outline'
-    },
-    {
-      label: tR('administrative'),
-      url: "/administrative",
-      icon: 'ri:quill-pen-line',
-      children: [
-        {
-          label: tR('administrative-organization'),
-          url: '/administrative/organization',
-          icon: 'ri:exchange-2-line'
-        },
-        {
-          label: tR('administrative-post-manage'),
-          url: '/administrative/post-manage',
-          icon: 'ri:contacts-book-3-line'
-        },
-      ]
-    }
-  ]
 
   // 退出登录
   const handleLogout = async () => {
@@ -128,7 +97,7 @@ const Header: FC<HeaderProps> = ({ locale }) => {
         {NavbarBrandLogo}
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-2" justify="center">
-        {map(menuItems, ({ label, url, icon, children }) => children?.length ? (
+        {map(menus, ({ label, url, icon, children }) => children?.length ? (
           <Dropdown key={url}>
             <NavbarItem>
               <DropdownTrigger>
@@ -215,7 +184,7 @@ const Header: FC<HeaderProps> = ({ locale }) => {
 
       {/* 小屏幕下的菜单 */}
       <NavbarMenu>
-        {map(menuItems, ({ label, url, icon, children }) => children?.length ? (
+        {map(menus, ({ label, url, icon, children }) => children?.length ? (
           <div key={url}>
             <NavbarMenuItem>
               <Button

@@ -34,7 +34,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <HeroUIProvider>
             <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
-              <ToastProvider />
+              <ToastProvider placement='top-center' toastOffset={40} />
               {/* 全局 Loading */}
               <FullLoading />
               <GlobalLayout locale={locale}>
