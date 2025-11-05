@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.0](https://github.com/baiwumm/next-admin/compare/1.5.0...1.6.0) (2025-11-05)
+
+### ✨ Features | 新功能
+
+* 新增 axios、dayjs、query-string 依赖包 ([9dbdcd8](https://github.com/baiwumm/next-admin/commit/9dbdcd8481528ecad24a9af504fdbddaf209a499))
+* 新增国际化配置 ([4d630aa](https://github.com/baiwumm/next-admin/commit/4d630aadfd56e112f0637ef5b36c7cc05d513032))
+* **api:** 新增 菜单管理 模块 CURD 接口 ([6a37023](https://github.com/baiwumm/next-admin/commit/6a37023852a6ec700dcc657c70cf4e6541a7d1b9))
+* Axios 请求封装 ([b00ae81](https://github.com/baiwumm/next-admin/commit/b00ae81fe7020281fef25615ad0a5335162ef726))
+* **menu-manage:** 完成 菜单管理 模块页面交互逻辑 ([ed9bab9](https://github.com/baiwumm/next-admin/commit/ed9bab97d41e9902adf634365f6c29e717458911))
+
 ## [1.5.0](https://github.com/baiwumm/next-admin/compare/1.4.0...1.5.0) (2025-11-03)
 
 ### ✨ Features | 新功能
