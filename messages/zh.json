@@ -2,9 +2,12 @@
   "Route":{
     "dashboard":"控制台",
     "administrative":"智能行政",
-    "administrative-organization":"组织管理",
-    "administrative-post-manage":"岗位管理",
-    "personal-center":"个人中心"
+    "organization":"组织管理",
+    "post-manage":"岗位管理",
+    "personal-center":"个人中心",
+    "system-settings":"系统设置",
+    "user-manage":"用户管理",
+    "menu-manage":"菜单管理"
   },
   "Pages":{
     "Login":{
@@ -22,6 +25,14 @@
       "signup-error":"注册失败，请稍后重试",
       "signup-success":"提交成功，请到邮箱验证后登录",
       "need-account":"需要创建一个账户？"
+    },
+    "MenuManage":{
+      "label":"菜单名称",
+      "path":"路由地址",
+      "icon":"菜单图标",
+      "redirect":"重定向地址",
+      "add":"新增菜单",
+      "edit":"编辑菜单"
     }
   },
   "Components":{
@@ -35,6 +46,24 @@
   },
   "Common":{
     "loading":"加载中...",
-    "user-error":"获取用户信息失败，请稍后重试"
+    "user-error":"获取用户信息失败，请稍后重试",
+    "add":"新增",
+    "add-success":"新增成功",
+    "edit":"编辑",
+    "edit-success":"编辑成功",
+    "delete":"删除",
+    "delete-success":"删除成功",
+    "search":"搜索",
+    "reset":"重置",
+    "sort":"排序",
+    "created_at":"创建时间",
+    "updated_at":"最后更新时间",
+    "actions":"操作",
+    "enter":"请输入",
+    "select":"请选择",
+    "cancel":"取消",
+    "confirm":"确认",
+    "columns-settings":"列设置",
+    "parent":"父级"
   }
 }

@@ -2,9 +2,12 @@
   "Route":{
     "dashboard":"Dashboard",
     "administrative":"Administrative",
-    "administrative-organization":"Organization",
-    "administrative-post-manage":"PostManage",
-    "personal-center":"Personal Center"
+    "organization":"Organization",
+    "post-manage":"PostManage",
+    "personal-center":"Personal Center",
+    "system-settings":"System Settings",
+    "user-manage":"User Management",
+    "menu-manage":"Menu Management"
   },
   "Pages":{
     "Login":{
@@ -22,6 +25,14 @@
       "signup-error":"Sign Up try again later",
       "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
       "need-account":"Need to create an account?"
+    },
+    "MenuManage":{
+      "label":"Menu Name",
+      "path":"Route Path",
+      "icon":"Menu Icon",
+      "redirect":"Redirect Path",
+      "add":"Add Menu",
+      "edit":"Edit Menu"
     }
   },
   "Components":{
@@ -35,6 +46,24 @@
   },
   "Common":{
     "loading":"Loading...",
-    "user-error":"Failed to fetch user information. Please try again later"
+    "user-error":"Failed to fetch user information. Please try again later",
+    "add":"Add New",
+    "add-success":"Added successfully",
+    "edit":"Edit",
+    "edit-success":"Edited successfully",
+    "delete":"Delete",
+    "delete-success":"Deleted successfully",
+    "search":"Search",
+    "reset":"Reset",
+    "sort":"Sort",
+    "created_at":"Created At",
+    "updated_at":"Updated At",
+    "actions":"Actions",
+    "enter":"Please enter",
+    "select":"Please Select",
+    "cancel":"Cancel",
+    "confirm":"Confirm",
+    "columns-settings":"Columns",
+    "parent":"Parent"
   }
 }
