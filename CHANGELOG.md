@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.1](https://github.com/baiwumm/next-admin/compare/1.6.0...1.6.1) (2025-11-06)
+
+### ✨ Features | 新功能
+
+* 更改打包配置 ([0867b71](https://github.com/baiwumm/next-admin/commit/0867b7194010ff5cddccaefb9503ae1af08558b9))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化顶部菜单布局，完成动态加载菜单功能 ([878a429](https://github.com/baiwumm/next-admin/commit/878a42932a3f39286f9073562fd7263a57078e74))
+
 ## [1.6.0](https://github.com/baiwumm/next-admin/compare/1.5.0...1.6.0) (2025-11-05)
 
 ### ✨ Features | 新功能
