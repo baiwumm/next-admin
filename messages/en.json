@@ -64,6 +64,7 @@
     "cancel":"Cancel",
     "confirm":"Confirm",
     "columns-settings":"Columns",
-    "parent":"Parent"
+    "parent":"Parent",
+    "empty":"No Data"
   }
 }

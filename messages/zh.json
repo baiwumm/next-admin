@@ -64,6 +64,7 @@
     "cancel":"取消",
     "confirm":"确认",
     "columns-settings":"列设置",
-    "parent":"父级"
+    "parent":"父级",
+    "empty":"暂无数据"
   }
 }

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 09:35:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-05 17:42:16
+ * @LastEditTime: 2025-11-06 14:30:46
  * @Description: 数据表格
  */
 import {
@@ -24,6 +24,7 @@ import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { type FC, type Key, useCallback, useMemo, useState } from "react";
 
+import Empty from '@/components/Empty'
 import { UNIFORM_TEXT } from '@/lib/constant';
 import { isSuccess } from '@/lib/utils';
 import { delMenu } from '@/services/system-settings/menu-manage';
@@ -204,7 +205,7 @@ const DataTable: FC<DataTableProps> = ({
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={"No users found"} loadingContent={<Spinner />} isLoading={loading}>
+      <TableBody emptyContent={<Empty />} loadingContent={<Spinner />} isLoading={loading}>
         {renderTableRows(sortedItems)}
       </TableBody>
     </Table>
