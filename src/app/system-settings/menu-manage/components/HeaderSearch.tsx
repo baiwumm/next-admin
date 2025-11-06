@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 15:06:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-05 15:12:32
+ * @LastEditTime: 2025-11-06 14:57:02
  * @Description: 头部搜索
  */
 import {
@@ -42,12 +42,12 @@ const HeaderSearch: FC<HeaderSearchProps> = ({
   const t = useTranslations('Common');
   const tM = useTranslations('Pages.MenuManage');
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between flex-wrap gap-2">
       <Form
         ref={searchRormRef}
         onSubmit={hanldeSearch}
         onReset={fetchMenuList}
-        className="flex flex-row items-center gap-2"
+        className="flex flex-row items-center gap-2 flex-wrap"
       >
         <Input
           name="path"
@@ -85,7 +85,7 @@ const HeaderSearch: FC<HeaderSearchProps> = ({
         </Button>
         {/* 列设置 */}
         <Dropdown>
-          <DropdownTrigger className="hidden sm:flex">
+          <DropdownTrigger>
             <Button endContent={<Icon icon='ri:arrow-down-s-line' className="text-small" />} variant="flat" size='sm'>
               {t('columns-settings')}
             </Button>
