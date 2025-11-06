@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.2](https://github.com/baiwumm/next-admin/compare/1.6.1...1.6.2) (2025-11-06)
+
+### ✨ Features | 新功能
+
+* 新增 useAppStore 文件，优化移动端页面展示 ([61d242c](https://github.com/baiwumm/next-admin/commit/61d242c06d9c8ea2e644b7bbe0b6337012f95265))
+
 ## [1.6.1](https://github.com/baiwumm/next-admin/compare/1.6.0...1.6.1) (2025-11-06)
 
 ### ✨ Features | 新功能
