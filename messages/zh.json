@@ -38,10 +38,13 @@
   "Components":{
     "Header":{
       "logout":"退出登录",
+      "logout-loading":"注销中...",
       "logout-error":"退出登录失败，请稍后重试",
+      "user-loading":"正在加载用户信息...",
       "close-menu":"关闭菜单",
       "open-menu":"打开菜单",
-      "anonymous-user":"匿名用户"
+      "anonymous-user":"匿名用户",
+      "menu-loading":"正在加载菜单..."
     }
   },
   "Common":{

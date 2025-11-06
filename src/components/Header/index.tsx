@@ -2,61 +2,40 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-03 16:50:43
+ * @LastEditTime: 2025-11-06 17:05:40
  * @Description: 头部布局
  */
 'use client';
 import {
-  addToast,
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
-  NavbarMenu,
-  NavbarMenuItem,
   NavbarMenuToggle,
-  type SharedSelection,
-  Spinner,
-  User
 } from "@heroui/react";
-import { Icon } from '@iconify-icon/react';
-import { map } from 'es-toolkit/compat';
 import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { type FC, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 
 import FullScreen from '@/components/FullScreen'
 import LangSwitch from '@/components/LangSwitch'
+import NavMenu from '@/components/NavMenu'
+import NavMobileMenu from '@/components/NavMobileMenu'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
-import { useMenus } from '@/hooks/useMenus'
-import { useSupabaseUser } from '@/hooks/useSupabaseUser'
+import UserAvatar from '@/components/UserAvatar'
 import { type Locale } from '@/i18n/config'
-import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser'
+import { useMenuStore } from '@/store/useMenuStore'
 
 type HeaderProps = {
   locale: Locale;
 }
 
 const Header: FC<HeaderProps> = ({ locale }) => {
-  const supabase = getSupabaseBrowserClient()
-  const { user, loading } = useSupabaseUser()
-  const menus = useMenus()
-  const tR = useTranslations('Route');
   const t = useTranslations('Components.Header');
-  const pathname = usePathname();
-  const router = useRouter();
-  const isActive = (url: string) => url === pathname || pathname.includes(url);
   // 是否打开菜单
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // 勾选的菜单
-  const [selectedKeys, setSelectedKeys] = useState<SharedSelection>(new Set([pathname]));
+  // 获取菜单数据
+  const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
+  const menuList = useMenuStore((state) => state.menuList);
 
   // 渲染 Logo
   const NavbarBrandLogo = (
@@ -72,20 +51,12 @@ const Header: FC<HeaderProps> = ({ locale }) => {
     </NavbarBrand>
   );
 
-  // 退出登录
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut()
-    if (error) {
-      addToast({
-        title: t('logout-error'),
-        description: error.message,
-        color: 'danger'
-      });
-    } else {
-      // 登出后跳转登录页
-      router.replace('/login')
+  useEffect(() => {
+    if (!menuList?.length) {
+      // 加载菜单数据
+      fetchMenuList()
     }
-  }
+  }, [fetchMenuList, menuList])
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} classNames={{ wrapper: "!container" }}>
       {/* 菜单按钮 */}
@@ -96,57 +67,9 @@ const Header: FC<HeaderProps> = ({ locale }) => {
       <NavbarContent className="hidden sm:flex" justify="start">
         {NavbarBrandLogo}
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-2" justify="center">
-        {map(menus, ({ label, url, icon, children }) => children?.length ? (
-          <Dropdown key={url}>
-            <NavbarItem>
-              <DropdownTrigger>
-                <Button
-                  endContent={<Icon icon="ri-arrow-down-s-line" />}
-                  radius="sm"
-                  variant={isActive(url) ? "flat" : "light"}
-                  startContent={<Icon icon={icon} />}
-                  size='sm'
-                >
-                  {label}
-                </Button>
-              </DropdownTrigger>
-            </NavbarItem>
-            <DropdownMenu
-              disallowEmptySelection
-              aria-label={label}
-              selectedKeys={selectedKeys}
-              selectionMode="single"
-              variant="flat"
-              onSelectionChange={setSelectedKeys}
-              onAction={(key) => router.push(key as string)}
-            >
-              {map(children, ({ label, url, icon }) => (
-                <DropdownItem
-                  key={url}
-                  startContent={<Icon icon={icon} />}
-                  textValue={label}
-                >
-                  {label}
-                </DropdownItem>
-              ))}
-            </DropdownMenu>
-          </Dropdown>
-        ) : (
-          <NavbarItem key={url} className="text-sm">
-            <Button
-              radius="sm"
-              variant={isActive(url) ? "flat" : "light"}
-              startContent={<Icon icon={icon} />}
-              size='sm'
-            >
-              <Link href={url}>
-                {label}
-              </Link>
-            </Button>
-          </NavbarItem>
-        ))}
-      </NavbarContent>
+      {/* 导航菜单 */}
+      <NavMenu />
+      {/* 右侧按钮 */}
       <NavbarContent as="div" justify="end" className="flex gap-0">
         {/* 主题切换 */}
         <ThemeSwitcher />
@@ -155,76 +78,10 @@ const Header: FC<HeaderProps> = ({ locale }) => {
         {/* 多语言 */}
         <LangSwitch locale={locale} />
         {/* 用户头像 */}
-        {loading ? (
-          <Spinner size="sm" />
-        ) : (
-          <Dropdown placement="bottom-end">
-            <DropdownTrigger>
-              <User
-                className="transition-transform cursor-pointer ml-2"
-                name={user?.user_metadata.full_name || t('anonymous-user')}
-                description={user?.email}
-                avatarProps={{
-                  showFallback: true,
-                  fallback: <Icon icon='ri:user-line' className="text-large" />,
-                  name: t('anonymous-user'),
-                  src: user?.user_metadata.avatar_url as string,
-                }}
-              />
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="settings" startContent={<Icon icon='mdi:card-account-details-outline' />}>{tR('personal-center')}</DropdownItem>
-              <DropdownItem key="logout" startContent={<Icon icon="mdi:logout" />} onPress={handleLogout}>
-                {t('logout')}
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        )}
+        <UserAvatar />
       </NavbarContent>
-
       {/* 小屏幕下的菜单 */}
-      <NavbarMenu>
-        {map(menus, ({ label, url, icon, children }) => children?.length ? (
-          <div key={url}>
-            <NavbarMenuItem>
-              <Button
-                radius="sm"
-                variant="light"
-                startContent={<Icon icon={icon} />}
-                size='sm'
-              >
-                {label}
-              </Button>
-            </NavbarMenuItem>
-            {map(children, ({ label, url, icon }) => (
-              <NavbarMenuItem className="ml-4" key={url}>
-                <Button
-                  radius="sm"
-                  variant={isActive(url) ? "flat" : "light"}
-                  startContent={<Icon icon={icon} />}
-                  size='sm'
-                >
-                  <Link href={url}>
-                    {label}
-                  </Link>
-                </Button>
-              </NavbarMenuItem>
-            ))}
-          </div>
-        ) : (
-          <NavbarMenuItem>
-            <Button
-              radius="sm"
-              variant={isActive(url) ? "flat" : "light"}
-              startContent={<Icon icon={icon} />}
-            >
-              <Link href={url}>
-                {label}
-              </Link>
-            </Button>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+      <NavMobileMenu />
     </Navbar>
   );
 };

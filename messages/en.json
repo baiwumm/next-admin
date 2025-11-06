@@ -38,10 +38,13 @@
   "Components":{
     "Header":{
       "logout":"Logout",
+      "logout-loading":"Logout...",
       "logout-error":"Logout failed. Please try again later",
+      "user-loading":"Loading UserInfo...",
       "close-menu":"Close Menu",
       "open-menu":"Open Menu",
-      "anonymous-user":"Anonymous User"
+      "anonymous-user":"Anonymous User",
+      "menu-loading":"Loading Menus..."
     }
   },
   "Common":{
