@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 17:05:40
+ * @LastEditTime: 2025-11-06 17:29:40
  * @Description: 头部布局
  */
 'use client';
@@ -23,6 +23,7 @@ import NavMobileMenu from '@/components/NavMobileMenu'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import UserAvatar from '@/components/UserAvatar'
 import { type Locale } from '@/i18n/config'
+import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from '@/store/useMenuStore'
 
 type HeaderProps = {
@@ -36,6 +37,7 @@ const Header: FC<HeaderProps> = ({ locale }) => {
   // 获取菜单数据
   const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
   const menuList = useMenuStore((state) => state.menuList);
+  const isMobile = useAppStore((s) => s.isMobile);
 
   // 渲染 Logo
   const NavbarBrandLogo = (
@@ -47,7 +49,9 @@ const Header: FC<HeaderProps> = ({ locale }) => {
         alt="Logo"
         className="rounded"
       />
-      <p className="font-bold text-inherit ml-2 text-lg hidden sm:block">{process.env.NEXT_PUBLIC_APP_NAME}</p>
+      {isMobile ? null : (
+        <p className="font-bold text-inherit ml-2 text-lg hidden sm:block">{process.env.NEXT_PUBLIC_APP_NAME}</p>
+      )}
     </NavbarBrand>
   );
 

@@ -2,11 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 16:59:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 17:01:38
+ * @LastEditTime: 2025-11-06 17:27:41
  * @Description: 用户头像
  */
 import {
   addToast,
+  Avatar,
+  type AvatarProps,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -21,6 +23,7 @@ import { type FC, useState } from 'react';
 
 import { useSupabaseUser } from '@/hooks/useSupabaseUser'
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser'
+import { useAppStore } from '@/store/useAppStore';
 
 const UserAvatar: FC = () => {
   const supabase = getSupabaseBrowserClient();
@@ -31,6 +34,7 @@ const UserAvatar: FC = () => {
   const t = useTranslations('Components.Header');
   // 注销 Loading
   const [logoutLoading, setLogoutLoading] = useState(false);
+  const isMobile = useAppStore((s) => s.isMobile);
 
   // 退出登录
   const handleLogout = async () => {
@@ -48,22 +52,29 @@ const UserAvatar: FC = () => {
     }
     setLogoutLoading(false);
   }
+
+  // 用户头像属性
+  const avatarProps: AvatarProps = {
+    showFallback: true,
+    fallback: <Icon icon='ri:user-line' className="text-large" />,
+    name: t('anonymous-user'),
+    src: user?.user_metadata.avatar_url as string,
+  }
   return loading || logoutLoading ? (
     <Spinner size="sm" label={logoutLoading ? t('logout-loading') : t('user-loading')} />
   ) : (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
-        <User
-          className="transition-transform cursor-pointer ml-2"
-          name={user?.user_metadata.full_name || t('anonymous-user')}
-          description={user?.email}
-          avatarProps={{
-            showFallback: true,
-            fallback: <Icon icon='ri:user-line' className="text-large" />,
-            name: t('anonymous-user'),
-            src: user?.user_metadata.avatar_url as string,
-          }}
-        />
+        {isMobile ? (
+          <Avatar {...avatarProps} />
+        ) : (
+          <User
+            className="transition-transform cursor-pointer ml-2"
+            name={user?.user_metadata.full_name || t('anonymous-user')}
+            description={user?.email}
+            avatarProps={avatarProps}
+          />
+        )}
       </DropdownTrigger>
       <DropdownMenu aria-label="Profile Actions" variant="flat">
         <DropdownItem key="settings" startContent={<Icon icon='mdi:card-account-details-outline' />}>{tR('personal-center')}</DropdownItem>
