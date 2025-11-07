@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/baiwumm/next-admin/compare/1.6.2...1.7.0) (2025-11-07)
+
+### ✨ Features | 新功能
+
+* 新增 PageContainer 页容器组件 ([ae85a1a](https://github.com/baiwumm/next-admin/commit/ae85a1a89bebcc1f4033cc558a6cf1e59263f62c))
+* **menu-manage:** 优化下拉框，细节调整 ([27d1ae6](https://github.com/baiwumm/next-admin/commit/27d1ae63dfb5f201cc9257fefac65880ab5554a2))
+
 ## [1.6.2](https://github.com/baiwumm/next-admin/compare/1.6.1...1.6.2) (2025-11-06)
 
 ### ✨ Features | 新功能
