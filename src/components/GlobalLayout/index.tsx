@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import PageAnimatePresence from '@/components/PageAnimatePresence'
+import PageContainer from '@/components/PageContainer'
 import { type Locale } from '@/i18n/config'
 import { useLayoutStore } from '@/store/layoutStore';
 import { setupAppStore } from '@/store/useAppStore';
@@ -36,8 +37,10 @@ export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
     <>
       <Header locale={locale} />
       <PageAnimatePresence>
-        {children}
-        <Footer />
+        <PageContainer>
+          {children}
+          <Footer />
+        </PageContainer>
       </PageAnimatePresence>
     </>
   );
