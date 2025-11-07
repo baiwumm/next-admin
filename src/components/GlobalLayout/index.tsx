@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 16:24:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 17:24:03
+ * @LastEditTime: 2025-11-07 13:51:28
  * @Description: 全局布局
  */
 'use client';
@@ -39,8 +39,8 @@ export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
       <PageAnimatePresence>
         <PageContainer>
           {children}
-          <Footer />
         </PageContainer>
+        <Footer />
       </PageAnimatePresence>
     </>
   );

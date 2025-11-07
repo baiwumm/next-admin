@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 09:35:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 10:10:15
+ * @LastEditTime: 2025-11-07 13:48:44
  * @Description: 数据表格
  */
 import {
@@ -193,7 +193,7 @@ const DataTable: FC<DataTableProps> = ({
     [openMap, headerColumns, renderCell]
   );
   return (
-    <Table aria-label="Menu Manage" sortDescriptor={sortDescriptor} onSortChange={setSortDescriptor}>
+    <Table aria-label="Menu Manage" sortDescriptor={sortDescriptor} onSortChange={setSortDescriptor} isStriped>
       <TableHeader columns={headerColumns}>
         {(column) => (
           <TableColumn

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 14:45:26
+ * @LastEditTime: 2025-11-07 13:49:54
  * @Description: 路由退场动画
  */
 "use client";
@@ -39,9 +39,9 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, x: 100 }} // ✅ 修复：添加 initialState
-        animate={{ opacity: 1, x: 0 }}   // ✅ 修复：添加 animateState
-        exit={{ opacity: 0, x: -100 }}    // ✅ 修复：添加 exitState
+        initial={{ opacity: 0, x: 100, filter: 'blur(15px)' }} // ✅ 修复：添加 initialState
+        animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}   // ✅ 修复：添加 animateState
+        exit={{ opacity: 0, x: -100, filter: 'blur(15px)' }}    // ✅ 修复：添加 exitState
         transition={{
           duration: 0.5,
           ease: 'easeOut'
