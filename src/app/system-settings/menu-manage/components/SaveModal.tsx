@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 09:23:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-05 17:41:17
+ * @LastEditTime: 2025-11-07 10:14:16
  * @Description: 新增编辑弹窗
  */
-import { addToast, Button, Form, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, NumberInput, Select, SelectItem } from "@heroui/react";
+import { addToast, Button, Form, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, NumberInput, Select, SelectItem, type SelectProps } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import { useRequest } from 'ahooks'
 import { isNil, pickBy } from 'es-toolkit'
@@ -54,6 +54,26 @@ const SaveModal: FC<SaveModalProps> = ({
     }
   });
 
+  // 渲染父级下拉框
+  const renderSelectMenus = (
+    nodes: App.SystemSettings.Menu[],
+    level = 0
+  ): NonNullable<SelectProps<object>['children']> => {
+    return nodes.map((node) => (
+      <>
+        <SelectItem
+          key={node.id}
+          startContent={<Icon icon={node.icon || 'ri:menu-line'} />}
+          style={{ paddingLeft: `${level * 20}px` }}
+          aria-label={node.path}
+        >
+          {tR(node.label)}
+        </SelectItem>
+        {node.children?.length ? renderSelectMenus(node.children, level + 1) : null}
+      </>
+    ))
+  }
+
   // 表单提交
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,10 +119,9 @@ const SaveModal: FC<SaveModalProps> = ({
                   labelPlacement="outside"
                   placeholder={t('select')}
                   startContent={<Icon icon='ri:menu-line' />}
+                  description={t('parent-tip')}
                 >
-                  {menuList.map((menu) => (
-                    <SelectItem key={menu.id} startContent={<Icon icon={menu.icon || 'ri:menu-line'} />}>{tR(menu.label)}</SelectItem>
-                  ))}
+                  {renderSelectMenus(menuList)}
                 </Select>
                 <Input
                   isRequired

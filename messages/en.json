@@ -68,6 +68,7 @@
     "confirm":"Confirm",
     "columns-settings":"Columns",
     "parent":"Parent",
+    "parent-tip":"If not selected, it will default to top-level",
     "empty":"No Data"
   }
 }

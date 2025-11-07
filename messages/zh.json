@@ -68,6 +68,7 @@
     "confirm":"确认",
     "columns-settings":"列设置",
     "parent":"父级",
+    "parent-tip":"不选默认为顶级",
     "empty":"暂无数据"
   }
 }

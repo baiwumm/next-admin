@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 09:35:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 14:30:46
+ * @LastEditTime: 2025-11-07 10:10:15
  * @Description: 数据表格
  */
 import {
@@ -124,7 +124,7 @@ const DataTable: FC<DataTableProps> = ({
         case "path":
           return <Chip color="primary" variant="flat" size='sm'>{item.path}</Chip>;
         case 'icon':
-          return <Icon icon={item.icon} className="text-lg" />;
+          return <Icon icon={item.icon} className="text-xl" />;
         case 'redirect':
           return item.redirect ? (
             <Chip color="primary" variant="flat" size='sm'>{item.redirect}</Chip>
