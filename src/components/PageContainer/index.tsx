@@ -2,18 +2,19 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-07 09:06:48
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-10 09:04:33
+ * @LastEditTime: 2025-11-10 17:02:56
  * @Description: 页容器
  */
 'use client'
 
-import { BreadcrumbItem, Breadcrumbs, Spinner } from "@heroui/react";
+import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC, type ReactNode } from 'react';
 
+import NotFound from '@/components/NotFound';
 import { useMenuStore } from '@/store/useMenuStore';
 
 type PageContainerProps = {
@@ -46,9 +47,7 @@ const PageContainer: FC<PageContainerProps> = ({ children }) => {
 
   if (!breadcrumbPath) {
     return (
-      <div className="min-h-[calc(100vh-11rem)] flex justify-center items-center h-full">
-        <Spinner color="primary" />
-      </div>
+      <NotFound />
     )
   }
   return (

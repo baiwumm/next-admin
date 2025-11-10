@@ -45,6 +45,10 @@
       "open-menu":"打开菜单",
       "anonymous-user":"匿名用户",
       "menu-loading":"正在加载菜单..."
+    },
+    "NotFound":{
+      "title":"看来这个页面去环球旅行了，还没寄明信片回来。",
+      "button":"回到首页"
     }
   },
   "Common":{
