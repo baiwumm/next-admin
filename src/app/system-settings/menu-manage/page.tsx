@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-03 15:50:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-05 17:33:30
+ * @LastEditTime: 2025-11-10 17:24:33
  * @Description: 菜单管理
  */
 'use client';
@@ -15,7 +15,6 @@ import { useTranslations } from 'next-intl';
 import { type FC, type FormEvent, useRef, useState } from "react";
 
 import DataTable from './components/DataTable';
-import HeaderSearch from './components/HeaderSearch';
 import SaveModal from './components/SaveModal';
 
 import { getMenuList } from '@/services/system-settings/menu-manage';
@@ -81,28 +80,19 @@ const TreeTable: FC = () => {
   }
   return (
     <>
-      <div className="flex flex-col gap-4">
-        {/* 顶部搜索 */}
-        <HeaderSearch
-          searchRormRef={searchRormRef}
-          hanldeSearch={hanldeSearch}
-          fetchMenuList={fetchMenuList}
-          loading={loading}
-          onOpen={onOpen}
-          columns={columns}
-          visibleColumns={visibleColumns}
-          setVisibleColumns={setVisibleColumns}
-        />
-        {/* 数据表格 */}
-        <DataTable
-          dataSource={menuList as App.SystemSettings.Menu[]}
-          loading={loading}
-          columns={columns}
-          visibleColumns={visibleColumns}
-          fetchMenuList={fetchMenuList}
-          handleEdit={handleEdit}
-        />
-      </div>
+      {/* 数据表格 */}
+      <DataTable
+        dataSource={menuList as App.SystemSettings.Menu[]}
+        loading={loading}
+        columns={columns}
+        visibleColumns={visibleColumns}
+        setVisibleColumns={setVisibleColumns}
+        fetchMenuList={fetchMenuList}
+        handleEdit={handleEdit}
+        searchRormRef={searchRormRef}
+        hanldeSearch={hanldeSearch}
+        onOpen={onOpen}
+      />
       {/* 保存弹窗 */}
       <SaveModal
         open={isOpen}

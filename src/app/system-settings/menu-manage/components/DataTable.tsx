@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 09:35:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-10 14:07:34
+ * @LastEditTime: 2025-11-10 17:23:54
  * @Description: 数据表格
  */
 import {
@@ -22,7 +22,9 @@ import { Icon } from '@iconify-icon/react';
 import { useRequest, useSetState } from "ahooks";
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
-import { type FC, type Key, useCallback, useMemo, useState } from "react";
+import { type FC, type FormEvent, type Key, type RefObject, useCallback, useMemo, useState } from "react";
+
+import HeaderSearch from './HeaderSearch';
 
 import Empty from '@/components/Empty'
 import { UNIFORM_TEXT } from '@/lib/constant';
@@ -34,17 +36,25 @@ type DataTableProps = {
   loading: boolean;
   columns: App.Common.ColumnOption[];
   visibleColumns: Set<string>;
+  setVisibleColumns: (keys: Set<string>) => void;
   fetchMenuList: VoidFunction;
   handleEdit: (row: App.SystemSettings.Menu) => void;
+  searchRormRef: RefObject<HTMLFormElement | null>;
+  hanldeSearch: (e: FormEvent<HTMLFormElement>) => void;
+  onOpen: VoidFunction;
 }
 
 const DataTable: FC<DataTableProps> = ({
   dataSource = [],
   loading = false,
   columns = [],
-  visibleColumns = [],
+  visibleColumns,
+  setVisibleColumns,
   fetchMenuList,
-  handleEdit
+  handleEdit,
+  searchRormRef,
+  hanldeSearch,
+  onOpen
 }) => {
   const t = useTranslations('Common');
   const tR = useTranslations('Route');
@@ -193,7 +203,24 @@ const DataTable: FC<DataTableProps> = ({
     [openMap, headerColumns, renderCell]
   );
   return (
-    <Table aria-label="Menu Manage" sortDescriptor={sortDescriptor} onSortChange={setSortDescriptor} isStriped >
+    <Table
+      aria-label="Menu Manage"
+      sortDescriptor={sortDescriptor}
+      onSortChange={setSortDescriptor}
+      isStriped
+      topContent={(
+        <HeaderSearch
+          searchRormRef={searchRormRef}
+          hanldeSearch={hanldeSearch}
+          fetchMenuList={fetchMenuList}
+          loading={loading}
+          onOpen={onOpen}
+          columns={columns}
+          visibleColumns={visibleColumns}
+          setVisibleColumns={setVisibleColumns}
+        />
+      )}
+    >
       <TableHeader columns={headerColumns}>
         {(column) => (
           <TableColumn
