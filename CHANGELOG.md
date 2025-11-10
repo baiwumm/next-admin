@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.0](https://github.com/baiwumm/next-admin/compare/1.7.0...1.8.0) (2025-11-10)
+
+### ✨ Features | 新功能
+
+* 更改默认主题配置 ([4c14fc4](https://github.com/baiwumm/next-admin/commit/4c14fc44998afd8542ab05c7b847368de285fa14))
+* 细节优化 ([ca483d3](https://github.com/baiwumm/next-admin/commit/ca483d30634f7144067d2f4c5c2abcf8581562e6))
+* 细节优化 ([7e705c3](https://github.com/baiwumm/next-admin/commit/7e705c3a49cddd75a76a9b37d2b94b4404a1ad45))
+* 新增 culori 包 ([782f01f](https://github.com/baiwumm/next-admin/commit/782f01f1a1591975b197985bd51538116e84fa9d))
+* **components:** 新增 PrimaryColorPicker 主题色下拉选择组件 ([141d95e](https://github.com/baiwumm/next-admin/commit/141d95e19227fdd96102674cdd2aee24c52f38f8))
+
 ## [1.7.0](https://github.com/baiwumm/next-admin/compare/1.6.2...1.7.0) (2025-11-07)
 
 ### ✨ Features | 新功能
