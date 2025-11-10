@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.1](https://github.com/baiwumm/next-admin/compare/1.8.0...1.8.1) (2025-11-10)
+
+### ✨ Features | 新功能
+
+* **components:** 新增 NotFound 组件 ([003a777](https://github.com/baiwumm/next-admin/commit/003a777be06cbe5241d5bcb2c1813b5b550e0d3e))
+* **login:** 登录页新增 PrimaryColorPicker 组件 ([1c12b7b](https://github.com/baiwumm/next-admin/commit/1c12b7be697bc4b61a573310029f48aabb2a0acb))
+* **menu-manage:** 优化页面排版 ([ddd06f4](https://github.com/baiwumm/next-admin/commit/ddd06f45bac68bb7ae7196104c1c0ee0a7287676))
+
 ## [1.8.0](https://github.com/baiwumm/next-admin/compare/1.7.0...1.8.0) (2025-11-10)
 
 ### ✨ Features | 新功能
