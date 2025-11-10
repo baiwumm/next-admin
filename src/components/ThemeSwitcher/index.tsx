@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 17:01:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-10-30 13:47:27
+ * @LastEditTime: 2025-11-10 13:54:29
  * @Description: 主题切换
  */
 'use client';
@@ -10,6 +10,8 @@ import { Button, cn } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import { useTheme } from "next-themes";
 import { type FC, type MouseEvent, useEffect, useState } from 'react';
+
+import { THEME_MODE } from '@/lib/constant'
 
 const ThemeSwitcher: FC = () => {
   const { theme, setTheme } = useTheme();
@@ -29,11 +31,11 @@ const ThemeSwitcher: FC = () => {
     return null; // 或者可以返回一个 loading 动画
   }
 
-  const isLight = theme === 'light';
+  const isLight = theme === THEME_MODE.LIGHT;
 
   // 切换模式
   const toggleTheme = () => {
-    setTheme(isLight ? 'dark' : 'light')
+    setTheme(isLight ? THEME_MODE.DARK : THEME_MODE.LIGHT);
   };
 
   // 判断是否支持 startViewTransition API

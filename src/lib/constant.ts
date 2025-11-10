@@ -1,4 +1,13 @@
 /**
+ * @description: 主题
+ */
+export const THEME_MODE = {
+  LIGHT: 'light',
+  DARK: 'dark',
+  SYSTEM: 'system'
+} as const;
+
+/**
  * @description: 请求状态码
  */
 export const RESPONSE_CODE = {

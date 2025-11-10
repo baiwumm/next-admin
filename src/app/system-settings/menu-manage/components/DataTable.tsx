@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 09:35:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 17:37:30
+ * @LastEditTime: 2025-11-10 14:07:34
  * @Description: 数据表格
  */
 import {
@@ -110,7 +110,7 @@ const DataTable: FC<DataTableProps> = ({
       switch (columnKey) {
         case 'label':
           return (
-            <div className="flex justify-center items-center gap-2" style={{ paddingLeft: `${level * 20}px` }}>
+            <div className="flex justify-center items-center gap-2 text-primary" style={{ paddingLeft: `${level * 20}px` }}>
               {item?.children?.length > 0 && (
                 <Icon
                   icon={isOpen ? 'ri:indeterminate-circle-line' : 'ri:add-circle-line'}
@@ -122,12 +122,12 @@ const DataTable: FC<DataTableProps> = ({
             </div>
           );
         case "path":
-          return <Chip color="primary" variant="flat" size='sm'>{item.path}</Chip>;
+          return <Chip variant="flat" size='sm'>{item.path}</Chip>;
         case 'icon':
-          return <Icon icon={item.icon} className="text-xl" />;
+          return <Icon icon={item.icon} className="text-xl text-primary" />;
         case 'redirect':
           return item.redirect ? (
-            <Chip color="primary" variant="flat" size='sm'>{item.redirect}</Chip>
+            <Chip variant="flat" size='sm'>{item.redirect}</Chip>
           ) : UNIFORM_TEXT.NULL;
         case 'sort':
           return <Chip color="secondary" size="sm">{item.sort}</Chip>;
@@ -193,7 +193,7 @@ const DataTable: FC<DataTableProps> = ({
     [openMap, headerColumns, renderCell]
   );
   return (
-    <Table aria-label="Menu Manage" sortDescriptor={sortDescriptor} onSortChange={setSortDescriptor} isStriped radius='sm'>
+    <Table aria-label="Menu Manage" sortDescriptor={sortDescriptor} onSortChange={setSortDescriptor} isStriped >
       <TableHeader columns={headerColumns}>
         {(column) => (
           <TableColumn
