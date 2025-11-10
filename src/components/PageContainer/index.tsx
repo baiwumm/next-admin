@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-07 09:06:48
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 09:45:08
+ * @LastEditTime: 2025-11-10 09:04:33
  * @Description: 页容器
  */
 'use client'
 
-import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
+import { BreadcrumbItem, Breadcrumbs, Spinner } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -45,7 +45,11 @@ const PageContainer: FC<PageContainerProps> = ({ children }) => {
   const breadcrumbPath = findBreadcrumbs(pathname, menuList);
 
   if (!breadcrumbPath) {
-    return null // 没有找到匹配路径，返回空
+    return (
+      <div className="min-h-[calc(100vh-11rem)] flex justify-center items-center h-full">
+        <Spinner color="primary" />
+      </div>
+    )
   }
   return (
     <div className="flex flex-col gap-4">

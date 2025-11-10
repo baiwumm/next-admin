@@ -2,11 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 16:24:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 13:51:28
+ * @LastEditTime: 2025-11-10 08:59:02
  * @Description: 全局布局
  */
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 import Footer from '@/components/Footer';
@@ -14,7 +15,6 @@ import Header from '@/components/Header';
 import PageAnimatePresence from '@/components/PageAnimatePresence'
 import PageContainer from '@/components/PageContainer'
 import { type Locale } from '@/i18n/config'
-import { useLayoutStore } from '@/store/layoutStore';
 import { setupAppStore } from '@/store/useAppStore';
 
 type GlobalLayoutProps = {
@@ -23,17 +23,16 @@ type GlobalLayoutProps = {
 };
 
 export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
-  // 是否跳过全局布局
-  const skipGlobalLayout = useLayoutStore((state) => state.skipGlobalLayout);
-
+  const pathname = usePathname();
+  // 受保护的路由，不需要 RootLayout
+  const protectedRoutes = ['/login']
+  // 数据初始化
   useEffect(() => {
     const cleanup = setupAppStore()
     return () => cleanup?.()
   }, [])
 
-  return skipGlobalLayout ? (
-    <>{children}</>
-  ) : (
+  return protectedRoutes.includes(pathname) ? children : (
     <>
       <Header locale={locale} />
       <PageAnimatePresence>
