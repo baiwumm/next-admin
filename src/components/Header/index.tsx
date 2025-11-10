@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 17:29:40
+ * @LastEditTime: 2025-11-07 17:16:56
  * @Description: 头部布局
  */
 'use client';
@@ -20,6 +20,7 @@ import FullScreen from '@/components/FullScreen'
 import LangSwitch from '@/components/LangSwitch'
 import NavMenu from '@/components/NavMenu'
 import NavMobileMenu from '@/components/NavMobileMenu'
+import PrimaryColorPicker from '@/components/PrimaryColorPicker'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import UserAvatar from '@/components/UserAvatar'
 import { type Locale } from '@/i18n/config'
@@ -75,6 +76,8 @@ const Header: FC<HeaderProps> = ({ locale }) => {
       <NavMenu />
       {/* 右侧按钮 */}
       <NavbarContent as="div" justify="end" className="flex gap-0">
+        {/* 主题选择器 */}
+        <PrimaryColorPicker />
         {/* 主题切换 */}
         <ThemeSwitcher />
         {/* 全屏 */}

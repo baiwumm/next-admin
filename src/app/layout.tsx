@@ -1,8 +1,10 @@
-import { HeroUIProvider, ToastProvider } from "@heroui/react";
+import { ToastProvider } from "@heroui/react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+
+import { Providers } from "./Providers";
 
 import "./globals.css";
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
@@ -32,7 +34,7 @@ export default async function RootLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <HeroUIProvider>
+          <Providers locale={locale}>
             <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
               <ToastProvider placement='top-center' toastOffset={40} />
               {/* 全局 Loading */}
@@ -41,7 +43,7 @@ export default async function RootLayout({
                 {children}
               </GlobalLayout>
             </NextThemesProvider>
-          </HeroUIProvider>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
