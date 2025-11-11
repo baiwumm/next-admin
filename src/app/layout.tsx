@@ -7,6 +7,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { Providers } from "./Providers";
 
 import "./globals.css";
+import BackTop from '@/components/BackTop'; // 回到顶部
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalLayout from '@/components/GlobalLayout'; // 全局布局
 import { type Locale } from '@/i18n/config'
@@ -39,6 +40,8 @@ export default async function RootLayout({
               <ToastProvider placement='top-center' toastOffset={40} />
               {/* 全局 Loading */}
               <FullLoading />
+              {/* 回到顶部 */}
+              <BackTop />
               <GlobalLayout locale={locale}>
                 {children}
               </GlobalLayout>
