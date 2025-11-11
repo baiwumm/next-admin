@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 16:24:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-10 08:59:02
+ * @LastEditTime: 2025-11-11 10:36:55
  * @Description: 全局布局
  */
 'use client';
@@ -10,6 +10,7 @@
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
+import DynamicTabs from '@/components/DynamicTabs'
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import PageAnimatePresence from '@/components/PageAnimatePresence'
@@ -34,7 +35,10 @@ export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
 
   return protectedRoutes.includes(pathname) ? children : (
     <>
-      <Header locale={locale} />
+      <div className="sticky top-0 z-90">
+        <Header locale={locale} />
+        <DynamicTabs />
+      </div>
       <PageAnimatePresence>
         <PageContainer>
           {children}

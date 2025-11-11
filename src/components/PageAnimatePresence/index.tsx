@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 13:49:54
+ * @LastEditTime: 2025-11-11 10:40:05
  * @Description: 路由退场动画
  */
 "use client";
@@ -48,7 +48,7 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
         }}
       >
         <FrozenRouter>
-          <div className='container mx-auto p-4 min-h-[calc(100vh-4rem)] flex flex-col justify-between gap-6'>
+          <div className='container mx-auto p-4 min-h-[calc(100vh-6rem)] flex flex-col justify-between gap-6'>
             {children}
           </div>
         </FrozenRouter>
