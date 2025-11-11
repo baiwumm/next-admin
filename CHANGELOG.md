@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.2](https://github.com/baiwumm/next-admin/compare/1.8.1...1.8.2) (2025-11-11)
+
+### ✨ Features | 新功能
+
+* 新增 DynamicTabs 多标签页组件 ([f16e51b](https://github.com/baiwumm/next-admin/commit/f16e51b0d9300a348609c0cf3f87450af9c27af1))
+* **components:** 新增 BackTop 回到顶部组件 ([95e11cf](https://github.com/baiwumm/next-admin/commit/95e11cf33d7412a2ba807ef10e3b0da01826a801))
+
 ## [1.8.1](https://github.com/baiwumm/next-admin/compare/1.8.0...1.8.1) (2025-11-10)
 
 ### ✨ Features | 新功能
