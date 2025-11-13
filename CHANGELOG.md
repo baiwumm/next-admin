@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.8.3](https://github.com/baiwumm/next-admin/compare/1.8.2...1.8.3) (2025-11-13)
+
+### ✨ Features | 新功能
+
+* **UserManage:** 完成《用户管理》模块的开发 ([56ab648](https://github.com/baiwumm/next-admin/commit/56ab6487c4779a1c7e5e5b07f611666979bd2126))
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **layout:** 修复 next-themes 引发的水合报错问题 ([4a36d68](https://github.com/baiwumm/next-admin/commit/4a36d68035a1b59e24ebe77484aad11ef865f004))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 细节调整 ([c16a6d7](https://github.com/baiwumm/next-admin/commit/c16a6d7939b8bf7d1a4ae3610563995d46818f36))
+
 ## [1.8.2](https://github.com/baiwumm/next-admin/compare/1.8.1...1.8.2) (2025-11-11)
 
 ### ✨ Features | 新功能
