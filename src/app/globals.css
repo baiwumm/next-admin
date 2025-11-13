@@ -53,18 +53,18 @@ body {
 
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-bg);
+  background-color: hsl(var(--heroui-primary)/1);
   border-radius: 2.5px;
   transition: .35s background-color;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-hover);
+  background-color: hsl(var(--heroui-primary)/.8);
 }
 
 *::-webkit-scrollbar-track {

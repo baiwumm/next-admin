@@ -33,6 +33,15 @@
       "redirect":"重定向地址",
       "add":"新增菜单",
       "edit":"编辑菜单"
+    },
+    "UserManage":{
+      "userInfo":"用户信息",
+      "email":"邮箱地址",
+      "provider":"认证方式",
+      "last_sign_in_at":"上次登录时间",
+      "created_at":"注册时间",
+      "email_confirmed_at":"邮箱验证时间",
+      "waiting":"等待验证..."
     }
   },
   "Components":{
@@ -73,6 +82,10 @@
     "columns-settings":"列设置",
     "parent":"父级",
     "parent-tip":"不选默认为顶级",
-    "empty":"暂无数据"
+    "empty":"暂无数据",
+    "copy":"复制",
+    "index":"序号",
+    "total":"共 {total} 条数据",
+    "pageSize":"{pageSize}条/页"
   }
 }

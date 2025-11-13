@@ -33,6 +33,15 @@
       "redirect":"Redirect Path",
       "add":"Add Menu",
       "edit":"Edit Menu"
+    },
+    "UserManage":{
+      "userInfo":"User Info",
+      "email":"Email",
+      "provider":"Provider",
+      "last_sign_in_at":"Last Signin",
+      "created_at":"Created At",
+      "email_confirmed_at":"Email Confirmed At",
+      "waiting":"Waiting for verification..."
     }
   },
   "Components":{
@@ -73,6 +82,10 @@
     "columns-settings":"Columns",
     "parent":"Parent",
     "parent-tip":"If not selected, it will default to top-level",
-    "empty":"No Data"
+    "empty":"No Data",
+    "copy":"Copy",
+    "index":"Index",
+    "total":"A total of {total} pieces of data",
+    "pageSize":"{pageSize} entries/page"
   }
 }
