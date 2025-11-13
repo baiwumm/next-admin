@@ -10,7 +10,7 @@ import { type FC } from 'react';
 
 const Organization: FC = () => {
   return (
-    <div className="flex justify-center items-center h-screen m-screen">
+    <div className="flex justify-center items-center h-[500px]">
       <Button color="primary">组织管理</Button>
     </div>
   )

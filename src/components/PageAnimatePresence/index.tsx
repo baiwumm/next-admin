@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-13 09:28:45
+ * @LastEditTime: 2025-11-13 18:21:18
  * @Description: 路由退场动画
  */
 "use client";
@@ -36,21 +36,20 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, x: 100, filter: 'blur(15px)' }} // ✅ 修复：添加 initialState
-        animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}   // ✅ 修复：添加 animateState
-        exit={{ opacity: 0, x: -100, filter: 'blur(15px)' }}    // ✅ 修复：添加 exitState
+        initial={{ opacity: 0, filter: 'blur(15px)', x: 0 }} // ✅ 修复：添加 initialState
+        animate={{ opacity: 1, filter: 'blur(0px)', x: 20 }}   // ✅ 修复：添加 animateState
+        exit={{ opacity: 0, filter: 'blur(15px)', x: 0 }}    // ✅ 修复：添加 exitState
         transition={{
           duration: 0.5,
           ease: 'easeOut'
         }}
+        className="min-h-[calc(100vh-15rem)] overflow-hidden"
       >
         <FrozenRouter>
-          <div className='container mx-auto p-4 min-h-[calc(100vh-6.5rem)] flex flex-col justify-between gap-6'>
-            {children}
-          </div>
+          {children}
         </FrozenRouter>
       </motion.div>
     </AnimatePresence>

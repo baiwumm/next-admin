@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-07 09:06:48
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-11 09:21:15
+ * @LastEditTime: 2025-11-13 18:05:12
  * @Description: 页容器
  */
 'use client'
@@ -15,6 +15,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, type ReactNode } from 'react';
 
 import NotFound from '@/components/NotFound';
+import PageAnimatePresence from '@/components/PageAnimatePresence';
 import { useMenuStore } from '@/store/useMenuStore';
 
 type PageContainerProps = {
@@ -72,7 +73,9 @@ const PageContainer: FC<PageContainerProps> = ({ children }) => {
           ))}
         </Breadcrumbs>
       ) : null}
-      {children}
+      <PageAnimatePresence>
+        {children}
+      </PageAnimatePresence>
     </div>
   )
 }
