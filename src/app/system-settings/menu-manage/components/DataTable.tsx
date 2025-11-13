@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-05 09:35:37
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-10 17:23:54
+ * @LastEditTime: 2025-11-13 09:31:31
  * @Description: 数据表格
  */
 import {
@@ -220,6 +220,7 @@ const DataTable: FC<DataTableProps> = ({
           setVisibleColumns={setVisibleColumns}
         />
       )}
+      topContentPlacement="outside"
     >
       <TableHeader columns={headerColumns}>
         {(column) => (

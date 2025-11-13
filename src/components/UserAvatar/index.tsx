@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 16:59:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 17:27:41
+ * @LastEditTime: 2025-11-12 14:59:36
  * @Description: 用户头像
  */
 import {
@@ -53,12 +53,13 @@ const UserAvatar: FC = () => {
     setLogoutLoading(false);
   }
 
+  const name = user?.user_metadata.name || user?.user_metadata.user_name || t('anonymous-user');
   // 用户头像属性
   const avatarProps: AvatarProps = {
     showFallback: true,
-    fallback: <Icon icon='ri:user-line' className="text-large" />,
-    name: t('anonymous-user'),
+    name,
     src: user?.user_metadata.avatar_url as string,
+    color: 'primary'
   }
   return loading || logoutLoading ? (
     <Spinner size="sm" label={logoutLoading ? t('logout-loading') : t('user-loading')} />
@@ -70,7 +71,7 @@ const UserAvatar: FC = () => {
         ) : (
           <User
             className="transition-transform cursor-pointer ml-2"
-            name={user?.user_metadata.full_name || t('anonymous-user')}
+            name={name}
             description={user?.email}
             avatarProps={avatarProps}
           />

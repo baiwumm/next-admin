@@ -19,7 +19,7 @@ import SaveModal from './components/SaveModal';
 
 import { getMenuList } from '@/services/system-settings/menu-manage';
 
-const TreeTable: FC = () => {
+const MenuManage: FC = () => {
   const t = useTranslations('Common');
   const tM = useTranslations('Pages.MenuManage');
   // 搜索表单实例
@@ -108,6 +108,6 @@ const TreeTable: FC = () => {
   );
 };
 
-export default TreeTable;
+export default MenuManage;
 
 
