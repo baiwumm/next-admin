@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.8.4](https://github.com/baiwumm/next-admin/compare/1.8.3...1.8.4) (2025-11-14)
+
+### ✨ Features | 新功能
+
+* **login:** 优化登录页排版，新增 Squares 背景组件 ([01f8abb](https://github.com/baiwumm/next-admin/commit/01f8abbed32929b7aa390e493814a5e1afa534c1))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化路由进场退场动画效果 ([c20fccc](https://github.com/baiwumm/next-admin/commit/c20fccc1ffd4b374fc9ea76e061aa09e6eb81666))
+* **layout:** 布局和路由动画优化 ([3daa008](https://github.com/baiwumm/next-admin/commit/3daa0088ee5d4252ea1e0fdc93f5ab64f553bf5e))
+* **layout:** 路由动画优化 ([07d3cab](https://github.com/baiwumm/next-admin/commit/07d3cab659e1ed8d38841f1f193a8d8585744898))
+
 ## [1.8.3](https://github.com/baiwumm/next-admin/compare/1.8.2...1.8.3) (2025-11-13)
 
 ### ✨ Features | 新功能
