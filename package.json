@@ -24,6 +24,7 @@
     "@iconify-icon/react": "^3.0.1",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.78.0",
+    "@vercel/analytics": "^1.5.0",
     "ahooks": "^3.9.6",
     "axios": "^1.13.1",
     "culori": "^4.0.2",

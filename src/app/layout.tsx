@@ -1,4 +1,5 @@
 import { ToastProvider } from "@heroui/react";
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -42,6 +43,8 @@ export default async function RootLayout({
               <FullLoading />
               {/* 回到顶部 */}
               <BackTop />
+              {/* vercel Web Analytics */}
+              <Analytics />
               <GlobalLayout locale={locale}>
                 {children}
               </GlobalLayout>
