@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 09:59:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-14 09:32:38
+ * @LastEditTime: 2025-11-14 17:40:38
  * @Description: 登录页
  */
 "use client";
@@ -111,6 +111,7 @@ export default function Login() {
               type="email"
               variant="bordered"
               isClearable
+              labelPlacement='outside'
             />
             <Input
               isRequired
@@ -134,6 +135,7 @@ export default function Login() {
               placeholder={t('password-placeholder')}
               type={isVisible ? "text" : "password"}
               variant="bordered"
+              labelPlacement='outside'
             />
             <div className="flex justify-end items-center w-full">
               {isSignup ? (
