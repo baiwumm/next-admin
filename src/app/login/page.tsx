@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 09:59:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-03 14:44:58
+ * @LastEditTime: 2025-11-14 09:32:38
  * @Description: 登录页
  */
 "use client";
-import { addToast, Button, Divider, Form, Input, Link } from "@heroui/react";
+import { addToast, Button, Card, CardBody, CardFooter, CardHeader, Divider, Form, Image, Input, Link } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl';
 import { type FormEvent, useState } from "react";
@@ -85,96 +84,104 @@ export default function Login() {
   }
 
   return (
-    <div className="flex w-full max-w-sm flex-col gap-4 p-4">
-      <div className="flex justify-center items-center gap-2">
-        <Image
-          src="/logo.svg"
-          width={48}
-          height={48}
-          alt="Logo"
-          className="rounded"
-        />
-        <div className="flex flex-col">
-          <p className="text-xl font-medium">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-          <p className="text-small text-default-500">{process.env.NEXT_PUBLIC_APP_DESC}</p>
-        </div>
-      </div>
-      <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleEmailLogin}>
-        <Input
-          isRequired
-          label={t('emial')}
-          name="email"
-          placeholder={t('emial-placeholder')}
-          type="email"
-          variant="bordered"
-          isClearable
-        />
-        <Input
-          isRequired
-          endContent={
-            <button type="button" onClick={toggleVisibility}>
-              {isVisible ? (
-                <Icon
-                  className="text-default-400 pointer-events-none text-2xl"
-                  icon="solar:eye-closed-linear"
-                />
+    <div className="w-full max-w-md p-4">
+      <Card>
+        <CardHeader>
+          <div className="flex justify-center items-center gap-3">
+            <Image
+              src="/logo.svg"
+              width={42}
+              height={42}
+              alt="Logo"
+            />
+            <div className="flex flex-col">
+              <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
+              <p className="text-small text-default-500">{process.env.NEXT_PUBLIC_APP_DESC}</p>
+            </div>
+          </div>
+        </CardHeader>
+        <Divider />
+        <CardBody>
+          <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleEmailLogin}>
+            <Input
+              isRequired
+              label={t('emial')}
+              name="email"
+              placeholder={t('emial-placeholder')}
+              type="email"
+              variant="bordered"
+              isClearable
+            />
+            <Input
+              isRequired
+              endContent={
+                <button type="button" onClick={toggleVisibility}>
+                  {isVisible ? (
+                    <Icon
+                      className="text-default-400 pointer-events-none text-2xl"
+                      icon="solar:eye-closed-linear"
+                    />
+                  ) : (
+                    <Icon
+                      className="text-default-400 pointer-events-none text-2xl"
+                      icon="solar:eye-bold"
+                    />
+                  )}
+                </button>
+              }
+              label={t('password')}
+              name="password"
+              placeholder={t('password-placeholder')}
+              type={isVisible ? "text" : "password"}
+              variant="bordered"
+            />
+            <div className="flex justify-end items-center w-full">
+              {isSignup ? (
+                <Link size="sm" onPress={() => setIsSignup(false)} className="cursor-pointer">
+                  {t('login-now')}
+                </Link>
               ) : (
-                <Icon
-                  className="text-default-400 pointer-events-none text-2xl"
-                  icon="solar:eye-bold"
-                />
+                <p className="text-small text-center">
+                  {t('need-account')}&nbsp;
+                  <Link size="sm" onPress={() => setIsSignup(true)} className="cursor-pointer">
+                    {t('signup')}
+                  </Link>
+                </p>
               )}
-            </button>
-          }
-          label={t('password')}
-          name="password"
-          placeholder={t('password-placeholder')}
-          type={isVisible ? "text" : "password"}
-          variant="bordered"
-        />
-        <div className="flex justify-end items-center w-full">
-          {isSignup ? (
-            <Link size="sm" onPress={() => setIsSignup(false)} className="cursor-pointer">
-              {t('login-now')}
-            </Link>
-          ) : (
-            <p className="text-small text-center">
-              {t('need-account')}&nbsp;
-              <Link size="sm" onPress={() => setIsSignup(true)} className="cursor-pointer">
-                {t('signup')}
-              </Link>
-            </p>
-          )}
+            </div>
+            <Button className="w-full" color="primary" type="submit" isLoading={emailLoading} isDisabled={oauthLoading}>
+              {t(isSignup ? 'register' : 'submit')}
+            </Button>
+          </Form>
+        </CardBody>
+        <div className="flex items-center gap-4 py-2">
+          <Divider className="flex-1" />
+          <p className="text-tiny text-default-500 shrink-0">OR</p>
+          <Divider className="flex-1" />
         </div>
-        <Button className="w-full" color="primary" type="submit" isLoading={emailLoading} isDisabled={oauthLoading}>
-          {t(isSignup ? 'register' : 'submit')}
-        </Button>
-      </Form>
-      <div className="flex items-center gap-4 py-2">
-        <Divider className="flex-1" />
-        <p className="text-tiny text-default-500 shrink-0">OR</p>
-        <Divider className="flex-1" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <Button
-          startContent={<Icon className="text-default-500" icon="fe:github" width={24} />}
-          variant="bordered"
-          onPress={() => handleOAuthLogin('github')}
-          isLoading={oauthLoading}
-          isDisabled={emailLoading}
-        >
-          {t('github')}
-        </Button>
-        <Button
-          startContent={<Icon icon="flat-color-icons:google" width={24} />}
-          variant="bordered"
-          onPress={() => handleOAuthLogin('google')}
-          isLoading={oauthLoading}
-          isDisabled={emailLoading}
-        >
-          {t('google')}
-        </Button>
-      </div>
+        <CardFooter>
+          <div className="flex flex-col gap-2 w-full">
+            <Button
+              startContent={<Icon className="text-default-500" icon="devicon:github" width={24} />}
+              variant="ghost"
+              onPress={() => handleOAuthLogin('github')}
+              isLoading={oauthLoading}
+              isDisabled={emailLoading}
+            >
+              {t('github')}
+            </Button>
+            <Button
+              startContent={<Icon icon="flat-color-icons:google" width={24} />}
+              variant="ghost"
+              onPress={() => handleOAuthLogin('google')}
+              isLoading={oauthLoading}
+              isDisabled={emailLoading}
+            >
+              {t('google')}
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
