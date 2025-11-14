@@ -2,16 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 16:15:34
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-06 17:12:45
+ * @LastEditTime: 2025-11-14 14:06:43
  * @Description: 导航菜单
  */
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, NavbarContent, NavbarItem, type SharedSelection, Spinner } from '@heroui/react';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, NavbarContent, NavbarItem, Spinner } from '@heroui/react';
 import { Icon } from '@iconify-icon/react';
 import { map } from 'es-toolkit/compat';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { type FC, useState } from 'react';
+import { type FC, useMemo } from 'react';
 
 import { useMenuStore } from '@/store/useMenuStore';
 
@@ -21,7 +21,7 @@ const NavMenu: FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   // 勾选的菜单
-  const [selectedKeys, setSelectedKeys] = useState<SharedSelection>(new Set([pathname]));
+  const selectedKeys = useMemo(() => new Set([pathname]), [pathname]);
   // 判断菜单是否选中
   const isActive = (url: string) => url === pathname || pathname.includes(url);
 
@@ -53,7 +53,6 @@ const NavMenu: FC = () => {
             selectedKeys={selectedKeys}
             selectionMode="single"
             variant="flat"
-            onSelectionChange={setSelectedKeys}
             onAction={(key) => router.push(key as string)}
           >
             {map(children, ({ label, path, icon }) => (
