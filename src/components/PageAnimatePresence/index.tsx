@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-13 18:21:18
+ * @LastEditTime: 2025-11-14 08:49:25
  * @Description: 路由退场动画
  */
 "use client";
@@ -36,17 +36,17 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, filter: 'blur(15px)', x: 0 }} // ✅ 修复：添加 initialState
-        animate={{ opacity: 1, filter: 'blur(0px)', x: 20 }}   // ✅ 修复：添加 animateState
-        exit={{ opacity: 0, filter: 'blur(15px)', x: 0 }}    // ✅ 修复：添加 exitState
+        initial={{ opacity: 0, filter: 'blur(15px)', x: 20 }}
+        animate={{ opacity: 1, filter: 'blur(0px)', x: 0 }}
+        exit={{ opacity: 0, filter: 'blur(15px)', x: -20 }}
         transition={{
           duration: 0.5,
           ease: 'easeOut'
         }}
-        className="min-h-[calc(100vh-15rem)] overflow-hidden"
+        className="overflow-hidden"
       >
         <FrozenRouter>
           {children}
