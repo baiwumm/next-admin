@@ -3,19 +3,21 @@ import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import PlausibleProvider from "next-plausible";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { Providers } from "./Providers";
 
 import "./globals.css";
+import { ClarityAnalytics, GoogleAnalytics, UmamiAnalytics } from '@/components/Analytics'; // 统计代码
 import BackTop from '@/components/BackTop'; // 回到顶部
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalLayout from '@/components/GlobalLayout'; // 全局布局
 import { type Locale } from '@/i18n/config'
 
 export const metadata: Metadata = {
-  title: "Next Admin",
-  description: "Middle and back-end templates based on Next.js",
+  title: process.env.NEXT_PUBLIC_APP_NAME,
+  description: process.env.NEXT_PUBLIC_APP_DESC,
 };
 
 export default async function RootLayout({
@@ -33,24 +35,32 @@ export default async function RootLayout({
           rel="stylesheet"
           href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css"
         />
+        {/* umami - 站点统计分析 */}
+        <UmamiAnalytics />
+        {/* Microsoft Clarity 统计代码 */}
+        <ClarityAnalytics />
+        {/* Google 统计 */}
+        <GoogleAnalytics />
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <Providers locale={locale}>
-            <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
-              <ToastProvider placement='top-center' toastOffset={40} />
-              {/* 全局 Loading */}
-              <FullLoading />
-              {/* 回到顶部 */}
-              <BackTop />
-              {/* vercel Web Analytics */}
-              <Analytics />
-              <GlobalLayout locale={locale}>
-                {children}
-              </GlobalLayout>
-            </NextThemesProvider>
-          </Providers>
-        </NextIntlClientProvider>
+        <PlausibleProvider domain={process.env.NEXT_PUBLIC_APP_DOMAIN!}>
+          <NextIntlClientProvider messages={messages}>
+            <Providers locale={locale}>
+              <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
+                <ToastProvider placement='top-center' toastOffset={40} />
+                {/* 全局 Loading */}
+                <FullLoading />
+                {/* 回到顶部 */}
+                <BackTop />
+                {/* vercel Web Analytics */}
+                <Analytics />
+                <GlobalLayout locale={locale}>
+                  {children}
+                </GlobalLayout>
+              </NextThemesProvider>
+            </Providers>
+          </NextIntlClientProvider>
+        </PlausibleProvider>
       </body>
     </html>
   );
