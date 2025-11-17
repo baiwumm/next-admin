@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.9.2](https://github.com/baiwumm/next-admin/compare/1.9.1...1.9.2) (2025-11-17)
+
+### ✨ Features | 新功能
+
+* **Analytics:** 添加统计代码 ([fd72091](https://github.com/baiwumm/next-admin/commit/fd72091a7ee7de0dff04b3071c1cef36cb57b4d6))
+
+### ⚡ Performance Improvements | 性能优化
+
+* **DynamicTabs:** 优化多标签页跳转逻辑 ([b791e68](https://github.com/baiwumm/next-admin/commit/b791e68974bd42b324baf5b97d508505eca688ed))
+
 ## [1.9.1](https://github.com/baiwumm/next-admin/compare/1.9.0...1.9.1) (2025-11-17)
 
 ### ⚡ Performance Improvements | 性能优化
