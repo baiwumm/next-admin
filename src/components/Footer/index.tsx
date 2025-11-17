@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 14:38:38
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 09:48:22
+ * @LastEditTime: 2025-11-17 10:37:48
  * @Description: 底部版权
  */
-import Image from 'next/image'
+import { Image } from "@heroui/react"
 import { type FC } from 'react';
 
 import pkg from "../../../package.json";
@@ -20,9 +20,9 @@ const Footer: FC = () => {
             href={pkg.author.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            className="hover:text-primary transition-colors"
           >
-            白雾茫茫丶
+            {process.env.NEXT_PUBLIC_AUTHOR_NAME}
           </a>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
@@ -37,9 +37,9 @@ const Footer: FC = () => {
               href="https://beian.miit.gov.cn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="hover:text-primary transition-colors"
             >
-              粤ICP备2023007649号
+              {process.env.NEXT_PUBLIC_SITE_ICP}
             </a>
           </div>
           <div className="flex items-center gap-1">
@@ -53,9 +53,9 @@ const Footer: FC = () => {
               href="https://beian.mps.gov.cn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="hover:text-primary transition-colors"
             >
-              粤公网安备44030402006402号
+              {process.env.NEXT_PUBLIC_SITE_GUAN_ICP}
             </a>
           </div>
         </div>

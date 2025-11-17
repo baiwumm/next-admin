@@ -23,7 +23,7 @@ const FullLoading = () => {
   if (!mounted) {
     return (
       <div className="fixed flex w-screen h-screen justify-center items-center flex-col z-[99] overflow-hidden bg-white dark:bg-slate-900">
-        <Spinner label={t('label')} variant="gradient" size="lg" />
+        <Spinner label={t('label')} variant="gradient" size="lg" color='primary' />
       </div>
     );
   }
