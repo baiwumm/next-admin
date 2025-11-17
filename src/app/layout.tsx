@@ -3,13 +3,12 @@ import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import PlausibleProvider from "next-plausible";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { Providers } from "./Providers";
 
 import "./globals.css";
-import { ClarityAnalytics, GoogleAnalytics, UmamiAnalytics } from '@/components/Analytics'; // 统计代码
+import { ClarityAnalytics, GoogleAnalytics, PlausibleAnalytics, UmamiAnalytics } from '@/components/Analytics'; // 统计代码
 import BackTop from '@/components/BackTop'; // 回到顶部
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalLayout from '@/components/GlobalLayout'; // 全局布局
@@ -41,26 +40,26 @@ export default async function RootLayout({
         <ClarityAnalytics />
         {/* Google 统计 */}
         <GoogleAnalytics />
+        {/* Plausible 统计代码 */}
+        <PlausibleAnalytics />
       </head>
       <body>
-        <PlausibleProvider domain={process.env.NEXT_PUBLIC_APP_DOMAIN!}>
-          <NextIntlClientProvider messages={messages}>
-            <Providers locale={locale}>
-              <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
-                <ToastProvider placement='top-center' toastOffset={40} />
-                {/* 全局 Loading */}
-                <FullLoading />
-                {/* 回到顶部 */}
-                <BackTop />
-                {/* vercel Web Analytics */}
-                <Analytics />
-                <GlobalLayout locale={locale}>
-                  {children}
-                </GlobalLayout>
-              </NextThemesProvider>
-            </Providers>
-          </NextIntlClientProvider>
-        </PlausibleProvider>
+        <NextIntlClientProvider messages={messages}>
+          <Providers locale={locale}>
+            <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME}>
+              <ToastProvider placement='top-center' toastOffset={40} />
+              {/* 全局 Loading */}
+              <FullLoading />
+              {/* 回到顶部 */}
+              <BackTop />
+              {/* vercel Web Analytics */}
+              <Analytics />
+              <GlobalLayout locale={locale}>
+                {children}
+              </GlobalLayout>
+            </NextThemesProvider>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

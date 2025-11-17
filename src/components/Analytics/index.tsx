@@ -25,7 +25,7 @@ export const UmamiAnalytics = () => {
  */
 export const PlausibleAnalytics = () => {
   // 只在生产环境加载
-  if (!process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || process.env.NODE_ENV !== "production") {
+  if (!process.env.NEXT_PUBLIC_APP_DOMAIN || process.env.NODE_ENV !== "production") {
     return null;
   }
 
