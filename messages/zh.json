@@ -58,6 +58,9 @@
     "NotFound":{
       "title":"看来这个页面去环球旅行了，还没寄明信片回来。",
       "button":"回到首页"
+    },
+    "FullLoading":{
+      "label":"正在加载资源，请稍后..."
     }
   },
   "Common":{

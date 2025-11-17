@@ -58,6 +58,9 @@
     "NotFound":{
       "title":"It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
       "button":"Go back home"
+    },
+    "FullLoading":{
+      "label":"Resources are loading. Please wait a moment..."
     }
   },
   "Common":{
