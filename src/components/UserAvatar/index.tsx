@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 16:59:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-12 14:59:36
+ * @LastEditTime: 2025-11-17 10:00:30
  * @Description: 用户头像
  */
 import {
@@ -17,8 +17,8 @@ import {
   User
 } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
-import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'nextjs-toploader/app';
 import { type FC, useState } from 'react';
 
 import { useSupabaseUser } from '@/hooks/useSupabaseUser'

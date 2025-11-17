@@ -9,7 +9,8 @@ import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, NavbarCo
 import { Icon } from '@iconify-icon/react';
 import { map } from 'es-toolkit/compat';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 import { useTranslations } from 'next-intl';
 import { type FC, useMemo } from 'react';
 

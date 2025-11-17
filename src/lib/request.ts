@@ -2,13 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 11:30:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-04 18:04:43
+ * @LastEditTime: 2025-11-17 10:16:46
  * @Description: Axios 请求封装
  */
 import { addToast } from "@heroui/react";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { get } from 'es-toolkit/compat';
 import queryString from 'query-string';
+
+import { finishLoading, startLoading } from './nprogress';
 
 import { RESPONSE_MSG } from '@/lib/constant'
 import { isSuccess } from '@/lib/utils';
@@ -28,6 +30,7 @@ const request: AxiosInstance = axios.create({
  */
 request.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
+    startLoading();
     return config;
   },
   (error: AxiosError) => {
@@ -48,6 +51,7 @@ request.interceptors.request.use(
  */
 request.interceptors.response.use(
   (response: AxiosResponse) => {
+    finishLoading();
     // 获取接口返回的结果
     const { code, msg } = response.data as Response;
     // 根据返回状态码，统一处理，需要前端和后端沟通确认
@@ -62,6 +66,7 @@ request.interceptors.response.use(
     return response.data;
   },
   (error: AxiosError) => {
+    finishLoading();
     return Promise.reject(error);
   },
 );

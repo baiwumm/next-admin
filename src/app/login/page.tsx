@@ -10,8 +10,8 @@ import { addToast, Button, Card, CardBody, CardFooter, CardHeader, Divider, Form
 import { Icon } from '@iconify-icon/react';
 import { track } from '@vercel/analytics';
 import { upperFirst } from 'es-toolkit'
-import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'nextjs-toploader/app';
 import { type FormEvent, useState } from "react";
 
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';

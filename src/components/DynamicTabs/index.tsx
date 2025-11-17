@@ -2,15 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-10 17:56:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-11 16:52:25
+ * @LastEditTime: 2025-11-17 10:03:46
  * @Description: 多标签页
  */
 "use client";
 import { ScrollShadow, Tab, Tabs } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import { find, get, last, map } from 'es-toolkit/compat';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'nextjs-toploader/app';
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow'
 
@@ -66,11 +67,6 @@ export default function DynamicTabs() {
       router.push(activeKey);
     }
   }, [activeKey, router])
-
-  useEffect(() => {
-    const path = get(last(tabs), 'path', '/dashboard');
-    setActiveKey(path);
-  }, [tabs, router, setActiveKey])
 
   if (menuLoading) {
     return null;
