@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.9.0](https://github.com/baiwumm/next-admin/compare/1.8.4...1.9.0) (2025-11-17)
+
+### ✨ Features | 新功能
+
+* 新增 @vercel/analytics 统计包 ([45b9e9d](https://github.com/baiwumm/next-admin/commit/45b9e9dc8ac6fdc69f3f9f5ec20f6ba16c92b337))
+* 新增 nextjs-toploader 和  包 ([db54259](https://github.com/baiwumm/next-admin/commit/db542590eff5b4c1264603ecf33152ab9df0517b))
+* 新增路由切换和请求顶部进度条 ([c179aab](https://github.com/baiwumm/next-admin/commit/c179aab9395910e3a1b1377b352702477708a397))
+
+### 💄 Styles | 风格
+
+* 修改登录页输入框 label 我只 ([bdcdf56](https://github.com/baiwumm/next-admin/commit/bdcdf56f7ae181cf4fc430c92e1c9404321f9844))
+* **FullLoading:** 修改全局 Loading 动画 ([990e5fa](https://github.com/baiwumm/next-admin/commit/990e5fa42d583cdeecda8bf98cd04f806a79cb12))
+
+### ⚡ Performance Improvements | 性能优化
+
+* **login:** 细节优化 ([a1c9be8](https://github.com/baiwumm/next-admin/commit/a1c9be8de17bbf2f3b5703d77d2b8c75d28e1aba))
+* **NavMenu:** 优化菜单高亮逻辑 ([40fe4cb](https://github.com/baiwumm/next-admin/commit/40fe4cb7db53490622bfb9fd02d8d19ef1deb1f0))
+
 ## [1.8.4](https://github.com/baiwumm/next-admin/compare/1.8.3...1.8.4) (2025-11-14)
 
 ### ✨ Features | 新功能
