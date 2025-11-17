@@ -24,7 +24,8 @@
       "signup":"Sign Up",
       "signup-error":"Sign Up try again later",
       "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
-      "need-account":"Need to create an account?"
+      "need-account":"Need to create an account?",
+      "has-account":"Already have an account?"
     },
     "MenuManage":{
       "label":"Menu Name",

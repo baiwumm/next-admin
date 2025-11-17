@@ -2,17 +2,21 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 09:59:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-14 17:40:38
+ * @LastEditTime: 2025-11-17 09:18:55
  * @Description: 登录页
  */
 "use client";
 import { addToast, Button, Card, CardBody, CardFooter, CardHeader, Divider, Form, Image, Input, Link } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
+import { track } from '@vercel/analytics';
+import { upperFirst } from 'es-toolkit'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl';
 import { type FormEvent, useState } from "react";
 
-import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser'
+import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+
+type AllowedPropertyValues = Parameters<typeof track>[1];
 
 export default function Login() {
   const supabase = getSupabaseBrowserClient()
@@ -33,7 +37,7 @@ export default function Login() {
 
     if (isSignup) {
       const { error } = await supabase.auth.signUp(data as { email: string; password: string; });
-
+      track('Signup', data as AllowedPropertyValues);
       if (error) {
         addToast({
           title: t('signup-error'),
@@ -50,6 +54,7 @@ export default function Login() {
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword(data as { email: string; password: string; });
+      track('Login', data as AllowedPropertyValues);
       if (error) {
         addToast({
           title: t('login-error'),
@@ -81,11 +86,12 @@ export default function Login() {
       });
     }
     setOauthLoading(false)
+    track('Provider', { provider: upperFirst(provider) });
   }
 
   return (
     <div className="w-full max-w-md p-4">
-      <Card>
+      <Card radius='md'>
         <CardHeader>
           <div className="flex justify-center items-center gap-3">
             <Image
@@ -139,9 +145,12 @@ export default function Login() {
             />
             <div className="flex justify-end items-center w-full">
               {isSignup ? (
-                <Link size="sm" onPress={() => setIsSignup(false)} className="cursor-pointer">
-                  {t('login-now')}
-                </Link>
+                <p className="text-small text-center">
+                  {t('has-account')}&nbsp;
+                  <Link size="sm" onPress={() => setIsSignup(false)} className="cursor-pointer">
+                    {t('login-now')}
+                  </Link>
+                </p>
               ) : (
                 <p className="text-small text-center">
                   {t('need-account')}&nbsp;

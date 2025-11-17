@@ -24,7 +24,8 @@
       "signup":"立即注册",
       "signup-error":"注册失败，请稍后重试",
       "signup-success":"提交成功，请到邮箱验证后登录",
-      "need-account":"需要创建一个账户？"
+      "need-account":"需要创建一个账户？",
+      "has-account":"已经有账户？"
     },
     "MenuManage":{
       "label":"菜单名称",
