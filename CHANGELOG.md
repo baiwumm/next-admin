@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.1](https://github.com/baiwumm/next-admin/compare/1.9.0...1.9.1) (2025-11-17)
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化 Footer 组件样式，登录页新增底部版权 ([83581ac](https://github.com/baiwumm/next-admin/commit/83581ac72ee70689a2db7b72b8cc7b1759d96722))
+
 ## [1.9.0](https://github.com/baiwumm/next-admin/compare/1.8.4...1.9.0) (2025-11-17)
 
 ### ✨ Features | 新功能
