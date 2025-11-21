@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.9.3](https://github.com/baiwumm/next-admin/compare/1.9.2...1.9.3) (2025-11-21)
+
+### ✨ Features | 新功能
+
+* 更改 Plausible 统计代码方式 ([7c1dd39](https://github.com/baiwumm/next-admin/commit/7c1dd3996946e52b5c57caa6f973209502ce0d0c))
+* 新增 recharts 和 usehooks-ts 包 ([aa3b367](https://github.com/baiwumm/next-admin/commit/aa3b36789dd1e35a3db9adc780ee3f27325c1eba))
+* **Charts:** 新增 HeroUI Pro Charts 图表模块 ([5090980](https://github.com/baiwumm/next-admin/commit/5090980f926367e4a85cce32c5c97ca8c9ddc1bc))
+
+### 💄 Styles | 风格
+
+* **Footer:** 调整字体大小 ([f5eab47](https://github.com/baiwumm/next-admin/commit/f5eab47a328b1eb35cd892ffce9e4aeb00d484a6))
+* **login:** 优化登录页卡片内间距 ([434fdd7](https://github.com/baiwumm/next-admin/commit/434fdd7041e1fd1c328df14c200d63d086772e0d))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 优化路由加载动画，菜单管理增加菜单描述列项 ([3dfdac7](https://github.com/baiwumm/next-admin/commit/3dfdac7cab32aeedb4a8e7d8fce0925108b58d3a))
+
 ## [1.9.2](https://github.com/baiwumm/next-admin/compare/1.9.1...1.9.2) (2025-11-17)
 
 ### ✨ Features | 新功能
