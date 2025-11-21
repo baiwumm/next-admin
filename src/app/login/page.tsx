@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 09:59:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-17 09:18:55
+ * @LastEditTime: 2025-11-21 13:41:24
  * @Description: 登录页
  */
 "use client";
@@ -91,7 +91,7 @@ export default function Login() {
 
   return (
     <div className="w-full max-w-md p-4">
-      <Card radius='md'>
+      <Card radius='md' classNames={{ header: 'p-3 md:p-6', body: 'p-3 md:p-6', footer: 'p-3 md:p-6' }}>
         <CardHeader>
           <div className="flex justify-center items-center gap-3">
             <Image
