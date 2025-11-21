@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 09:23:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-07 10:14:16
+ * @LastEditTime: 2025-11-21 16:54:14
  * @Description: 新增编辑弹窗
  */
 import { addToast, Button, Form, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, NumberInput, Select, SelectItem, type SelectProps } from "@heroui/react";
@@ -105,7 +105,9 @@ const SaveModal: FC<SaveModalProps> = ({
       backdrop='blur'
       onClose={handleClose}
       isDismissable={false}
-      isKeyboardDismissDisabled={true}>
+      isKeyboardDismissDisabled={true}
+      classNames={{ wrapper: 'z-999', backdrop: "z-998" }}
+    >
       <ModalContent>
         {() => (
           <>
@@ -127,6 +129,14 @@ const SaveModal: FC<SaveModalProps> = ({
                   isRequired
                   name="label"
                   label={tM('label')}
+                  placeholder={t('enter')}
+                  variant="bordered"
+                  isClearable
+                  labelPlacement="outside"
+                />
+                <Input
+                  name="desc"
+                  label={tM('desc')}
                   placeholder={t('enter')}
                   variant="bordered"
                   isClearable

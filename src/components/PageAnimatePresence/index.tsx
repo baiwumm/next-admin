@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-17 10:09:13
+ * @LastEditTime: 2025-11-21 17:12:55
  * @Description: 路由退场动画
  */
 "use client";
@@ -38,9 +38,8 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
           ease: 'easeOut'
         }}
         variants={{
-          exitState: { opacity: 0, x: -50, filter: 'blur(1rem)' }
+          exitState: { opacity: 0, scale: 0.9, filter: 'blur(1rem)' }
         }}
-        className="w-full overflow-hidden"
       >
         <FrozenRouter>
           {children}

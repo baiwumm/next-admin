@@ -45,13 +45,14 @@ declare namespace App {
       label: string;
       path: string;
       icon: string;
+      desc?: string | null;
       redirect?: string;
       sort: number;
       parent_id?: string | null;
       children: Menu[];
     } & Common.ColumnTime;
     /** @description: 保存参数 */
-    type MenuSaveParams = Partial<Pick<Menu, 'id' | 'parent_id' | 'redirect'>> &
+    type MenuSaveParams = Partial<Pick<Menu, 'id' | 'parent_id' | 'desc' | 'redirect'>> &
       Pick<Menu, 'label' | 'path' | 'icon' | 'sort'> & {
         user_id?: string;
       };

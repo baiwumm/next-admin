@@ -7,7 +7,10 @@
     "personal-center":"个人中心",
     "system-settings":"系统设置",
     "user-manage":"用户管理",
-    "menu-manage":"菜单管理"
+    "menu-manage":"菜单管理",
+    "heroui-pro":"HeroUI Pro",
+    "charts":"图表",
+    "charts-desc":"制作精美的图表"
   },
   "Pages":{
     "Login":{
@@ -29,6 +32,7 @@
     },
     "MenuManage":{
       "label":"菜单名称",
+      "desc":"菜单描述",
       "path":"路由地址",
       "icon":"菜单图标",
       "redirect":"重定向地址",

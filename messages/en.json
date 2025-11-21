@@ -7,7 +7,10 @@
     "personal-center":"Personal Center",
     "system-settings":"System Settings",
     "user-manage":"User Management",
-    "menu-manage":"Menu Management"
+    "menu-manage":"Menu Management",
+    "heroui-pro":"HeroUI Pro",
+    "charts":"Charts",
+    "charts-desc":"Beautifully crafted charts"
   },
   "Pages":{
     "Login":{
@@ -29,6 +32,7 @@
     },
     "MenuManage":{
       "label":"Menu Name",
+      "desc":"Menu Desc",
       "path":"Route Path",
       "icon":"Menu Icon",
       "redirect":"Redirect Path",

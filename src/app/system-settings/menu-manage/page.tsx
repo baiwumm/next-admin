@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-03 15:50:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-10 17:24:33
+ * @LastEditTime: 2025-11-21 17:00:43
  * @Description: 菜单管理
  */
 'use client';
@@ -38,6 +38,7 @@ const MenuManage: FC = () => {
     { name: tM('label'), uid: "label" },
     { name: tM('path'), uid: "path" },
     { name: tM('icon'), uid: "icon" },
+    { name: tM('desc'), uid: "desc", show: false },
     { name: tM('redirect'), uid: "redirect" },
     { name: t('sort'), uid: "sort", sortable: true },
     { name: t('created_at'), uid: "created_at", sortable: true },

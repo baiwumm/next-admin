@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 16:15:34
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-14 14:06:43
+ * @LastEditTime: 2025-11-21 17:09:18
  * @Description: 导航菜单
  */
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, NavbarContent, NavbarItem, Spinner } from '@heroui/react';
@@ -10,8 +10,8 @@ import { Icon } from '@iconify-icon/react';
 import { map } from 'es-toolkit/compat';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRouter } from 'nextjs-toploader/app';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'nextjs-toploader/app';
 import { type FC, useMemo } from 'react';
 
 import { useMenuStore } from '@/store/useMenuStore';
@@ -56,11 +56,12 @@ const NavMenu: FC = () => {
             variant="flat"
             onAction={(key) => router.push(key as string)}
           >
-            {map(children, ({ label, path, icon }) => (
+            {map(children, ({ label, path, icon, desc }) => (
               <DropdownItem
                 key={path}
                 startContent={<Icon icon={icon} />}
                 textValue={t(label)}
+                description={desc ? t(desc) : undefined}
               >
                 {t(label)}
               </DropdownItem>
