@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:52:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-23 11:19:59
+ * @LastEditTime: 2025-11-23 15:39:28
  * @Description: 路由退场动画
  */
 "use client";
@@ -33,10 +33,7 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
         initial="initialState"
         animate="animateState"
         exit="exitState"
-        transition={{
-          duration: 0.5,
-          ease: 'easeOut'
-        }}
+        transition={{ duration: 0.5 }}
         variants={{
           exitState: { opacity: 0, x: -20, filter: 'blur(1rem)' }
         }}

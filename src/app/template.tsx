@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 13:50:05
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-23 11:19:06
+ * @LastEditTime: 2025-11-23 15:39:36
  * @Description: 路由进场动画
  */
 "use client";
@@ -22,7 +22,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       initial="hidden"
       animate="enter"
       variants={variants}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5 }}
     >
       {children}
     </motion.div>
