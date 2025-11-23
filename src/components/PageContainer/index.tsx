@@ -2,20 +2,18 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-07 09:06:48
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-13 18:05:12
+ * @LastEditTime: 2025-11-23 10:48:47
  * @Description: 页容器
  */
 'use client'
 
-import { BreadcrumbItem, Breadcrumbs, Spinner } from "@heroui/react";
+import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC, type ReactNode } from 'react';
 
-import NotFound from '@/components/NotFound';
-import PageAnimatePresence from '@/components/PageAnimatePresence';
 import { useMenuStore } from '@/store/useMenuStore';
 
 type PageContainerProps = {
@@ -27,7 +25,6 @@ const PageContainer: FC<PageContainerProps> = ({ children }) => {
   const pathname = usePathname();
   // 获取菜单数据
   const menuList = useMenuStore((state) => state.menuList);
-  const menuLoading = useMenuStore((state) => state.loading);
 
   // 递归生成面包屑
   function findBreadcrumbs(pathname: string, menu: typeof menuList, breadcrumb: App.SystemSettings.Menu[] = []): App.SystemSettings.Menu[] | null {
@@ -44,21 +41,11 @@ const PageContainer: FC<PageContainerProps> = ({ children }) => {
     return null
   }
 
-  if (menuLoading) {
-    return (
-      <div className="min-h-[calc(100vh-11rem)] flex justify-center items-center h-full">
-        <Spinner color="primary" />
-      </div>
-    )
-  }
-
   // 生成面包屑路径
   const breadcrumbPath = findBreadcrumbs(pathname, menuList);
 
   if (!breadcrumbPath) {
-    return (
-      <NotFound />
-    )
+    return null;
   }
   return (
     <div className="flex flex-col gap-4">
@@ -73,9 +60,7 @@ const PageContainer: FC<PageContainerProps> = ({ children }) => {
           ))}
         </Breadcrumbs>
       ) : null}
-      <PageAnimatePresence>
-        {children}
-      </PageAnimatePresence>
+      {children}
     </div>
   )
 }

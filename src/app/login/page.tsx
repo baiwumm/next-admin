@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 09:59:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-21 13:41:24
+ * @LastEditTime: 2025-11-23 10:25:24
  * @Description: 登录页
  */
 "use client";
@@ -165,7 +165,7 @@ export default function Login() {
             </Button>
           </Form>
         </CardBody>
-        <div className="flex items-center gap-4 py-2">
+        <div className="flex items-center gap-4">
           <Divider className="flex-1" />
           <p className="text-tiny text-default-500 shrink-0">OR</p>
           <Divider className="flex-1" />

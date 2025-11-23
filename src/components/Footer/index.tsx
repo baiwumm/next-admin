@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 14:38:38
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-21 17:47:46
+ * @LastEditTime: 2025-11-23 10:26:05
  * @Description: 底部版权
  */
 import { Image } from "@heroui/react"
 import { type FC } from 'react';
 
-import pkg from "../../../package.json";
+import pkg from "#/package.json";
 
 const Footer: FC = () => {
   return (

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-03 15:50:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-21 17:00:43
+ * @LastEditTime: 2025-11-23 11:08:17
  * @Description: 菜单管理
  */
 'use client';
@@ -17,6 +17,7 @@ import { type FC, type FormEvent, useRef, useState } from "react";
 import DataTable from './components/DataTable';
 import SaveModal from './components/SaveModal';
 
+import PageContainer from '@/components/PageContainer';
 import { getMenuList } from '@/services/system-settings/menu-manage';
 
 const MenuManage: FC = () => {
@@ -80,7 +81,7 @@ const MenuManage: FC = () => {
     formRef.current?.reset();
   }
   return (
-    <>
+    <PageContainer>
       {/* 数据表格 */}
       <DataTable
         dataSource={menuList as App.SystemSettings.Menu[]}
@@ -105,7 +106,7 @@ const MenuManage: FC = () => {
         handleClose={handleClose}
         menuList={menuList as App.SystemSettings.Menu[]}
       />
-    </>
+    </PageContainer>
   );
 };
 

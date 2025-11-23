@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 10:10:26
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-13 09:47:14
+ * @LastEditTime: 2025-11-23 11:08:34
  * @Description: 用户列表
  */
 'use client';
@@ -33,6 +33,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, type Key, useCallback, useEffect, useMemo, useState } from 'react';
 
 import Empty from '@/components/Empty';
+import PageContainer from '@/components/PageContainer';
 import { UNIFORM_TEXT } from '@/lib/constant'
 import { getUserList } from '@/services/system-settings/user-manage';
 
@@ -252,40 +253,42 @@ const UserManage: FC = () => {
     run({ page, perPage: pageSize })
   }, [page, run, pageSize])
   return (
-    <Table
-      aria-label="User Manage"
-      sortDescriptor={sortDescriptor}
-      onSortChange={setSortDescriptor}
-      isStriped
-      topContent={topContent}
-      topContentPlacement="outside"
-      bottomContent={bottomContent}
-      bottomContentPlacement="outside"
-    >
-      <TableHeader columns={headerColumns}>
-        {(column) => (
-          <TableColumn
-            key={column.uid}
-            align='start'
-            allowsSorting={column.sortable}
-          >
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody
-        items={map(sortedItems || [], (v, i) => ({ ...v, index: i + 1 }))}
-        emptyContent={<Empty />}
-        loadingContent={<Spinner />}
-        isLoading={loading}
+    <PageContainer>
+      <Table
+        aria-label="User Manage"
+        sortDescriptor={sortDescriptor}
+        onSortChange={setSortDescriptor}
+        isStriped
+        topContent={topContent}
+        topContentPlacement="outside"
+        bottomContent={bottomContent}
+        bottomContentPlacement="outside"
       >
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+        <TableHeader columns={headerColumns}>
+          {(column) => (
+            <TableColumn
+              key={column.uid}
+              align='start'
+              allowsSorting={column.sortable}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody
+          items={map(sortedItems || [], (v, i) => ({ ...v, index: i + 1 }))}
+          emptyContent={<Empty />}
+          loadingContent={<Spinner />}
+          isLoading={loading}
+        >
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </PageContainer>
   )
 }
 export default UserManage;
