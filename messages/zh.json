@@ -78,7 +78,8 @@
       "slideUp":"向上淡入，向下淡出",
       "diagonal":"对角线动画",
       "fixedHeader":"固定顶栏",
-      "showTabs":"显示标签页"
+      "showTabs":"显示标签页",
+      "showFooter":"显示底部"
     }
   },
   "Common":{

@@ -78,7 +78,8 @@
       "slideUp":"Slide Up",
       "diagonal":"Diagonal In / Out",
       "fixedHeader":"Fixed Header",
-      "showTabs":"Show Tabs"
+      "showTabs":"Show Tabs",
+      "showFooter":"Show Footer"
     }
   },
   "Common":{

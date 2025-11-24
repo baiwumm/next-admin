@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 16:16:23
+ * @LastEditTime: 2025-11-24 18:00:32
  * @Description: 全局状态
  */
 'use client'
@@ -24,6 +24,8 @@ type AppState = {
   setFixedHeader: (val: boolean) => void; // 设置是否固定顶栏,
   showTabs: boolean; // 是否显示标签页
   setShowTabs: (val: boolean) => void; // 设置是否显示标签页
+  showFooter: boolean; // 是否显示底部
+  setShowFooter: (val: boolean) => void; // 设置是是否显示底部
 }
 
 export const useAppStore = create(
@@ -44,6 +46,8 @@ export const useAppStore = create(
       setFixedHeader: (value) => set({ fixedHeader: value }),
       showTabs: true,
       setShowTabs: (value) => set({ showTabs: value }),
+      showFooter: true,
+      setShowFooter: (value) => set({ showFooter: value }),
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名

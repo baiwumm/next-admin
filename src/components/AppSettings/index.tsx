@@ -14,6 +14,7 @@ import { type FC } from 'react';
 import FixedHeader from './_components/FixedHeader';
 import PrimaryColorPicker from './_components/PrimaryColorPicker';
 import RouteTranstionSelect from './_components/RouteTranstionSelect';
+import ShowFooter from './_components/ShowFooter';
 import ShowTabs from './_components/ShowTabs';
 
 import { THEME_MODE } from '@/lib/constant';
@@ -61,6 +62,11 @@ const AppSettings: FC = () => {
           <div className="flex justify-between items-center">
             <h1 className="font-bold">{t('showTabs')}</h1>
             <ShowTabs />
+          </div>
+          {/* 是否显示底部 */}
+          <div className="flex justify-between items-center">
+            <h1 className="font-bold">{t('showFooter')}</h1>
+            <ShowFooter />
           </div>
         </div>
       </PopoverContent>
