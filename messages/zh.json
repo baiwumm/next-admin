@@ -66,6 +66,19 @@
     },
     "FullLoading":{
       "label":"正在加载资源，请稍后..."
+    },
+    "AppSettings":{
+      "PrimaryColor":"主题色",
+      "RouteTranstion":"路由过渡动画",
+      "blurSlide":"左右模糊渐变",
+      "fade":"淡入淡出",
+      "blur":"模糊渐变",
+      "slide":"右侧淡入，左侧淡出",
+      "zoom":"从小到大",
+      "swing":"左右摆动",
+      "flip":"翻转效果",
+      "slideUp":"向上淡入，向下淡出",
+      "diagonal":"对角线动画"
     }
   },
   "Common":{

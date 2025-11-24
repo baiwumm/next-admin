@@ -6,15 +6,14 @@
  * @Description: 路由进场动画
  */
 "use client";
-
 import { motion, type Variants } from "framer-motion";
 
+import { AllTransitions, ROUTE_TRANSITION } from '@/lib/constant';
+import { useAppStore } from '@/store/useAppStore';
+
 export default function Template({ children }: { children: React.ReactNode }) {
-  const variants: Variants = {
-    hidden: { opacity: 0, x: 20, filter: 'blur(1rem)' },
-    enter: { opacity: 1, x: 0, filter: 'blur(0rem)' },
-    exit: { opacity: 0, x: -20, filter: 'blur(1rem)' },
-  };
+  const transition = useAppStore((s) => s.transition);
+  const variants: Variants = AllTransitions[transition] || ROUTE_TRANSITION.BLUR_SLIDE;
 
   return (
     <motion.div

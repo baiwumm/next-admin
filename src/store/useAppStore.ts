@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-10 11:06:28
+ * @LastEditTime: 2025-11-24 10:51:44
  * @Description: 全局状态
  */
 'use client'
@@ -10,13 +10,16 @@ import { semanticColors } from "@heroui/theme";
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
+import { ROUTE_TRANSITION, type RouteTransitionValue } from '@/lib/constant'
 import { HexToHSLValue } from '@/lib/utils'
 
 type AppState = {
-  isMobile: boolean
-  setIsMobile: (value: boolean) => void;
-  primaryColor: string;
-  setPrimaryColor: (color: string) => void;
+  isMobile: boolean; // 是否移动端
+  setIsMobile: (value: boolean) => void; // 设置移动端
+  primaryColor: string; // 主题色
+  setPrimaryColor: (color: string) => void; // 设置主题色
+  transition: RouteTransitionValue; // 路由过渡类型
+  setTransition: (type: RouteTransitionValue) => void; // 设置路由过渡类型
 }
 
 export const useAppStore = create(
@@ -31,6 +34,8 @@ export const useAppStore = create(
           document.documentElement.style.setProperty('--heroui-primary', HexToHSLValue(color))
         }
       },
+      transition: ROUTE_TRANSITION.BLUR_SLIDE,
+      setTransition: (value) => set({ transition: value }),
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名

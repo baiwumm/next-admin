@@ -66,6 +66,19 @@
     },
     "FullLoading":{
       "label":"Resources are loading. Please wait a moment..."
+    },
+    "AppSettings":{
+      "PrimaryColor":"PrimaryColor",
+      "RouteTranstion":"RouteTranstion",
+      "blurSlide":"Blur Slide",
+      "fade":"Fade In / Fade Out",
+      "blur":"Blur Fade In",
+      "slide":"Slide In / Slide Out",
+      "zoom":"Zoom In",
+      "swing":"Swing In",
+      "flip":"Flip In / Flip Out",
+      "slideUp":"Slide Up",
+      "diagonal":"Diagonal In / Out"
     }
   },
   "Common":{
