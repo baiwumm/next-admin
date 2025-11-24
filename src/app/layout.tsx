@@ -12,7 +12,6 @@ import { ClarityAnalytics, GoogleAnalytics, PlausibleAnalytics, UmamiAnalytics }
 import BackTop from '@/components/BackTop'; // 回到顶部
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalLayout from '@/components/GlobalLayout'; // 全局布局
-import { type Locale } from '@/i18n/config'
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME,
@@ -24,7 +23,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale() as Locale;
+  const locale = await getLocale();
 
   const messages = await getMessages();
   return (
