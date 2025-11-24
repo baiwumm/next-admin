@@ -2,12 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 16:24:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 16:32:16
+ * @LastEditTime: 2025-11-24 17:28:49
  * @Description: 全局布局
  */
 'use client';
 
 import { cn } from "@heroui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -25,6 +26,7 @@ type GlobalLayoutProps = {
 
 export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
   const fixedHeader = useAppStore((s) => s.fixedHeader);
+  const showTabs = useAppStore((s) => s.showTabs);
   const pathname = usePathname();
   // 受保护的路由，不需要 RootLayout
   const protectedRoutes = ['/login']
@@ -38,7 +40,18 @@ export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
     <>
       <div className={cn('top-0 z-90', fixedHeader ? 'sticky' : 'static')}>
         <Header locale={locale} />
-        <DynamicTabs />
+        {showTabs ? (
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <DynamicTabs />
+            </motion.div>
+          </AnimatePresence>
+        ) : null}
       </div>
       <div className='container mx-auto p-4 min-h-[calc(100vh-6.5rem)] flex flex-col justify-between gap-4'>
         <PageContainer>

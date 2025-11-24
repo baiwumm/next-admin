@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:51:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 16:07:10
+ * @LastEditTime: 2025-11-24 17:28:03
  * @Description: 主题设置
  */
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
@@ -14,6 +14,7 @@ import { type FC } from 'react';
 import FixedHeader from './_components/FixedHeader';
 import PrimaryColorPicker from './_components/PrimaryColorPicker';
 import RouteTranstionSelect from './_components/RouteTranstionSelect';
+import ShowTabs from './_components/ShowTabs';
 
 import { THEME_MODE } from '@/lib/constant';
 import { useAppStore } from '@/store/useAppStore';
@@ -55,6 +56,11 @@ const AppSettings: FC = () => {
           <div className="flex justify-between items-center">
             <h1 className="font-bold">{t('fixedHeader')}</h1>
             <FixedHeader />
+          </div>
+          {/* 是否显示标签页 */}
+          <div className="flex justify-between items-center">
+            <h1 className="font-bold">{t('showTabs')}</h1>
+            <ShowTabs />
           </div>
         </div>
       </PopoverContent>

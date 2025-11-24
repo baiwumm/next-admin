@@ -21,7 +21,9 @@ type AppState = {
   transition: RouteTransitionValue; // 路由过渡类型
   setTransition: (type: RouteTransitionValue) => void; // 设置路由过渡类型
   fixedHeader: boolean; // 是否固定顶栏
-  setFixedHeader: (val: boolean) => void; // 设置是否固定顶栏
+  setFixedHeader: (val: boolean) => void; // 设置是否固定顶栏,
+  showTabs: boolean; // 是否显示标签页
+  setShowTabs: (val: boolean) => void; // 设置是否显示标签页
 }
 
 export const useAppStore = create(
@@ -40,6 +42,8 @@ export const useAppStore = create(
       setTransition: (value) => set({ transition: value }),
       fixedHeader: true,
       setFixedHeader: (value) => set({ fixedHeader: value }),
+      showTabs: true,
+      setShowTabs: (value) => set({ showTabs: value }),
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名
