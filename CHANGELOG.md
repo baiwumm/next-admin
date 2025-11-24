@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.9.4](https://github.com/baiwumm/next-admin/compare/1.9.3...1.9.4) (2025-11-24)
+
+### ✨ Features | 新功能
+
+* 更改路由加载进度方式 ([35d6703](https://github.com/baiwumm/next-admin/commit/35d6703e4feea6804d20da31a3a0f0d3776dc765))
+* 新增 RouteTranstionSelect 路由过渡选择组件 ([87ee90e](https://github.com/baiwumm/next-admin/commit/87ee90e7c3b4dcbf201f7cb8c8e811c98a17cdab))
+* add [@bprogress](https://github.com/bprogress) 核心包 ([88e51f9](https://github.com/baiwumm/next-admin/commit/88e51f9ad634d6de070c1b6eecba0c8de655c63c))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 布局细节调整 ([f3ac4cc](https://github.com/baiwumm/next-admin/commit/f3ac4cc7361c279282493e185cc890f784dac1a6))
+
 ## [1.9.3](https://github.com/baiwumm/next-admin/compare/1.9.2...1.9.3) (2025-11-21)
 
 ### ✨ Features | 新功能
