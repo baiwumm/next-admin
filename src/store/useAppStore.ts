@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 10:51:44
+ * @LastEditTime: 2025-11-24 16:16:23
  * @Description: 全局状态
  */
 'use client'
@@ -20,6 +20,8 @@ type AppState = {
   setPrimaryColor: (color: string) => void; // 设置主题色
   transition: RouteTransitionValue; // 路由过渡类型
   setTransition: (type: RouteTransitionValue) => void; // 设置路由过渡类型
+  fixedHeader: boolean; // 是否固定顶栏
+  setFixedHeader: (val: boolean) => void; // 设置是否固定顶栏
 }
 
 export const useAppStore = create(
@@ -36,6 +38,8 @@ export const useAppStore = create(
       },
       transition: ROUTE_TRANSITION.BLUR_SLIDE,
       setTransition: (value) => set({ transition: value }),
+      fixedHeader: true,
+      setFixedHeader: (value) => set({ fixedHeader: value }),
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名

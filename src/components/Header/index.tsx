@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-10 08:47:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 10:55:16
+ * @LastEditTime: 2025-11-24 16:40:39
  * @Description: 头部布局
  */
 'use client';
@@ -39,6 +39,7 @@ const Header: FC<HeaderProps> = ({ locale }) => {
   const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
   const menuList = useMenuStore((state) => state.menuList);
   const isMobile = useAppStore((s) => s.isMobile);
+  const fixedHeader = useAppStore((s) => s.fixedHeader);
 
   // 渲染 Logo
   const NavbarBrandLogo = (
@@ -63,7 +64,13 @@ const Header: FC<HeaderProps> = ({ locale }) => {
     }
   }, [fetchMenuList, menuList])
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} classNames={{ wrapper: "!container" }}>
+    <Navbar
+      position={fixedHeader ? 'sticky' : 'static'}
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      classNames={{ wrapper: "!container" }}
+    >
       {/* 菜单按钮 */}
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? t('close-menu') : t('open-menu')} />

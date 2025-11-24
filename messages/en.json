@@ -52,9 +52,7 @@
   "Components":{
     "Header":{
       "logout":"Logout",
-      "logout-loading":"Logout...",
       "logout-error":"Logout failed. Please try again later",
-      "user-loading":"Loading UserInfo...",
       "close-menu":"Close Menu",
       "open-menu":"Open Menu",
       "anonymous-user":"Anonymous User",
@@ -78,7 +76,9 @@
       "swing":"Swing In",
       "flip":"Flip In / Flip Out",
       "slideUp":"Slide Up",
-      "diagonal":"Diagonal In / Out"
+      "diagonal":"Diagonal In / Out",
+      "fixedHeader":"Fixed Header",
+      "showTabs":"Show Tabs"
     }
   },
   "Common":{

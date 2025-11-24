@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:51:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 11:16:33
+ * @LastEditTime: 2025-11-24 16:07:10
  * @Description: 主题设置
  */
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from "next-themes";
 import { type FC } from 'react';
 
+import FixedHeader from './_components/FixedHeader';
 import PrimaryColorPicker from './_components/PrimaryColorPicker';
 import RouteTranstionSelect from './_components/RouteTranstionSelect';
 
@@ -50,8 +51,12 @@ const AppSettings: FC = () => {
             <h1 className="font-bold">{t('RouteTranstion')}</h1>
             <RouteTranstionSelect />
           </div>
+          {/* 固定顶部 */}
+          <div className="flex justify-between items-center">
+            <h1 className="font-bold">{t('fixedHeader')}</h1>
+            <FixedHeader />
+          </div>
         </div>
-        {/* 主题选择器 */}
       </PopoverContent>
     </Popover>
   )

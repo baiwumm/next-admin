@@ -62,7 +62,7 @@ const UserAvatar: FC = () => {
     color: 'primary'
   }
   return loading || logoutLoading ? (
-    <Spinner size="sm" label={logoutLoading ? t('logout-loading') : t('user-loading')} />
+    <Spinner size="sm" />
   ) : (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
