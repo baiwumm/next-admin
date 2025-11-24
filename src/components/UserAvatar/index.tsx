@@ -5,6 +5,7 @@
  * @LastEditTime: 2025-11-17 10:00:30
  * @Description: 用户头像
  */
+import { useRouter } from '@bprogress/next/app';
 import {
   addToast,
   Avatar,
@@ -18,7 +19,6 @@ import {
 } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'nextjs-toploader/app';
 import { type FC, useState } from 'react';
 
 import { useSupabaseUser } from '@/hooks/useSupabaseUser'

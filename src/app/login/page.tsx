@@ -2,16 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 09:59:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-23 10:25:24
+ * @LastEditTime: 2025-11-24 09:14:02
  * @Description: 登录页
  */
 "use client";
+import { useRouter } from '@bprogress/next/app';
 import { addToast, Button, Card, CardBody, CardFooter, CardHeader, Divider, Form, Image, Input, Link } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import { track } from '@vercel/analytics';
 import { upperFirst } from 'es-toolkit'
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'nextjs-toploader/app';
 import { type FormEvent, useState } from "react";
 
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';

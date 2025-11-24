@@ -2,17 +2,17 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-10 17:56:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-17 13:45:30
+ * @LastEditTime: 2025-11-24 09:13:17
  * @Description: 多标签页
  */
 "use client";
 
+import { useRouter } from '@bprogress/next/app'
 import { ScrollShadow, Tab, Tabs } from "@heroui/react";
 import { Icon } from "@iconify-icon/react";
 import { find, map } from "es-toolkit/compat";
 import { usePathname } from "next/navigation";
 import { useTranslations } from 'next-intl';
-import { useRouter } from "nextjs-toploader/app";
 import { useCallback, useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 
