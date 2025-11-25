@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:51:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 15:09:34
+ * @LastEditTime: 2025-11-25 17:09:38
  * @Description: 主题设置
  */
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
@@ -17,6 +17,7 @@ import PrimaryColorPicker from './_components/PrimaryColorPicker';
 import RouteTranstionSelect from './_components/RouteTranstionSelect';
 import ShowFooter from './_components/ShowFooter';
 import ShowTabs from './_components/ShowTabs';
+import TabStyle from './_components/TabStyle';
 
 import { THEME_MODE } from '@/lib/constant';
 import { useAppStore } from '@/store/useAppStore';
@@ -53,6 +54,11 @@ const AppSettings: FC = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-bold">{t('color-style')}</h1>
             <ColorStyles />
+          </div>
+          {/* 标签页风格 */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold">{t('tabs-style')}</h1>
+            <TabStyle />
           </div>
           {/* 路由过渡动画 */}
           <div className="flex flex-col gap-2">

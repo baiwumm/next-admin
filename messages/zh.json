@@ -83,7 +83,10 @@
       "color-style":"色彩风格",
       "color-default":"正常模式",
       "color-grey":"灰色模式",
-      "color-invert":"色弱模式"
+      "color-invert":"色弱模式",
+      "tabs-style":"标签页风格",
+      "tabs-button":"按钮",
+      "tabs-tag":"标签"
     }
   },
   "Common":{

@@ -83,7 +83,10 @@
       "color-style":"Color Style",
       "color-default":"Default Style",
       "color-grey":"Grey Style",
-      "color-invert":"Invert Style"
+      "color-invert":"Invert Style",
+      "tabs-style":"Tabs Style",
+      "tabs-button":"Button",
+      "tabs-tag":"Tag"
     }
   },
   "Common":{

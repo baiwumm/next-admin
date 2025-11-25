@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 14:44:55
+ * @LastEditTime: 2025-11-25 17:06:48
  * @Description: 全局状态
  */
 'use client'
@@ -10,7 +10,7 @@ import { semanticColors } from "@heroui/theme";
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { COLOR_STYLE, type ColorStyleValue, ROUTE_TRANSITION, type RouteTransitionValue } from '@/lib/constant'
+import { COLOR_STYLE, type ColorStyleValue, ROUTE_TRANSITION, type RouteTransitionValue, TABS_STYLE, type TabsStyleValue } from '@/lib/constant'
 import { HexToHSLValue } from '@/lib/utils'
 
 type AppState = {
@@ -28,6 +28,8 @@ type AppState = {
   setShowFooter: (val: boolean) => void; // 设置是是否显示底部
   colorStyle: ColorStyleValue;// 色彩风格
   setColorStyle: (val: ColorStyleValue) => void; // 设置色彩风格
+  tabStyle: TabsStyleValue; // 标签页风格
+  setTabStyle: (val: TabsStyleValue) => void; // 设置标签页风格
 }
 
 export const useAppStore = create(
@@ -61,6 +63,8 @@ export const useAppStore = create(
           }
         }
       },
+      tabStyle: TABS_STYLE.BUTTON,
+      setTabStyle: (value) => set({ tabStyle: value }),
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名

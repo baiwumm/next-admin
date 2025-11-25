@@ -120,3 +120,12 @@ export const COLOR_STYLE = {
   INVERT: 'invert'
 } as const;
 export type ColorStyleValue = typeof COLOR_STYLE[keyof typeof COLOR_STYLE];
+
+/**
+ * @description: 标签页风格
+ */
+export const TABS_STYLE = {
+  BUTTON: 'button',
+  TAG: 'tag'
+} as const;
+export type TabsStyleValue = typeof TABS_STYLE[keyof typeof TABS_STYLE];

@@ -2,28 +2,33 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-10 17:56:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 09:13:17
+ * @LastEditTime: 2025-11-25 18:03:26
  * @Description: 多标签页
  */
 "use client";
-
 import { useRouter } from '@bprogress/next/app'
-import { ScrollShadow, Tab, Tabs } from "@heroui/react";
+import { Button, ScrollShadow } from "@heroui/react";
 import { Icon } from "@iconify-icon/react";
-import { find, map } from "es-toolkit/compat";
+import { find } from "es-toolkit/compat";
+import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useTranslations } from 'next-intl';
 import { useCallback, useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 
+import ButtonStyle from './_components/ButtonStyle';
+import TabsStyle from './_components/TabsStyle';
+
+import { useRefreshPage } from '@/components/GlobalLayout'
+import { TABS_STYLE } from '@/lib/constant';
+import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from "@/store/useMenuStore";
 import { useTabsStore } from "@/store/useTabsStore";
 
 export default function DynamicTabs() {
-  const t = useTranslations('Route');
   const pathname = usePathname();
   const router = useRouter();
-
+  const tabStyle = useAppStore((s) => s.tabStyle);
+  const refreshPage = useRefreshPage();
   const { tabs, activeKey, setActiveKey, addTab, removeTab } = useTabsStore(
     useShallow((s) => ({
       tabs: s.tabs,
@@ -81,41 +86,45 @@ export default function DynamicTabs() {
   if (menuLoading) return null;
 
   const dashboardTab = find(menuList, { path: "/dashboard" });
-
-  const renderTab = (menu: App.SystemSettings.Menu, canClose = true) => (
-    <Tab
-      key={menu.path}
-      title={
-        <div className="flex items-center gap-1">
-          <Icon icon={menu.icon} className="text-base" />
-          <span>{t(menu.label)}</span>
-
-          {canClose && (
-            <Icon
-              icon="ri:close-line"
-              className="cursor-pointer text-base"
-              onClick={(e) => {
-                e.stopPropagation();
-                removeTab(menu.path);
-              }}
-            />
-          )}
-        </div>
-      }
-    />
-  );
-
   return (
-    <ScrollShadow orientation="horizontal">
-      <Tabs
-        size="sm"
-        selectedKey={activeKey}
-        onSelectionChange={(key) => setActiveKey(String(key))}
-        color="primary"
-      >
-        {dashboardTab && renderTab(dashboardTab, false)}
-        {tabs.length > 0 && map(tabs, (menu) => renderTab(menu))}
-      </Tabs>
-    </ScrollShadow>
+    <div className="flex gap-1 items-center px-2 pt-1 border-b border-divider h-10">
+      {/* 左侧：自适应宽度的可滚动标签区 */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={tabStyle}
+          className="flex-grow min-w-0"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: .3 }}>
+          <ScrollShadow orientation="horizontal" className="h-full pb-1">
+            {/* 按钮风格 */}
+            {tabStyle === TABS_STYLE.BUTTON ? (
+              <ButtonStyle
+                tabs={tabs}
+                activeKey={activeKey}
+                setActiveKey={setActiveKey}
+                removeTab={removeTab}
+                dashboardTab={dashboardTab} />
+            ) : null}
+
+            {/* 标签风格 */}
+            {tabStyle === TABS_STYLE.TAG ? (
+              <TabsStyle
+                tabs={tabs}
+                activeKey={activeKey}
+                setActiveKey={setActiveKey}
+                removeTab={removeTab}
+                dashboardTab={dashboardTab}
+              />
+            ) : null}
+          </ScrollShadow>
+        </motion.div>
+      </AnimatePresence>
+      {/* 刷新按钮 */}
+      <Button isIconOnly aria-label="restart" variant="light" size='sm' className="mb-1" onPress={refreshPage}>
+        <Icon icon="ri:restart-line" className="text-lg" />
+      </Button>
+    </div>
   );
 }
