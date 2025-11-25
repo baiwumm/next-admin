@@ -79,7 +79,11 @@
       "diagonal":"对角线动画",
       "fixedHeader":"固定顶栏",
       "showTabs":"显示标签页",
-      "showFooter":"显示底部"
+      "showFooter":"显示底部",
+      "color-style":"色彩风格",
+      "color-default":"正常模式",
+      "color-grey":"灰色模式",
+      "color-invert":"色弱模式"
     }
   },
   "Common":{

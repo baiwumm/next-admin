@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:51:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 08:52:28
+ * @LastEditTime: 2025-11-25 15:09:34
  * @Description: 主题设置
  */
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from "next-themes";
 import { type FC } from 'react';
 
+import ColorStyles from './_components/ColorStyles';
 import FixedHeader from './_components/FixedHeader';
 import PrimaryColorPicker from './_components/PrimaryColorPicker';
 import RouteTranstionSelect from './_components/RouteTranstionSelect';
@@ -47,6 +48,11 @@ const AppSettings: FC = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-bold">{t('PrimaryColor')}</h1>
             <PrimaryColorPicker />
+          </div>
+          {/* 色彩风格 */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold">{t('color-style')}</h1>
+            <ColorStyles />
           </div>
           {/* 路由过渡动画 */}
           <div className="flex flex-col gap-2">

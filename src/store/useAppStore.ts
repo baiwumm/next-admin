@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 18:00:32
+ * @LastEditTime: 2025-11-25 14:44:55
  * @Description: 全局状态
  */
 'use client'
@@ -10,7 +10,7 @@ import { semanticColors } from "@heroui/theme";
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { ROUTE_TRANSITION, type RouteTransitionValue } from '@/lib/constant'
+import { COLOR_STYLE, type ColorStyleValue, ROUTE_TRANSITION, type RouteTransitionValue } from '@/lib/constant'
 import { HexToHSLValue } from '@/lib/utils'
 
 type AppState = {
@@ -26,6 +26,8 @@ type AppState = {
   setShowTabs: (val: boolean) => void; // 设置是否显示标签页
   showFooter: boolean; // 是否显示底部
   setShowFooter: (val: boolean) => void; // 设置是是否显示底部
+  colorStyle: ColorStyleValue;// 色彩风格
+  setColorStyle: (val: ColorStyleValue) => void; // 设置色彩风格
 }
 
 export const useAppStore = create(
@@ -48,6 +50,17 @@ export const useAppStore = create(
       setShowTabs: (value) => set({ showTabs: value }),
       showFooter: true,
       setShowFooter: (value) => set({ showFooter: value }),
+      colorStyle: COLOR_STYLE.DEFAULT,
+      setColorStyle: (value) => {
+        set({ colorStyle: value })
+        if (typeof document !== 'undefined') {
+          const html = document.documentElement;
+          html.classList.remove(`color-${COLOR_STYLE.GREY}`, `color-${COLOR_STYLE.INVERT}`);
+          if (value !== COLOR_STYLE.DEFAULT) {
+            html.classList.add(`color-${value}`);
+          }
+        }
+      },
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名

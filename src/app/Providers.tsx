@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-07 16:16:09
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 10:13:21
+ * @LastEditTime: 2025-11-25 14:55:29
  * @Description: NextUI 配置文件
  */
 'use client'
@@ -12,6 +12,7 @@ import { startsWith } from 'es-toolkit/compat'
 import { type ReactNode, useEffect } from 'react';
 
 import { type Locale, locales } from '@/i18n/config'
+import { COLOR_STYLE } from '@/lib/constant';
 import { HexToHSLValue } from '@/lib/utils'
 import { useAppStore } from '@/store/useAppStore';
 
@@ -21,13 +22,25 @@ type ProvidersProps = {
 }
 
 export function Providers({ children, locale }: ProvidersProps) {
-  const { primaryColor } = useAppStore();
+  const primaryColor = useAppStore((s) => s.primaryColor);
+  const colorStyle = useAppStore((s) => s.colorStyle);
   // 初始化时设置 CSS 变量
   useEffect(() => {
     if (typeof document !== 'undefined' && startsWith(primaryColor, '#')) {
       document.documentElement.style.setProperty('--heroui-primary', HexToHSLValue(primaryColor))
     }
   }, [primaryColor])
+
+  // 初始化色彩风格
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const html = document.documentElement;
+      html.classList.remove(`color-${COLOR_STYLE.GREY}`, `color-${COLOR_STYLE.INVERT}`);
+      if (colorStyle !== COLOR_STYLE.DEFAULT) {
+        html.classList.add(`color-${colorStyle}`);
+      }
+    }
+  }, [colorStyle])
   return (
     <ProgressProvider
       color={primaryColor}

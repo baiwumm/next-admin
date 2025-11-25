@@ -9,6 +9,17 @@ body {
   font-family: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+/* 色彩风格 */
+html.color-grey {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+html.color-invert {
+  filter: invert(80%);
+  transition: filter 0.3s ease;
+}
+
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
   width: 4px;

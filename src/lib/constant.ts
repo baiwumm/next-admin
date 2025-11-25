@@ -33,7 +33,7 @@ export const UNIFORM_TEXT = {
 } as const;
 
 /**
- * @description: 理由动画
+ * @description: 路由动画
  */
 export const ROUTE_TRANSITION = {
   BLUR_SLIDE: 'blurSlide',
@@ -110,3 +110,13 @@ export const AllTransitions: Record<RouteTransitionValue, Variants> = {
     exit: { opacity: 0, x: -100, y: 100 },
   }
 }
+
+/**
+ * @description: 色彩风格
+ */
+export const COLOR_STYLE = {
+  DEFAULT: 'default',
+  GREY: 'grey',
+  INVERT: 'invert'
+} as const;
+export type ColorStyleValue = typeof COLOR_STYLE[keyof typeof COLOR_STYLE];

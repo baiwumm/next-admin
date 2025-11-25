@@ -79,7 +79,11 @@
       "diagonal":"Diagonal In / Out",
       "fixedHeader":"Fixed Header",
       "showTabs":"Show Tabs",
-      "showFooter":"Show Footer"
+      "showFooter":"Show Footer",
+      "color-style":"Color Style",
+      "color-default":"Default Style",
+      "color-grey":"Grey Style",
+      "color-invert":"Invert Style"
     }
   },
   "Common":{
