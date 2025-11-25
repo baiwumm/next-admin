@@ -1,9 +1,9 @@
 /*
  * @Author: 白雾茫茫丶<baiwumm.com>
- * @Date: 2025-11-10 17:00:46
+ * @Date: 2025-11-25 09:56:31
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-11 17:07:43
- * @Description: 404 页面
+ * @LastEditTime: 2025-11-25 09:59:07
+ * @Description: 404
  */
 "use client";
 
@@ -13,7 +13,7 @@ import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
 const NotFound: FC = () => {
-  const t = useTranslations('Components.NotFound');
+  const t = useTranslations('Pages.NotFound');
   return (
     <div className="min-h-[calc(100vh-13rem)] flex justify-center items-center h-full">
       <div className="text-center">

@@ -37,15 +37,17 @@ declare namespace App {
       sortable?: boolean;
       show?: boolean;
     }
+    /** @description: 菜单 Key */
+    type RouteKey = keyof (typeof import('#/messages/en.json'))['Route']
   }
   namespace SystemSettings {
     /** @description: 菜单管理 */
     type Menu = {
       id: string;
-      label: string;
+      label: Common.RouteKey;
       path: string;
       icon: string;
-      desc?: string | null;
+      desc?: Common.RouteKey | null;
       redirect?: string;
       sort: number;
       parent_id?: string | null;

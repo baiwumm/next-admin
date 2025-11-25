@@ -47,6 +47,10 @@
       "created_at":"注册时间",
       "email_confirmed_at":"邮箱验证时间",
       "waiting":"等待验证..."
+    },
+    "NotFound":{
+      "title":"看来这个页面去环球旅行了，还没寄明信片回来。",
+      "button":"回到首页"
     }
   },
   "Components":{
@@ -57,10 +61,6 @@
       "open-menu":"打开菜单",
       "anonymous-user":"匿名用户",
       "menu-loading":"正在加载菜单..."
-    },
-    "NotFound":{
-      "title":"看来这个页面去环球旅行了，还没寄明信片回来。",
-      "button":"回到首页"
     },
     "FullLoading":{
       "label":"正在加载资源，请稍后..."
@@ -108,6 +108,7 @@
     "copy":"复制",
     "index":"序号",
     "total":"共 {total} 条数据",
-    "pageSize":"{pageSize}条/页"
+    "pageSize":"{pageSize}条/页",
+    "request-error":"加载失败"
   }
 }

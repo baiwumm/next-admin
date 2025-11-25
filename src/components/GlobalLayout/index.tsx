@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-31 16:24:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 18:05:14
+ * @LastEditTime: 2025-11-25 09:53:38
  * @Description: 全局布局
  */
 'use client';
@@ -48,7 +48,7 @@ export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: .5 }}
             >
               <DynamicTabs />
             </motion.div>
@@ -66,7 +66,7 @@ export default function GlobalLayout({ children, locale }: GlobalLayoutProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: .5 }}
             >
               <Footer />
             </motion.div>

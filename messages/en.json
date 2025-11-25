@@ -47,6 +47,10 @@
       "created_at":"Created At",
       "email_confirmed_at":"Email Confirmed At",
       "waiting":"Waiting for verification..."
+    },
+    "NotFound":{
+      "title":"It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
+      "button":"Go back home"
     }
   },
   "Components":{
@@ -57,10 +61,6 @@
       "open-menu":"Open Menu",
       "anonymous-user":"Anonymous User",
       "menu-loading":"Loading Menus..."
-    },
-    "NotFound":{
-      "title":"It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
-      "button":"Go back home"
     },
     "FullLoading":{
       "label":"Resources are loading. Please wait a moment..."
@@ -108,6 +108,7 @@
     "copy":"Copy",
     "index":"Index",
     "total":"A total of {total} pieces of data",
-    "pageSize":"{pageSize} entries/page"
+    "pageSize":"{pageSize} entries/page",
+    "request-error":"Request Error"
   }
 }

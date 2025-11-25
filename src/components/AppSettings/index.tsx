@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:51:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 17:28:03
+ * @LastEditTime: 2025-11-25 08:52:28
  * @Description: 主题设置
  */
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
@@ -31,7 +31,7 @@ const AppSettings: FC = () => {
     <Popover
       placement="bottom"
       showArrow={true}
-      backdrop="blur"
+      backdrop="opaque"
       classNames={{
         content: ["p-3"],
       }}
