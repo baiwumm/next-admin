@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.10.0](https://github.com/baiwumm/next-admin/compare/1.9.4...1.10.0) (2025-11-25)
+
+### ✨ Features | 新功能
+
+* **AppSettings:** 新增 ColorStyles 色彩风格配置 ([d3a687e](https://github.com/baiwumm/next-admin/commit/d3a687ea6f23dd5c9cd2ccfa46cbb72633e1256b))
+* **AppSettings:** 新增 FixedHeader 固定顶栏配置项 ([bf52309](https://github.com/baiwumm/next-admin/commit/bf52309a2ce6eee2b2f6f317b5edbd70443e0d74))
+* **AppSettings:** 新增 ShowFooter 是否显示底部配置 ([3eda56e](https://github.com/baiwumm/next-admin/commit/3eda56ec8f26c70288cf40c605d29eeddbf1bf69))
+* **AppSettings:** 新增 ShowTabs 是否显示标签页配置 ([66b306b](https://github.com/baiwumm/next-admin/commit/66b306b3c31868e0115ef3e74ede62f0f5a2665b))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 细节优化调整 ([5d3d16b](https://github.com/baiwumm/next-admin/commit/5d3d16b8f44f4bba617867837ebfdfb9772374af))
+* 优化 next-intl TS 类型提示 ([0143005](https://github.com/baiwumm/next-admin/commit/0143005916534b4427ce13546db41bf96e3107b4))
+
+### 👷‍ Build System | 构建
+
+* 修复打包路劲报错问题 ([8062cea](https://github.com/baiwumm/next-admin/commit/8062cea2effd3de1cbfe24a2d13128bb443c91f8))
+
 ## [1.9.4](https://github.com/baiwumm/next-admin/compare/1.9.3...1.9.4) (2025-11-24)
 
 ### ✨ Features | 新功能
