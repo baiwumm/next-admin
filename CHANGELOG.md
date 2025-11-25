@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.1](https://github.com/baiwumm/next-admin/compare/1.10.0...1.10.1) (2025-11-25)
+
+### ✨ Features | 新功能
+
+* **AppSettings:** 新增 TabStyle 标签页风格配置 ([00575ea](https://github.com/baiwumm/next-admin/commit/00575ea1613932996315438ed790cd11cad2b1da))
+
 ## [1.10.0](https://github.com/baiwumm/next-admin/compare/1.9.4...1.10.0) (2025-11-25)
 
 ### ✨ Features | 新功能
