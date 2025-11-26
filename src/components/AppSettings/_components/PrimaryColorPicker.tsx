@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:52:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-24 10:53:09
+ * @LastEditTime: 2025-11-26 08:42:56
  * @Description: 主题选择器
  */
 import { Button } from "@heroui/react";
@@ -34,7 +34,7 @@ const PrimaryColorPicker: FC = () => {
     return formatHex(oklch(okColor)) as string;
   }
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-4 gap-2">
       <Button
         variant={isBlack ? 'flat' : 'ghost'}
         startContent={(

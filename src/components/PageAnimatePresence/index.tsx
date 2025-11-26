@@ -6,7 +6,7 @@
  * @Description: 路由退场动画
  */
 "use client";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "motion/react";
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { usePathname } from "next/navigation";
 import { useContext, useRef } from "react";

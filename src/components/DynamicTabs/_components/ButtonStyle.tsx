@@ -8,7 +8,7 @@
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify-icon/react";
 import { map } from "es-toolkit/compat";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useLinkStatus } from 'next/link';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';

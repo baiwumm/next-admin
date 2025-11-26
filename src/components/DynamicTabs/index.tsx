@@ -10,7 +10,7 @@ import { useRouter } from '@bprogress/next/app'
 import { Button, ScrollShadow } from "@heroui/react";
 import { Icon } from "@iconify-icon/react";
 import { find } from "es-toolkit/compat";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
