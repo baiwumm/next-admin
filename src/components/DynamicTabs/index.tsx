@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-10 17:56:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 18:03:26
+ * @LastEditTime: 2025-11-26 14:39:19
  * @Description: 多标签页
  */
 "use client";
@@ -29,13 +29,11 @@ export default function DynamicTabs() {
   const router = useRouter();
   const tabStyle = useAppStore((s) => s.tabStyle);
   const refreshPage = useRefreshPage();
-  const { tabs, activeKey, setActiveKey, addTab, removeTab } = useTabsStore(
+  const { activeKey, setActiveKey, addTab } = useTabsStore(
     useShallow((s) => ({
-      tabs: s.tabs,
       activeKey: s.activeKey,
       setActiveKey: s.setActiveKey,
       addTab: s.addTab,
-      removeTab: s.removeTab,
     }))
   );
 
@@ -100,23 +98,12 @@ export default function DynamicTabs() {
           <ScrollShadow orientation="horizontal" className="h-full pb-1">
             {/* 按钮风格 */}
             {tabStyle === TABS_STYLE.BUTTON ? (
-              <ButtonStyle
-                tabs={tabs}
-                activeKey={activeKey}
-                setActiveKey={setActiveKey}
-                removeTab={removeTab}
-                dashboardTab={dashboardTab} />
+              <ButtonStyle dashboardTab={dashboardTab} />
             ) : null}
 
             {/* 标签风格 */}
             {tabStyle === TABS_STYLE.TAG ? (
-              <TabsStyle
-                tabs={tabs}
-                activeKey={activeKey}
-                setActiveKey={setActiveKey}
-                removeTab={removeTab}
-                dashboardTab={dashboardTab}
-              />
+              <TabsStyle dashboardTab={dashboardTab} />
             ) : null}
           </ScrollShadow>
         </motion.div>

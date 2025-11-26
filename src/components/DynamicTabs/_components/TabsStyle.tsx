@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-25 15:36:25
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 17:35:26
+ * @LastEditTime: 2025-11-26 17:15:33
  * @Description: HeroUI Tabs 风格
  */
 import { Tab, Tabs } from "@heroui/react";
@@ -11,18 +11,25 @@ import { map } from "es-toolkit/compat";
 import { useLinkStatus } from 'next/link';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
+import { useShallow } from "zustand/react/shallow";
+
+import { useTabsStore } from "@/store/useTabsStore";
 
 type TabsStyleProps = {
-  tabs: App.SystemSettings.Menu[];
-  activeKey: string;
-  setActiveKey: (key: string) => void;
-  removeTab: (key: string) => void;
   dashboardTab: App.SystemSettings.Menu | undefined;
 }
 
-const TabsStyle: FC<TabsStyleProps> = ({ tabs = [], activeKey, setActiveKey, removeTab, dashboardTab }) => {
+const TabsStyle: FC<TabsStyleProps> = ({ dashboardTab }) => {
   const t = useTranslations('Route');
   const { pending } = useLinkStatus();
+  const { tabs, activeKey, setActiveKey, removeTab } = useTabsStore(
+    useShallow((s) => ({
+      tabs: s.tabs,
+      activeKey: s.activeKey,
+      setActiveKey: s.setActiveKey,
+      removeTab: s.removeTab,
+    }))
+  );
 
   // 渲染标签子项
   const renderTab = ({ path, label, icon }: App.SystemSettings.Menu, canClose = true) => (

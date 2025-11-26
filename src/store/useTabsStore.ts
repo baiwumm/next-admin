@@ -13,6 +13,7 @@ import { persist } from "zustand/middleware";
 
 type TabsState = {
   tabs: App.SystemSettings.Menu[];
+  setTabs: (tags: App.SystemSettings.Menu[]) => void;
   activeKey: string;
   setActiveKey: (key: string) => void;
   addTab: (tab: App.SystemSettings.Menu) => void;
@@ -23,10 +24,9 @@ export const useTabsStore = create(
   persist<TabsState>(
     (set, get) => ({
       tabs: [],
+      setTabs: (value) => set({ tabs: value }),
       activeKey: "/dashboard",
-
       setActiveKey: (key) => set({ activeKey: key }),
-
       addTab: (tab) =>
         set((state) => {
           const exists = find(state.tabs, { path: tab.path });

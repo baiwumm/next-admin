@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 16:15:34
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 09:32:27
+ * @LastEditTime: 2025-11-26 14:35:10
  * @Description: 导航菜单
  */
 import { useRouter } from '@bprogress/next/app';
@@ -32,7 +32,7 @@ const NavMenu: FC = () => {
   const menuLoading = useMenuStore((state) => state.loading);
   const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
   return (
-    <NavbarContent className="hidden sm:flex gap-2" justify="center">
+    <NavbarContent className="hidden sm:flex gap-1" justify="center">
       {menuLoading ? (
         <Spinner size="sm" label={tH('menu-loading')} classNames={{ label: 'text-tiny' }} />
       ) : menuList?.length ? map(menuList, ({ label, path, icon, children }) => children?.length ? (
