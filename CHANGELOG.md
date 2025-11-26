@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.10.2](https://github.com/baiwumm/next-admin/compare/1.10.1...1.10.2) (2025-11-26)
+
+### ✨ Features | 新功能
+
+* 新增 dnd-kit 相关依赖包 ([30dce71](https://github.com/baiwumm/next-admin/commit/30dce71312e82d38f929ab8a6d532c209fd14d3b))
+* **DynamicTabs:** 优化标签页，按钮风格添加可拖拽功能 ([6b7300c](https://github.com/baiwumm/next-admin/commit/6b7300c9ad1d6ef75eb0f8202dd487763afe8677))
+
+### 🔧 Continuous Integration | CI 配置
+
+* framer-motion 包替换成 motion ([1eb032f](https://github.com/baiwumm/next-admin/commit/1eb032f5938f246583d0662d7ca3e46548fb2871))
+
 ## [1.10.1](https://github.com/baiwumm/next-admin/compare/1.10.0...1.10.1) (2025-11-25)
 
 ### ✨ Features | 新功能
