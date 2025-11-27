@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-24 10:51:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 17:09:38
+ * @LastEditTime: 2025-11-27 12:29:22
  * @Description: 主题设置
  */
 "use client"
@@ -10,7 +10,7 @@ import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/rea
 import { Icon } from '@iconify-icon/react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from "next-themes";
-import { type FC } from 'react';
+import { type FC, useMemo } from 'react';
 
 import ColorStyles from './_components/ColorStyles';
 import FixedHeader from './_components/FixedHeader';
@@ -25,11 +25,19 @@ import { useAppStore } from '@/store/useAppStore';
 
 const AppSettings: FC = () => {
   const t = useTranslations('Components.AppSettings');
-  const { theme } = useTheme();
-  const isLight = theme === THEME_MODE.LIGHT;
+  const { resolvedTheme } = useTheme();
   const primaryColor = useAppStore((s) => s.primaryColor);
-  const blackHex = '#000000';
-  const isBlack = blackHex === primaryColor;
+
+  const iconColor = useMemo(() => {
+    // resolvedTheme 在 SSR 时可能为 undefined，此时按 light 处理
+    const isLight = resolvedTheme !== THEME_MODE.DARK; // system/light 都算 light
+    const isBlack = primaryColor === '#000000';
+
+    if (isBlack) {
+      return isLight ? 'text-black' : 'text-white';
+    }
+    return '';
+  }, [resolvedTheme, primaryColor]);
   return (
     <Popover
       placement="bottom"
@@ -41,7 +49,7 @@ const AppSettings: FC = () => {
     >
       <PopoverTrigger>
         <Button isIconOnly aria-label="AppSettings" variant="light" radius="full" color='primary'>
-          <Icon icon="uil:swatchbook" className={cn('text-lg', !isLight && isBlack ? 'text-white' : null)} />
+          <Icon icon="uil:swatchbook" className={cn('text-lg', iconColor)} />
         </Button>
       </PopoverTrigger>
       <PopoverContent>
