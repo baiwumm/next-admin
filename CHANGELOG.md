@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.10.3](https://github.com/baiwumm/next-admin/compare/1.10.2...1.10.3) (2025-11-27)
+
+### ✨ Features | 新功能
+
+* **AppSettings:** 新增 GoogleStyle 谷歌风格配置 ([25d92f6](https://github.com/baiwumm/next-admin/commit/25d92f6ea65ae3ca60d4dbf068969dcb84a34bc5))
+
+### ⚡ Performance Improvements | 性能优化
+
+* 细节优化 ([28d8919](https://github.com/baiwumm/next-admin/commit/28d89195ed24ef2b97b8689defa00be0b7b88fe7))
+
 ## [1.10.2](https://github.com/baiwumm/next-admin/compare/1.10.1...1.10.2) (2025-11-26)
 
 ### ✨ Features | 新功能
