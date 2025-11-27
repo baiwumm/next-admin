@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-25 17:06:48
+ * @LastEditTime: 2025-11-27 10:20:21
  * @Description: 全局状态
  */
 'use client'
-import { semanticColors } from "@heroui/theme";
+import { commonColors } from "@heroui/theme";
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -37,7 +37,7 @@ export const useAppStore = create(
     (set) => ({
       isMobile: false,
       setIsMobile: (value) => set({ isMobile: value }),
-      primaryColor: (semanticColors.light.primary as { DEFAULT: string }).DEFAULT, // 默认主题色
+      primaryColor: commonColors.black, // 默认主题色
       setPrimaryColor: (color) => {
         set({ primaryColor: color })
         if (typeof document !== 'undefined') {

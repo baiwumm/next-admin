@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-09 13:46:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-17 08:54:49
+ * @LastEditTime: 2025-11-27 10:21:05
  * @Description: 全局 Loading
  */
 'use client';
@@ -22,7 +22,7 @@ const FullLoading = () => {
   // 判断组件是否挂载
   if (!mounted) {
     return (
-      <div className="fixed flex w-screen h-screen justify-center items-center flex-col z-[99] overflow-hidden bg-white dark:bg-slate-900">
+      <div className="fixed flex w-screen h-screen justify-center items-center flex-col z-[99] overflow-hidden bg-white dark:bg-black">
         <Spinner label={t('label')} variant="gradient" size="lg" color='primary' />
       </div>
     );

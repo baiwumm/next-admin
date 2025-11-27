@@ -5,6 +5,7 @@
  * @LastEditTime: 2025-11-25 17:09:38
  * @Description: 主题设置
  */
+"use client"
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 import { Icon } from '@iconify-icon/react';
 import { useTranslations } from 'next-intl';

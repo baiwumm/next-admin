@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-10 17:56:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-26 17:55:40
+ * @LastEditTime: 2025-11-27 10:23:17
  * @Description: 多标签页
  */
 "use client";
@@ -86,7 +86,7 @@ export default function DynamicTabs() {
 
   const dashboardTab = find(menuList, { path: "/dashboard" });
   return (
-    <div className="flex gap-1 items-center px-2 pt-1 border-b border-divider h-10">
+    <div className="flex gap-1 items-center px-2 pt-1 border-b border-divider h-10 bg--white dark:bg-black backdrop-blur-lg">
       {/* 左侧：自适应宽度的可滚动标签区 */}
       <AnimatePresence mode="wait">
         <motion.div
