@@ -63,7 +63,7 @@ export const useAppStore = create(
           }
         }
       },
-      tabStyle: TABS_STYLE.BUTTON,
+      tabStyle: TABS_STYLE.GOOGLE,
       setTabStyle: (value) => set({ tabStyle: value }),
     }),
     {

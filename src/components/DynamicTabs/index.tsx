@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-10 17:56:28
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-26 14:39:19
+ * @LastEditTime: 2025-11-26 17:55:40
  * @Description: 多标签页
  */
 "use client";
@@ -16,6 +16,7 @@ import { useCallback, useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 import ButtonStyle from './_components/ButtonStyle';
+import GoogleStyle from './_components/GoogleStyle';
 import TabsStyle from './_components/TabsStyle';
 
 import { useRefreshPage } from '@/components/GlobalLayout'
@@ -96,11 +97,14 @@ export default function DynamicTabs() {
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: .3 }}>
           <ScrollShadow orientation="horizontal" className="h-full pb-1">
+            {/* 谷歌风格 */}
+            {tabStyle === TABS_STYLE.GOOGLE ? (
+              <GoogleStyle dashboardTab={dashboardTab} />
+            ) : null}
             {/* 按钮风格 */}
             {tabStyle === TABS_STYLE.BUTTON ? (
               <ButtonStyle dashboardTab={dashboardTab} />
             ) : null}
-
             {/* 标签风格 */}
             {tabStyle === TABS_STYLE.TAG ? (
               <TabsStyle dashboardTab={dashboardTab} />

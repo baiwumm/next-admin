@@ -20,6 +20,34 @@ html.color-invert {
   transition: filter 0.3s ease;
 }
 
+/* 所有 Google 风格标签：始终渲染伪元素 */
+.tab-google::before,
+.tab-google::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tab-google::before {
+  left: -20px;
+  background: radial-gradient(circle at 0 0, transparent 20px, hsl(var(--heroui-primary)) 21px);
+}
+
+.tab-google::after {
+  right: -20px;
+  background: radial-gradient(circle at 100% 0, transparent 20px, hsl(var(--heroui-primary)) 21px);
+}
+
+/* 激活时显示 */
+.tab-google.tabs-google-theme-active::before,
+.tab-google.tabs-google-theme-active::after {
+  opacity: 1;
+}
+
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
   width: 4px;

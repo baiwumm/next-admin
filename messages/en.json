@@ -85,8 +85,9 @@
       "color-grey":"Grey Style",
       "color-invert":"Invert Style",
       "tabs-style":"Tabs Style",
-      "tabs-button":"Button",
-      "tabs-tag":"Tag"
+      "tabs-button":"Button Style",
+      "tabs-tag":"Tag Style",
+      "tabs-google":"Google Style"
     }
   },
   "Common":{

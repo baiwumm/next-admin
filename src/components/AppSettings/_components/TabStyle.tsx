@@ -18,7 +18,7 @@ const TabStyle: FC = () => {
   const tabStyle = useAppStore((s) => s.tabStyle);
   const setTabStyle = useAppStore((s) => s.setTabStyle);
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-3 gap-2">
       {map(values(TABS_STYLE), tag => {
         const isActive = tag === tabStyle;
         return (

@@ -125,6 +125,7 @@ export type ColorStyleValue = typeof COLOR_STYLE[keyof typeof COLOR_STYLE];
  * @description: 标签页风格
  */
 export const TABS_STYLE = {
+  GOOGLE: 'google',
   BUTTON: 'button',
   TAG: 'tag'
 } as const;

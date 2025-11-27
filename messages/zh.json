@@ -85,8 +85,9 @@
       "color-grey":"灰色模式",
       "color-invert":"色弱模式",
       "tabs-style":"标签页风格",
-      "tabs-button":"按钮",
-      "tabs-tag":"标签"
+      "tabs-button":"按钮风格",
+      "tabs-tag":"标签风格",
+      "tabs-google":"谷歌风格"
     }
   },
   "Common":{
