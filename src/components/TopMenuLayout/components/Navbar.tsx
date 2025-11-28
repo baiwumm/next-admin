@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:10:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 17:34:55
+ * @LastEditTime: 2025-11-28 18:06:00
  * @Description: 顶部菜单
  */
 import Image from 'next/image'
@@ -10,6 +10,7 @@ import { type FC } from 'react';
 
 import MenuContainer from './MenuContainer';
 
+import FullScreen from '@/components/FullScreen';
 import LangSwitch from '@/components/LangSwitch';
 import { useAppStore } from '@/store/useAppStore';
 
@@ -35,6 +36,8 @@ const Navbar: FC = () => {
         <MenuContainer />
         {/* 右侧工具栏 */}
         <div className="flex gap-1 items-center">
+          {/* 全屏 */}
+          <FullScreen />
           {/* 语言切换 */}
           <LangSwitch />
         </div>
