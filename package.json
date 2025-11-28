@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@bprogress/core": "^1.3.4",
+    "@bprogress/next": "^3.2.12",
     "@heroui/react": "3.0.0-beta.2",
     "@heroui/styles": "3.0.0-beta.2",
     "@iconify-icon/react": "^3.0.3",
@@ -40,7 +41,8 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "rsuite": "^6.0.0",
-    "sonner": "^2.0.7"
+    "sonner": "^2.0.7",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.2",

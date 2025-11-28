@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 14:17:39
+ * @LastEditTime: 2025-11-28 17:32:21
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
