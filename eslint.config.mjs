@@ -1,37 +1,22 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import importPlugin from "eslint-plugin-import";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  // 1️⃣ 兼容 Next.js 和 Prettier 的老式 extends
-  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
-
-  // 2️⃣ 自定义规则（直接一个对象）
-  {
-    rules: {
-      "react/no-unescaped-entities": "off",
-      "@next/next/no-page-custom-font": "off",
-      "react/display-name": "off",
-      "react/prop-types": "off",
-      "react/no-children-prop": "off",
-      "react/jsx-no-target-blank": "off",
-      "react/jsx-uses-react": "off",
-      "react/react-in-jsx-scope": "off",
-    },
-  },
-
-  // 3️⃣ TypeScript + import 排序
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+  // TypeScript + import 排序
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs"],
     languageOptions: {
@@ -46,10 +31,10 @@ const eslintConfig = [
     },
     plugins: {
       "@typescript-eslint": typescriptPlugin,
-      "simple-import-sort": simpleImportSort,
-      import: importPlugin,
+      "simple-import-sort": simpleImportSort
     },
     rules: {
+      "import/order": "off",
       "simple-import-sort/imports": [
         "error",
         {
@@ -67,11 +52,6 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     },
   },
-
-  // 4️⃣ 忽略目录
-  {
-    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts"],
-  },
-];
+]);
 
 export default eslintConfig;
