@@ -22,6 +22,8 @@
   "dependencies": {
     "@heroui/react": "3.0.0-beta.2",
     "@heroui/styles": "3.0.0-beta.2",
+    "@microsoft/clarity": "^1.0.2",
+    "@vercel/analytics": "^1.5.0",
     "next": "16.0.5",
     "react": "19.2.0",
     "react-dom": "19.2.0",
