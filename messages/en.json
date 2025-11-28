@@ -1,0 +1,122 @@
+{
+  "Route":{
+    "dashboard":"Dashboard",
+    "administrative":"Administrative",
+    "organization":"Organization",
+    "post-manage":"PostManage",
+    "personal-center":"Personal Center",
+    "system-settings":"System Settings",
+    "user-manage":"User Management",
+    "menu-manage":"Menu Management",
+    "heroui-pro":"HeroUI Pro",
+    "charts":"Charts",
+    "charts-desc":"Beautifully crafted charts"
+  },
+  "Pages":{
+    "Login":{
+      "submit":"Login",
+      "login-now":"Login Now",
+      "register":"Register",
+      "emial":"Email Address",
+      "emial-placeholder":"Enter your email",
+      "password":"Password",
+      "password-placeholder":"Enter your password",
+      "google":"Continue with Google",
+      "github":"Continue with Github",
+      "login-error":"Login failed. Please try again later",
+      "signup":"Sign Up",
+      "signup-error":"Sign Up try again later",
+      "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
+      "need-account":"Need to create an account?",
+      "has-account":"Already have an account?"
+    },
+    "MenuManage":{
+      "label":"Menu Name",
+      "desc":"Menu Desc",
+      "path":"Route Path",
+      "icon":"Menu Icon",
+      "redirect":"Redirect Path",
+      "add":"Add Menu",
+      "edit":"Edit Menu"
+    },
+    "UserManage":{
+      "userInfo":"User Info",
+      "email":"Email",
+      "provider":"Provider",
+      "last_sign_in_at":"Last Signin",
+      "created_at":"Created At",
+      "email_confirmed_at":"Email Confirmed At",
+      "waiting":"Waiting for verification..."
+    },
+    "NotFound":{
+      "title":"It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
+      "button":"Go back home"
+    }
+  },
+  "Components":{
+    "Header":{
+      "logout":"Logout",
+      "logout-error":"Logout failed. Please try again later",
+      "close-menu":"Close Menu",
+      "open-menu":"Open Menu",
+      "anonymous-user":"Anonymous User",
+      "menu-loading":"Loading Menus..."
+    },
+    "FullLoading":{
+      "label":"Resources are loading. Please wait a moment..."
+    },
+    "AppSettings":{
+      "PrimaryColor":"PrimaryColor",
+      "RouteTranstion":"RouteTranstion",
+      "blurSlide":"Blur Slide",
+      "fade":"Fade In / Fade Out",
+      "blur":"Blur Fade In",
+      "slide":"Slide In / Slide Out",
+      "zoom":"Zoom In",
+      "swing":"Swing In",
+      "flip":"Flip In / Flip Out",
+      "slideUp":"Slide Up",
+      "diagonal":"Diagonal In / Out",
+      "fixedHeader":"Fixed Header",
+      "showTabs":"Show Tabs",
+      "showFooter":"Show Footer",
+      "color-style":"Color Style",
+      "color-default":"Default Style",
+      "color-grey":"Grey Style",
+      "color-invert":"Invert Style",
+      "tabs-style":"Tabs Style",
+      "tabs-button":"Button Style",
+      "tabs-tag":"Tag Style",
+      "tabs-google":"Google Style"
+    }
+  },
+  "Common":{
+    "loading":"Loading...",
+    "user-error":"Failed to fetch user information. Please try again later",
+    "add":"Add New",
+    "add-success":"Added successfully",
+    "edit":"Edit",
+    "edit-success":"Edited successfully",
+    "delete":"Delete",
+    "delete-success":"Deleted successfully",
+    "search":"Search",
+    "reset":"Reset",
+    "sort":"Sort",
+    "created_at":"Created At",
+    "updated_at":"Updated At",
+    "actions":"Actions",
+    "enter":"Please enter",
+    "select":"Please Select",
+    "cancel":"Cancel",
+    "confirm":"Confirm",
+    "columns-settings":"Columns",
+    "parent":"Parent",
+    "parent-tip":"If not selected, it will default to top-level",
+    "empty":"No Data",
+    "copy":"Copy",
+    "index":"Index",
+    "total":"A total of {total} pieces of data",
+    "pageSize":"{pageSize} entries/page",
+    "request-error":"Request Error"
+  }
+}

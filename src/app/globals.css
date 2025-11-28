@@ -1,9 +1,15 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-body {
-  font-family: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
+:root {
+  --font-maple: 'Maple Mono CN', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+html,
+body {
+  font-family: var(--font-maple) !important;
+}
+
 
 /* 色彩风格 */
 html.color-grey {

@@ -2,30 +2,36 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 10:02:57
+ * @LastEditTime: 2025-11-28 14:17:39
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 import { Providers } from "./Provider";
 
 import "./globals.css";
 import 'rsuite/dist/rsuite-no-reset.min.css';
 import { ClarityAnalytics, GoogleAnalytics, PlausibleAnalytics, UmamiAnalytics } from '@/components/Analytics';
+import FullLoading from '@/components/FullLoading'; // 全局 Loading
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME,
   description: process.env.NEXT_PUBLIC_APP_DESC,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
+  const messages = await getMessages();
   return (
-    <html lang="en">
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -41,11 +47,15 @@ export default function RootLayout({
         <PlausibleAnalytics />
       </head>
       <body>
-        <Providers>
-          {children}
-          {/* vercel Web Analytics */}
-          <Analytics />
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          {/* 全局 Loading */}
+          <FullLoading />
+          <Providers>
+            {children}
+            {/* vercel Web Analytics */}
+            <Analytics />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
