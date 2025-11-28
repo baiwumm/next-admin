@@ -30,6 +30,7 @@
     "rsuite": "^6.0.0"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^10.0.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -39,6 +40,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "release-it": "^19.0.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
