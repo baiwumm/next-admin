@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:10:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 18:06:00
+ * @LastEditTime: 2025-12-01 09:05:35
  * @Description: 顶部菜单
  */
 import Image from 'next/image'
 import { type FC } from 'react';
 
 import MenuContainer from './MenuContainer';
+import UserAvatar from './UserAvatar';
 
 import FullScreen from '@/components/FullScreen';
 import LangSwitch from '@/components/LangSwitch';
@@ -40,6 +41,8 @@ const Navbar: FC = () => {
           <FullScreen />
           {/* 语言切换 */}
           <LangSwitch />
+          {/* 用户头像 */}
+          <UserAvatar />
         </div>
       </div>
     </nav>

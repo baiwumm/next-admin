@@ -2,12 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 17:44:01
+ * @LastEditTime: 2025-12-02 13:39:27
  * @Description: 上下文提供者
  */
 "use client"
 import { AppProgressProvider as ProgressProvider } from '@bprogress/next';
 import { startsWith } from 'es-toolkit/compat';
+import { usePathname } from 'next/navigation';
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { useEffect } from 'react';
 import { CustomProvider } from 'rsuite';
@@ -24,6 +25,10 @@ export function Providers({ children }: ProvidersProps) {
   const { resolvedTheme } = useTheme();
   const primaryColor = useAppStore((s) => s.primaryColor);
   const colorStyle = useAppStore((s) => s.colorStyle);
+  const pathname = usePathname();
+
+  // 受保护的路由，不需要 RootLayout
+  const protectedRoutes = ['/login']
 
   // 初始化时设置 CSS 变量
   useEffect(() => {
@@ -50,9 +55,11 @@ export function Providers({ children }: ProvidersProps) {
         shallowRouting
       >
         <CustomProvider>
-          <TopMenuLayout>
-            {children}
-          </TopMenuLayout>
+          {protectedRoutes.includes(pathname) ? children : (
+            <TopMenuLayout>
+              {children}
+            </TopMenuLayout>
+          )}
           <SonnerToaster theme={resolvedTheme as ToasterProps['theme']} position="top-center" richColors />
         </CustomProvider>
       </ProgressProvider>

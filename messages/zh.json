@@ -17,8 +17,8 @@
       "submit":"登录",
       "login-now":"立即登录",
       "register":"注册",
-      "emial":"邮箱地址",
-      "emial-placeholder":"请输入邮箱地址",
+      "email":"邮箱地址",
+      "email-placeholder":"请输入邮箱地址",
       "password":"密码",
       "password-placeholder":"请输入密码",
       "google":"使用 Google 登录",
@@ -28,7 +28,8 @@
       "signup-error":"注册失败，请稍后重试",
       "signup-success":"提交成功，请到邮箱验证后登录",
       "need-account":"需要创建一个账户？",
-      "has-account":"已经有账户？"
+      "has-account":"已经有账户？",
+      "login-in":"登录中..."
     },
     "MenuManage":{
       "label":"菜单名称",
@@ -54,7 +55,7 @@
     }
   },
   "Components":{
-    "Header":{
+    "TopMenuLayout":{
       "logout":"退出登录",
       "logout-error":"退出登录失败，请稍后重试",
       "close-menu":"关闭菜单",

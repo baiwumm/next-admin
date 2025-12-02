@@ -17,8 +17,8 @@
       "submit":"Login",
       "login-now":"Login Now",
       "register":"Register",
-      "emial":"Email Address",
-      "emial-placeholder":"Enter your email",
+      "email":"Email Address",
+      "email-placeholder":"Enter your email",
       "password":"Password",
       "password-placeholder":"Enter your password",
       "google":"Continue with Google",
@@ -28,7 +28,8 @@
       "signup-error":"Sign Up try again later",
       "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
       "need-account":"Need to create an account?",
-      "has-account":"Already have an account?"
+      "has-account":"Already have an account?",
+      "login-in":"Logged in..."
     },
     "MenuManage":{
       "label":"Menu Name",
@@ -54,7 +55,7 @@
     }
   },
   "Components":{
-    "Header":{
+    "TopMenuLayout":{
       "logout":"Logout",
       "logout-error":"Logout failed. Please try again later",
       "close-menu":"Close Menu",
