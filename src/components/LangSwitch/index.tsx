@@ -8,7 +8,7 @@
 'use client';
 
 import { Button, Dropdown, Label, type Selection } from '@heroui/react';
-import { Icon } from '@iconify-icon/react';
+import { Icon } from '@iconify/react';
 import { useLocale } from 'next-intl';
 import { useState } from 'react';
 

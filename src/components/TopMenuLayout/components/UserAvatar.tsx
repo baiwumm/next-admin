@@ -7,7 +7,7 @@
  */
 import { useRouter } from '@bprogress/next/app';
 import { AlertDialog, Avatar, Button, Dropdown, Label, Spinner } from "@heroui/react";
-import { Icon } from "@iconify-icon/react";
+import { Icon } from "@iconify/react";
 import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
 

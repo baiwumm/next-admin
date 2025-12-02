@@ -6,7 +6,7 @@
  * @Description: 全屏
  */
 import { Button } from "@heroui/react";
-import { Icon } from '@iconify-icon/react';
+import { Icon } from '@iconify/react';
 import { useFullscreen } from 'ahooks';
 import type { FC } from 'react';
 

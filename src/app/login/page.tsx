@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 12:22:27
+ * @LastEditTime: 2025-12-02 14:42:13
  * @Description: 登录页面
  */
 "use client";
 import { useRouter } from '@bprogress/next/app';
 import { Button, Card, FieldError, Form, Input, Label, Link, Separator, Spinner, TextField } from '@heroui/react';
-import { Icon } from '@iconify-icon/react';
+import { Icon } from '@iconify/react';
 import { track } from '@vercel/analytics';
 import { upperFirst } from 'es-toolkit';
 import { map } from 'es-toolkit/compat'
