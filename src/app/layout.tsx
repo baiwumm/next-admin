@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 17:32:21
+ * @LastEditTime: 2025-12-02 15:29:09
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
@@ -13,7 +13,6 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { Providers } from "./Provider";
 
 import "./globals.css";
-import 'rsuite/dist/rsuite-no-reset.min.css';
 import { ClarityAnalytics, GoogleAnalytics, PlausibleAnalytics, UmamiAnalytics } from '@/components/Analytics';
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 

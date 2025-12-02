@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:10:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-01 09:05:35
+ * @LastEditTime: 2025-12-02 16:21:52
  * @Description: 顶部菜单
  */
 import Image from 'next/image'
@@ -36,7 +36,7 @@ const Navbar: FC = () => {
         {/* 中间菜单 */}
         <MenuContainer />
         {/* 右侧工具栏 */}
-        <div className="flex gap-1 items-center">
+        <div className="flex gap-2 items-center">
           {/* 全屏 */}
           <FullScreen />
           {/* 语言切换 */}

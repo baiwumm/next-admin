@@ -57,6 +57,7 @@
   "Components":{
     "TopMenuLayout":{
       "logout":"退出登录",
+      "logout-in":"正在退出...",
       "logout-error":"退出登录失败，请稍后重试",
       "close-menu":"关闭菜单",
       "open-menu":"打开菜单",

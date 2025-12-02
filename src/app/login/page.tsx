@@ -2,31 +2,51 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 14:42:13
+ * @LastEditTime: 2025-12-02 17:42:46
  * @Description: 登录页面
  */
 "use client";
 import { useRouter } from '@bprogress/next/app';
-import { Button, Card, FieldError, Form, Input, Label, Link, Separator, Spinner, TextField } from '@heroui/react';
+import { zodResolver } from "@hookform/resolvers/zod"
 import { Icon } from '@iconify/react';
 import { track } from '@vercel/analytics';
 import { upperFirst } from 'es-toolkit';
 import { map } from 'es-toolkit/compat'
+import { Check, Eye, EyeOff, Lock, Mail } from 'lucide-react'
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { type FormEvent, useState } from 'react';
+import { useState } from 'react';
+import { useForm } from "react-hook-form"
 import { toast } from 'sonner';
+import { z } from "zod"
 
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
+import { Separator } from "@/components/ui/separator"
+import { Spinner } from "@/components/ui/spinner";
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 
 type AllowedPropertyValues = Parameters<typeof track>[1];
 
 type Providers = 'github' | 'google';
-
-type FormData = {
-  email: string;
-  password: string;
-}
 
 export default function Login() {
   const supabase = getSupabaseBrowserClient();
@@ -36,23 +56,35 @@ export default function Login() {
   const [oauthLoading, setOauthLoading] = useState(false);
   // 是否注册
   const [isSignup, setIsSignup] = useState(false);
+  // 是否显示密码
+  const [showPassword, setShowPassword] = useState(false);
+
+  // 字段验证规则
+  const formSchema = z.object({
+    email: z.email('请输入有效的邮箱地址'),
+    password: z
+      .string()
+      .min(1, '密码不能为空')
+      .min(6, '密码长度至少为 6 位')
+      .max(100, '密码长度不能超过 100 位'),
+  })
+
+  // 创建表单实例
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: ""
+    },
+  })
 
   // 表单提交
-  const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setEmailLoading(true);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data: Record<string, string> = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-
     // 判断是注册还是登录
     if (isSignup) {
-      const { error } = await supabase.auth.signUp(data as FormData);
-      track('Signup', data as AllowedPropertyValues);
+      const { error } = await supabase.auth.signUp(values);
+      track('Signup', values as AllowedPropertyValues);
       if (error) {
         toast.error(t('signup-error'), {
           description: error.message
@@ -63,8 +95,8 @@ export default function Login() {
         setIsSignup(false)
       }
     } else {
-      const { error } = await supabase.auth.signInWithPassword(data as FormData);
-      track('Login', data as AllowedPropertyValues);
+      const { error } = await supabase.auth.signInWithPassword(values);
+      track('Login', values as AllowedPropertyValues);
       if (error) {
         toast.error(t('login-error'), {
           description: error.message
@@ -96,9 +128,9 @@ export default function Login() {
   }
   return (
     <div className="w-full max-w-md p-4">
-      <Card className="shadow-xl rounded-xl">
-        <Card.Header>
-          <div className="flex items-center gap-3">
+      <Card className="gap-4">
+        <CardHeader>
+          <div className="flex items-center justify-center gap-3">
             <Image
               src="/logo.svg"
               width={42}
@@ -111,82 +143,103 @@ export default function Login() {
               <p className="text-small text-default-500">{process.env.NEXT_PUBLIC_APP_DESC}</p>
             </div>
           </div>
-        </Card.Header>
+        </CardHeader>
         <Separator />
-        <Card.Content>
-          <Form className="flex flex-col gap-4" onSubmit={handleEmailLogin}>
-            <TextField
-              name="email"
-              type="email"
-              isRequired
-            >
-              <Label>{t('email')}</Label>
-              <Input className="w-full" placeholder={t('email-placeholder')} />
-              <FieldError />
-            </TextField>
-            <TextField
-              minLength={6}
-              name="password"
-              type="password"
-              isRequired
-            >
-              <Label>{t('password')}</Label>
-              <Input type="password" className="w-full" placeholder={t('password-placeholder')} />
-              <FieldError />
-            </TextField>
-            <div className="flex justify-end items-center w-full">
-              {isSignup ? (
-                <p className="text-small text-center">
-                  {t('has-account')}&nbsp;
-                  <Link onPress={() => setIsSignup(false)} className="cursor-pointer">
-                    {t('login-now')}
-                  </Link>
-                </p>
-              ) : (
-                <p className="text-small text-center">
-                  {t('need-account')}&nbsp;
-                  <Link onPress={() => setIsSignup(true)} className="cursor-pointer">
-                    {t('signup')}
-                  </Link>
-                </p>
-              )}
-            </div>
-            <Button type="submit" className="w-full" isPending={emailLoading} isDisabled={oauthLoading}>
-              {({ isPending }) => (
-                <>
-                  {isPending ? <Spinner color="current" size="sm" /> : <Icon icon="ri:check-line" className="text-lg" />}
-                  {isPending ? t('login-in') : t(isSignup ? 'register' : 'submit')}
-                </>
-              )}
-            </Button>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      <span className="text-red-500">*</span>
+                      {t('email')}
+                    </FormLabel>
+                    <FormControl>
+                      <InputGroup>
+                        <InputGroupInput placeholder={t('email-placeholder')} {...field} />
+                        <InputGroupAddon>
+                          <Mail />
+                        </InputGroupAddon>
+                      </InputGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      <span className="text-red-500">*</span>
+                      {t('password')}
+                    </FormLabel>
+                    <FormControl>
+                      <InputGroup>
+                        <InputGroupInput placeholder={t('password-placeholder')} type={showPassword ? 'text' : 'password'} {...field} />
+                        <InputGroupAddon>
+                          <Lock />
+                        </InputGroupAddon>
+                        <InputGroupAddon align="inline-end" onClick={() => setShowPassword(!showPassword)}>
+                          {showPassword ? <EyeOff /> : <Eye />}
+                        </InputGroupAddon>
+                      </InputGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full" disabled={oauthLoading || emailLoading}>
+                {emailLoading ? <Spinner /> : <Check />}
+                {emailLoading ? t('login-in') : t(isSignup ? 'register' : 'submit')}
+              </Button>
+            </form>
           </Form>
-        </Card.Content>
+          <div className="flex justify-end items-center w-full">
+            {isSignup ? (
+              <p className="text-sm text-center">
+                {t('has-account')}
+                <Button variant="link" onClick={() => setIsSignup(false)}>
+                  {t('login-now')}
+                </Button>
+              </p>
+            ) : (
+              <p className="text-sm text-center">
+                {t('need-account')}
+                <Button variant="link" onClick={() => setIsSignup(true)}>
+                  {t('signup')}
+                </Button>
+              </p>
+            )}
+          </div>
+        </CardContent>
         <div className="flex items-center gap-4">
           <Separator className="flex-1" />
           <p className="text-tiny text-default-500 shrink-0">OR</p>
           <Separator className="flex-1" />
         </div>
-        <Card.Footer>
+        <CardFooter className="flex-col gap-2">
           <div className="flex w-full flex-col gap-3">
             {map(['github', 'google'], (auth: Providers) => (
               <Button
                 key={auth}
                 className="w-full"
-                variant="tertiary"
-                isPending={oauthLoading}
-                isDisabled={emailLoading}
-                onPress={() => handleOAuthLogin(auth)}
+                variant="outline"
+                disabled={oauthLoading || emailLoading}
+                onClick={() => handleOAuthLogin(auth)}
               >
-                {({ isPending }) => (
-                  <>
-                    {isPending ? <Spinner color="current" size="sm" /> : <Icon icon={`devicon:${auth}`} className="text-lg" />}
-                    {t(auth)}
-                  </>
-                )}
+                <>
+                  {oauthLoading ? <Spinner /> : <Icon icon={`devicon:${auth}`} className="text-lg" />}
+                  {t(auth)}
+                </>
               </Button>
             ))}
           </div>
-        </Card.Footer>
+        </CardFooter>
       </Card>
     </div>
   )

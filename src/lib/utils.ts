@@ -1,7 +1,14 @@
+import { type ClassValue, clsx } from "clsx"
 import dayjs from 'dayjs';
 import { eq } from 'es-toolkit/compat'
+import { twMerge } from "tailwind-merge"
 
 import { RESPONSE_CODE, RESPONSE_MSG } from '@/lib/constant';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
 
 /**
  * @description: 统一返回体

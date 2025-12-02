@@ -57,6 +57,7 @@
   "Components":{
     "TopMenuLayout":{
       "logout":"Logout",
+      "logout-in":"Logging out...",
       "logout-error":"Logout failed. Please try again later",
       "close-menu":"Close Menu",
       "open-menu":"Open Menu",

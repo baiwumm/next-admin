@@ -2,53 +2,58 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 17:43:44
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 14:50:50
+ * @LastEditTime: 2025-12-02 16:02:10
  * @Description: 国际化
  */
-'use client';
-
-import { Button, Dropdown, Label, type Selection } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useLocale } from 'next-intl';
-import { useState } from 'react';
 
+import { Button } from '@/components/animate-ui/components/buttons/button';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger
+} from '@/components/animate-ui/components/radix/dropdown-menu';
 import { setLocale } from '@/i18n';
-import { LOCALES } from '@/lib/constant'
+import { type Locale, LOCALES } from '@/lib/constant';
+
+type Option = {
+  label: string;
+  value: Locale;
+  icon: string;
+}
 
 export default function LangSwitch() {
   const locale = useLocale();
-  const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([locale]));
 
-  // 切换语言
-  const onSelectionChange = (keys: Selection) => {
-    setSelectedKeys(keys)
-    setLocale(locale === LOCALES.ZH ? LOCALES.EN : LOCALES.ZH);
-  }
+  const LocaleOptions: Option[] = [
+    {
+      label: '简体中文',
+      value: LOCALES.ZH,
+      icon: 'flag:cn-4x3'
+    },
+    {
+      label: 'English',
+      value: LOCALES.EN,
+      icon: 'flag:um-4x3'
+    }
+  ]
   return (
-    <Dropdown>
-      <Button isIconOnly aria-label="LangSwitch" variant="ghost">
-        <Icon icon='ri:translate-2' className='text-lg' />
-      </Button>
-      <Dropdown.Popover>
-        <Dropdown.Menu
-          disallowEmptySelection
-          aria-label="Lang Selection"
-          selectedKeys={selectedKeys}
-          selectionMode="single"
-          onSelectionChange={onSelectionChange}
-        >
-          <Dropdown.Item id={LOCALES.ZH} textValue={LOCALES.ZH}>
-            <Dropdown.ItemIndicator />
-            <Icon className="text-muted size-4 shrink-0" icon="flag:cn-4x3" />
-            <Label>简体中文</Label>
-          </Dropdown.Item>
-          <Dropdown.Item id={LOCALES.EN} textValue={LOCALES.EN}>
-            <Dropdown.ItemIndicator />
-            <Icon className="text-muted size-4 shrink-0" icon="flag:um-4x3" />
-            <Label>English</Label>
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown.Popover>
-    </Dropdown>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="icon" aria-label="LangSwitch" variant="ghost" className="rounded-full">
+          <Icon icon='ri:translate-2' className='text-lg' />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-50">
+        {LocaleOptions.map(({ label, value, icon }) => (
+          <DropdownMenuCheckboxItem key={value} checked={locale === value} onCheckedChange={() => setLocale(value)}>
+            <Icon className="text-muted size-4 shrink-0" icon={icon} />
+            <span>{label}</span>
+          </DropdownMenuCheckboxItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

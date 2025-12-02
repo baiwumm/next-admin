@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 16:49:13
+ * @LastEditTime: 2025-12-02 15:34:46
  * @Description: 全局状态
  */
 'use client'
@@ -38,9 +38,6 @@ export const useAppStore = create(
       primaryColor: process.env.NEXT_PUBLIC_PRIMARY_COLOR || "#000000", // 默认主题色
       setPrimaryColor: (color) => {
         set({ primaryColor: color })
-        if (typeof document !== 'undefined') {
-          document.documentElement.style.setProperty('--accent', color)
-        }
       },
       transition: ROUTE_TRANSITION.BLUR_SLIDE,
       setTransition: (value) => set({ transition: value }),
