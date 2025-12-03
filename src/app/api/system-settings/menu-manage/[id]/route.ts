@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { RESPONSE_MSG } from '@/lib/constant'
+import { RESPONSE } from '@/lib/enums'
 import { getSupabaseServerClient } from '@/lib/supabaseServer'
 import { responseMessage } from '@/lib/utils'
 
@@ -36,13 +36,13 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       }
 
       // 其他错误
-      return NextResponse.json(responseMessage(error.message, RESPONSE_MSG.ERROR, 500));
+      return NextResponse.json(responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL));
     }
 
     // 返回更新后的菜单数据
     return NextResponse.json(responseMessage(data ? data[0] : data));
   } catch (err) {
-    return NextResponse.json(responseMessage(err, RESPONSE_MSG.ERROR, -1));
+    return NextResponse.json(responseMessage(err, RESPONSE.label(1), -1));
   }
 }
 
@@ -63,7 +63,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
       .eq('parent_id', id); // 查找所有 parent_id 等于该菜单 ID 的子菜单
 
     if (checkChildrenError) {
-      return NextResponse.json(responseMessage(checkChildrenError.message, RESPONSE_MSG.ERROR, 500));
+      return NextResponse.json(responseMessage(checkChildrenError.message, RESPONSE.label(1), RESPONSE.FAIL));
     }
 
     // 如果有子菜单，不能删除
@@ -78,12 +78,12 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
       .eq('id', id); // 根据 ID 删除菜单
 
     if (error) {
-      return NextResponse.json(responseMessage(error.message, RESPONSE_MSG.ERROR, 500));
+      return NextResponse.json(responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL));
     }
 
     // 返回成功响应
     return NextResponse.json(responseMessage(data ? data[0] : data));
   } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE_MSG.ERROR, -1));
+    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
   }
 }

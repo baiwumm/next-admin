@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { eq } from 'es-toolkit/compat'
 import { twMerge } from "tailwind-merge"
 
-import { RESPONSE_CODE, RESPONSE_MSG } from '@/lib/constant';
+import { RESPONSE } from '@/lib/enums';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -15,14 +15,14 @@ export function cn(...inputs: ClassValue[]) {
  */
 export const responseMessage = (
   data: unknown,
-  msg: string = RESPONSE_MSG.SUCCESS,
-  code: number = RESPONSE_CODE.SUCCESS,
+  msg: string = RESPONSE.labels[0],
+  code: number = RESPONSE.SUCCESS,
 ): App.Common.IResponse => ({ data, msg, code, timestamp: dayjs().valueOf() });
 
 /**
  * @description: 判断请求是否成功
  */
-export const isSuccess = (code?: number): boolean => eq(code, RESPONSE_CODE.SUCCESS);
+export const isSuccess = (code?: number): boolean => eq(code, RESPONSE.SUCCESS);
 
 /**
  * @description: 将扁平数据转换为树形结构

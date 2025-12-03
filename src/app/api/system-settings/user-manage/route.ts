@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-12 10:07:12
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-12 17:14:48
+ * @LastEditTime: 2025-12-03 09:13:17
  * @Description: 用户管理模块
  */
 import { NextRequest, NextResponse } from 'next/server'
 
-import { RESPONSE_MSG } from '@/lib/constant'
+import { RESPONSE } from '@/lib/enums'
 import { getSupabaseAdminClient } from '@/lib/supabaseAdmin'
 import { responseMessage } from '@/lib/utils'
 
@@ -32,11 +32,11 @@ export async function GET(request: NextRequest) {
 
     // 执行失败
     if (error) {
-      return responseMessage(error.message, RESPONSE_MSG.ERROR, 500)
+      return responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL)
     }
 
     return NextResponse.json(responseMessage({ records: users, total, current: page, size: perPage }));
   } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE_MSG.ERROR, -1));
+    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
   }
 }

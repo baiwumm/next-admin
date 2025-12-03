@@ -19,8 +19,10 @@
       "register":"Register",
       "email":"Email Address",
       "email-placeholder":"Enter your email",
+      "email-valid":"Please enter a valid email address",
       "password":"Password",
       "password-placeholder":"Enter your password",
+      "password-min":"The password length cannot be less than {min} characters",
       "google":"Continue with Google",
       "github":"Continue with Github",
       "login-error":"Login failed. Please try again later",
@@ -58,6 +60,7 @@
     "TopMenuLayout":{
       "logout":"Logout",
       "logout-in":"Logging out...",
+      "logout-comfirm":"Are you sure you want to log out?",
       "logout-error":"Logout failed. Please try again later",
       "close-menu":"Close Menu",
       "open-menu":"Open Menu",
@@ -119,6 +122,35 @@
     "index":"Index",
     "total":"A total of {total} pieces of data",
     "pageSize":"{pageSize} entries/page",
-    "request-error":"Request Error"
+    "request-error":"Request Error",
+    "warm-tips":"Warm Tips"
+  },
+  "Enums":{
+    "theme-mode":{
+      "light":"Light",
+      "dark":"Dark",
+      "system":"System"
+    },
+    "color-style":{
+      "default":"Normal",
+      "grey":"Grey",
+      "invert":"Invert"
+    },
+    "tabs-style":{
+      "button":"Button",
+      "tag":"Tag",
+      "google":"Google"
+    },
+    "route-transition":{
+      "blur-slide":"Blur Slide",
+      "fade":"Fade",
+      "blur":"Blur",
+      "slide":"Slide",
+      "zoom":"Zoom",
+      "swing":"Swing",
+      "flip":"Flip",
+      "slide-up":"Slide Up",
+      "diagonal":"Diagonal"
+    }
   }
 }

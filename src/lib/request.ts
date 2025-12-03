@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 11:30:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-28 13:55:02
+ * @LastEditTime: 2025-12-03 09:21:05
  * @Description: Axios 请求封装
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
@@ -12,10 +12,10 @@ import { toast } from 'sonner';
 
 import { finishLoading, startLoading } from './nprogress';
 
-import { RESPONSE_MSG } from '@/lib/constant'
+import { RESPONSE } from '@/lib/enums';
 import { isSuccess } from '@/lib/utils';
 
-type Response<T = any> = App.Common.IResponse<T>;
+type Response<T = unknown> = App.Common.IResponse<T>;
 /**
  * @description: 创建 Axios 实例对象
  */
@@ -55,7 +55,7 @@ request.interceptors.response.use(
     // 配置 skipErrorHandler 会跳过默认的错误处理，用于项目中部分特殊的接口
     if (!isSuccess(code) && !get(response, 'config.skipErrorHandler', false)) {
       // 其它状态码统一提示错误信息
-      toast.error(msg || RESPONSE_MSG.ERROR)
+      toast.error(msg || RESPONSE.label(1))
     }
     return response.data;
   },
@@ -72,20 +72,20 @@ type HttpRequestConfig = AxiosRequestConfig & {
   skipErrorHandler?: boolean;
 };
 export const httpRequest = {
-  get<T = any>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
+  get<T = unknown>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
     const queryParams = queryString.stringify(data || {});
     return request.get(queryParams ? `${url}?${queryParams}` : url, config);
   },
 
-  post<T = any>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
+  post<T = unknown>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
     return request.post(url, data, config);
   },
 
-  put<T = any>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
+  put<T = unknown>(url: string, data?: object, config?: HttpRequestConfig): Promise<Response<T>> {
     return request.put(url, data, config);
   },
 
-  delete<T = any>(url: string, config?: HttpRequestConfig): Promise<Response<T>> {
+  delete<T = unknown>(url: string, config?: HttpRequestConfig): Promise<Response<T>> {
     return request.delete(url, config);
   },
 };

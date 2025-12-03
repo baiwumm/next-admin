@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 17:42:46
+ * @LastEditTime: 2025-12-03 08:42:50
  * @Description: 登录页面
  */
 "use client";
 import { useRouter } from '@bprogress/next/app';
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Icon } from '@iconify/react';
 import { track } from '@vercel/analytics';
 import { upperFirst } from 'es-toolkit';
 import { map } from 'es-toolkit/compat'
@@ -42,6 +41,7 @@ import {
 } from "@/components/ui/input-group"
 import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner";
+import { GithubIcon, GoogleIcon } from '@/lib/icons'
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 
 type AllowedPropertyValues = Parameters<typeof track>[1];
@@ -61,12 +61,11 @@ export default function Login() {
 
   // 字段验证规则
   const formSchema = z.object({
-    email: z.email('请输入有效的邮箱地址'),
+    email: z.email(t('email-valid')),
     password: z
       .string()
-      .min(1, '密码不能为空')
-      .min(6, '密码长度至少为 6 位')
-      .max(100, '密码长度不能超过 100 位'),
+      .min(1, t('password-placeholder'))
+      .min(6, t('password-min', { min: 6 }))
   })
 
   // 创建表单实例
@@ -233,7 +232,7 @@ export default function Login() {
                 onClick={() => handleOAuthLogin(auth)}
               >
                 <>
-                  {oauthLoading ? <Spinner /> : <Icon icon={`devicon:${auth}`} className="text-lg" />}
+                  {oauthLoading ? <Spinner /> : auth === 'github' ? <GithubIcon /> : <GoogleIcon />}
                   {t(auth)}
                 </>
               </Button>

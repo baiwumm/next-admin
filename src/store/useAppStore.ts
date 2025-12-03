@@ -2,32 +2,32 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 15:34:46
+ * @LastEditTime: 2025-12-03 09:32:08
  * @Description: 全局状态
  */
 'use client'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { COLOR_STYLE, type ColorStyleValue, ROUTE_TRANSITION, type RouteTransitionValue, TABS_STYLE, type TabsStyleValue } from '@/lib/constant'
+import { COLOR_STYLE, ROUTE_TRANSITION, TABS_STYLE } from '@/lib/enums';
 
 type AppState = {
   isMobile: boolean; // 是否移动端
   setIsMobile: (value: boolean) => void; // 设置移动端
   primaryColor: string; // 主题色
   setPrimaryColor: (color: string) => void; // 设置主题色
-  transition: RouteTransitionValue; // 路由过渡类型
-  setTransition: (type: RouteTransitionValue) => void; // 设置路由过渡类型
+  transition: typeof ROUTE_TRANSITION.valueType; // 路由过渡类型
+  setTransition: (type: typeof ROUTE_TRANSITION.valueType) => void; // 设置路由过渡类型
   fixedHeader: boolean; // 是否固定顶栏
   setFixedHeader: (val: boolean) => void; // 设置是否固定顶栏,
   showTabs: boolean; // 是否显示标签页
   setShowTabs: (val: boolean) => void; // 设置是否显示标签页
   showFooter: boolean; // 是否显示底部
   setShowFooter: (val: boolean) => void; // 设置是是否显示底部
-  colorStyle: ColorStyleValue;// 色彩风格
-  setColorStyle: (val: ColorStyleValue) => void; // 设置色彩风格
-  tabStyle: TabsStyleValue; // 标签页风格
-  setTabStyle: (val: TabsStyleValue) => void; // 设置标签页风格
+  colorStyle: typeof COLOR_STYLE.valueType;// 色彩风格
+  setColorStyle: (val: typeof COLOR_STYLE.valueType) => void; // 设置色彩风格
+  tabStyle: typeof TABS_STYLE.valueType; // 标签页风格
+  setTabStyle: (val: typeof TABS_STYLE.valueType) => void; // 设置标签页风格
 }
 
 export const useAppStore = create(

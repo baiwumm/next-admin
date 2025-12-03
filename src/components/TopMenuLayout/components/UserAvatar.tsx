@@ -2,11 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 17:46:11
+ * @LastEditTime: 2025-12-03 08:51:19
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
-import { IdCard, LogOut, User } from 'lucide-react';
+import { CircleAlert, IdCard, LogOut, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type FC, type MouseEvent, useState } from 'react';
 
@@ -18,7 +18,7 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
+  AlertDialogTitle
 } from '@/components/animate-ui/components/radix/alert-dialog';
 import {
   DropdownMenu,
@@ -58,7 +58,7 @@ const UserAvatar: FC = () => {
     setLogoutLoading(true);
     try {
       // 登出
-      supabase.auth.signOut().then(() => {
+      await supabase.auth.signOut().then(() => {
         setIsOpen(false);
         // 跳转登录页面
         router.push('/login');
@@ -105,8 +105,11 @@ const UserAvatar: FC = () => {
       <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>确认要退出登录吗?</AlertDialogTitle>
-            <AlertDialogDescription>Alert Dialog Description</AlertDialogDescription>
+            <AlertDialogTitle className="flex items-center gap-2">
+              <CircleAlert />
+              {tC('warm-tips')}
+            </AlertDialogTitle>
+            <AlertDialogDescription>{t('logout-comfirm')}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>{tC('cancel')}</AlertDialogCancel>

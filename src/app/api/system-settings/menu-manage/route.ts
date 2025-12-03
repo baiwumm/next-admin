@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 10:19:02
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-05 14:18:29
+ * @LastEditTime: 2025-12-03 09:10:38
  * @Description: 菜单管理模块
  */
 import { NextRequest, NextResponse } from 'next/server'
 
-import { RESPONSE_MSG } from '@/lib/constant'
+import { RESPONSE } from '@/lib/enums'
 import { getSupabaseServerClient } from '@/lib/supabaseServer'
 import { convertFlatDataToTree, responseMessage } from '@/lib/utils'
 
@@ -39,12 +39,12 @@ export async function GET(request: NextRequest) {
 
     // 执行失败
     if (error) {
-      return responseMessage(error.message, RESPONSE_MSG.ERROR, 500)
+      return responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL)
     }
 
     return NextResponse.json(responseMessage(convertFlatDataToTree(menus || [])));
   } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE_MSG.ERROR, -1));
+    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
   }
 }
 
@@ -72,10 +72,10 @@ export async function POST(request: NextRequest) {
       }
 
       // 其他错误
-      return NextResponse.json(responseMessage(error.message, RESPONSE_MSG.ERROR, 500));
+      return NextResponse.json(responseMessage(error.message, RESPONSE.label(1), 500));
     }
     return NextResponse.json(responseMessage(data));
   } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE_MSG.ERROR, -1));
+    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
   }
 }

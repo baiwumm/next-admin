@@ -19,8 +19,10 @@
       "register":"注册",
       "email":"邮箱地址",
       "email-placeholder":"请输入邮箱地址",
+      "email-valid":"请输入有效的邮箱地址",
       "password":"密码",
       "password-placeholder":"请输入密码",
+      "password-min":"密码长度不能小于 {min} 个字符",
       "google":"使用 Google 登录",
       "github":"使用 Github 登录",
       "login-error":"登录失败，请稍后重试",
@@ -58,6 +60,7 @@
     "TopMenuLayout":{
       "logout":"退出登录",
       "logout-in":"正在退出...",
+      "logout-comfirm":"确定要退出登录吗？",
       "logout-error":"退出登录失败，请稍后重试",
       "close-menu":"关闭菜单",
       "open-menu":"打开菜单",
@@ -119,6 +122,35 @@
     "index":"序号",
     "total":"共 {total} 条数据",
     "pageSize":"{pageSize}条/页",
-    "request-error":"加载失败"
+    "request-error":"加载失败",
+    "warm-tips":"温馨提示"
+  },
+  "Enums":{
+    "theme-mode":{
+      "light":"浅色模式",
+      "dark":"深色模式",
+      "system":"跟随系统"
+    },
+    "color-style":{
+      "default":"正常模式",
+      "grey":"灰色模式",
+      "invert":"色弱模式"
+    },
+    "tabs-style":{
+      "button":"按钮风格",
+      "tag":"标签风格",
+      "google":"谷歌风格"
+    },
+    "route-transition":{
+      "blur-slide":"模糊滑入滑出",
+      "fade":"渐隐渐出",
+      "blur":"模糊渐入",
+      "slide":"滑动渐入",
+      "zoom":"缩放渐入",
+      "swing":"摇摆渐入",
+      "flip":"翻转渐入",
+      "slide-up":"向上滑动渐入",
+      "diagonal":"对角渐入"
+    }
   }
 }

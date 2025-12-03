@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 10:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 13:39:18
+ * @LastEditTime: 2025-12-03 08:58:03
  * @Description: 登录页布局
  */
 "use client"
@@ -11,7 +11,7 @@ import { type ReactNode } from 'react';
 
 import Footer from '@/components/Footer';
 import Squares from '@/components/Squares';
-import { THEME_MODE } from '@/lib/constant';
+import { THEME_MODE } from '@/lib/enums';
 
 type LoginLayoutProps = {
   children: ReactNode;
