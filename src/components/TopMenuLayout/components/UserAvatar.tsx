@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 08:51:19
+ * @LastEditTime: 2025-12-03 10:04:46
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -79,7 +79,7 @@ const UserAvatar: FC = () => {
               <Avatar>
                 <AvatarImage src={avatar} alt="Online User" />
                 <AvatarFallback>
-                  <User />
+                  <User size={18} />
                 </AvatarFallback>
               </Avatar>
               <span className="ring-background absolute bottom-0 right-0 size-2.5 rounded-full bg-green-500 ring-2" />

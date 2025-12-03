@@ -2,10 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 17:43:44
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 09:18:15
+ * @LastEditTime: 2025-12-03 10:11:17
  * @Description: 国际化
  */
-import { Icon } from '@iconify/react';
+import { Languages } from 'lucide-react';
 import { useLocale } from 'next-intl';
 
 import { Button } from '@/components/animate-ui/components/buttons/button';
@@ -24,13 +24,13 @@ export default function LangSwitch() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon" aria-label="LangSwitch" variant="ghost" className="rounded-full">
-          <Icon icon='ri:translate-2' className='text-lg' />
+          <Languages />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-50">
         {INTL_LOCALES.items.map(({ label, value, raw }) => (
           <DropdownMenuCheckboxItem key={value} checked={locale === value} onCheckedChange={() => setLocale(value)}>
-            <Icon className="text-muted size-4 shrink-0" icon={raw.icon} />
+            <span>{raw.prefix}</span>
             <span>{label}</span>
           </DropdownMenuCheckboxItem>
         ))}

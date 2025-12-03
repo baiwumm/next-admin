@@ -12,8 +12,8 @@ export const RESPONSE = Enum({
  * @description: 语言配置
  */
 export const INTL_LOCALES = Enum({
-  ZH: { value: 'zh', label: '简体中文', icon: "flag:cn-4x3" },
-  EN: { value: 'en', label: 'English', icon: "flag:um-4x3" }
+  ZH: { value: 'zh', label: '简体中文', prefix: "🇨🇳" },
+  EN: { value: 'en', label: 'English', prefix: "🇺🇸" }
 });
 
 /**
