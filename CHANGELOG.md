@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.1](///compare/2.2.0...2.2.1) (2025-12-03)
+
+### Performance Improvements
+
+* 去除 @iconify/react 包 b154875
+
 ## [2.2.0](///compare/2.1.0...2.2.0) (2025-12-03)
 
 ### Features
