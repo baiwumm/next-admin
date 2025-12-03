@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.0](///compare/2.1.0...2.2.0) (2025-12-03)
+
+### Features
+
+* 新增 enum-plus，优化变量枚举方式，细节完善 f02819e
+
+### Performance Improvements
+
+* 去除 es-toolkit 包 6a22593
+
 ## [2.1.0](///compare/2.0.0...2.1.0) (2025-12-02)
 
 ### Features
