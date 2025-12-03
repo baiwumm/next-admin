@@ -17,6 +17,21 @@ export const INTL_LOCALES = Enum({
 });
 
 /**
+ * @description: 主题色
+ */
+export const THEME_PRIMARY_COLOR = Enum({
+  DEFAULT: { value: 'default', label: 'Default', color: 'oklch(0.205 0 0)' },
+  AMBER_MINIMAL: { value: 'amber-minimal', label: 'Amber', color: 'oklch(0.7686 0.1647 70.0804)' },
+  AMETHYST_HAZE: { value: 'amethyst-haze', label: 'Amethyst', color: 'oklch(0.6104 0.0767 299.7335)' },
+  CANDYLAND: { value: 'candyland', label: 'Candyland', color: 'oklch(0.8677 0.0735 7.0855)' },
+  DARKMATTER: { value: 'darkmatter', label: 'Darkmatter', color: 'oklch(0.6716 0.1368 48.5130)' },
+  ELEGANT_LUXURY: { value: 'elegant-luxury', label: 'Elegant', color: 'oklch(0.4650 0.1470 24.9381)' },
+  SAGE_GARDEN: { value: 'sage-garden', label: 'Garden', color: 'oklch(0.6333 0.0309 154.9039)' },
+  SUPABASE: { value: 'supabase', label: 'Supabase', color: 'oklch(0.8348 0.1302 160.9080)' },
+  TWITTER: { value: 'twitter', label: 'Twitter', color: 'oklch(0.6723 0.1606 244.9955)' },
+});
+
+/**
  * @description: 主题模式
  */
 export const THEME_MODE = Enum({

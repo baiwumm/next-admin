@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 16:07:23
+ * @LastEditTime: 2025-12-03 17:28:31
  * @Description: 全局状态
  */
 'use client'
@@ -10,13 +10,14 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { type Direction } from '@/components/animate-ui/primitives/effects/theme-toggler';
-import { COLOR_STYLE, ROUTE_TRANSITION, TABS_STYLE } from '@/lib/enums';
+import { COLOR_STYLE, ROUTE_TRANSITION, TABS_STYLE, THEME_PRIMARY_COLOR } from '@/lib/enums';
+import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
 
 type AppState = {
   isMobile: boolean; // 是否移动端
   setIsMobile: (value: boolean) => void; // 设置移动端
-  primaryColor: string; // 主题色
-  setPrimaryColor: (color: string) => void; // 设置主题色
+  primaryColor: typeof THEME_PRIMARY_COLOR.valueType; // 主题色
+  setPrimaryColor: (color: typeof THEME_PRIMARY_COLOR.valueType) => void; // 设置主题色
   transition: typeof ROUTE_TRANSITION.valueType; // 路由过渡类型
   setTransition: (type: typeof ROUTE_TRANSITION.valueType) => void; // 设置路由过渡类型
   fixedHeader: boolean; // 是否固定顶栏
@@ -38,9 +39,10 @@ export const useAppStore = create(
     (set) => ({
       isMobile: false,
       setIsMobile: (value) => set({ isMobile: value }),
-      primaryColor: process.env.NEXT_PUBLIC_PRIMARY_COLOR || "#000000", // 默认主题色
+      primaryColor: THEME_PRIMARY_COLOR.DEFAULT, // 默认主题色
       setPrimaryColor: (color) => {
         set({ primaryColor: color })
+        initializePrimaryColor(color);
       },
       transition: ROUTE_TRANSITION.BLUR_SLIDE,
       setTransition: (value) => set({ transition: value }),
@@ -53,13 +55,7 @@ export const useAppStore = create(
       colorStyle: COLOR_STYLE.DEFAULT,
       setColorStyle: (value) => {
         set({ colorStyle: value })
-        if (typeof document !== 'undefined') {
-          const html = document.documentElement;
-          html.classList.remove(`color-${COLOR_STYLE.GREY}`, `color-${COLOR_STYLE.INVERT}`);
-          if (value !== COLOR_STYLE.DEFAULT) {
-            html.classList.add(`color-${value}`);
-          }
-        }
+        initializeColorStyle(value);
       },
       tabStyle: TABS_STYLE.GOOGLE,
       setTabStyle: (value) => set({ tabStyle: value }),

@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx"
 import dayjs from 'dayjs';
 import { twMerge } from "tailwind-merge"
 
-import { RESPONSE } from '@/lib/enums';
+import { COLOR_STYLE, RESPONSE, THEME_PRIMARY_COLOR } from '@/lib/enums';
 
 /**
  * @description: 合并类名
@@ -130,3 +130,34 @@ export const convertFlatDataToTree = <T extends { id: string; parent_id?: string
 
   return cleanUpEmptyChildren(roots);
 };
+
+/**
+ * @description: 初始化主题色
+ * @param {typeof} color
+ */
+export const initializePrimaryColor = (color: typeof THEME_PRIMARY_COLOR.valueType) => {
+  if (typeof document !== 'undefined') {
+    // 清空 theme- 开头的类名
+    const html = document.documentElement;
+    Array.from(html.classList)
+      .filter((className) => className.startsWith("theme-"))
+      .forEach((className) => {
+        html.classList.remove(className)
+      })
+    // 如果不是默认主题色，则添加对应的类名
+    if (color !== THEME_PRIMARY_COLOR.DEFAULT) {
+      html.classList.add(`theme-${color}`);
+    }
+  }
+}
+
+// 初始化色彩风格
+export const initializeColorStyle = (value: typeof COLOR_STYLE.valueType) => {
+  if (typeof document !== 'undefined') {
+    const html = document.documentElement;
+    html.classList.remove(`color-${COLOR_STYLE.GREY}`, `color-${COLOR_STYLE.INVERT}`);
+    if (value !== COLOR_STYLE.DEFAULT) {
+      html.classList.add(`color-${value}`);
+    }
+  }
+}
