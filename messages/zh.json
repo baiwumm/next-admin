@@ -71,8 +71,9 @@
       "label":"正在加载资源，请稍后..."
     },
     "AppSettings":{
-      "PrimaryColor":"主题色",
-      "RouteTranstion":"路由过渡动画",
+      "primary-color":"主题色",
+      "theme-mode":"主题模式",
+      "route-transtion":"路由过渡动画",
       "blurSlide":"左右模糊渐变",
       "fade":"淡入淡出",
       "blur":"模糊渐变",

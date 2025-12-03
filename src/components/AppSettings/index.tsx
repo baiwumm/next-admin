@@ -1,0 +1,45 @@
+/*
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2025-12-03 11:29:39
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2025-12-03 14:58:41
+ * @Description: 主题设置
+ */
+"use client"
+import { SwatchBook } from 'lucide-react'
+import { useTranslations } from 'next-intl';
+import { type FC } from 'react';
+
+import ThemeToggle from './components/ThemeToggle';
+
+import { Button } from '@/components/animate-ui/components/buttons/button';
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/animate-ui/components/radix/popover';
+
+const AppSettings: FC = () => {
+  const t = useTranslations('Components.AppSettings');
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button size="icon" aria-label="AppSettings" variant="ghost" className="rounded-full">
+          <SwatchBook />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-100">
+        <div className="flex flex-col gap-3">
+          {/* 主题模式 */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-sm">{t('theme-mode')}</h1>
+            <ThemeToggle />
+          </div>
+        </div>
+        <PopoverClose />
+      </PopoverContent>
+    </Popover>
+  )
+}
+export default AppSettings;

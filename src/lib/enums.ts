@@ -20,9 +20,9 @@ export const INTL_LOCALES = Enum({
  * @description: 主题模式
  */
 export const THEME_MODE = Enum({
-  LIGHT: { value: 'light', label: 'theme-mode.light' },
-  DARK: { value: 'dark', label: 'theme-mode.dark' },
-  SYSTEM: { value: 'system', label: 'theme-mode.system' }
+  LIGHT: { value: 'light', label: 'theme-mode.light', icon: 'sun' },
+  DARK: { value: 'dark', label: 'theme-mode.dark', icon: 'moon' },
+  SYSTEM: { value: 'system', label: 'theme-mode.system', icon: 'laptop' }
 });
 
 /**

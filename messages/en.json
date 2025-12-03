@@ -71,8 +71,9 @@
       "label":"Resources are loading. Please wait a moment..."
     },
     "AppSettings":{
-      "PrimaryColor":"PrimaryColor",
-      "RouteTranstion":"RouteTranstion",
+      "primary-color":"PrimaryColor",
+      "theme-mode":"Theme Mode",
+      "route-transtion":"RouteTranstion",
       "blurSlide":"Blur Slide",
       "fade":"Fade In / Fade Out",
       "blur":"Blur Fade In",
