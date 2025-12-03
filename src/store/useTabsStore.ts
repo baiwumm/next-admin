@@ -7,7 +7,6 @@
  */
 "use client";
 
-import { filter, find } from "es-toolkit/compat";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -29,7 +28,7 @@ export const useTabsStore = create(
       setActiveKey: (key) => set({ activeKey: key }),
       addTab: (tab) =>
         set((state) => {
-          const exists = find(state.tabs, { path: tab.path });
+          const exists = state.tabs.find(t => t.path === tab.path);
           if (exists) {
             return { activeKey: tab.path };
           }
@@ -42,7 +41,7 @@ export const useTabsStore = create(
       removeTab: (key) => {
         const { activeKey, tabs } = get();
 
-        const newTabs = filter(tabs, (t) => t.path !== key);
+        const newTabs = tabs.filter(t => t.path !== key)
 
         if (key === activeKey) {
           // 找上一个 tab → 兜底 /dashboard

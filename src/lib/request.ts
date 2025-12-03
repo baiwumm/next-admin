@@ -2,18 +2,17 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 11:30:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 09:21:05
+ * @LastEditTime: 2025-12-03 09:46:03
  * @Description: Axios 请求封装
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { get } from 'es-toolkit/compat';
 import queryString from 'query-string';
 import { toast } from 'sonner';
 
 import { finishLoading, startLoading } from './nprogress';
 
 import { RESPONSE } from '@/lib/enums';
-import { isSuccess } from '@/lib/utils';
+import { get, isSuccess } from '@/lib/utils';
 
 type Response<T = unknown> = App.Common.IResponse<T>;
 /**

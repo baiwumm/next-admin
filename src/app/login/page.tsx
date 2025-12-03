@@ -2,15 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 08:42:50
+ * @LastEditTime: 2025-12-03 09:43:28
  * @Description: 登录页面
  */
 "use client";
 import { useRouter } from '@bprogress/next/app';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { track } from '@vercel/analytics';
-import { upperFirst } from 'es-toolkit';
-import { map } from 'es-toolkit/compat'
 import { Check, Eye, EyeOff, Lock, Mail } from 'lucide-react'
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -41,12 +39,11 @@ import {
 } from "@/components/ui/input-group"
 import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner";
+import { OAUTH_PROVIDERS } from '@/lib/enums';
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 
 type AllowedPropertyValues = Parameters<typeof track>[1];
-
-type Providers = 'github' | 'google';
 
 export default function Login() {
   const supabase = getSupabaseBrowserClient();
@@ -109,7 +106,7 @@ export default function Login() {
   };
 
   // 谷歌或者 Github 登录
-  const handleOAuthLogin = async (provider: 'github' | 'google') => {
+  const handleOAuthLogin = async (provider: typeof OAUTH_PROVIDERS.valueType) => {
     setOauthLoading(true)
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
@@ -123,7 +120,7 @@ export default function Login() {
       })
     }
     setOauthLoading(false)
-    track('Provider', { provider: upperFirst(provider) });
+    track('Provider', { provider });
   }
   return (
     <div className="w-full max-w-md p-4">
@@ -223,7 +220,7 @@ export default function Login() {
         </div>
         <CardFooter className="flex-col gap-2">
           <div className="flex w-full flex-col gap-3">
-            {map(['github', 'google'], (auth: Providers) => (
+            {OAUTH_PROVIDERS.values.map(auth => (
               <Button
                 key={auth}
                 className="w-full"

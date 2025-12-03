@@ -57,3 +57,11 @@ export const ROUTE_TRANSITION = Enum({
   SLIDE_UP: { value: 'slide-up', label: 'route-transition.slide-up' },
   DIAGONAL: { value: 'diagonal', label: 'route-transition.diagonal' }
 });
+
+/**
+ * @description: OAuth Providers
+ */
+export const OAUTH_PROVIDERS = Enum({
+  GOOGLE: { value: 'google', label: 'Google' },
+  GITHUB: { value: 'github', label: 'Github' },
+})
