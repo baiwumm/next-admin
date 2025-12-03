@@ -73,6 +73,7 @@
     "AppSettings":{
       "primary-color":"PrimaryColor",
       "theme-mode":"Theme Mode",
+      "theme-mode-direction":"Animation Direction",
       "route-transtion":"RouteTranstion",
       "blurSlide":"Blur Slide",
       "fade":"Fade In / Fade Out",
@@ -130,7 +131,11 @@
     "theme-mode":{
       "light":"Light",
       "dark":"Dark",
-      "system":"System"
+      "system":"System",
+      "ltr":"LTR",
+      "rtl":"RTL",
+      "btt":"BTT",
+      "ttb":"TTB"
     },
     "color-style":{
       "default":"Normal",

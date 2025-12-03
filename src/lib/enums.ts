@@ -26,6 +26,16 @@ export const THEME_MODE = Enum({
 });
 
 /**
+ * @description: 主题切换动画方向
+ */
+export const THEME_MODE_DIRECTION = Enum({
+  LTR: { value: 'ltr', label: 'theme-mode.ltr', icon: 'arrow-left-right' },
+  RTL: { value: 'rtl', label: 'theme-mode.rtl', icon: 'arrow-right-left' },
+  BTT: { value: 'btt', label: 'theme-mode.btt', icon: 'arrow-down-up' },
+  TTB: { value: 'ttb', label: 'theme-mode.ttb', icon: 'arrow-up-down' }
+});
+
+/**
  * @description: 色彩风格
  */
 export const COLOR_STYLE = Enum({

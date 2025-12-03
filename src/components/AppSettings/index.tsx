@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 11:29:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 14:58:41
+ * @LastEditTime: 2025-12-03 16:09:55
  * @Description: 主题设置
  */
 "use client"
@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
 import ThemeToggle from './components/ThemeToggle';
+import ThemeToggleDirection from './components/ThemeToggleDirection';
 
 import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
@@ -35,6 +36,11 @@ const AppSettings: FC = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-sm">{t('theme-mode')}</h1>
             <ThemeToggle />
+          </div>
+          {/* 主题切换方向 */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-sm">{t('theme-mode-direction')}</h1>
+            <ThemeToggleDirection />
           </div>
         </div>
         <PopoverClose />

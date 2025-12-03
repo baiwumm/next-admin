@@ -73,6 +73,7 @@
     "AppSettings":{
       "primary-color":"主题色",
       "theme-mode":"主题模式",
+      "theme-mode-direction":"动画方向",
       "route-transtion":"路由过渡动画",
       "blurSlide":"左右模糊渐变",
       "fade":"淡入淡出",
@@ -130,7 +131,11 @@
     "theme-mode":{
       "light":"浅色模式",
       "dark":"深色模式",
-      "system":"跟随系统"
+      "system":"跟随系统",
+      "ltr":"左到右",
+      "rtl":"右到左",
+      "btt":"下到上",
+      "ttb":"上到下"
     },
     "color-style":{
       "default":"正常模式",

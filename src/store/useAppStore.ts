@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 14:23:34
+ * @LastEditTime: 2025-12-03 16:07:23
  * @Description: 全局状态
  */
 'use client'
@@ -30,6 +30,7 @@ type AppState = {
   tabStyle: typeof TABS_STYLE.valueType; // 标签页风格
   setTabStyle: (val: typeof TABS_STYLE.valueType) => void; // 设置标签页风格
   themeModeDirection: Direction; // 主题切换动画方向
+  setThemeModeDirection: (val: Direction) => void; // 设置主题切换动画方向
 }
 
 export const useAppStore = create(
@@ -62,7 +63,8 @@ export const useAppStore = create(
       },
       tabStyle: TABS_STYLE.GOOGLE,
       setTabStyle: (value) => set({ tabStyle: value }),
-      themeModeDirection: "ltr"
+      themeModeDirection: "ltr",
+      setThemeModeDirection: (value) => set({ themeModeDirection: value }),
     }),
     {
       name: 'app-theme', // 用于存储在 localStorage 中的键名
