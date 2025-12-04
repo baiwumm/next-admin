@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 17:30:32
+ * @LastEditTime: 2025-12-04 11:15:32
  * @Description: 上下文提供者
  */
 "use client"
@@ -46,7 +46,7 @@ export function Providers({ children }: ProvidersProps) {
     <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME || THEME_MODE.LIGHT}>
       <MotionConfig reducedMotion="user">
         <ProgressProvider
-          color={primaryColor}
+          color="var(--primary)"
           options={{ showSpinner: true }}
           shallowRouting
         >

@@ -1,16 +1,10 @@
 {
   "Route":{
     "dashboard":"控制台",
-    "administrative":"智能行政",
-    "organization":"组织管理",
-    "post-manage":"岗位管理",
     "personal-center":"个人中心",
     "system-settings":"系统设置",
     "user-manage":"用户管理",
-    "menu-manage":"菜单管理",
-    "heroui-pro":"HeroUI Pro",
-    "charts":"图表",
-    "charts-desc":"制作精美的图表"
+    "menu-manage":"菜单管理"
   },
   "Pages":{
     "Login":{

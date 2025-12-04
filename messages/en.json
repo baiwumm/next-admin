@@ -1,16 +1,10 @@
 {
   "Route":{
     "dashboard":"Dashboard",
-    "administrative":"Administrative",
-    "organization":"Organization",
-    "post-manage":"PostManage",
     "personal-center":"Personal Center",
     "system-settings":"System Settings",
     "user-manage":"User Management",
-    "menu-manage":"Menu Management",
-    "heroui-pro":"HeroUI Pro",
-    "charts":"Charts",
-    "charts-desc":"Beautifully crafted charts"
+    "menu-manage":"Menu Management"
   },
   "Pages":{
     "Login":{

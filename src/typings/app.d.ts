@@ -46,7 +46,7 @@ declare namespace App {
       id: string;
       label: Common.RouteKey;
       path: string;
-      icon: string;
+      icon: import('lucide-react/dynamic').IconName;
       desc?: Common.RouteKey | null;
       redirect?: string;
       sort: number;
