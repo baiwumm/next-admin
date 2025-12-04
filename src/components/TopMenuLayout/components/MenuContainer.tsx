@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:11:55
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 11:31:04
+ * @LastEditTime: 2025-12-04 15:38:08
  * @Description: 菜单容器
  */
 "use client"
@@ -113,8 +113,8 @@ const MenuContainer: FC = () => {
     }
   }, [fetchMenuList, menuList])
   return menuLoading ? (
-    <div className="flex flex-col items-center gap-2">
-      <Spinner />
+    <div className="flex flex-col items-center gap-1">
+      <Spinner variant='circle' className="size-4" />
       <span className="text-sm font-bold">{tLayout('menu-loading')}</span>
     </div>
   ) : menuList?.length ? renderMenu : (

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 14:14:54
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 15:20:55
+ * @LastEditTime: 2025-12-04 15:35:40
  * @Description: 全局 Loading
  */
 "use client"
@@ -25,7 +25,7 @@ const FullLoading = () => {
     return (
       <div className="fixed flex w-screen h-screen justify-center items-center flex-col z-99 overflow-hidden bg-white dark:bg-black">
         <div className="flex flex-col items-center gap-2">
-          <Spinner className="size-6" />
+          <Spinner className="size-6" variant="circle-filled" />
           <span className="font-bold">{t('label')} </span>
         </div>
       </div>

@@ -72,7 +72,7 @@ const UserAvatar: FC = () => {
   }
 
   return loading ? (
-    <Spinner />
+    <Spinner variant='circle' className="size-4" />
   ) : (
     <>
       <DropdownMenu>
