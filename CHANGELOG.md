@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.1](///compare/2.3.0...2.3.1) (2025-12-04)
+
+### Features
+
+* **Navbar:** 新增 MobileMenu 组件，优化菜单在不同设备下的兼容问题 faf25bb
+
 ## [2.3.0](///compare/2.2.1...2.3.0) (2025-12-04)
 
 ### Features
