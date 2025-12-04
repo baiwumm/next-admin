@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 10:04:46
+ * @LastEditTime: 2025-12-04 09:43:20
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -10,6 +10,7 @@ import { CircleAlert, IdCard, LogOut, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type FC, type MouseEvent, useState } from 'react';
 
+import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,6 +25,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/animate-ui/components/radix/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -74,28 +77,46 @@ const UserAvatar: FC = () => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="relative">
-              <Avatar>
-                <AvatarImage src={avatar} alt="Online User" />
+          <Button className="relative h-10 w-10 rounded-full" variant="ghost">
+            <Avatar>
+              <AvatarImage
+                alt="Online User"
+                src={avatar}
+              />
+              <AvatarFallback>
+                <User />
+              </AvatarFallback>
+            </Avatar>
+            <span className="absolute right-1 bottom-1 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-background" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-64">
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex items-center gap-3">
+              <Avatar className="h-10 w-10">
+                <AvatarImage
+                  alt="Online User"
+                  src={avatar}
+                />
                 <AvatarFallback>
-                  <User size={18} />
+                  <User />
                 </AvatarFallback>
               </Avatar>
-              <span className="ring-background absolute bottom-0 right-0 size-2.5 rounded-full bg-green-500 ring-2" />
+              <div className="flex flex-col space-y-2 min-w-0">
+                <p className="font-medium text-sm leading-none">{name}</p>
+                <p className="text-muted-foreground text-xs leading-none overflow-hidden text-ellipsis whitespace-nowrap">
+                  {user?.email}
+                </p>
+              </div>
             </div>
-            <div className="flex-col gap-0.5 items-start hidden sm:flex">
-              <span className="text-xs font-bold">{name}</span>
-              <span className="text-xs">{user?.email}</span>
-            </div>
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-50">
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => router.push('/personal-center')}>
             <IdCard />
             <span>{tR('personal-center')}</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setIsOpen(true)}>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => setIsOpen(true)} variant="destructive">
             <LogOut />
             <span>{t('logout')}</span>
           </DropdownMenuItem>
@@ -105,10 +126,10 @@ const UserAvatar: FC = () => {
       <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle className="flex items-center gap-2">
-              <CircleAlert />
-              {tC('warm-tips')}
-            </AlertDialogTitle>
+            <div className="flex items-center gap-2">
+              <CircleAlert className="size-5 text-blue-500" />
+              <AlertDialogTitle>{tC('warm-tips')}</AlertDialogTitle>
+            </div>
             <AlertDialogDescription>{t('logout-comfirm')}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

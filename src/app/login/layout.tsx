@@ -2,14 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 10:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 08:58:03
+ * @LastEditTime: 2025-12-04 09:34:29
  * @Description: 登录页布局
  */
 "use client"
 import { useTheme } from "next-themes";
 import { type ReactNode } from 'react';
 
+import AppSettings from '@/components/AppSettings';
 import Footer from '@/components/Footer';
+import LangSwitch from '@/components/LangSwitch';
 import Squares from '@/components/Squares';
 import { THEME_MODE } from '@/lib/enums';
 
@@ -32,6 +34,13 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
           borderColor={isDark ? '#3A3A3A' : '#D1D1D1'} // 暗黑模式用深灰，浅色模式用浅灰
           hoverFillColor={isDark ? '#2C2C2C' : '#B0B0B0'} // 暗黑模式用更深的灰色，浅色模式用略深的灰色
         />
+      </div>
+      {/* 右上角 */}
+      <div className='absolute right-3 top-3 justify-center items-center bottom-2'>
+        {/* 主题设置 */}
+        <AppSettings />
+        {/* 语言切换 */}
+        <LangSwitch />
       </div>
       {/* 底部版权 */}
       <div className="absolute justify-center items-center bottom-2">

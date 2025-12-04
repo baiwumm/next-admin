@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 09:43:28
+ * @LastEditTime: 2025-12-04 09:39:34
  * @Description: 登录页面
  */
 "use client";
@@ -124,7 +124,7 @@ export default function Login() {
   }
   return (
     <div className="w-full max-w-md p-4">
-      <Card className="gap-4">
+      <Card className="gap-3">
         <CardHeader>
           <div className="flex items-center justify-center gap-3">
             <Image
@@ -136,7 +136,7 @@ export default function Login() {
             />
             <div className="flex flex-col">
               <p className="text-lg font-bold">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-              <p className="text-small text-default-500">{process.env.NEXT_PUBLIC_APP_DESC}</p>
+              <p className="text-sm text-default-500">{process.env.NEXT_PUBLIC_APP_DESC}</p>
             </div>
           </div>
         </CardHeader>
@@ -229,7 +229,7 @@ export default function Login() {
                 onClick={() => handleOAuthLogin(auth)}
               >
                 <>
-                  {oauthLoading ? <Spinner /> : auth === 'github' ? <GithubIcon /> : <GoogleIcon />}
+                  {oauthLoading ? <Spinner /> : auth === OAUTH_PROVIDERS.GITHUB ? <GithubIcon /> : <GoogleIcon />}
                   {t(auth)}
                 </>
               </Button>
