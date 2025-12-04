@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 11:29:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 14:57:06
+ * @LastEditTime: 2025-12-04 15:33:26
  * @Description: 主题设置
  */
 "use client"
@@ -12,6 +12,7 @@ import { type FC } from 'react';
 
 import ColorStyles from './components/ColorStyles';
 import PrimaryColorPicker from './components/PrimaryColorPicker';
+import ShowFooter from './components/ShowFooter';
 import ThemeToggle from './components/ThemeToggle';
 import ThemeToggleDirection from './components/ThemeToggleDirection';
 
@@ -32,7 +33,7 @@ const AppSettings: FC = () => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-85 md:w-100">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           {/* 主题色 */}
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-sm">{t('primary-color')}</h1>
@@ -52,6 +53,11 @@ const AppSettings: FC = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-sm">{t('color-style')}</h1>
             <ColorStyles />
+          </div>
+          {/* 是否显示底部 */}
+          <div className="flex justify-between items-center">
+            <h1 className="font-bold text-sm">{t('show-footer')}</h1>
+            <ShowFooter />
           </div>
         </div>
       </PopoverContent>
