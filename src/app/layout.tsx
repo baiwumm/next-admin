@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 16:41:47
+ * @LastEditTime: 2025-12-04 15:57:40
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
+import pkg from "../../package.json";
 import { Providers } from "./Provider";
 
 import "@/styles/globals.css";
@@ -32,6 +33,8 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* 插入版本 meta */}
+        <meta name="version" content={pkg.version} />
         <link
           rel="stylesheet"
           href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css"
