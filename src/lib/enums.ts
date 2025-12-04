@@ -54,9 +54,9 @@ export const THEME_MODE_DIRECTION = Enum({
  * @description: 色彩风格
  */
 export const COLOR_STYLE = Enum({
-  DEFAULT: { value: 'default', label: 'color-style.default' },
-  GREY: { value: 'grey', label: 'color-style.grey' },
-  INVERT: { value: 'invert', label: 'color-style.invert' }
+  DEFAULT: { value: 'default', label: 'color-style.default', icon: 'sun' },
+  GREY: { value: 'grey', label: 'color-style.grey', icon: 'contrast' },
+  INVERT: { value: 'invert', label: 'color-style.invert', icon: 'accessibility' }
 });
 
 /**

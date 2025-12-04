@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 17:32:00
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 13:47:07
+ * @LastEditTime: 2025-12-04 14:59:46
  * @Description: 主题色切换
  */
 import { type FC, useCallback } from "react";
@@ -45,7 +45,7 @@ const PrimaryColorPicker: FC = () => {
           <Button
             size="sm"
             aria-label="PrimaryColorPicker"
-            variant={primaryColor === value ? "default" : "outline"}
+            variant={primaryColor === value ? "secondary" : "outline"}
             key={value}
             className="text-xs justify-start"
             onClick={() => onChangeColor(value)}
