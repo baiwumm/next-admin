@@ -2,13 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:10:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 11:35:05
+ * @LastEditTime: 2025-12-04 17:40:17
  * @Description: 顶部菜单
  */
 import Image from 'next/image'
+import Link from 'next/link';
 import { type FC } from 'react';
 
-import MenuContainer from './MenuContainer';
+import DesktopMenu from './DesktopMenu';
+import MobileMenu from './MobileMenu';
 import UserAvatar from './UserAvatar';
 
 import AppSettings from '@/components/AppSettings';
@@ -21,21 +23,28 @@ const Navbar: FC = () => {
   return (
     <nav className="px-4 h-15 border-b border-default backdrop-blur-lg sticky top-0 z-10">
       <div className="container mx-auto flex items-center justify-between px-4 h-15">
-        {/* 左侧 Logo */}
         <div className="flex gap-2 items-center">
-          <Image
-            src="/logo.svg"
-            width={36}
-            height={36}
-            alt="Logo"
-            className="rounded"
-          />
-          {isMobile ? null : (
-            <p className="font-bold text-inherit ml-2 text-lg hidden sm:block">{process.env.NEXT_PUBLIC_APP_NAME}</p>
-          )}
+          {/* 左侧 Logo */}
+          <Link href="/dashboard">
+            <div className="flex gap-2 items-center">
+              <Image
+                src="/logo.svg"
+                width={36}
+                height={36}
+                alt="Logo"
+                className="rounded"
+              />
+              {isMobile ? null : (
+                <p className="font-bold text-inherit ml-2 text-lg">{process.env.NEXT_PUBLIC_APP_NAME}</p>
+              )}
+            </div>
+          </Link>
+          {isMobile ? (
+            <MobileMenu />
+          ) : null}
         </div>
-        {/* 中间菜单 */}
-        <MenuContainer />
+        {/* Desktop 菜单 */}
+        {isMobile ? null : <DesktopMenu />}
         {/* 右侧工具栏 */}
         <div className="flex gap-2 items-center">
           {/* 主题设置 */}

@@ -1,9 +1,9 @@
 /*
  * @Author: 白雾茫茫丶<baiwumm.com>
- * @Date: 2025-11-28 17:11:55
+ * @Date: 2025-12-04 16:23:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 15:38:08
- * @Description: 菜单容器
+ * @LastEditTime: 2025-12-04 16:23:35
+ * @Description: Desktop 菜单
  */
 "use client"
 import { useRouter } from '@bprogress/next/app';
@@ -26,7 +26,7 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { useMenuStore } from '@/store/useMenuStore';
 
-const MenuContainer: FC = () => {
+const DesktopMenu: FC = () => {
   const t = useTranslations('Route');
   const tC = useTranslations('Common');
   const tLayout = useTranslations('Components.TopMenuLayout');
@@ -129,4 +129,4 @@ const MenuContainer: FC = () => {
     </Button>
   )
 }
-export default MenuContainer;
+export default DesktopMenu;

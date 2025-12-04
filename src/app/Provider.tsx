@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 11:15:32
+ * @LastEditTime: 2025-12-04 16:27:15
  * @Description: 上下文提供者
  */
 "use client"
@@ -16,7 +16,7 @@ import TopMenuLayout from '@/components/TopMenuLayout';
 import { Toaster } from '@/components/ui/sonner';
 import { THEME_MODE } from '@/lib/enums';
 import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
-import { useAppStore } from '@/store/useAppStore';
+import { setupAppStore, useAppStore } from '@/store/useAppStore';
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -42,6 +42,12 @@ export function Providers({ children }: ProvidersProps) {
       initializeColorStyle(colorStyle);
     }
   }, [colorStyle])
+
+  // 数据初始化
+  useEffect(() => {
+    const cleanup = setupAppStore()
+    return () => cleanup?.()
+  }, [])
   return (
     <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME || THEME_MODE.LIGHT}>
       <MotionConfig reducedMotion="user">
