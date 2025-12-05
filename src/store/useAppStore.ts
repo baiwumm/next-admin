@@ -10,7 +10,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { type Direction } from '@/components/animate-ui/primitives/effects/theme-toggler';
-import { COLOR_STYLE, ROUTE_TRANSITION, TABS_STYLE, THEME_PRIMARY_COLOR } from '@/lib/enums';
+import { COLOR_STYLE, ROUTE_TRANSITION, TABS_STYLE, THEME_PRIMARY_COLOR } from '@/enums';
 import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
 
 type AppState = {

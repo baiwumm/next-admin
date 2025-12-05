@@ -9,7 +9,7 @@ import { type FC, useCallback } from "react";
 
 import { Button } from '@/components/animate-ui/components/buttons/button';
 import { getClipKeyframes } from '@/components/animate-ui/primitives/effects/theme-toggler';
-import { THEME_PRIMARY_COLOR } from '@/lib/enums';
+import { THEME_PRIMARY_COLOR } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 
 const PrimaryColorPicker: FC = () => {

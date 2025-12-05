@@ -16,7 +16,7 @@ import {
   type ThemeSelection,
   ThemeToggler as ThemeTogglerPrimitive
 } from '@/components/animate-ui/primitives/effects/theme-toggler';
-import { THEME_MODE } from '@/lib/enums';
+import { THEME_MODE } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 
 const ThemeToggle: FC = () => {

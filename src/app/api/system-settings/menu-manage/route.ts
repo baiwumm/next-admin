@@ -7,7 +7,7 @@
  */
 import { NextRequest, NextResponse } from 'next/server'
 
-import { RESPONSE } from '@/lib/enums'
+import { RESPONSE } from '@/enums'
 import { getSupabaseServerClient } from '@/lib/supabaseServer'
 import { convertFlatDataToTree, responseMessage } from '@/lib/utils'
 

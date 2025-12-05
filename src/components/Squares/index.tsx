@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import React, { useEffect, useRef } from 'react';
 
-import { THEME_MODE } from '@/lib/enums';
+import { THEME_MODE } from '@/enums';
 
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
 

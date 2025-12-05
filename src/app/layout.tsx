@@ -17,7 +17,7 @@ import { Providers } from "./Provider";
 import "@/styles/globals.css";
 import { ClarityAnalytics, GoogleAnalytics, PlausibleAnalytics, UmamiAnalytics } from '@/components/Analytics';
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
-import { INTL_LOCALES } from '@/lib/enums';
+import { INTL_LOCALES } from '@/enums';
 
 type MetaProps = {
   params: { locale: typeof INTL_LOCALES.valueType };

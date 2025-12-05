@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl';
 import { type FC } from "react";
 
 import { Button } from '@/components/animate-ui/components/buttons/button';
-import { THEME_MODE_DIRECTION } from '@/lib/enums';
+import { THEME_MODE_DIRECTION } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 
 const ThemeToggleDirection: FC = () => {

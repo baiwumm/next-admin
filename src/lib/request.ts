@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 
 import { finishLoading, startLoading } from './nprogress';
 
-import { RESPONSE } from '@/lib/enums';
+import { RESPONSE } from '@/enums';
 import { get, isSuccess } from '@/lib/utils';
 
 type Response<T = unknown> = App.Common.IResponse<T>;

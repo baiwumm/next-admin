@@ -7,7 +7,7 @@
  */
 import { NextRequest, NextResponse } from 'next/server'
 
-import { RESPONSE } from '@/lib/enums'
+import { RESPONSE } from '@/enums'
 import { getSupabaseAdminClient } from '@/lib/supabaseAdmin'
 import { responseMessage } from '@/lib/utils'
 

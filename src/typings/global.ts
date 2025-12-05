@@ -1,4 +1,4 @@
-import { INTL_LOCALES } from '@/lib/enums';
+import { INTL_LOCALES } from '@/enums';
 import messages from '#/messages/en.json';
 
 declare module 'next-intl' {

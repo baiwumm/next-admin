@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl';
 import { type FC } from "react";
 
 import { Button } from '@/components/animate-ui/components/buttons/button';
-import { COLOR_STYLE } from '@/lib/enums';
+import { COLOR_STYLE } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 
 const ColorStyles: FC = () => {

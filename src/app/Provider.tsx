@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 import TopMenuLayout from '@/components/TopMenuLayout';
 import { Toaster } from '@/components/ui/sonner';
-import { THEME_MODE } from '@/lib/enums';
+import { THEME_MODE } from '@/enums';
 import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
 import { setupAppStore, useAppStore } from '@/store/useAppStore';
 

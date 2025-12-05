@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx"
 import dayjs from 'dayjs';
 import { twMerge } from "tailwind-merge"
 
-import { COLOR_STYLE, RESPONSE, THEME_PRIMARY_COLOR } from '@/lib/enums';
+import { COLOR_STYLE, RESPONSE, THEME_PRIMARY_COLOR } from '@/enums';
 
 /**
  * @description: 合并类名

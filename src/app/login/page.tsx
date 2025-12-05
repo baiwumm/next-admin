@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 11:27:15
+ * @LastEditTime: 2025-12-05 13:41:07
  * @Description: 登录页面
  */
 "use client";
@@ -39,7 +39,7 @@ import {
 } from "@/components/ui/input-group"
 import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner";
-import { OAUTH_PROVIDERS } from '@/lib/enums';
+import { OAUTH_PROVIDERS } from '@/enums';
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 

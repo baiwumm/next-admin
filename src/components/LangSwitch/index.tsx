@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/animate-ui/components/radix/dropdown-menu';
 import { setLocale } from '@/i18n';
-import { INTL_LOCALES } from '@/lib/enums'
+import { INTL_LOCALES } from '@/enums'
 
 export default function LangSwitch() {
   const locale = useLocale();

@@ -13,7 +13,7 @@ import AppSettings from '@/components/AppSettings';
 import Footer from '@/components/Footer';
 import LangSwitch from '@/components/LangSwitch';
 import Squares from '@/components/Squares';
-import { THEME_MODE } from '@/lib/enums';
+import { THEME_MODE } from '@/enums';
 
 type LoginLayoutProps = {
   children: ReactNode;

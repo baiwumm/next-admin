@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 
-import { INTL_LOCALES } from '@/lib/enums'
+import { INTL_LOCALES } from '@/enums'
 
 // In this example the locale is read from a cookie. You could alternatively
 // also read it from a database, backend service, or any other source.
