@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.2](///compare/2.3.1...2.3.2) (2025-12-05)
+
+### Features
+
+* **layout:** 优化页面标题显示 c2acce0
+* **ui:** 新增 checkbox 和 table 组件 6968c9a
+
+### Performance Improvements
+
+* 优化 enum 枚举文件结构 a350835
+* 优化 typings 类型文件结构，优化 eslint 报红提示 05af22a
+* **login:** 优化登录交互体验 bb10b29
+
 ## [2.3.1](///compare/2.3.0...2.3.1) (2025-12-04)
 
 ### Features
