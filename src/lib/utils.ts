@@ -82,7 +82,7 @@ export const responseMessage = (
   data: unknown,
   msg: string = RESPONSE.labels[0],
   code: number = RESPONSE.SUCCESS,
-): App.Common.IResponse => ({ data, msg, code, timestamp: dayjs().valueOf() });
+): Api.IResponse => ({ data, msg, code, timestamp: dayjs().valueOf() });
 
 /**
  * @description: 判断请求是否成功

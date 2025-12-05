@@ -1,17 +1,17 @@
 'use client';
 
-import * as React from 'react';
-import { Switch as SwitchPrimitives } from 'radix-ui';
 import {
+  type HTMLMotionProps,
+  type LegacyAnimationControls,
   motion,
   type TargetAndTransition,
   type VariantLabels,
-  type HTMLMotionProps,
-  type LegacyAnimationControls,
 } from 'motion/react';
+import { Switch as SwitchPrimitives } from 'radix-ui';
+import * as React from 'react';
 
-import { getStrictContext } from '@/lib/get-strict-context';
 import { useControlledState } from '@/hooks/use-controlled-state';
+import { getStrictContext } from '@/lib/get-strict-context';
 
 type SwitchContextType = {
   isChecked: boolean;
@@ -62,10 +62,10 @@ type SwitchThumbProps = Omit<
 > &
   HTMLMotionProps<'div'> & {
     pressedAnimation?:
-      | TargetAndTransition
-      | VariantLabels
-      | boolean
-      | LegacyAnimationControls;
+    | TargetAndTransition
+    | VariantLabels
+    | boolean
+    | LegacyAnimationControls;
   };
 
 function SwitchThumb({
@@ -121,12 +121,12 @@ function SwitchIcon({
 
 export {
   Switch,
-  SwitchThumb,
-  SwitchIcon,
-  useSwitch,
-  type SwitchProps,
-  type SwitchThumbProps,
-  type SwitchIconProps,
-  type SwitchIconPosition,
   type SwitchContextType,
+  SwitchIcon,
+  type SwitchIconPosition,
+  type SwitchIconProps,
+  type SwitchProps,
+  SwitchThumb,
+  type SwitchThumbProps,
+  useSwitch,
 };

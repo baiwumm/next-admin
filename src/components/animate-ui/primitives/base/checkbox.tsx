@@ -1,15 +1,15 @@
 'use client';
 
-import * as React from 'react';
 import { Checkbox as CheckboxPrimitive } from '@base-ui-components/react/checkbox';
 import {
-  motion,
   type HTMLMotionProps,
+  motion,
   type SVGMotionProps,
 } from 'motion/react';
+import * as React from 'react';
 
-import { getStrictContext } from '@/lib/get-strict-context';
 import { useControlledState } from '@/hooks/use-controlled-state';
+import { getStrictContext } from '@/lib/get-strict-context';
 
 type CheckboxContextType = {
   isChecked: boolean;
@@ -145,9 +145,9 @@ function CheckboxIndicator(props: CheckboxIndicatorProps) {
 
 export {
   Checkbox,
-  CheckboxIndicator,
-  useCheckbox,
-  type CheckboxProps,
-  type CheckboxIndicatorProps,
   type CheckboxContextType,
+  CheckboxIndicator,
+  type CheckboxIndicatorProps,
+  type CheckboxProps,
+  useCheckbox,
 };

@@ -1,11 +1,11 @@
 'use client';
 
-import * as React from 'react';
+import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
 import { Popover as PopoverPrimitive } from 'radix-ui';
-import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
+import * as React from 'react';
 
-import { getStrictContext } from '@/lib/get-strict-context';
 import { useControlledState } from '@/hooks/use-controlled-state';
+import { getStrictContext } from '@/lib/get-strict-context';
 
 type PopoverContextType = {
   isOpen: boolean;
@@ -144,19 +144,19 @@ function PopoverClose(props: PopoverCloseProps) {
 
 export {
   Popover,
-  PopoverTrigger,
-  PopoverPortal,
-  PopoverContent,
   PopoverAnchor,
-  PopoverClose,
-  PopoverArrow,
-  usePopover,
-  type PopoverProps,
-  type PopoverTriggerProps,
-  type PopoverPortalProps,
-  type PopoverContentProps,
   type PopoverAnchorProps,
-  type PopoverCloseProps,
+  PopoverArrow,
   type PopoverArrowProps,
+  PopoverClose,
+  type PopoverCloseProps,
+  PopoverContent,
+  type PopoverContentProps,
   type PopoverContextType,
+  PopoverPortal,
+  type PopoverPortalProps,
+  type PopoverProps,
+  PopoverTrigger,
+  type PopoverTriggerProps,
+  usePopover,
 };

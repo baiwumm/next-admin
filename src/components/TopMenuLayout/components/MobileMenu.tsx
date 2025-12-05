@@ -47,7 +47,7 @@ const MobileMenu: FC = () => {
   const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
 
   // 渲染菜单
-  const renderMobileMenuItem = (nodes: App.SystemSettings.Menu[]) => nodes.map(item => {
+  const renderMobileMenuItem = (nodes: System.Menu[]) => nodes.map(item => {
     if (item?.children?.length) {
       return (
         <AccordionItem key={item.id} value={t(item.label)} className="border-b-0">

@@ -1,17 +1,17 @@
 'use client';
 
-import * as React from 'react';
-import { useTheme } from 'next-themes';
-import { Monitor, Moon, Sun } from 'lucide-react';
 import { VariantProps } from 'class-variance-authority';
+import { Monitor, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import * as React from 'react';
 
+import { buttonVariants } from '@/components/animate-ui/components/buttons/icon';
 import {
+  type Resolved,
+  type ThemeSelection,
   ThemeToggler as ThemeTogglerPrimitive,
   type ThemeTogglerProps as ThemeTogglerPrimitiveProps,
-  type ThemeSelection,
-  type Resolved,
 } from '@/components/animate-ui/primitives/effects/theme-toggler';
-import { buttonVariants } from '@/components/animate-ui/components/buttons/icon';
 import { cn } from '@/lib/utils';
 
 const getIcon = (

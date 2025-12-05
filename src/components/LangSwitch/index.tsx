@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 17:43:44
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 10:11:17
+ * @LastEditTime: 2025-12-05 13:59:07
  * @Description: 国际化
  */
 import { Languages } from 'lucide-react';
@@ -15,8 +15,8 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger
 } from '@/components/animate-ui/components/radix/dropdown-menu';
-import { setLocale } from '@/i18n';
 import { INTL_LOCALES } from '@/enums'
+import { setLocale } from '@/i18n';
 
 export default function LangSwitch() {
   const locale = useLocale();

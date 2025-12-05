@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 11:30:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 09:46:03
+ * @LastEditTime: 2025-12-05 13:50:40
  * @Description: Axios 请求封装
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
@@ -14,7 +14,7 @@ import { finishLoading, startLoading } from './nprogress';
 import { RESPONSE } from '@/enums';
 import { get, isSuccess } from '@/lib/utils';
 
-type Response<T = unknown> = App.Common.IResponse<T>;
+type Response<T = unknown> = Api.IResponse<T>;
 /**
  * @description: 创建 Axios 实例对象
  */

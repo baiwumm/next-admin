@@ -12,27 +12,27 @@ const BASE_URL = '/system-settings/menu-manage';
 /**
  * @description: 获取菜单列表
  */
-export const getMenuList = (params?: Partial<Pick<App.SystemSettings.Menu, 'path'>>) => {
-  return httpRequest.get<App.SystemSettings.Menu[]>(BASE_URL, params);
+export const getMenuList = (params?: Partial<Pick<System.Menu, 'path'>>) => {
+  return httpRequest.get<System.Menu[]>(BASE_URL, params);
 };
 
 /**
  * @description: 新增菜单
  */
-export const addMenu = (params: App.SystemSettings.MenuSaveParams) => {
-  return httpRequest.post<App.SystemSettings.Menu>(BASE_URL, params);
+export const addMenu = (params: System.MenuSaveParams) => {
+  return httpRequest.post<System.Menu>(BASE_URL, params);
 };
 
 /**
  * @description: 更新菜单
  */
-export const updateMenu = ({ id, ...params }: App.SystemSettings.MenuSaveParams) => {
-  return httpRequest.put<App.SystemSettings.Menu>(`${BASE_URL}/${id}`, params);
+export const updateMenu = ({ id, ...params }: System.MenuSaveParams) => {
+  return httpRequest.put<System.Menu>(`${BASE_URL}/${id}`, params);
 };
 
 /**
  * @description: 删除菜单
  */
 export const delMenu = (id: string) => {
-  return httpRequest.delete<App.SystemSettings.Menu>(`${BASE_URL}/${id}`);
+  return httpRequest.delete<System.Menu>(`${BASE_URL}/${id}`);
 };

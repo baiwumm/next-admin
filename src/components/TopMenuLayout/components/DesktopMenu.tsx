@@ -48,7 +48,7 @@ const DesktopMenu: FC = () => {
   }
 
   // 渲染子菜单
-  const renderSubMenu = (nodes: App.SystemSettings.Menu[]) => nodes.map(({ id, label, icon, children }) => (
+  const renderSubMenu = (nodes: System.Menu[]) => nodes.map(({ id, label, icon, children }) => (
     <DropdownMenuSub key={id}>
       <DropdownMenuSubTrigger>
         <DynamicIcon name={icon} />

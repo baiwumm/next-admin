@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import {
   Switch as SwitchPrimitive,
-  SwitchThumb as SwitchThumbPrimitive,
   SwitchIcon as SwitchIconPrimitive,
   type SwitchProps as SwitchPrimitiveProps,
+  SwitchThumb as SwitchThumbPrimitive,
 } from '@/components/animate-ui/primitives/radix/switch';
 import { cn } from '@/lib/utils';
 

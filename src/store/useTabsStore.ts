@@ -11,11 +11,11 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type TabsState = {
-  tabs: App.SystemSettings.Menu[];
-  setTabs: (tags: App.SystemSettings.Menu[]) => void;
+  tabs: System.Menu[];
+  setTabs: (tags: System.Menu[]) => void;
   activeKey: string;
   setActiveKey: (key: string) => void;
-  addTab: (tab: App.SystemSettings.Menu) => void;
+  addTab: (tab: System.Menu) => void;
   removeTab: (key: string) => void;
 };
 

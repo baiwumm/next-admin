@@ -1,7 +1,7 @@
 'use client';
 
+import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
 import * as React from 'react';
-import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
 import { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';
 import {
@@ -150,6 +150,6 @@ function ParticlesEffect({
 export {
   Particles,
   ParticlesEffect,
-  type ParticlesProps,
   type ParticlesEffectProps,
+  type ParticlesProps,
 };

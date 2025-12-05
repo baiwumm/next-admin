@@ -1,8 +1,8 @@
 'use client';
 
-import * as React from 'react';
+import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
-import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
+import * as React from 'react';
 
 import { useControlledState } from '@/hooks/use-controlled-state';
 import { getStrictContext } from '@/lib/get-strict-context';
@@ -155,17 +155,17 @@ function AccordionContent({
 
 export {
   Accordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionTrigger,
   AccordionContent,
-  useAccordion,
-  useAccordionItem,
-  type AccordionProps,
-  type AccordionItemProps,
-  type AccordionHeaderProps,
-  type AccordionTriggerProps,
   type AccordionContentProps,
   type AccordionContextType,
+  AccordionHeader,
+  type AccordionHeaderProps,
+  AccordionItem,
   type AccordionItemContextType,
+  type AccordionItemProps,
+  type AccordionProps,
+  AccordionTrigger,
+  type AccordionTriggerProps,
+  useAccordion,
+  useAccordionItem,
 };

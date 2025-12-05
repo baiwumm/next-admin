@@ -12,9 +12,9 @@ import { isSuccess } from '@/lib/utils';
 import { getMenuList } from '@/services/system-settings/menu-manage';
 
 interface MenuState {
-  menuList: App.SystemSettings.Menu[]
+  menuList: System.Menu[]
   loading: boolean
-  setMenuList: (list: App.SystemSettings.Menu[]) => void
+  setMenuList: (list: System.Menu[]) => void
   fetchMenuList: () => Promise<void>
 }
 
