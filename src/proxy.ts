@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:27:43
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-01 09:00:07
+ * @LastEditTime: 2025-12-05 10:24:50
  * @Description: 代理层
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -15,7 +15,10 @@ export default async function proxy(req: NextRequest) {
   // 获取当前会话
   const { data: { session } } = await supabase.auth.getSession()
 
-  const path = req.nextUrl.pathname
+  const path = req.nextUrl.pathname;
+
+  // 注入当前请求的 pathname
+  res.headers.set('x-current-pathname', path);
 
   // 规则1: 如果用户已登录，且访问的是 / 或 /login，则重定向到 /dashboard
   if (session && (path === '/' || path === '/login')) {
