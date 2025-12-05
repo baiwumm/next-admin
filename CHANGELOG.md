@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.3](///compare/2.3.2...2.3.3) (2025-12-05)
+
+### Features
+
+* **AppSettings:** 新增 DynamicTabs 标签页和相关配置 a800813
+
 ## [2.3.2](///compare/2.3.1...2.3.2) (2025-12-05)
 
 ### Features
