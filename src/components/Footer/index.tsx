@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:16:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-01 10:09:08
+ * @LastEditTime: 2025-12-05 18:04:44
  * @Description: 底部版权
  */
 import Image from 'next/image'
@@ -12,7 +12,7 @@ import pkg from "#/package.json";
 
 const Footer: FC = () => {
   return (
-    <footer>
+    <footer className="p-4">
       <div className="flex flex-col items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
         <div>
           Copyright © {new Date().getFullYear()} by&nbsp;

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 17:28:31
+ * @LastEditTime: 2025-12-05 16:09:10
  * @Description: 全局状态
  */
 'use client'
@@ -57,7 +57,7 @@ export const useAppStore = create(
         set({ colorStyle: value })
         initializeColorStyle(value);
       },
-      tabStyle: TABS_STYLE.GOOGLE,
+      tabStyle: TABS_STYLE.BUTTON,
       setTabStyle: (value) => set({ tabStyle: value }),
       themeModeDirection: "ltr",
       setThemeModeDirection: (value) => set({ themeModeDirection: value }),

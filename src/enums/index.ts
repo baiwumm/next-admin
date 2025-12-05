@@ -63,9 +63,9 @@ export const COLOR_STYLE = Enum({
  * @description: 标签页风格
  */
 export const TABS_STYLE = Enum({
-  GOOGLE: { value: 'google', label: 'tabs-style.google' },
-  BUTTON: { value: 'button', label: 'tabs-style.button' },
-  TAG: { value: 'tag', label: 'tabs-style.tag' }
+  BUTTON: { value: 'button', label: 'tabs-style.button', icon: 'grid-2x2' },
+  GOOGLE: { value: 'google', label: 'tabs-style.google', icon: 'underline' },
+  TAG: { value: 'tag', label: 'tabs-style.tag', icon: 'notebook-tabs' }
 });
 
 /**

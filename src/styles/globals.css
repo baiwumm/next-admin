@@ -100,12 +100,12 @@ html.color-invert {
 
 .tab-google::before {
   left: -20px;
-  background: radial-gradient(circle at 0 0, transparent 20px, hsl(var(--heroui-primary)) 21px);
+  background: radial-gradient(circle at 0 0, transparent 20px, var(--primary) 21px);
 }
 
 .tab-google::after {
   right: -20px;
-  background: radial-gradient(circle at 100% 0, transparent 20px, hsl(var(--heroui-primary)) 21px);
+  background: radial-gradient(circle at 100% 0, transparent 20px, var(--primary) 21px);
 }
 
 /* 激活时显示 */
@@ -116,18 +116,18 @@ html.color-invert {
 
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--heroui-primary)/.65);
+  background-color: var(--border);
   border-radius: 2.5px;
   transition: .35s background-color;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(var(--heroui-primary)/.45);
+  background-color: var(--border);
 }
 
 *::-webkit-scrollbar-track {
