@@ -20,6 +20,7 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@base-ui-components/react": "1.0.0-beta.7",
     "@bprogress/core": "^1.3.4",
     "@bprogress/next": "^3.2.12",
     "@hookform/resolvers": "^5.2.2",
