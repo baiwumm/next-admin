@@ -21,11 +21,13 @@
       "github":"使用 Github 登录",
       "login-error":"登录失败，请稍后重试",
       "signup":"立即注册",
+      "signup-in":"注册中...",
       "signup-error":"注册失败，请稍后重试",
       "signup-success":"提交成功，请到邮箱验证后登录",
       "need-account":"需要创建一个账户？",
       "has-account":"已经有账户？",
-      "login-in":"登录中..."
+      "login-in":"登录中...",
+      "login-success":"登录成功，欢迎回来！"
     },
     "MenuManage":{
       "label":"菜单名称",

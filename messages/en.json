@@ -21,11 +21,13 @@
       "github":"Continue with Github",
       "login-error":"Login failed. Please try again later",
       "signup":"Sign Up",
+      "signup-in":"Signing Up...",
       "signup-error":"Sign Up try again later",
       "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
       "need-account":"Need to create an account?",
       "has-account":"Already have an account?",
-      "login-in":"Logged in..."
+      "login-in":"Logged in...",
+      "login-success":"Login successful. Welcome back!"
     },
     "MenuManage":{
       "label":"Menu Name",

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 09:39:34
+ * @LastEditTime: 2025-12-05 11:27:15
  * @Description: 登录页面
  */
 "use client";
@@ -77,50 +77,77 @@ export default function Login() {
   // 表单提交
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setEmailLoading(true);
-    // 判断是注册还是登录
-    if (isSignup) {
-      const { error } = await supabase.auth.signUp(values);
-      track('Signup', values as AllowedPropertyValues);
-      if (error) {
-        toast.error(t('signup-error'), {
-          description: error.message
-        })
+    const action = isSignup ? 'signup' : 'login';
+    // vercel 数据上报
+    track(action, values as AllowedPropertyValues);
+
+    // ✅ 提取公共 Supabase 调用逻辑
+    const authPromise = (async () => {
+      let result;
+      if (isSignup) {
+        result = await supabase.auth.signUp(values);
       } else {
-        toast.error(t('signup-success'))
-        form.reset() // ✅ 清空表单
-        setIsSignup(false)
+        result = await supabase.auth.signInWithPassword(values);
       }
-    } else {
-      const { error } = await supabase.auth.signInWithPassword(values);
-      track('Login', values as AllowedPropertyValues);
-      if (error) {
-        toast.error(t('login-error'), {
-          description: error.message
-        })
-      } else {
-        // 登录成功，Middleware 会自动跳转到 /dashboard
-        router.refresh() // 触发服务端状态检查
+
+      if (result.error) {
+        throw result.error; // 统一抛出错误
       }
-    }
-    setEmailLoading(false)
+      return result.data;
+    })();
+
+    // ✅ Toast 配置根据 action 动态生成
+    const toastConfig = {
+      loading: t(`${action}-in`),
+      success: () => {
+        if (isSignup) {
+          form.reset();
+          setIsSignup(false);
+          return t('signup-success');
+        } else {
+          router.refresh();
+          return t('login-success');
+        }
+      },
+      error: (err: { message: string }) =>
+        `${t(`${action}-error`)}：${err.message}`,
+      // ✅ 使用 finally 确保 loading 状态正确关闭
+      finally: () => {
+        setEmailLoading(false);
+      }
+    };
+
+    toast.promise(authPromise, toastConfig);
   };
 
   // 谷歌或者 Github 登录
   const handleOAuthLogin = async (provider: typeof OAUTH_PROVIDERS.valueType) => {
-    setOauthLoading(true)
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/api/auth/callback`,
-      },
-    })
-    if (error) {
-      toast.error(t('login-error'), {
-        description: error.message
-      })
-    }
-    setOauthLoading(false)
+    setOauthLoading(true);
+    // vercel 数据上报
     track('Provider', { provider });
+
+    // 加一个短提示，避免跳转等待时间过长无反馈
+    toast.info(t('login-in'), { duration: 2000 });
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/api/auth/callback`,
+        },
+      })
+      if (error) {
+        toast.error(t('login-error'), {
+          description: error.message
+        })
+        setOauthLoading(false);
+      }
+    } catch (err) {
+      toast.error(t('login-error'), {
+        description: (err as Error).message
+      });
+      setOauthLoading(false);
+    }
   }
   return (
     <div className="w-full max-w-md p-4">

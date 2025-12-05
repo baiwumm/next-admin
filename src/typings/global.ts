@@ -1,9 +1,9 @@
-import { type Locale } from '@/lib/constant'
+import { INTL_LOCALES } from '@/lib/enums';
 import messages from '#/messages/en.json';
 
 declare module 'next-intl' {
   interface AppConfig {
-    Locale: Locale;
+    Locale: typeof INTL_LOCALES.valueType;
     Messages: typeof messages;
   }
 }
