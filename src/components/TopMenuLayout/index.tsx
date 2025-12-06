@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:20:02
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 18:05:23
+ * @LastEditTime: 2025-12-06 13:34:12
  * @Description: 顶部菜单布局
  */
 "use client";
@@ -29,6 +29,9 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
   const fixedHeader = useAppStore((s) => s.fixedHeader);
   const showTabs = useAppStore((s) => s.showTabs);
   const showFooter = useAppStore((s) => s.showFooter);
+  const navHeight = useAppStore((s) => s.navHeight);
+  const tabsHeight = useAppStore((s) => s.tabsHeight);
+  const footerHeight = useAppStore((s) => s.footerHeight);
 
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -38,15 +41,15 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
 
   // 计算 main 的 min-h
   const mainMinH = useMemo(() => {
-    let result = 60; // 菜单固定高度
+    let result = navHeight; // 菜单固定高度
     if (showTabs) {
-      result += 40; // 标签页高度
+      result += tabsHeight; // 标签页高度
     }
     if (showFooter) {
-      result += 72; // 底部高度
+      result += footerHeight; // 底部高度
     }
-    return `min-h-[calc(100vh-${result}px)]`;
-  }, [showTabs, showFooter]);
+    return `calc(100vh - ${result}px)`;
+  }, [showTabs, showFooter, navHeight, tabsHeight, footerHeight]);
   return (
     <RefreshContext.Provider value={handleRefresh}>
       <div className={cn('top-0 z-10', fixedHeader ? 'sticky' : 'static')}>
@@ -65,7 +68,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
           ) : null}
         </AnimatePresence>
       </div>
-      <main className={cn("container mx-auto p-4", mainMinH)} key={refreshKey}>
+      <main className="container mx-auto p-4" key={refreshKey} style={{ minHeight: mainMinH }}>
         {children}
       </main>
       <AnimatePresence mode="wait">

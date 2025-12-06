@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:10:14
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 18:01:42
+ * @LastEditTime: 2025-12-06 13:33:15
  * @Description: 顶部菜单
  */
 import Image from 'next/image'
@@ -20,8 +20,9 @@ import { useAppStore } from '@/store/useAppStore';
 
 const Navbar: FC = () => {
   const isMobile = useAppStore((s) => s.isMobile);
+  const navHeight = useAppStore((s) => s.navHeight);
   return (
-    <nav className="px-4 h-15 border-b border-default backdrop-blur-lg">
+    <nav className="px-4 border-b border-default backdrop-blur-lg" style={{ height: navHeight }}>
       <div className="container mx-auto flex items-center justify-between px-4 h-15">
         <div className="flex gap-2 items-center">
           {/* 左侧 Logo */}

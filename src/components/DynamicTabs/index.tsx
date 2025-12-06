@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 17:54:19
+ * @LastEditTime: 2025-12-06 13:34:58
  * @Description: 
  */
 "use client";
@@ -15,8 +15,8 @@ import { useShallow } from "zustand/react/shallow";
 
 import ButtonStyle from './components/ButtonStyle';
 
-import { Button } from '@/components/ui';
 import { useRefreshPage } from '@/components/TopMenuLayout';
+import { Button } from '@/components/ui';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { TABS_STYLE } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
@@ -28,6 +28,7 @@ const DynamicTabs: FC = () => {
   const router = useRouter();
   const refreshPage = useRefreshPage();
   const tabStyle = useAppStore((s) => s.tabStyle);
+  const tabsHeight = useAppStore((s) => s.tabsHeight);
   const { activeKey, setActiveKey, addTab } = useTabsStore(
     useShallow((s) => ({
       activeKey: s.activeKey,
@@ -84,7 +85,7 @@ const DynamicTabs: FC = () => {
 
   const dashboardTab = menuList.find(item => item.path === "/dashboard");
   return (
-    <div className="flex gap-1 items-center px-4 py-2 h-10 border-b border-default backdrop-blur-lg">
+    <div className="flex gap-1 items-center px-4 py-2 border-b border-default backdrop-blur-lg" style={{ height: tabsHeight }}>
       {/* 左侧：自适应宽度的可滚动标签区 */}
       <AnimatePresence mode="wait">
         <motion.div
