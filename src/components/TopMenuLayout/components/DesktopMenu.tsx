@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:23:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 16:23:35
+ * @LastEditTime: 2025-12-06 17:11:13
  * @Description: Desktop 菜单
  */
 "use client"
@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, useEffect } from 'react';
 
 import {
+  Button,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -21,9 +22,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@/components/animate-ui/components/radix/dropdown-menu';
-import { Button } from '@/components/ui';
-import { Spinner } from "@/components/ui/spinner";
+  Spinner
+} from '@/components/ui';
 import { useMenuStore } from '@/store/useMenuStore';
 
 const DesktopMenu: FC = () => {

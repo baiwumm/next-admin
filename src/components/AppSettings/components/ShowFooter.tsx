@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 15:07:12
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 15:17:12
+ * @LastEditTime: 2025-12-06 17:05:07
  * @Description: 是否显示底部
  */
 import { Check, X } from 'lucide-react';
 import { type FC } from 'react';
 
-import { Switch } from '@/components/animate-ui/components/radix/switch';
+import { Switch } from '@/components/ui';
 import { useAppStore } from '@/store/useAppStore';
 
 const ShowFooter: FC = () => {

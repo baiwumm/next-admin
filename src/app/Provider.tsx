@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 16:27:15
+ * @LastEditTime: 2025-12-06 14:34:06
  * @Description: 上下文提供者
  */
 "use client"
@@ -13,7 +13,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useEffect } from 'react';
 
 import TopMenuLayout from '@/components/TopMenuLayout';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
 import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
 import { setupAppStore, useAppStore } from '@/store/useAppStore';

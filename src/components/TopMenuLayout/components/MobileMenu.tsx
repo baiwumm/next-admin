@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:28:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 12:12:51
+ * @LastEditTime: 2025-12-06 17:12:07
  * @Description: 移动端菜单
  */
 "use client"
@@ -19,17 +19,15 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/animate-ui/components/radix/accordion';
-import { Button } from '@/components/ui';
-import {
+  Button,
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger
-} from "@/components/ui/sheet";
-import { Spinner } from "@/components/ui/spinner";
+  SheetTrigger,
+  Spinner
+} from '@/components/ui';
 import { useMenuStore } from '@/store/useMenuStore';
 
 const MobileMenu: FC = () => {

@@ -2,14 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 14:14:54
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 15:35:40
+ * @LastEditTime: 2025-12-06 17:09:53
  * @Description: 全局 Loading
  */
 "use client"
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/components/ui";
 
 const FullLoading = () => {
   const t = useTranslations('Components.FullLoading');

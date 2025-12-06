@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 12:13:04
+ * @LastEditTime: 2025-12-06 17:14:42
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -18,19 +18,19 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle
-} from '@/components/animate-ui/components/radix/alert-dialog';
-import {
+  AlertDialogTitle,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '@/components/animate-ui/components/radix/dropdown-menu';
-import { Button } from '@/components/ui';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Spinner } from "@/components/ui/spinner";
+  DropdownMenuTrigger,
+  Spinner
+} from '@/components/ui';
 import { useControlledState } from '@/hooks/use-controlled-state';
 import { useSupabaseUser } from '@/hooks/useSupabaseUser';
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';

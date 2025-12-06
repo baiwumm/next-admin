@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 13:34:58
+ * @LastEditTime: 2025-12-06 17:09:41
  * @Description: 
  */
 "use client";
@@ -16,8 +16,7 @@ import { useShallow } from "zustand/react/shallow";
 import ButtonStyle from './components/ButtonStyle';
 
 import { useRefreshPage } from '@/components/TopMenuLayout';
-import { Button } from '@/components/ui';
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Button, ScrollArea, ScrollBar } from '@/components/ui';
 import { TABS_STYLE } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from "@/store/useMenuStore";

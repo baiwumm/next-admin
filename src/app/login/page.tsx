@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 13:41:07
+ * @LastEditTime: 2025-12-06 14:31:03
  * @Description: 登录页面
  */
 "use client";
@@ -17,28 +17,24 @@ import { useForm } from "react-hook-form"
 import { toast } from 'sonner';
 import { z } from "zod"
 
-import { Button } from "@/components/ui/button"
 import {
+  Button,
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card"
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/components/ui/input-group"
-import { Separator } from "@/components/ui/separator"
-import { Spinner } from "@/components/ui/spinner";
+  Separator,
+  Spinner,
+} from "@/components/ui"
 import { OAUTH_PROVIDERS } from '@/enums';
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';

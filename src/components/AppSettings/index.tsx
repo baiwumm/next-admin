@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 11:29:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 18:00:53
+ * @LastEditTime: 2025-12-06 17:06:17
  * @Description: 主题设置
  */
 "use client"
@@ -19,12 +19,7 @@ import TabStyle from './components/TabStyle';
 import ThemeToggle from './components/ThemeToggle';
 import ThemeToggleDirection from './components/ThemeToggleDirection';
 
-import { Button } from '@/components/ui';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/animate-ui/components/radix/popover';
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui';
 
 const AppSettings: FC = () => {
   const t = useTranslations('Components.AppSettings');
