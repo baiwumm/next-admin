@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:28:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 17:34:17
+ * @LastEditTime: 2025-12-06 12:12:51
  * @Description: 移动端菜单
  */
 "use client"
@@ -14,13 +14,13 @@ import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC, useEffect } from 'react';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/animate-ui/components/radix/accordion';
+import { Button } from '@/components/ui';
 import {
   Sheet,
   SheetContent,

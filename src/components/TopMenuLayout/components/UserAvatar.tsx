@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 09:43:20
+ * @LastEditTime: 2025-12-06 12:13:04
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -10,7 +10,6 @@ import { CircleAlert, IdCard, LogOut, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type FC, type MouseEvent, useState } from 'react';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,6 +28,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/animate-ui/components/radix/dropdown-menu';
+import { Button } from '@/components/ui';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Spinner } from "@/components/ui/spinner";
 import { useControlledState } from '@/hooks/use-controlled-state';

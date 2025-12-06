@@ -9,7 +9,7 @@ import { useFullscreen } from 'ahooks';
 import { Fullscreen, Minimize } from 'lucide-react';
 import type { FC } from 'react';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 
 const FullScreen: FC = () => {
   const [isFullscreen, { enterFullscreen, exitFullscreen }] = useFullscreen(() => document.body);

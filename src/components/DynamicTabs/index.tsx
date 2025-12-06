@@ -15,7 +15,7 @@ import { useShallow } from "zustand/react/shallow";
 
 import ButtonStyle from './components/ButtonStyle';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 import { useRefreshPage } from '@/components/TopMenuLayout';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { TABS_STYLE } from '@/enums';

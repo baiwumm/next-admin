@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 17:32:00
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 14:59:46
+ * @LastEditTime: 2025-12-06 12:14:41
  * @Description: 主题色切换
  */
 import { type FC, useCallback } from "react";
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
 import { getClipKeyframes } from '@/components/animate-ui/primitives/effects/theme-toggler';
+import { Button } from '@/components/ui';
 import { THEME_PRIMARY_COLOR } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 

@@ -9,7 +9,7 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 import { useTranslations } from 'next-intl';
 import { type FC } from "react";
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 import { THEME_MODE_DIRECTION } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 

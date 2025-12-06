@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:18:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 15:23:45
+ * @LastEditTime: 2025-12-06 12:04:50
  * @Description: 404 页面
  */
 "use client";
@@ -11,7 +11,7 @@ import { useRouter } from '@bprogress/next/app';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 
 const NotFound: FC = () => {
   const t = useTranslations('Pages.NotFound');

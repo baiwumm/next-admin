@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl';
 import { CSSProperties, type FC, useRef } from 'react';
 import { useShallow } from "zustand/react/shallow";
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 import { useTabsStore } from "@/store/useTabsStore";
 
 type SortableItemProps = {

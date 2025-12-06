@@ -23,7 +23,7 @@ import { useShallow } from "zustand/react/shallow";
 
 import SortableButtonItem from './SortableButtonItem';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 import { useTabsStore } from "@/store/useTabsStore";
 
 type ButtonStyleProps = {

@@ -19,7 +19,7 @@ import TabStyle from './components/TabStyle';
 import ThemeToggle from './components/ThemeToggle';
 import ThemeToggleDirection from './components/ThemeToggleDirection';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 import {
   Popover,
   PopoverContent,

@@ -13,7 +13,6 @@ import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { type FC, useEffect } from 'react';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -23,6 +22,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/animate-ui/components/radix/dropdown-menu';
+import { Button } from '@/components/ui';
 import { Spinner } from "@/components/ui/spinner";
 import { useMenuStore } from '@/store/useMenuStore';
 

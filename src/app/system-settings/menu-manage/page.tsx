@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:10:25
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-02 15:31:50
+ * @LastEditTime: 2025-12-06 12:04:44
  * @Description: 菜单管理
  */
 import { useTranslations } from 'next-intl';
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
+import { Button } from '@/components/ui';
 
 export default function MenuManage() {
   const t = useTranslations('Route');

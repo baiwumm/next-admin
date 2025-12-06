@@ -1,6 +1,3 @@
-import * as React from 'react';
-
-import { buttonVariants } from '@/components/animate-ui/components/buttons/button';
 import {
   AlertDialog as AlertDialogPrimitive,
   AlertDialogAction as AlertDialogActionPrimitive,
@@ -24,6 +21,7 @@ import {
   AlertDialogTrigger as AlertDialogTriggerPrimitive,
   type AlertDialogTriggerProps as AlertDialogTriggerPrimitiveProps,
 } from '@/components/animate-ui/primitives/radix/alert-dialog';
+import { buttonVariants } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 type AlertDialogProps = AlertDialogPrimitiveProps;

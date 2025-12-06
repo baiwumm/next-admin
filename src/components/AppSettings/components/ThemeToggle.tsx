@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 13:38:10
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 15:04:08
+ * @LastEditTime: 2025-12-06 12:14:53
  * @Description: 主题模式
  */
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -10,12 +10,12 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from "next-themes";
 import { type FC, useEffect, useState } from "react";
 
-import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   type Resolved,
   type ThemeSelection,
   ThemeToggler as ThemeTogglerPrimitive
 } from '@/components/animate-ui/primitives/effects/theme-toggler';
+import { Button } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 
