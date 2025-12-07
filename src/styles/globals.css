@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./themes.css";
+@import "./route-transition.css";
 
 @custom-variant dark (&:is(.dark *));
 

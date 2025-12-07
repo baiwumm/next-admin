@@ -2,12 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:20:02
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 13:34:12
+ * @LastEditTime: 2025-12-07 18:23:11
  * @Description: 顶部菜单布局
  */
 "use client";
 import { AnimatePresence, motion } from 'motion/react'
-import { createContext, type FC, type ReactNode, useContext, useMemo, useState } from 'react';
+import { createContext, type FC, type ReactNode, useContext, useMemo, useState, ViewTransition } from 'react';
 
 import Navbar from './components/Navbar';
 
@@ -32,6 +32,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
   const navHeight = useAppStore((s) => s.navHeight);
   const tabsHeight = useAppStore((s) => s.tabsHeight);
   const footerHeight = useAppStore((s) => s.footerHeight);
+  const transition = useAppStore((s) => s.transition);
 
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -68,9 +69,19 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
           ) : null}
         </AnimatePresence>
       </div>
-      <main className="container mx-auto p-4" key={refreshKey} style={{ minHeight: mainMinH }}>
-        {children}
-      </main>
+      <ViewTransition
+        enter={{
+          default: 'none',
+          [transition]: 'blur-slide-enter',
+        }}
+        exit={{
+          default: 'none',
+          [transition]: 'blur-slide-exit',
+        }}>
+        <main className="container mx-auto p-4" key={refreshKey} style={{ minHeight: mainMinH, viewTransitionName: transition }}>
+          {children}
+        </main>
+      </ViewTransition>
       <AnimatePresence mode="wait">
         {showFooter && (
           <motion.div
