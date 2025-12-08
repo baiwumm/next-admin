@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.3.4](///compare/2.3.3...2.3.4) (2025-12-08)
+
+### Features
+
+* 测试路由动画 4851806
+* **AppSettings:** 新增 RouteTranstion 路由过渡效果配置 f5d4587
+* **AppSettings:** 新增 TabsStyle 标签风格配置 b525a69
+* update next c996ffd
+
+### Performance Improvements
+
+* 引入 RippleButton 涟漪波纹按钮，优化 Button 引入方式 dfadca3
+* 优化 ui 组件路劲导入 702dc4f
+* 优化主体内容最小高度显示 6f86d6e
+
 ## [2.3.3](///compare/2.3.2...2.3.3) (2025-12-05)
 
 ### Features
