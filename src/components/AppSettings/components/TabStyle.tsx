@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:56:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 16:06:07
+ * @LastEditTime: 2025-12-08 09:35:06
  * @Description: 标签页风格
  */
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -19,7 +19,7 @@ const TabStyle: FC = () => {
   const t = useTranslations('Enums');
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-2 gap-2">
       {TABS_STYLE.items.map(({ value, raw }) => (
         <Button
           size="sm"

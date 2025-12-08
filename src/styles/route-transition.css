@@ -1,16 +1,16 @@
 @theme {
-  --view-duration-enter: 30000ms;
-  --view-duration-exit: 30000ms;
+  --view-duration-enter: 500ms;
+  --view-duration-exit: 500ms;
 }
 
 @keyframes blur-slide-enter {
-  from { filter: blur(8px); opacity: 0; transform: translateX(20px); }
+  from { filter: blur(8px); opacity: 0; transform: translateX(50px); }
   to   { filter: blur(0);   opacity: 1; transform: translateX(0); }
 }
 
 @keyframes blur-slide-exit {
   from { filter: blur(0);   opacity: 1; transform: translateX(0); }
-  to   { filter: blur(8px); opacity: 0; transform: translateX(-20px); }
+  to   { filter: blur(8px); opacity: 0; transform: translateX(-50px); }
 }
 
 ::view-transition-new(blur-slide) {

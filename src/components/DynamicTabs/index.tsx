@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 17:09:41
+ * @LastEditTime: 2025-12-08 09:40:39
  * @Description: 
  */
 "use client";
@@ -12,9 +12,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { type FC, useCallback, useEffect } from 'react';
 import { useShallow } from "zustand/react/shallow";
-
 import ButtonStyle from './components/ButtonStyle';
-
+import TabsStyle from './components/TabsStyle';
 import { useRefreshPage } from '@/components/TopMenuLayout';
 import { Button, ScrollArea, ScrollBar } from '@/components/ui';
 import { TABS_STYLE } from '@/enums';
@@ -98,6 +97,10 @@ const DynamicTabs: FC = () => {
             {/* 按钮风格 */}
             {tabStyle === TABS_STYLE.BUTTON ? (
               <ButtonStyle dashboardTab={dashboardTab} />
+            ) : null}
+            {/* 标签页风格 */}
+            {tabStyle === TABS_STYLE.TAG ? (
+              <TabsStyle dashboardTab={dashboardTab} />
             ) : null}
             <ScrollBar orientation="horizontal" className="z-21 h-1.5" />
           </ScrollArea>

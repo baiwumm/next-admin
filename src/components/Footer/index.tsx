@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:16:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 13:36:00
+ * @LastEditTime: 2025-12-08 08:56:18
  * @Description: 底部版权
  */
 import Image from 'next/image'
@@ -22,7 +22,7 @@ const Footer: FC = () => {
             href={pkg.author.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
+            className="hover:text-primary transition-colors"
           >
             {process.env.NEXT_PUBLIC_AUTHOR_NAME}
           </a>
@@ -39,7 +39,7 @@ const Footer: FC = () => {
               href="https://beian.miit.gov.cn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent transition-colors"
+              className="hover:text-primary transition-colors"
             >
               {process.env.NEXT_PUBLIC_SITE_ICP}
             </a>
@@ -55,7 +55,7 @@ const Footer: FC = () => {
               href="https://beian.mps.gov.cn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent transition-colors"
+              className="hover:text-primary transition-colors"
             >
               {process.env.NEXT_PUBLIC_SITE_GUAN_ICP}
             </a>

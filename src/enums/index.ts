@@ -64,7 +64,6 @@ export const COLOR_STYLE = Enum({
  */
 export const TABS_STYLE = Enum({
   BUTTON: { value: 'button', label: 'tabs-style.button', icon: 'grid-2x2' },
-  GOOGLE: { value: 'google', label: 'tabs-style.google', icon: 'underline' },
   TAG: { value: 'tag', label: 'tabs-style.tag', icon: 'notebook-tabs' }
 });
 

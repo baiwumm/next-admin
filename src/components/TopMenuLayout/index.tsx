@@ -69,16 +69,8 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
           ) : null}
         </AnimatePresence>
       </div>
-      <ViewTransition
-        enter={{
-          default: 'none',
-          [transition]: 'blur-slide-enter',
-        }}
-        exit={{
-          default: 'none',
-          [transition]: 'blur-slide-exit',
-        }}>
-        <main className="container mx-auto p-4" key={refreshKey} style={{ minHeight: mainMinH, viewTransitionName: transition }}>
+      <ViewTransition name={transition}>
+        <main className="container mx-auto p-4" key={refreshKey} style={{ minHeight: mainMinH }}>
           {children}
         </main>
       </ViewTransition>
