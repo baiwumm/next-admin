@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 16:18:12
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 09:59:47
+ * @LastEditTime: 2025-12-08 11:15:51
  * @Description: 按钮风格
  */
 import {
@@ -16,14 +16,13 @@ import {
 import { arrayMove, horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 import { Pin } from 'lucide-react';
 import { DynamicIcon } from 'lucide-react/dynamic';
-import { useLinkStatus } from 'next/link';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 import { useShallow } from "zustand/react/shallow";
 import { usePathname } from "next/navigation";
 import SortableTabItem from './SortableTabItem';
-
-import { Button, Tabs, TabsList, TabsTrigger } from '@/components/ui';
+import { pick } from '@/lib/utils';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui';
 import { useTabsStore } from "@/store/useTabsStore";
 
 type TabsStyleProps = {
@@ -32,14 +31,8 @@ type TabsStyleProps = {
 
 const TabsStyle: FC<TabsStyleProps> = ({ dashboardTab }) => {
   const t = useTranslations('Route');
-  const { pending } = useLinkStatus();
-  const { tabs, setTabs, activeKey, setActiveKey } = useTabsStore(
-    useShallow((s) => ({
-      tabs: s.tabs,
-      setTabs: s.setTabs,
-      activeKey: s.activeKey,
-      setActiveKey: s.setActiveKey,
-    }))
+  const { tabs, setTabs, setActiveKey } = useTabsStore(
+    useShallow((s) => pick(s, ['tabs', 'setTabs', 'setActiveKey']))
   );
   const pathname = usePathname();
 

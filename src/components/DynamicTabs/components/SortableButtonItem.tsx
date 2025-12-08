@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-26 10:18:06
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 17:05:41
+ * @LastEditTime: 2025-12-08 11:14:40
  * @Description: 按钮风格拖拽子项
  */
 import { useSortable } from '@dnd-kit/sortable';
@@ -13,7 +13,7 @@ import { useLinkStatus } from 'next/link';
 import { useTranslations } from 'next-intl';
 import { CSSProperties, type FC, useRef } from 'react';
 import { useShallow } from "zustand/react/shallow";
-
+import { pick } from '@/lib/utils';
 import { Button } from '@/components/ui';
 import { useTabsStore } from "@/store/useTabsStore";
 
@@ -38,11 +38,7 @@ const SortableButtonItem: FC<SortableItemProps> = ({ tag }) => {
   const t = useTranslations('Route');
   const { pending } = useLinkStatus();
   const { activeKey, setActiveKey, removeTab } = useTabsStore(
-    useShallow((s) => ({
-      activeKey: s.activeKey,
-      setActiveKey: s.setActiveKey,
-      removeTab: s.removeTab,
-    }))
+    useShallow((s) => pick(s, ['activeKey', 'setActiveKey', 'removeTab']))
   );
 
   const style: CSSProperties = {

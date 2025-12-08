@@ -20,7 +20,7 @@ import { useLinkStatus } from 'next/link';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 import { useShallow } from "zustand/react/shallow";
-
+import { pick } from '@/lib/utils';
 import SortableButtonItem from './SortableButtonItem';
 
 import { Button } from '@/components/ui';
@@ -34,12 +34,7 @@ const ButtonStyle: FC<ButtonStyleProps> = ({ dashboardTab }) => {
   const t = useTranslations('Route');
   const { pending } = useLinkStatus();
   const { tabs, setTabs, activeKey, setActiveKey } = useTabsStore(
-    useShallow((s) => ({
-      tabs: s.tabs,
-      setTabs: s.setTabs,
-      activeKey: s.activeKey,
-      setActiveKey: s.setActiveKey,
-    }))
+    useShallow((s) => pick(s, ['tabs', 'setTabs', 'activeKey', 'setActiveKey']))
   );
 
   // 配置传感器：只响应指针（鼠标/触摸）事件

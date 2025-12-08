@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 09:40:39
+ * @LastEditTime: 2025-12-08 11:32:22
  * @Description: 
  */
 "use client";
@@ -20,6 +20,7 @@ import { TABS_STYLE } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from "@/store/useMenuStore";
 import { useTabsStore } from "@/store/useTabsStore";
+import { pick } from '@/lib/utils';
 
 const DynamicTabs: FC = () => {
   const pathname = usePathname();
@@ -28,12 +29,8 @@ const DynamicTabs: FC = () => {
   const tabStyle = useAppStore((s) => s.tabStyle);
   const tabsHeight = useAppStore((s) => s.tabsHeight);
   const { activeKey, setActiveKey, addTab } = useTabsStore(
-    useShallow((s) => ({
-      activeKey: s.activeKey,
-      setActiveKey: s.setActiveKey,
-      addTab: s.addTab,
-    }))
-  );
+    useShallow((s) => pick(s, ["activeKey", "setActiveKey", "addTab"])
+    ));
 
   const menuList = useMenuStore((s) => s.menuList);
   const menuLoading = useMenuStore((s) => s.loading);
@@ -83,7 +80,7 @@ const DynamicTabs: FC = () => {
 
   const dashboardTab = menuList.find(item => item.path === "/dashboard");
   return (
-    <div className="flex gap-1 items-center px-4 py-2 border-b border-default backdrop-blur-lg" style={{ height: tabsHeight }}>
+    <div className="flex gap-1 items-center px-4 py-2 border-b border-default" style={{ height: tabsHeight }}>
       {/* 左侧：自适应宽度的可滚动标签区 */}
       <AnimatePresence mode="wait">
         <motion.div

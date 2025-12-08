@@ -1,22 +1,303 @@
 @theme {
   --view-duration-enter: 500ms;
   --view-duration-exit: 500ms;
+  --view-delay-enter: var(--view-duration-exit);
+  /* 新视图的延迟 = 旧视图的持续时间 */
 }
 
+/* 默认动画，左右模糊渐变 */
 @keyframes blur-slide-enter {
-  from { filter: blur(8px); opacity: 0; transform: translateX(50px); }
-  to   { filter: blur(0);   opacity: 1; transform: translateX(0); }
+  from {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes blur-slide-exit {
-  from { filter: blur(0);   opacity: 1; transform: translateX(0); }
-  to   { filter: blur(8px); opacity: 0; transform: translateX(-50px); }
+  from {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateX(-50px);
+  }
 }
 
 ::view-transition-new(blur-slide) {
-  animation: blur-slide-enter var(--view-duration-enter) ease-out both;
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both blur-slide-enter;
 }
 
 ::view-transition-old(blur-slide) {
-  animation: blur-slide-exit var(--view-duration-exit) ease-in both;
+  animation: var(--view-duration-exit) ease-in both blur-slide-exit;
+}
+
+/* 淡入淡出 (Fade In / Fade Out) */
+@keyframes fade-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-exit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+::view-transition-new(fade) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both fade-enter;
+}
+
+::view-transition-old(fade) {
+  animation: var(--view-duration-exit) ease-in both fade-exit;
+}
+
+/* 模糊渐变（Blur Fade In） */
+@keyframes blur-fade-enter {
+  from {
+    filter: blur(8px);
+    opacity: 0;
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blur-fade-exit {
+  from {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  to {
+    filter: blur(8px);
+    opacity: 0;
+  }
+}
+
+::view-transition-new(blur-fade) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both blur-fade-enter;
+}
+
+::view-transition-old(blur-fade) {
+  animation: var(--view-duration-exit) ease-in both blur-fade-exit;
+}
+
+/* 右侧淡入，左侧淡出（Slide In / Slide Out） */
+@keyframes slide-fade-enter {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-fade-exit {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+::view-transition-new(slide-fade) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both slide-fade-enter;
+}
+
+::view-transition-old(slide-fade) {
+  animation: var(--view-duration-exit) ease-in both slide-fade-exit;
+}
+
+/* 从小到大（Zoom In） */
+@keyframes zoom-enter {
+  from {
+    transform: scale(0.8);
+    opacity: 0
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+@keyframes zoom-exit {
+  from {
+    transform: scale(1);
+    opacity: 1
+  }
+
+  to {
+    transform: scale(0.8);
+    opacity: 0
+  }
+}
+
+::view-transition-new(zoom) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both zoom-enter;
+}
+
+::view-transition-old(zoom) {
+  animation: var(--view-duration-exit) ease-in both zoom-exit;
+}
+
+/* 左右摆动（Swing In） */
+@keyframes swing-enter {
+  from {
+    transform: rotate(-45deg) translateX(-20);
+    opacity: 0
+  }
+
+  to {
+    transform: rotate(0) translateX(0);
+    opacity: 1
+  }
+}
+
+@keyframes swing-exit {
+  from {
+    transform: rotate(0) translateX(0);
+    opacity: 1
+  }
+
+  to {
+    transform: rotate(45deg) translateX(20);
+    opacity: 0
+  }
+}
+
+::view-transition-new(swing) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both swing-enter;
+}
+
+::view-transition-old(swing) {
+  animation: var(--view-duration-exit) ease-in both swing-exit;
+}
+
+/* 翻转效果（Flip In / Flip Out） */
+@keyframes flip-enter {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0
+  }
+
+  to {
+    transform: rotateY(0);
+    opacity: 1
+  }
+}
+
+@keyframes flip-exit {
+  from {
+    transform: rotateY(0);
+    opacity: 1
+  }
+
+  to {
+    transform: rotateY(-90deg);
+    opacity: 0
+  }
+}
+
+::view-transition-new(flip) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both flip-enter;
+}
+
+::view-transition-old(flip) {
+  animation: var(--view-duration-exit) ease-in both flip-exit;
+}
+
+/* 向上滑动 (Slide Up) - 页面向上推出/拉入 */
+@keyframes slide-up-enter {
+  from {
+    transform: translateY(100%);
+    opacity: 0
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1
+  }
+}
+
+@keyframes slide-up-exit {
+  from {
+    transform: translateY(0);
+    opacity: 1
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0
+  }
+}
+
+::view-transition-new(slide-up) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both slide-up-enter;
+}
+
+::view-transition-old(slide-up) {
+  animation: var(--view-duration-exit) ease-in both slide-up-exit;
+}
+
+/* 对角线动画（Diagonal In / Out） */
+@keyframes diagonal-enter {
+  from {
+    transform: translate(-100%, -100%) rotate(-45deg);
+    opacity: 0
+  }
+
+  to {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1
+  }
+}
+
+@keyframes diagonal-exit {
+  from {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1
+  }
+
+  to {
+    transform: translate(-100%, -100%) rotate(-45deg);
+    opacity: 0
+  }
+}
+
+::view-transition-new(diagonal) {
+  animation: var(--view-duration-enter) ease-out var(--view-delay-enter) both diagonal-enter;
+}
+
+::view-transition-old(diagonal) {
+  animation: var(--view-duration-exit) ease-in both diagonal-exit;
 }

@@ -22,7 +22,7 @@ const Navbar: FC = () => {
   const isMobile = useAppStore((s) => s.isMobile);
   const navHeight = useAppStore((s) => s.navHeight);
   return (
-    <nav className="px-4 border-b border-default backdrop-blur-lg" style={{ height: navHeight }}>
+    <nav className="px-4 border-b border-default" style={{ height: navHeight }}>
       <div className="container mx-auto flex items-center justify-between px-4 h-15">
         <div className="flex gap-2 items-center">
           {/* 左侧 Logo */}

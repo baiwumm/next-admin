@@ -73,8 +73,8 @@ export const TABS_STYLE = Enum({
 export const ROUTE_TRANSITION = Enum({
   BLUR_SLIDE: { value: 'blur-slide', label: 'route-transition.blur-slide' },
   FADE: { value: 'fade', label: 'route-transition.fade' },
-  BLUR: { value: 'blur', label: 'route-transition.blur' },
-  SLIDE: { value: 'slide', label: 'route-transition.slide' },
+  BLUR_FADE: { value: 'blur-fade', label: 'route-transition.blur-fade' },
+  SLIDE_FADE: { value: 'slide-fade', label: 'route-transition.slide-fade' },
   ZOOM: { value: 'zoom', label: 'route-transition.zoom' },
   SWING: { value: 'swing', label: 'route-transition.swing' },
   FLIP: { value: 'flip', label: 'route-transition.flip' },

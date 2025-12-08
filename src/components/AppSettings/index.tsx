@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 11:29:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 17:06:17
+ * @LastEditTime: 2025-12-08 10:46:53
  * @Description: 主题设置
  */
 "use client"
@@ -18,6 +18,7 @@ import ShowTabs from './components/ShowTabs';
 import TabStyle from './components/TabStyle';
 import ThemeToggle from './components/ThemeToggle';
 import ThemeToggleDirection from './components/ThemeToggleDirection';
+import RouteTranstion from './components/RouteTranstion';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui';
 
@@ -46,6 +47,11 @@ const AppSettings: FC = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-sm">{t('theme-mode-direction')}</h1>
             <ThemeToggleDirection />
+          </div>
+          {/* 路由过渡动画 */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-sm">{t('route-transition')}</h1>
+            <RouteTranstion />
           </div>
           {/* 色彩风格 */}
           <div className="flex flex-col gap-2">

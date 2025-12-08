@@ -70,26 +70,12 @@
       "primary-color":"主题色",
       "theme-mode":"主题模式",
       "theme-mode-direction":"动画方向",
-      "route-transtion":"路由过渡动画",
-      "blurSlide":"左右模糊渐变",
-      "fade":"淡入淡出",
-      "blur":"模糊渐变",
-      "slide":"右侧淡入，左侧淡出",
-      "zoom":"从小到大",
-      "swing":"左右摆动",
-      "flip":"翻转效果",
-      "slideUp":"向上淡入，向下淡出",
-      "diagonal":"对角线动画",
+      "route-transition":"路由过渡动画",
       "fixed-header":"固定顶栏",
       "show-tabs":"显示标签页",
       "show-footer":"显示底部",
       "color-style":"色彩风格",
-      "color-default":"正常模式",
-      "color-grey":"灰色模式",
-      "color-invert":"色弱模式",
-      "tabs-style":"标签页风格",
-      "tabs-button":"按钮风格",
-      "tabs-tag":"标签风格"
+      "tabs-style":"标签页风格"
     }
   },
   "Common":{
@@ -143,13 +129,13 @@
       "google":"谷歌风格"
     },
     "route-transition":{
-      "blur-slide":"模糊滑入滑出",
-      "fade":"渐隐渐出",
-      "blur":"模糊渐入",
-      "slide":"滑动渐入",
+      "blur-slide":"左右模糊渐变",
+      "fade":"淡入淡出",
+      "blur-fade":"模糊渐入",
+      "slide-fade":"滑动渐入",
       "zoom":"缩放渐入",
-      "swing":"摇摆渐入",
-      "flip":"翻转渐入",
+      "swing":"左右摆动",
+      "flip":"翻转效果",
       "slide-up":"向上滑动渐入",
       "diagonal":"对角渐入"
     }

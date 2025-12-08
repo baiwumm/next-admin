@@ -91,3 +91,15 @@ export {
   type TabsContentProps,
   type TabsContentsProps,
 } from '@/components/animate-ui/components/radix/tabs'
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from './select'

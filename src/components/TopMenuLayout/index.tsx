@@ -2,18 +2,18 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:20:02
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-07 18:23:11
+ * @LastEditTime: 2025-12-08 11:31:08
  * @Description: 顶部菜单布局
  */
 "use client";
 import { AnimatePresence, motion } from 'motion/react'
 import { createContext, type FC, type ReactNode, useContext, useMemo, useState, ViewTransition } from 'react';
-
+import { useShallow } from "zustand/react/shallow";
 import Navbar from './components/Navbar';
 
 import DynamicTabs from '@/components/DynamicTabs';
 import Footer from '@/components/Footer';
-import { cn } from '@/lib/utils';
+import { cn, pick } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 
 type TopMenuLayoutProps = {
@@ -26,13 +26,9 @@ const RefreshContext = createContext<() => void>(() => { });
 export const useRefreshPage = () => useContext(RefreshContext);
 
 const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
-  const fixedHeader = useAppStore((s) => s.fixedHeader);
-  const showTabs = useAppStore((s) => s.showTabs);
-  const showFooter = useAppStore((s) => s.showFooter);
-  const navHeight = useAppStore((s) => s.navHeight);
-  const tabsHeight = useAppStore((s) => s.tabsHeight);
-  const footerHeight = useAppStore((s) => s.footerHeight);
-  const transition = useAppStore((s) => s.transition);
+  const { fixedHeader, showTabs, showFooter, navHeight, tabsHeight, footerHeight, transition } = useAppStore(
+    useShallow((s) => pick(s, ['fixedHeader', 'showTabs', 'showFooter', 'navHeight', 'tabsHeight', 'footerHeight', 'transition'])
+    ))
 
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -53,7 +49,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children }) => {
   }, [showTabs, showFooter, navHeight, tabsHeight, footerHeight]);
   return (
     <RefreshContext.Provider value={handleRefresh}>
-      <div className={cn('top-0 z-10', fixedHeader ? 'sticky' : 'static')}>
+      <div className={cn('top-0 z-10 backdrop-blur-lg bg-primary-foreground/80', fixedHeader ? 'sticky' : 'static')}>
         <Navbar />
         <AnimatePresence mode="wait">
           {showTabs ? (

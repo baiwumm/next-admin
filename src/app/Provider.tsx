@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 14:34:06
+ * @LastEditTime: 2025-12-08 11:02:59
  * @Description: 上下文提供者
  */
 "use client"
@@ -10,7 +10,7 @@ import { AppProgressProvider as ProgressProvider } from '@bprogress/next';
 import { MotionConfig } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import TopMenuLayout from '@/components/TopMenuLayout';
 import { Toaster } from '@/components/ui';
@@ -25,6 +25,7 @@ export function Providers({ children }: ProvidersProps) {
   const primaryColor = useAppStore((s) => s.primaryColor);
   const colorStyle = useAppStore((s) => s.colorStyle);
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
   // 受保护的路由，不需要 RootLayout
   const protectedRoutes = ['/login']
@@ -48,6 +49,15 @@ export function Providers({ children }: ProvidersProps) {
     const cleanup = setupAppStore()
     return () => cleanup?.()
   }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!mounted) {
+    return null
+  }
   return (
     <NextThemesProvider attribute="class" defaultTheme={process.env.NEXT_PUBLIC_THEME || THEME_MODE.LIGHT}>
       <MotionConfig reducedMotion="user">
