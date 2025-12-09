@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 17:14:42
+ * @LastEditTime: 2025-12-09 10:57:07
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -31,18 +31,23 @@ import {
   DropdownMenuTrigger,
   Spinner
 } from '@/components/ui';
+import { LAYOUT_MODE } from '@/enums';
 import { useControlledState } from '@/hooks/use-controlled-state';
 import { useSupabaseUser } from '@/hooks/useSupabaseUser';
 import { getSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { useAppStore } from '@/store/useAppStore';
 
 const UserAvatar: FC = () => {
   const supabase = getSupabaseBrowserClient();
   const router = useRouter();
+  const layoutMode = useAppStore((state) => state.layoutMode);
+  // 是否侧栏布局
+  const isSidebarLayout = layoutMode === LAYOUT_MODE.SIDEBAR;
   // 获取登录用户信息
   const { user, loading } = useSupabaseUser();
   const tR = useTranslations('Route');
   const tC = useTranslations('Common');
-  const t = useTranslations('Components.TopMenuLayout');
+  const t = useTranslations('Components.Layout');
   // 注销 Loading
   const [logoutLoading, setLogoutLoading] = useState(false);
   // 退出确认弹窗
@@ -72,23 +77,37 @@ const UserAvatar: FC = () => {
   }
 
   return loading ? (
-    <Spinner variant='circle' className="size-4" />
+    <div className="w-full flex justify-center items-center">
+      <Spinner variant='circle' className="size-4" />
+    </div>
   ) : (
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="relative h-10 w-10 rounded-full" variant="ghost">
-            <Avatar>
-              <AvatarImage
-                alt="Online User"
-                src={avatar}
-              />
-              <AvatarFallback>
-                <User />
-              </AvatarFallback>
-            </Avatar>
-            <span className="absolute right-1 bottom-1 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-background" />
-          </Button>
+          <div className="flex items-center gap-2 w-full">
+            <Button className="relative h-10 w-10 rounded-full" variant="ghost">
+              <Avatar>
+                <AvatarImage
+                  alt="Online User"
+                  src={avatar}
+                />
+                <AvatarFallback>
+                  <User />
+                </AvatarFallback>
+              </Avatar>
+              <span className="absolute right-1 bottom-1 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-background" />
+            </Button>
+            {isSidebarLayout ? (
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-semibold">
+                  {name}
+                </span>
+                <span className="truncate text-xs">
+                  {user?.email}
+                </span>
+              </div>
+            ) : null}
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-64">
           <DropdownMenuLabel className="font-normal">

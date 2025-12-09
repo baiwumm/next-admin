@@ -12,7 +12,7 @@ import { Button } from '@/components/ui';
 export default function MenuManage() {
   const t = useTranslations('Route');
   return (
-    <div className="h-150 flex items-center justify-center bg-blue-500">
+    <div className="h-150 flex items-center justify-center">
       <Button>{t('menu-manage')}</Button>
     </div>
   )

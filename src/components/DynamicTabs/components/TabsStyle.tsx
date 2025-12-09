@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 16:18:12
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 11:15:51
+ * @LastEditTime: 2025-12-09 11:35:10
  * @Description: 按钮风格
  */
 import {
@@ -16,13 +16,15 @@ import {
 import { arrayMove, horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 import { Pin } from 'lucide-react';
 import { DynamicIcon } from 'lucide-react/dynamic';
+import { usePathname } from "next/navigation";
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 import { useShallow } from "zustand/react/shallow";
-import { usePathname } from "next/navigation";
+
 import SortableTabItem from './SortableTabItem';
-import { pick } from '@/lib/utils';
+
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui';
+import { pick } from '@/lib/utils';
 import { useTabsStore } from "@/store/useTabsStore";
 
 type TabsStyleProps = {
@@ -79,7 +81,7 @@ const TabsStyle: FC<TabsStyleProps> = ({ dashboardTab }) => {
           <TabsList>
             {/* 固定标签 */}
             {dashboardTab ? (
-              <TabsTrigger value={dashboardTab.path} className="flex items-center justify-center gap-1 text-xs">
+              <TabsTrigger value={dashboardTab.path} className="flex items-center justify-center gap-1 text-xs py-1.5">
                 <DynamicIcon name={dashboardTab.icon} />
                 <span>{t(dashboardTab.label)}</span>
                 <Pin />

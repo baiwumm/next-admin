@@ -41,6 +41,14 @@ export const THEME_MODE = Enum({
 });
 
 /**
+ * @description: 布局风格
+ */
+export const LAYOUT_MODE = Enum({
+  SIDEBAR: { value: 'sidebar', label: 'layout-mode.sidebar', icon: 'layout-panel-left' },
+  TOPBAR: { value: 'topbar', label: 'layout-mode.topbar', icon: 'layout-panel-top' },
+});
+
+/**
  * @description: 主题切换动画方向
  */
 export const THEME_MODE_DIRECTION = Enum({

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 10:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-04 09:34:29
+ * @LastEditTime: 2025-12-09 11:29:02
  * @Description: 登录页布局
  */
 "use client"
@@ -11,7 +11,7 @@ import { type ReactNode } from 'react';
 
 import AppSettings from '@/components/AppSettings';
 import Footer from '@/components/Footer';
-import LangSwitch from '@/components/LangSwitch';
+import LangSwitch from '@/components/GlobalLayout/components/LangSwitch';
 import Squares from '@/components/Squares';
 import { THEME_MODE } from '@/enums';
 

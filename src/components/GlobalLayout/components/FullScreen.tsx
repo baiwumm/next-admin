@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:59:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 10:05:29
+ * @LastEditTime: 2025-12-08 17:05:15
  * @Description: 全屏
  */
 import { useFullscreen } from 'ahooks';

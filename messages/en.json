@@ -53,7 +53,7 @@
     }
   },
   "Components":{
-    "TopMenuLayout":{
+    "Layout":{
       "logout":"Logout",
       "logout-in":"Logging out...",
       "logout-comfirm":"Are you sure you want to log out?",
@@ -75,7 +75,8 @@
       "show-tabs":"Show Tabs",
       "show-footer":"Show Footer",
       "color-style":"Color Style",
-      "tabs-style":"Tabs Style"
+      "tabs-style":"Tabs Style",
+      "layout-mode":"Layout Mode"
     }
   },
   "Common":{
@@ -138,6 +139,10 @@
       "flip":"Flip",
       "slide-up":"Slide Up",
       "diagonal":"Diagonal"
+    },
+    "layout-mode":{
+      "sidebar":"SideBar",
+      "topbar":"TopBar"
     }
   }
 }

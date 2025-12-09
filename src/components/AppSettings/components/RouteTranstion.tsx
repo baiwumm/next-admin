@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 10:27:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 10:27:52
+ * @LastEditTime: 2025-12-09 14:31:41
  * @Description: 路由过渡动画
  */
 import { useTranslations } from 'next-intl';
 import { type FC } from "react";
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup } from '@/components/ui';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui';
 import { ROUTE_TRANSITION } from '@/enums';
 import { useAppStore } from '@/store/useAppStore';
 

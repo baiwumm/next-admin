@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-26 10:18:06
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 10:04:25
+ * @LastEditTime: 2025-12-09 11:34:39
  * @Description: 标签页风格拖拽子项
  */
 import { useSortable } from '@dnd-kit/sortable';
@@ -45,7 +45,7 @@ const SortableTabItem: FC<SortableItemProps> = ({ tag }) => {
       {...listeners}
       {...attributes}
       style={style}
-      className="flex items-center justify-center gap-1 text-xs cursor-grab active:cursor-grabbing"
+      className="flex items-center justify-center gap-1 text-xs cursor-grab active:cursor-grabbing py-1.5"
     >
       <DynamicIcon name={tag.icon} />
       <span>{t(tag.label)}</span>

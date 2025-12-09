@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 11:32:22
+ * @LastEditTime: 2025-12-08 17:10:33
  * @Description: 
  */
 "use client";
@@ -12,15 +12,17 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { type FC, useCallback, useEffect } from 'react';
 import { useShallow } from "zustand/react/shallow";
+
 import ButtonStyle from './components/ButtonStyle';
 import TabsStyle from './components/TabsStyle';
-import { useRefreshPage } from '@/components/TopMenuLayout';
+
+import { useRefreshPage } from '@/components/GlobalLayout';
 import { Button, ScrollArea, ScrollBar } from '@/components/ui';
 import { TABS_STYLE } from '@/enums';
+import { pick } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from "@/store/useMenuStore";
 import { useTabsStore } from "@/store/useTabsStore";
-import { pick } from '@/lib/utils';
 
 const DynamicTabs: FC = () => {
   const pathname = usePathname();

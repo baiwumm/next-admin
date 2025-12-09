@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:23:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-07 18:28:33
+ * @LastEditTime: 2025-12-09 10:31:54
  * @Description: Desktop 菜单
  */
 "use client"
@@ -11,7 +11,7 @@ import { Info } from 'lucide-react';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { addTransitionType, type FC, startTransition, useEffect } from 'react';
+import { type FC } from 'react';
 
 import {
   Button,
@@ -24,16 +24,14 @@ import {
   DropdownMenuTrigger,
   Spinner
 } from '@/components/ui';
-import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from '@/store/useMenuStore';
 
 const DesktopMenu: FC = () => {
   const t = useTranslations('Route');
   const tC = useTranslations('Common');
-  const tLayout = useTranslations('Components.TopMenuLayout');
+  const tLayout = useTranslations('Components.Layout');
   const pathname = usePathname();
   const router = useRouter();
-  const transition = useAppStore((s) => s.transition);
 
   // 判断菜单是否选中
   const isActive = (url: string) => url === pathname || pathname.includes(url);
@@ -45,10 +43,7 @@ const DesktopMenu: FC = () => {
 
   // 菜单跳转
   const toPath = (path: string) => {
-    startTransition(() => {
-      addTransitionType(transition);
-      router.push(path);
-    });
+    router.push(path);
   }
 
   const handleMenuSelect = (e: Event, path: string) => {
@@ -116,13 +111,6 @@ const DesktopMenu: FC = () => {
       ))}
     </div>
   )
-
-  useEffect(() => {
-    if (!menuList?.length) {
-      // 加载菜单数据
-      fetchMenuList()
-    }
-  }, [fetchMenuList, menuList])
   return menuLoading ? (
     <div className="flex flex-col items-center gap-1">
       <Spinner variant='circle' className="size-4" />

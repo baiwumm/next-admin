@@ -53,7 +53,7 @@
     }
   },
   "Components":{
-    "TopMenuLayout":{
+    "Layout":{
       "logout":"退出登录",
       "logout-in":"正在退出...",
       "logout-comfirm":"确定要退出登录吗？",
@@ -75,7 +75,8 @@
       "show-tabs":"显示标签页",
       "show-footer":"显示底部",
       "color-style":"色彩风格",
-      "tabs-style":"标签页风格"
+      "tabs-style":"标签页风格",
+      "layout-mode":"布局模式"
     }
   },
   "Common":{
@@ -138,6 +139,10 @@
       "flip":"翻转效果",
       "slide-up":"向上滑动渐入",
       "diagonal":"对角渐入"
+    },
+    "layout-mode":{
+      "sidebar":"侧栏风格",
+      "topbar":"顶栏风格"
     }
   }
 }

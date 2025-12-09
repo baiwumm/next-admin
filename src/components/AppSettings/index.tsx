@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 11:29:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 10:46:53
+ * @LastEditTime: 2025-12-08 17:16:53
  * @Description: 主题设置
  */
 "use client"
@@ -12,13 +12,14 @@ import { type FC } from 'react';
 
 import ColorStyles from './components/ColorStyles';
 import FixedHeader from './components/FixedHeader';
+import LayoutMode from './components/LayoutMode';
 import PrimaryColorPicker from './components/PrimaryColorPicker';
+import RouteTranstion from './components/RouteTranstion';
 import ShowFooter from './components/ShowFooter';
 import ShowTabs from './components/ShowTabs';
 import TabStyle from './components/TabStyle';
 import ThemeToggle from './components/ThemeToggle';
 import ThemeToggleDirection from './components/ThemeToggleDirection';
-import RouteTranstion from './components/RouteTranstion';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui';
 
@@ -37,6 +38,11 @@ const AppSettings: FC = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-sm">{t('primary-color')}</h1>
             <PrimaryColorPicker />
+          </div>
+          {/* 布局模式 */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-sm">{t('layout-mode')}</h1>
+            <LayoutMode />
           </div>
           {/* 主题模式 */}
           <div className="flex flex-col gap-2">
