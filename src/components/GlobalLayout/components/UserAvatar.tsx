@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 10:57:07
+ * @LastEditTime: 2025-12-09 17:14:08
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -85,7 +85,7 @@ const UserAvatar: FC = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div className="flex items-center gap-2 w-full">
-            <Button className="relative h-10 w-10 rounded-full" variant="ghost">
+            <Button className="relative size-8 rounded-full" variant="ghost">
               <Avatar>
                 <AvatarImage
                   alt="Online User"

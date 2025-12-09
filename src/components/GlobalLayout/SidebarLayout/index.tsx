@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:52:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 14:27:35
+ * @LastEditTime: 2025-12-09 17:18:41
  * @Description: 侧栏布局
  */
 'use client';
@@ -68,8 +68,8 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, refreshKey, mainMinH 
   const renderFirstLevelMenu = ({ id, label, path, icon }: System.Menu) => {
     const menuLabel = t(label);
     return (
-      <SidebarGroup>
-        <SidebarMenu key={id}>
+      <SidebarGroup key={id}>
+        <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip={menuLabel} onClick={() => router.push(path)} isActive={path === pathname}>
               <DynamicIcon name={icon} />
@@ -94,7 +94,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, refreshKey, mainMinH 
       >
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
-            <SidebarMenuButton tooltip={menuLabel} isActive={isActive(path)}>
+            <SidebarMenuButton tooltip={menuLabel}>
               <DynamicIcon name={icon} />
               <span>{menuLabel}</span>
               <ChevronRight className="ml-auto transition-transform duration-300 group-data-[state=open]/collapsible:rotate-90" />
@@ -133,10 +133,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, refreshKey, mainMinH 
         <SidebarHeader className="border-b border-default">
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton
-                size="lg"
-                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-              >
+              <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                 <Link href="/">
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                     <Image
@@ -148,7 +145,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, refreshKey, mainMinH 
                     />
                   </div>
                 </Link>
-                <div className="grid flex-1 text-left text-sm leading-tight">
+                <div className="grid flex-1 text-left text-sm leading-tight gap-0.5">
                   <span className="truncate font-semibold">
                     {process.env.NEXT_PUBLIC_APP_NAME}
                   </span>

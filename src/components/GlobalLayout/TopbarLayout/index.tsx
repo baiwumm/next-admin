@@ -2,14 +2,15 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:51:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 11:26:33
+ * @LastEditTime: 2025-12-09 17:08:53
  * @Description: 顶栏布局
  */
 "use client";
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react';
 import { type FC, type ReactNode, ViewTransition } from 'react';
 import { useShallow } from "zustand/react/shallow";
 
+import BreadcrumbContainer from '../components/BreadcrumbContainer';
 import NavHeader from '../components/NavHeader';
 
 import DynamicTabs from '@/components/DynamicTabs';
@@ -32,7 +33,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, refreshKey, mainMinH 
   const isSidebarLayout = layoutMode === LAYOUT_MODE.SIDEBAR;
   return (
     <div className="w-full">
-      <div className={cn('top-0 z-10 backdrop-blur-lg bg-sidebar/80', fixedHeader ? 'sticky' : 'static')}>
+      <div className={cn('top-0 z-10 backdrop-blur-lg bg-white/80 dark:bg-black/80', fixedHeader ? 'sticky' : 'static')}>
         <NavHeader />
         <AnimatePresence mode="wait">
           {showTabs ? (
@@ -54,6 +55,11 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, refreshKey, mainMinH 
           key={refreshKey}
           style={{ minHeight: `calc(100vh - ${mainMinH}px)` }}
         >
+          {isSidebarLayout ? null : (
+            <div className="mb-4">
+              <BreadcrumbContainer />
+            </div>
+          )}
           {children}
         </main>
       </ViewTransition>

@@ -2,13 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 17:01:44
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 14:27:10
+ * @LastEditTime: 2025-12-09 17:06:07
  * @Description: 布局顶栏
  */
 import Image from 'next/image'
 import Link from 'next/link';
 import { type FC } from 'react';
 
+import BreadcrumbContainer from './BreadcrumbContainer';
 import DesktopMenu from './DesktopMenu';
 import FullScreen from './FullScreen';
 import LangSwitch from './LangSwitch';
@@ -34,6 +35,9 @@ const NavHeader: FC = () => {
         {isSidebarLayout ? (
           <div className="flex gap-2 items-center">
             <SidebarTrigger />
+            {isMobile ? null : (
+              <BreadcrumbContainer hideOnSingleItem={false} />
+            )}
           </div>
         ) : (
           <div className="flex gap-2 items-center">
