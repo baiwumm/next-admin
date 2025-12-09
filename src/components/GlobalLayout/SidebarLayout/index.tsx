@@ -45,11 +45,10 @@ import { useMenuStore } from '@/store/useMenuStore';
 
 type SidebarLayoutProps = {
   children: ReactNode;
-  refreshKey: number; // 用于刷新路由
   mainMinH: number; // 主体内容最小高度
 }
 
-const SidebarLayout: FC<SidebarLayoutProps> = ({ children, refreshKey, mainMinH }) => {
+const SidebarLayout: FC<SidebarLayoutProps> = ({ children, mainMinH }) => {
   const t = useTranslations('Route');
   const tC = useTranslations('Common');
 
@@ -200,7 +199,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, refreshKey, mainMinH 
       </Sidebar>
       <SidebarInset>
         {/* 直接使用顶栏布局 */}
-        <TopbarLayout refreshKey={refreshKey} mainMinH={mainMinH}>
+        <TopbarLayout mainMinH={mainMinH}>
           {children}
         </TopbarLayout>
       </SidebarInset>

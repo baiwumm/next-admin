@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 17:10:33
+ * @LastEditTime: 2025-12-09 17:36:59
  * @Description: 
  */
 "use client";
@@ -16,18 +16,21 @@ import { useShallow } from "zustand/react/shallow";
 import ButtonStyle from './components/ButtonStyle';
 import TabsStyle from './components/TabsStyle';
 
-import { useRefreshPage } from '@/components/GlobalLayout';
 import { Button, ScrollArea, ScrollBar } from '@/components/ui';
 import { TABS_STYLE } from '@/enums';
-import { pick } from '@/lib/utils';
+import { cn, pick } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 import { useMenuStore } from "@/store/useMenuStore";
 import { useTabsStore } from "@/store/useTabsStore";
 
-const DynamicTabs: FC = () => {
+type DynamicTabsProps = {
+  onRefresh: () => void;
+  isRefreshing: boolean;
+}
+
+const DynamicTabs: FC<DynamicTabsProps> = ({ onRefresh, isRefreshing }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const refreshPage = useRefreshPage();
   const tabStyle = useAppStore((s) => s.tabStyle);
   const tabsHeight = useAppStore((s) => s.tabsHeight);
   const { activeKey, setActiveKey, addTab } = useTabsStore(
@@ -107,7 +110,7 @@ const DynamicTabs: FC = () => {
           <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/20 bg-linear-to-l"></div>
         </motion.div>
       </AnimatePresence>
-      <Button size="icon" aria-label="Refresh Route" variant="ghost" className="rounded-full" onClick={refreshPage}>
+      <Button size="icon" aria-label="Refresh Route" variant="ghost" className={cn("rounded-full", isRefreshing ? 'animate-spin' : '')} onClick={onRefresh}>
         <RotateCcw />
       </Button>
     </div>

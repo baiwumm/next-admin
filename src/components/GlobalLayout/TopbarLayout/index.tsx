@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:51:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:08:53
+ * @LastEditTime: 2025-12-09 17:33:40
  * @Description: 顶栏布局
  */
 "use client";
@@ -16,16 +16,19 @@ import NavHeader from '../components/NavHeader';
 import DynamicTabs from '@/components/DynamicTabs';
 import Footer from '@/components/Footer';
 import { LAYOUT_MODE } from '@/enums';
+import { useRefreshWithViewTransition } from '@/hooks/use-refresh-with-view-transition';
 import { cn, pick } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 
 type TopMenuLayoutProps = {
   children: ReactNode;
-  refreshKey: number; // 用于刷新路由
   mainMinH: number; // 主体内容最小高度
 }
 
-const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, refreshKey, mainMinH }) => {
+const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, mainMinH }) => {
+  // 引入刷新逻辑
+  const { refreshKey, refreshContent, isPending } = useRefreshWithViewTransition();
+
   const { fixedHeader, showTabs, showFooter, transition, layoutMode } = useAppStore(
     useShallow((s) => pick(s, ['fixedHeader', 'showTabs', 'showFooter', 'transition', 'layoutMode'])
     ))
@@ -44,15 +47,15 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, refreshKey, mainMinH 
               exit={{ opacity: 0 }}
               transition={{ duration: .5 }}
             >
-              <DynamicTabs />
+              <DynamicTabs onRefresh={refreshContent} isRefreshing={isPending} />
             </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
       <ViewTransition name={transition}>
         <main
-          className={cn("p-4", isSidebarLayout ? "w-full" : "container mx-auto")}
           key={refreshKey}
+          className={cn("p-4", isSidebarLayout ? "w-full" : "container mx-auto")}
           style={{ minHeight: `calc(100vh - ${mainMinH}px)` }}
         >
           {isSidebarLayout ? null : (
