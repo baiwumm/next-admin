@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](///compare/2.4.0...2.4.1) (2025-12-09)
+
+### Features
+
+* 完成点击按钮刷新页面的功能 f58a44f
+* 新增 BreadcrumbContainer 面包屑组件 929d046
+
 ## [2.4.0](///compare/2.3.4...2.4.0) (2025-12-09)
 
 ### Features
