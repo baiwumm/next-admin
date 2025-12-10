@@ -1,4 +1,4 @@
-export { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+export { Avatar, AvatarFallback, AvatarImage, AvatarIndicator, AvatarStatus, avatarStatusVariants } from "./avatar";
 export { Badge, BadgeButton, BadgeDot, badgeVariants } from './badge'
 export {
   Breadcrumb,
@@ -10,7 +10,7 @@ export {
   BreadcrumbSeparator,
 } from './breadcrumb'
 export { Button, type ButtonProps, buttonVariants } from "./button";
-export { Card, CardContent, CardFooter, CardHeader } from "./card";
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardHeading, CardTable, CardTitle, CardToolbar } from "./card";
 export {
   Command,
   CommandCheck,

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 15:49:03
+ * @LastEditTime: 2025-12-10 17:43:14
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -22,7 +22,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-  Button,
+  AvatarIndicator,
+  AvatarStatus,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -85,18 +86,18 @@ const UserAvatar: FC = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div className="flex items-center gap-2 w-full">
-            <Button className="relative size-8" variant="ghost" radius="full">
-              <Avatar>
-                <AvatarImage
-                  alt="Online User"
-                  src={avatar}
-                />
-                <AvatarFallback>
-                  <User />
-                </AvatarFallback>
-              </Avatar>
-              <span className="absolute right-1 bottom-1 h-2 w-2 rounded-full bg-green-500 ring-2 ring-background" />
-            </Button>
+            <Avatar className="size-8">
+              <AvatarImage
+                alt="Online User"
+                src={avatar}
+              />
+              <AvatarFallback className="text-primary bg-primary/10">
+                <User />
+              </AvatarFallback>
+              <AvatarIndicator className="-end-1.5 -bottom-1.5">
+                <AvatarStatus variant="online" className="size-2.5" />
+              </AvatarIndicator>
+            </Avatar>
             {isSidebarLayout ? (
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">
@@ -112,12 +113,12 @@ const UserAvatar: FC = () => {
         <DropdownMenuContent align="end" className="w-64">
           <DropdownMenuLabel className="font-normal">
             <div className="flex items-center gap-3">
-              <Avatar className="h-10 w-10">
+              <Avatar className="size-10">
                 <AvatarImage
                   alt="Online User"
                   src={avatar}
                 />
-                <AvatarFallback>
+                <AvatarFallback className="text-primary bg-primary/10">
                   <User />
                 </AvatarFallback>
               </Avatar>
