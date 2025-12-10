@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-10-30 17:43:44
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 17:04:54
+ * @LastEditTime: 2025-12-10 16:00:41
  * @Description: 国际化
  */
 import { Languages } from 'lucide-react';
@@ -23,7 +23,7 @@ export default function LangSwitch() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="icon" aria-label="LangSwitch" variant="ghost" className="rounded-full">
+        <Button mode="icon" aria-label="LangSwitch" variant="dashed" radius="full" size='sm'>
           <Languages />
         </Button>
       </DropdownMenuTrigger>

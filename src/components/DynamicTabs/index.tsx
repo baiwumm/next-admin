@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:36:59
+ * @LastEditTime: 2025-12-10 15:46:17
  * @Description: 
  */
 "use client";
@@ -110,7 +110,15 @@ const DynamicTabs: FC<DynamicTabsProps> = ({ onRefresh, isRefreshing }) => {
           <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/20 bg-linear-to-l"></div>
         </motion.div>
       </AnimatePresence>
-      <Button size="icon" aria-label="Refresh Route" variant="ghost" className={cn("rounded-full", isRefreshing ? 'animate-spin' : '')} onClick={onRefresh}>
+      <Button
+        size='sm'
+        mode="icon"
+        aria-label="Refresh Route"
+        variant="ghost"
+        radius="full"
+        className={cn(isRefreshing ? 'animate-spin' : '')}
+        onClick={onRefresh}
+      >
         <RotateCcw />
       </Button>
     </div>

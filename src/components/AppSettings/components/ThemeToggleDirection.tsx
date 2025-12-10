@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 16:06:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 16:09:19
+ * @LastEditTime: 2025-12-10 14:56:12
  * @Description: 主题模式切换方向
  */
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -24,7 +24,7 @@ const ThemeToggleDirection: FC = () => {
         <Button
           size="sm"
           aria-label="ThemeToggleDirection"
-          variant={themeModeDirection === value ? "default" : "outline"}
+          variant={themeModeDirection === value ? "primary" : "outline"}
           key={value}
           className="text-xs"
           onClick={() => setThemeModeDirection(value)}

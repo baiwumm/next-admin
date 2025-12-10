@@ -83,11 +83,10 @@ const ButtonStyle: FC<ButtonStyleProps> = ({ dashboardTab }) => {
             key={dashboardTab.path}
           >
             <Button
-              variant={activeKey === dashboardTab.path ? 'default' : 'outline'}
-              size='sm'
+              variant={activeKey === dashboardTab.path ? 'primary' : 'outline'}
+              size='xs'
               disabled={pending}
               onClick={() => setActiveKey(dashboardTab.path)}
-              className="gap-1 text-xs px-2"
             >
               <DynamicIcon name={dashboardTab.icon} />
               <span>{t(dashboardTab.label)}</span>

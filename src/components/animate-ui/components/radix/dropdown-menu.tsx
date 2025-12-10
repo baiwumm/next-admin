@@ -16,6 +16,7 @@ import {
   type DropdownMenuItemProps as DropdownMenuItemPrimitiveProps,
   DropdownMenuLabel as DropdownMenuLabelPrimitive,
   type DropdownMenuLabelProps as DropdownMenuLabelPrimitiveProps,
+  DropdownMenuPortal, type DropdownMenuPortalProps,
   type DropdownMenuProps as DropdownMenuPrimitiveProps,
   DropdownMenuRadioGroup as DropdownMenuRadioGroupPrimitive,
   type DropdownMenuRadioGroupProps as DropdownMenuRadioGroupPrimitiveProps,
@@ -32,7 +33,7 @@ import {
   DropdownMenuSubTrigger as DropdownMenuSubTriggerPrimitive,
   type DropdownMenuSubTriggerProps as DropdownMenuSubTriggerPrimitiveProps,
   DropdownMenuTrigger as DropdownMenuTriggerPrimitive,
-  type DropdownMenuTriggerProps as DropdownMenuTriggerPrimitiveProps,
+  type DropdownMenuTriggerProps as DropdownMenuTriggerPrimitiveProps
 } from '@/components/animate-ui/primitives/radix/dropdown-menu';
 import { cn } from '@/lib/utils';
 
@@ -299,6 +300,8 @@ export {
   type DropdownMenuItemProps,
   DropdownMenuLabel,
   type DropdownMenuLabelProps,
+  DropdownMenuPortal,
+  type DropdownMenuPortalProps,
   type DropdownMenuProps,
   DropdownMenuRadioGroup,
   type DropdownMenuRadioGroupProps,
@@ -315,5 +318,5 @@ export {
   DropdownMenuSubTrigger,
   type DropdownMenuSubTriggerProps,
   DropdownMenuTrigger,
-  type DropdownMenuTriggerProps,
+  type DropdownMenuTriggerProps
 };

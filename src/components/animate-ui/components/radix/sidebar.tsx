@@ -296,9 +296,11 @@ function SidebarTrigger({ className, onClick, ...props }: SidebarTriggerProps) {
     <Button
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
-      variant="ghost"
-      size="icon"
-      className={cn('size-7', className)}
+      mode="icon"
+      variant="dashed"
+      radius="full"
+      size='sm'
+      className={className}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();

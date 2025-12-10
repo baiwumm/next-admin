@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:28:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 17:12:07
+ * @LastEditTime: 2025-12-10 16:21:41
  * @Description: 移动端菜单
  */
 "use client"
@@ -61,7 +61,7 @@ const MobileMenu: FC = () => {
                 <Button
                   key={subItem.id}
                   size='sm'
-                  variant={isActive(subItem.path) ? "default" : "ghost"}
+                  variant={isActive(subItem.path) ? "primary" : "ghost"}
                   onClick={() => router.push(subItem.path)}
                   className="justify-start"
                 >
@@ -79,7 +79,7 @@ const MobileMenu: FC = () => {
       <Button
         key={item.id}
         size='sm'
-        variant={isActive(item.path) ? "default" : "ghost"}
+        variant={isActive(item.path) ? "primary" : "ghost"}
         onClick={() => router.push(item.path)}
         className="justify-start"
       >

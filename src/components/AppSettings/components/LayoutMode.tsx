@@ -24,7 +24,7 @@ const LayoutMode: FC = () => {
         <Button
           size="sm"
           aria-label="LayoutMode"
-          variant={layoutMode === value ? "default" : "outline"}
+          variant={layoutMode === value ? "primary" : "outline"}
           key={value}
           className="text-xs"
           onClick={() => setLayoutMode(value)}

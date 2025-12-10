@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-26 10:18:06
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 14:32:03
+ * @LastEditTime: 2025-12-10 15:58:19
  * @Description: 按钮风格拖拽子项
  */
 import { useSortable } from '@dnd-kit/sortable';
@@ -56,11 +56,10 @@ const SortableButtonItem: FC<SortableItemProps> = ({ tag }) => {
       className="min-w-max"
     >
       <Button
-        variant={activeKey === tag.path ? 'default' : 'outline'}
-        size='sm'
+        variant={activeKey === tag.path ? 'primary' : 'outline'}
+        size='xs'
         disabled={pending}
         onClick={() => setActiveKey(tag.path)}
-        className="text-xs px-2"
       >
         <div className="flex items-center gap-0.5">
           <div ref={dragHandleRef} {...listeners} {...attributes} className="flex items-center gap-0.5 cursor-grab active:cursor-grabbing">

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:23:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 10:31:54
+ * @LastEditTime: 2025-12-10 16:22:05
  * @Description: Desktop 菜单
  */
 "use client"
@@ -80,7 +80,7 @@ const DesktopMenu: FC = () => {
             <Button
               key={id}
               size='sm'
-              variant={isActive(path) ? "default" : "ghost"}
+              variant={isActive(path) ? "primary" : "ghost"}
               className="text-xs"
             >
               <DynamicIcon name={icon} />
@@ -101,7 +101,7 @@ const DesktopMenu: FC = () => {
         <Button
           key={id}
           size='sm'
-          variant={isActive(path) ? "default" : "ghost"}
+          variant={isActive(path) ? "primary" : "ghost"}
           className="text-xs"
           onClick={() => router.push(path)}
         >

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 11:29:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 17:16:53
+ * @LastEditTime: 2025-12-10 16:02:04
  * @Description: 主题设置
  */
 "use client"
@@ -28,7 +28,7 @@ const AppSettings: FC = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size="icon" aria-label="AppSettings" variant="ghost" className="rounded-full">
+        <Button mode="icon" aria-label="AppSettings" variant="dashed" radius="full" size='sm'>
           <SwatchBook />
         </Button>
       </PopoverTrigger>

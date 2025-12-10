@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:14:08
+ * @LastEditTime: 2025-12-10 15:49:03
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -85,7 +85,7 @@ const UserAvatar: FC = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div className="flex items-center gap-2 w-full">
-            <Button className="relative size-8 rounded-full" variant="ghost">
+            <Button className="relative size-8" variant="ghost" radius="full">
               <Avatar>
                 <AvatarImage
                   alt="Online User"
@@ -95,7 +95,7 @@ const UserAvatar: FC = () => {
                   <User />
                 </AvatarFallback>
               </Avatar>
-              <span className="absolute right-1 bottom-1 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-background" />
+              <span className="absolute right-1 bottom-1 h-2 w-2 rounded-full bg-green-500 ring-2 ring-background" />
             </Button>
             {isSidebarLayout ? (
               <div className="grid flex-1 text-left text-sm leading-tight">

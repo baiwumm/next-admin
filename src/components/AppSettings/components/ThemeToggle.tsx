@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 13:38:10
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 12:14:53
+ * @LastEditTime: 2025-12-10 14:55:58
  * @Description: 主题模式
  */
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -52,7 +52,7 @@ const ThemeToggle: FC = () => {
             <Button
               size="sm"
               aria-label="ThemeToggle"
-              variant={theme === value ? "default" : "outline"}
+              variant={theme === value ? "primary" : "outline"}
               key={value}
               className="text-xs"
               onClick={() => toggleTheme(value)}

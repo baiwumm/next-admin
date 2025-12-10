@@ -24,7 +24,7 @@ const ColorStyles: FC = () => {
         <Button
           size="sm"
           aria-label="ColorStyles"
-          variant={colorStyle === value ? "default" : "outline"}
+          variant={colorStyle === value ? "primary" : "outline"}
           key={value}
           className="text-xs"
           onClick={() => setColorStyle(value)}

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 10:01:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 11:29:02
+ * @LastEditTime: 2025-12-10 16:28:25
  * @Description: 登录页布局
  */
 "use client"
@@ -36,14 +36,14 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
         />
       </div>
       {/* 右上角 */}
-      <div className='absolute right-3 top-3 justify-center items-center bottom-2'>
+      <div className='absolute right-3 top-3 flex justify-center items-center gap-2'>
         {/* 主题设置 */}
         <AppSettings />
         {/* 语言切换 */}
         <LangSwitch />
       </div>
       {/* 底部版权 */}
-      <div className="absolute justify-center items-center bottom-2">
+      <div className="absolute justify-center items-center bottom-0">
         <Footer />
       </div>
     </div>

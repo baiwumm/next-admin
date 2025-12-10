@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:59:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 17:05:15
+ * @LastEditTime: 2025-12-10 15:45:01
  * @Description: 全屏
  */
 import { useFullscreen } from 'ahooks';
@@ -22,7 +22,7 @@ const FullScreen: FC = () => {
     }
   }
   return (
-    <Button size="icon" aria-label="FullScreen" variant="ghost" onClick={switchScreen} className="rounded-full">
+    <Button mode="icon" aria-label="FullScreen" variant="dashed" radius="full" size='sm' onClick={switchScreen}>
       {isFullscreen ? <Minimize /> : <Fullscreen />}
     </Button>
   );

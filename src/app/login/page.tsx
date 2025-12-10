@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 14:31:03
+ * @LastEditTime: 2025-12-10 16:27:18
  * @Description: 登录页面
  */
 "use client";
@@ -29,9 +29,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
+  Input,
+  InputWrapper,
   Separator,
   Spinner,
 } from "@/components/ui"
@@ -177,12 +176,10 @@ export default function Login() {
                       {t('email')}
                     </FormLabel>
                     <FormControl>
-                      <InputGroup>
-                        <InputGroupInput placeholder={t('email-placeholder')} {...field} />
-                        <InputGroupAddon>
-                          <Mail />
-                        </InputGroupAddon>
-                      </InputGroup>
+                      <InputWrapper>
+                        <Mail />
+                        <Input placeholder={t('email-placeholder')} {...field} />
+                      </InputWrapper>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -198,21 +195,19 @@ export default function Login() {
                       {t('password')}
                     </FormLabel>
                     <FormControl>
-                      <InputGroup>
-                        <InputGroupInput placeholder={t('password-placeholder')} type={showPassword ? 'text' : 'password'} {...field} />
-                        <InputGroupAddon>
-                          <Lock />
-                        </InputGroupAddon>
-                        <InputGroupAddon align="inline-end" onClick={() => setShowPassword(!showPassword)}>
+                      <InputWrapper>
+                        <Lock />
+                        <Input placeholder={t('password-placeholder')} type={showPassword ? 'text' : 'password'} {...field} />
+                        <div onClick={() => setShowPassword(!showPassword)}>
                           {showPassword ? <EyeOff /> : <Eye />}
-                        </InputGroupAddon>
-                      </InputGroup>
+                        </div>
+                      </InputWrapper>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={oauthLoading || emailLoading}>
+              <Button type="submit" disabled={oauthLoading || emailLoading} className="w-full">
                 {emailLoading ? <Spinner /> : <Check />}
                 {emailLoading ? t('login-in') : t(isSignup ? 'register' : 'submit')}
               </Button>
@@ -222,14 +217,14 @@ export default function Login() {
             {isSignup ? (
               <p className="text-sm text-center">
                 {t('has-account')}
-                <Button variant="link" onClick={() => setIsSignup(false)}>
+                <Button variant="dim" onClick={() => setIsSignup(false)}>
                   {t('login-now')}
                 </Button>
               </p>
             ) : (
               <p className="text-sm text-center">
                 {t('need-account')}
-                <Button variant="link" onClick={() => setIsSignup(true)}>
+                <Button variant="dim" onClick={() => setIsSignup(true)}>
                   {t('signup')}
                 </Button>
               </p>

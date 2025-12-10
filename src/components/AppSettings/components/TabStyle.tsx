@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:56:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 09:35:06
+ * @LastEditTime: 2025-12-10 14:55:48
  * @Description: 标签页风格
  */
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -24,7 +24,7 @@ const TabStyle: FC = () => {
         <Button
           size="sm"
           aria-label="TabStyle"
-          variant={tabStyle === value ? "default" : "outline"}
+          variant={tabStyle === value ? "primary" : "outline"}
           key={value}
           className="text-xs"
           onClick={() => setTabStyle(value)}

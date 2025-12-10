@@ -12,30 +12,56 @@ import {
 import { cn } from '@/lib/utils';
 
 const rippleButtonVariants = {
-  default: '[--ripple-button-ripple-color:var(--primary-foreground)]',
-  accent: '[--ripple-button-ripple-color:var(--accent-foreground)]',
+  primary: '[--ripple-button-ripple-color:var(--primary-foreground)]',
+  mono: '[--ripple-button-ripple-color:var(--foreground)]',
   destructive: '[--ripple-button-ripple-color:var(--destructive-foreground)]',
   outline: '[--ripple-button-ripple-color:var(--foreground)]',
   secondary: '[--ripple-button-ripple-color:var(--secondary-foreground)]',
   ghost: '[--ripple-button-ripple-color:var(--foreground)]',
   link: '[--ripple-button-ripple-color:var(--primary-foreground)]',
+  dashed: '[--ripple-button-ripple-color:var(--foreground)]',
+  dim: '[--ripple-button-ripple-color:var(--foreground)]',
 };
 
 type RippleButtonProps = RippleButtonPrimitiveProps &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & {
+    selected?: boolean;
+  };
 
 function RippleButton({
   className,
-  variant = 'default',
+  selected,
+  variant = 'primary',
+  radius,
+  appearance,
+  mode,
   size,
+  autoHeight,
+  underlined,
+  underline,
+  asChild = false,
+  placeholder = false,
   ...props
 }: RippleButtonProps) {
   return (
     <RippleButtonPrimitive
       className={cn(
-        buttonVariants({ variant, size, className }),
+        buttonVariants({
+          variant,
+          size,
+          radius,
+          appearance,
+          mode,
+          autoHeight,
+          placeholder,
+          underlined,
+          underline,
+          className,
+        }),
+        asChild && props.disabled && 'pointer-events-none opacity-50',
         rippleButtonVariants[variant as keyof typeof rippleButtonVariants],
       )}
+      {...(selected && { 'data-state': 'open' })}
       {...props}
     />
   );
