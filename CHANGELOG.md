@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.5.0](///compare/2.4.1...2.5.0) (2025-12-11)
+
+### Features
+
+* **UserManage:** 完成用户管理模块的功能 acfc755
+
+### Performance Improvements
+
+* 新增 DataGrid 组件，优化组件 12f0dd2
+* **UserAvatar:** 优化头像显示 a8bb3de
+
 ## [2.4.1](///compare/2.4.0...2.4.1) (2025-12-09)
 
 ### Features
