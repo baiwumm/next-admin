@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 11:28:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-11 16:55:33
+ * @LastEditTime: 2025-12-11 17:37:49
  * @Description: 用户管理
  */
 "use client"
@@ -91,7 +91,7 @@ const UserManage: FC = () => {
         headerTitle: tC('index'),
         skeleton: (
           <div className="flex justify-center items-center">
-            <Skeleton className="size-6 rounded-full" />
+            <Skeleton className="size-6.5 rounded-full" />
           </div>
         ),
       },
@@ -121,12 +121,9 @@ const UserManage: FC = () => {
         headerClassName: 'text-center',
         headerTitle: t("user-info"),
         skeleton: (
-          <div className="flex items-center gap-3 h-[41px]">
+          <div className="flex items-center gap-3">
             <Skeleton className="size-8 rounded-full" />
-            <div className="space-y-1">
-              <Skeleton className="h-5 w-24" />
-              <Skeleton className="h-4 w-16" />
-            </div>
+            <Skeleton className="h-5 w-24" />
           </div>
         ),
       },
