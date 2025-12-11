@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 11:28:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-11 16:43:37
+ * @LastEditTime: 2025-12-11 16:55:33
  * @Description: 用户管理
  */
 "use client"
@@ -63,7 +63,7 @@ const UserManage: FC = () => {
     pageSize: 10,
   });
   // 排序
-  const [sorting, setSorting] = useState<SortingState>([{ id: 'created_at', desc: true }]);
+  const [sorting, setSorting] = useState<SortingState>([]);
   // 受控列
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     email_confirmed_at: false
@@ -103,17 +103,16 @@ const UserManage: FC = () => {
         const user = row.original;
         const name = (user.user_metadata.name || user?.user_metadata.user_name || tLayout('anonymous-user')) as string;
         return (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Avatar className="size-8">
               <AvatarImage src={user?.user_metadata.avatar_url as string} alt={name} />
-              <AvatarFallback className="text-primary bg-primary/10">
-                <User />
+              <AvatarFallback className="text-primary/65 bg-primary/10">
+                <User size={20} />
               </AvatarFallback>
               <AvatarIndicator className="-end-2 -bottom-2">
                 <AvatarStatus variant='online' className="size-2.5" />
               </AvatarIndicator>
             </Avatar>
-            {/* <div className="font-medium text-foreground">{name}</div> */}
             <Badge variant="secondary">{name}</Badge>
           </div>
         );

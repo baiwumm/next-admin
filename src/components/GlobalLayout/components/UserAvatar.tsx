@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-01 09:02:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 17:43:14
+ * @LastEditTime: 2025-12-11 16:57:07
  * @Description: 用户头像
  */
 import { useRouter } from '@bprogress/next/app';
@@ -91,8 +91,8 @@ const UserAvatar: FC = () => {
                 alt="Online User"
                 src={avatar}
               />
-              <AvatarFallback className="text-primary bg-primary/10">
-                <User />
+              <AvatarFallback className="text-primary/65 bg-primary/10">
+                <User size={20} />
               </AvatarFallback>
               <AvatarIndicator className="-end-1.5 -bottom-1.5">
                 <AvatarStatus variant="online" className="size-2.5" />
@@ -118,8 +118,8 @@ const UserAvatar: FC = () => {
                   alt="Online User"
                   src={avatar}
                 />
-                <AvatarFallback className="text-primary bg-primary/10">
-                  <User />
+                <AvatarFallback className="text-primary/65 bg-primary/10">
+                  <User size={20} />
                 </AvatarFallback>
               </Avatar>
               <div className="flex flex-col space-y-2 min-w-0">
