@@ -39,7 +39,7 @@
       "edit":"编辑菜单"
     },
     "UserManage":{
-      "userInfo":"用户信息",
+      "user-info":"用户信息",
       "email":"邮箱地址",
       "provider":"认证方式",
       "last_sign_in_at":"上次登录时间",
@@ -104,10 +104,12 @@
     "empty":"暂无数据",
     "copy":"复制",
     "index":"序号",
-    "total":"共 {total} 条数据",
-    "pageSize":"{pageSize}条/页",
+    "total":"第 {from} - {to} 条，共 {total} 条",
+    "page-size":"{pageSize}条/页",
+    "page-size-tip":"每页条数",
     "request-error":"加载失败",
-    "warm-tips":"温馨提示"
+    "warm-tips":"温馨提示",
+    "refresh":"刷新"
   },
   "Enums":{
     "theme-mode":{

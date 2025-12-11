@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:51:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:33:40
+ * @LastEditTime: 2025-12-11 15:45:29
  * @Description: 顶栏布局
  */
 "use client";
@@ -36,7 +36,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, mainMinH }) => {
   const isSidebarLayout = layoutMode === LAYOUT_MODE.SIDEBAR;
   return (
     <div className="w-full">
-      <div className={cn('top-0 z-10 backdrop-blur-lg bg-white/80 dark:bg-black/80', fixedHeader ? 'sticky' : 'static')}>
+      <div className={cn('top-0 z-20 backdrop-blur-lg bg-white/80 dark:bg-black/80', fixedHeader ? 'sticky' : 'static')}>
         <NavHeader />
         <AnimatePresence mode="wait">
           {showTabs ? (

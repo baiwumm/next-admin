@@ -1,4 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { ReactNode } from 'react';
 
 import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Skeleton, useDataGrid } from '@/components/ui';
@@ -12,7 +13,6 @@ interface DataGridPaginationProps {
   sizesSkeleton?: ReactNode;
   more?: boolean;
   moreLimit?: number;
-  info?: string;
   infoSkeleton?: ReactNode;
   className?: string;
   rowsPerPageLabel?: string;
@@ -23,6 +23,7 @@ interface DataGridPaginationProps {
 
 function DataGridPagination(props: DataGridPaginationProps) {
   const { table, recordCount, isLoading } = useDataGrid();
+  const t = useTranslations('Common');
 
   const defaultProps: Partial<DataGridPaginationProps> = {
     sizes: [5, 10, 25, 50, 100],
@@ -31,9 +32,8 @@ function DataGridPagination(props: DataGridPaginationProps) {
     sizesSkeleton: <Skeleton className="h-8 w-44" />,
     moreLimit: 5,
     more: false,
-    info: '{from} - {to} of {count}',
     infoSkeleton: <Skeleton className="h-8 w-60" />,
-    rowsPerPageLabel: 'Rows per page',
+    rowsPerPageLabel: t('page-size-tip'),
     previousPageLabel: 'Go to previous page',
     nextPageLabel: 'Go to next page',
     ellipsisText: '...',
@@ -50,12 +50,7 @@ function DataGridPagination(props: DataGridPaginationProps) {
   const pageCount = table.getPageCount();
 
   // Replace placeholders in paginationInfo
-  const paginationInfo = mergedProps?.info
-    ? mergedProps.info
-      .replace('{from}', from.toString())
-      .replace('{to}', to.toString())
-      .replace('{count}', recordCount.toString())
-    : `${from} - ${to} of ${recordCount}`;
+  const paginationInfo = t('total', { from, to, total: recordCount });
 
   // Pagination limit logic
   const paginationMoreLimit = mergedProps?.moreLimit || 5;
@@ -134,7 +129,8 @@ function DataGridPagination(props: DataGridPaginationProps) {
         mergedProps?.className,
       )}
     >
-      <div className="flex flex-wrap items-center space-x-2.5 pb-2.5 sm:pb-0 order-2 sm:order-1">
+      {/* 左侧每页条数 */}
+      <div className="flex flex-wrap items-center gap-1 sm:order-0 order-2">
         {isLoading ? (
           mergedProps?.sizesSkeleton
         ) : (
@@ -154,7 +150,7 @@ function DataGridPagination(props: DataGridPaginationProps) {
               <SelectContent side="top" className="min-w-[50px]">
                 {mergedProps?.sizes?.map((size: number) => (
                   <SelectItem key={size} value={`${size}`}>
-                    {size}
+                    {t("page-size", { pageSize: size })}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -162,47 +158,49 @@ function DataGridPagination(props: DataGridPaginationProps) {
           </>
         )}
       </div>
-      <div className="flex flex-col sm:flex-row justify-center sm:justify-end items-center gap-2.5 pt-2.5 sm:pt-0 order-1 sm:order-2">
+      {/* 中间分页 */}
+      <div className="flex items-center gap-1 sm:order-0 order-1">
         {isLoading ? (
           mergedProps?.infoSkeleton
-        ) : (
+        ) : pageCount > 1 ? (
           <>
-            <div className="text-sm text-muted-foreground text-nowrap order-2 sm:order-1">{paginationInfo}</div>
-            {pageCount > 1 && (
-              <div className="flex items-center space-x-1 order-1 sm:order-2">
-                <Button
-                  size="sm"
-                  mode="icon"
-                  variant="ghost"
-                  className={btnArrowClasses}
-                  onClick={() => table.previousPage()}
-                  disabled={!table.getCanPreviousPage()}
-                >
-                  <span className="sr-only">{mergedProps.previousPageLabel}</span>
-                  <ChevronLeftIcon className="size-4" />
-                </Button>
+            <Button
+              size="sm"
+              mode="icon"
+              variant="ghost"
+              className={btnArrowClasses}
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <span className="sr-only">{mergedProps.previousPageLabel}</span>
+              <ChevronLeftIcon className="size-4" />
+            </Button>
 
-                {renderEllipsisPrevButton()}
+            {renderEllipsisPrevButton()}
 
-                {renderPageButtons()}
+            {renderPageButtons()}
 
-                {renderEllipsisNextButton()}
+            {renderEllipsisNextButton()}
 
-                <Button
-                  size="sm"
-                  mode="icon"
-                  variant="ghost"
-                  className={btnArrowClasses}
-                  onClick={() => table.nextPage()}
-                  disabled={!table.getCanNextPage()}
-                >
-                  <span className="sr-only">{mergedProps.nextPageLabel}</span>
-                  <ChevronRightIcon className="size-4" />
-                </Button>
-              </div>
-            )}
+            <Button
+              size="sm"
+              mode="icon"
+              variant="ghost"
+              className={btnArrowClasses}
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              <span className="sr-only">{mergedProps.nextPageLabel}</span>
+              <ChevronRightIcon className="size-4" />
+            </Button>
           </>
-        )}
+        ) : null}
+      </div>
+      {/* 右侧总条数 */}
+      <div className="text-sm text-muted-foreground text-nowrap sm:order-0 order-3">
+        {isLoading ? (
+          mergedProps?.infoSkeleton
+        ) : paginationInfo}
       </div>
     </div>
   );

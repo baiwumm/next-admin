@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:37:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:24:00
+ * @LastEditTime: 2025-12-11 09:18:55
  * @Description: 全局布局
  */
 "use client"
-import { AnimatePresence, motion } from 'motion/react';
 import { type FC, type ReactNode, useMemo } from 'react';
 import { useShallow } from "zustand/react/shallow";
 
@@ -38,25 +37,16 @@ const GlobalLayout: FC<GlobalLayoutProps> = ({ children }) => {
     }
     return result;
   }, [showTabs, showFooter, navHeight, tabsHeight, footerHeight]);
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={layoutMode}
-        initial={{ opacity: 0, filter: 'blur(10px)' }}
-        animate={{ opacity: 1, filter: 'blur(0)' }}
-        exit={{ opacity: 0, filter: 'blur(10px)' }}
-        transition={{ duration: .3 }}
-      >
-        <SidebarProvider>
-          {/* 默认侧栏布局 */}
-          {layoutMode === LAYOUT_MODE.TOPBAR ? (
-            <TopbarLayout mainMinH={mainMinH}>{children}</TopbarLayout>
-          ) : (
-            <SidebarLayout mainMinH={mainMinH}>{children}</SidebarLayout>
-          )}
-        </SidebarProvider>
-      </motion.div>
-    </AnimatePresence>
+    <SidebarProvider>
+      {/* 默认侧栏布局 */}
+      {layoutMode === LAYOUT_MODE.TOPBAR ? (
+        <TopbarLayout mainMinH={mainMinH}>{children}</TopbarLayout>
+      ) : (
+        <SidebarLayout mainMinH={mainMinH}>{children}</SidebarLayout>
+      )}
+    </SidebarProvider>
   )
 }
 export default GlobalLayout;

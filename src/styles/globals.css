@@ -69,6 +69,20 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--input);
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--input) transparent;
+  }
 }
 
 html,
@@ -85,24 +99,4 @@ html.color-grey {
 html.color-invert {
   filter: invert(80%);
   transition: filter 0.3s ease;
-}
-
-/* 修改滚动条样式 */
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--border);
-  border-radius: 2.5px;
-  transition: .35s background-color;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background-color: var(--border);
-}
-
-*::-webkit-scrollbar-track {
-  background-color: transparent;
 }
