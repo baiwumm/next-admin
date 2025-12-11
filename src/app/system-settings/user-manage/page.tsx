@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 11:28:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-11 16:01:30
+ * @LastEditTime: 2025-12-11 16:43:37
  * @Description: 用户管理
  */
 "use client"
@@ -37,6 +37,7 @@ import {
   CardTable,
   CardTitle,
   CardToolbar,
+  CopyButton,
   DataGrid,
   DataGridColumnHeader,
   DataGridColumnVisibility,
@@ -112,10 +113,8 @@ const UserManage: FC = () => {
                 <AvatarStatus variant='online' className="size-2.5" />
               </AvatarIndicator>
             </Avatar>
-            <div className="space-y-px">
-              <div className="font-medium text-foreground">{name}</div>
-              <div className="text-muted-foreground">{user?.email}</div>
-            </div>
+            {/* <div className="font-medium text-foreground">{name}</div> */}
+            <Badge variant="secondary">{name}</Badge>
           </div>
         );
       },
@@ -136,11 +135,15 @@ const UserManage: FC = () => {
     {
       accessorKey: "email",
       header: t("email"),
-      cell: ({ row }) => (
-        <Badge variant="outline" shape="circle">
-          {row.getValue("email")}
-        </Badge>
-      ),
+      cell: ({ row }) => {
+        const email = row.getValue("email") as string;
+        return (
+          <Badge variant="outline" shape="circle" size="lg">
+            {email}
+            <CopyButton content={email} size='xs' variant="dim" />
+          </Badge>
+        )
+      },
       meta: {
         headerClassName: 'text-center',
         cellClassName: 'text-center',

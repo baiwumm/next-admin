@@ -103,6 +103,7 @@ export {
   TableHeader,
   TableRow,
 } from './table'
+export { CopyButton, type CopyButtonProps } from '@/components/animate-ui/components/buttons/copy';
 export {
   Accordion,
   AccordionContent,

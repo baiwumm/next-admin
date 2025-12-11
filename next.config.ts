@@ -6,7 +6,8 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
+  cacheComponents: true
 };
 
 export default withNextIntl(nextConfig);
