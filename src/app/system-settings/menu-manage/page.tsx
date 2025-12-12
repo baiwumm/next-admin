@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:10:25
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 14:48:58
+ * @LastEditTime: 2025-12-12 18:12:53
  * @Description: 菜单管理
  */
 "use client"
@@ -19,6 +19,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, useMemo, useState } from 'react';
 
 import { createMenuColumns } from './components/columns'
+import FormDialog from './components/FormDialog';
 import TopContent from './components/TopContent';
 
 import {
@@ -46,6 +47,7 @@ const MenuManage: FC = () => {
     left: ['label'],
     right: ['actions']
   })
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   /**
    * @description: 请求菜单列表
@@ -78,37 +80,42 @@ const MenuManage: FC = () => {
     onColumnPinningChange: setColumnPinning,
   })
   return (
-    <DataGrid
-      table={table}
-      recordCount={data.length || 0}
-      isLoading={loading}
-      loadingMode='spinner'
-      tableLayout={{
-        columnsPinnable: true,
-        columnsVisibility: true,
-        cellBorder: true,
-        headerSticky: true,
-        width: 'auto',
-      }}
-    >
-      <Card className="rounded-lg">
-        {/* 顶部区域 */}
-        <TopContent
-          table={table}
-          pathValue={pathValue}
-          setPathValue={setPathValue}
-          loading={loading}
-          refresh={refresh}
-        />
-        {/* 表格区域 */}
-        <CardTable>
-          <ScrollArea className="max-h-[calc(100vh-320px)] max-w-full overflow-x-scroll">
-            <DataGridTable />
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
-        </CardTable>
-      </Card>
-    </DataGrid>
+    <>
+      <DataGrid
+        table={table}
+        recordCount={data.length || 0}
+        isLoading={loading}
+        loadingMode='spinner'
+        tableLayout={{
+          columnsPinnable: true,
+          columnsVisibility: true,
+          cellBorder: true,
+          headerSticky: true,
+          width: 'auto',
+        }}
+      >
+        <Card className="rounded-lg">
+          {/* 顶部区域 */}
+          <TopContent
+            table={table}
+            pathValue={pathValue}
+            setPathValue={setPathValue}
+            loading={loading}
+            refresh={refresh}
+            setDialogOpen={setDialogOpen}
+          />
+          {/* 表格区域 */}
+          <CardTable>
+            <ScrollArea className="max-h-[calc(100vh-320px)] max-w-full overflow-x-scroll">
+              <DataGridTable />
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+          </CardTable>
+        </Card>
+      </DataGrid>
+      {/* 表单弹窗 */}
+      <FormDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
+    </>
   )
 }
 export default MenuManage;

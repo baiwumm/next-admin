@@ -1,6 +1,7 @@
 export { Alert, AlertContent, AlertDescription, AlertIcon, AlertTitle, AlertToolbar } from './alert';
 export { Avatar, AvatarFallback, AvatarImage, AvatarIndicator, AvatarStatus, avatarStatusVariants } from "./avatar";
 export { Badge, BadgeButton, BadgeDot, badgeVariants } from './badge'
+export { NumberField, NumberFieldScrubArea } from './base-number-field';
 export {
   Breadcrumb,
   BreadcrumbEllipsis,

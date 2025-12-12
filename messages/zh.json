@@ -115,7 +115,9 @@
     "pin-to-left":"固定左侧",
     "pin-to-right":"固定右侧",
     "move-to-left":"向左移动",
-    "move-to-right":"向右移动"
+    "move-to-right":"向右移动",
+    "not-empty":"不能为空",
+    "max-length": "长度不能超过 {max} 个字符"
   },
   "Enums":{
     "theme-mode":{

@@ -115,7 +115,9 @@
     "pin-to-left":"Pin to Left",
     "pin-to-right":"Pin to Right",
     "move-to-left":"Move to Left",
-    "move-to-right":"Move to Right"
+    "move-to-right":"Move to Right",
+    "not-empty":"It cannot be empty",
+    "max-length": "The length cannot exceed {max} characters"
   },
   "Enums":{
     "theme-mode":{

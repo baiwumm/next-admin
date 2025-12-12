@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-12 13:42:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 15:00:02
+ * @LastEditTime: 2025-12-12 17:37:02
  * @Description: 列配置项
  */
 
@@ -12,7 +12,7 @@ import { Check, ChevronDown, ChevronRight, SquarePen, Trash2, X } from 'lucide-r
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { type Messages } from 'next-intl';
 
-import { Badge, Button, DataGridColumnHeader, Switch } from '@/components/ui';
+import { Badge, Button, DataGridColumnHeader } from '@/components/ui';
 
 // 定义依赖项的类型
 type ColumnsProps = {
@@ -98,7 +98,7 @@ export const createMenuColumns = ({ t, tRoute, tC }: ColumnsProps): ColumnDef<Sy
         </Button>
       ),
       meta: {
-        headerClassName: 'text-center',
+        headerClassName: 'text-center min-w-25',
         cellClassName: 'text-center',
         headerTitle: t("path")
       },
@@ -112,7 +112,7 @@ export const createMenuColumns = ({ t, tRoute, tC }: ColumnsProps): ColumnDef<Sy
         </div>
       ),
       meta: {
-        headerClassName: 'text-center min-w-30',
+        headerClassName: 'text-center min-w-35',
         headerTitle: t("show_in_menu")
       },
     },
@@ -128,7 +128,7 @@ export const createMenuColumns = ({ t, tRoute, tC }: ColumnsProps): ColumnDef<Sy
         ) : '--'
       },
       meta: {
-        headerClassName: 'text-center',
+        headerClassName: 'text-center min-w-35',
         cellClassName: 'text-center',
         headerTitle: t("redirect")
       },

@@ -27,9 +27,10 @@ type TopContentProps = {
   setPathValue: (value: string) => void;
   loading: boolean;
   refresh: VoidFunction;
+  setDialogOpen: (open: boolean) => void;
 }
 
-const TopContent: FC<TopContentProps> = ({ table, pathValue = '', setPathValue, loading = false, refresh }) => {
+const TopContent: FC<TopContentProps> = ({ table, pathValue = '', setPathValue, loading = false, refresh, setDialogOpen }) => {
   const t = useTranslations('Pages.MenuManage');
   const tC = useTranslations('Common');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -62,7 +63,7 @@ const TopContent: FC<TopContentProps> = ({ table, pathValue = '', setPathValue, 
           {loading ? <Spinner variant='circle' /> : <Search />}
           {tC('search')}
         </Button>
-        <Button size='sm'>
+        <Button size='sm' onClick={() => setDialogOpen(true)}>
           <Plus />
           {tC('add')}
         </Button>
