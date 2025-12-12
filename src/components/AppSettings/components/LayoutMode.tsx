@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 17:14:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-11 09:23:19
+ * @LastEditTime: 2025-12-12 10:32:39
  * @Description: 布局模式
  */
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -24,6 +24,7 @@ const LayoutMode: FC = () => {
 
   // 模式切换
   const handleLayoutMode = useCallback(async (mode: typeof LAYOUT_MODE.valueType) => {
+    if (mode === layoutMode) return;
     if ((!document.startViewTransition)) {
       setLayoutMode(mode);
       return;
@@ -40,7 +41,7 @@ const LayoutMode: FC = () => {
           pseudoElement: '::view-transition-new(root)',
         },
       )
-  }, [setLayoutMode, fromClip, toClip])
+  }, [layoutMode, setLayoutMode, fromClip, toClip])
   return (
     <div className="grid grid-cols-2 gap-2">
       {LAYOUT_MODE.items.map(({ value, raw }) => (

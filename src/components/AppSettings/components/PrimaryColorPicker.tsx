@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-03 17:32:00
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-06 12:14:41
+ * @LastEditTime: 2025-12-12 10:31:34
  * @Description: 主题色切换
  */
 import { type FC, useCallback } from "react";
@@ -21,6 +21,9 @@ const PrimaryColorPicker: FC = () => {
 
   // 点击颜色切换
   const onChangeColor = useCallback(async (color: typeof THEME_PRIMARY_COLOR.valueType) => {
+    if (primaryColor === color) {
+      return;
+    }
     if ((!document.startViewTransition)) {
       setPrimaryColor(color);
       return;
@@ -37,7 +40,7 @@ const PrimaryColorPicker: FC = () => {
           pseudoElement: '::view-transition-new(root)',
         },
       )
-  }, [setPrimaryColor, fromClip, toClip])
+  }, [primaryColor, setPrimaryColor, fromClip, toClip])
   return (
     <>
       <div className="grid grid-cols-3 gap-2">
