@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 11:28:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-11 17:37:49
+ * @LastEditTime: 2025-12-12 08:40:00
  * @Description: 用户管理
  */
 "use client"
@@ -291,7 +291,7 @@ const UserManage: FC = () => {
       }}
     >
       <Card className="rounded-lg">
-        <CardHeader className="py-3">
+        <CardHeader>
           <CardTitle>{tRoute('user-manage')}</CardTitle>
           <CardToolbar>
             <Button onClick={refresh} size='sm'>

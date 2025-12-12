@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 16:27:18
+ * @LastEditTime: 2025-12-12 08:38:21
  * @Description: 登录页面
  */
 "use client";
@@ -31,7 +31,6 @@ import {
   FormMessage,
   Input,
   InputWrapper,
-  Separator,
   Spinner,
 } from "@/components/ui"
 import { OAUTH_PROVIDERS } from '@/enums';
@@ -146,7 +145,7 @@ export default function Login() {
   }
   return (
     <div className="w-full max-w-md p-4">
-      <Card className="gap-3">
+      <Card>
         <CardHeader>
           <div className="flex items-center justify-center gap-3">
             <Image
@@ -162,7 +161,6 @@ export default function Login() {
             </div>
           </div>
         </CardHeader>
-        <Separator />
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -231,11 +229,6 @@ export default function Login() {
             )}
           </div>
         </CardContent>
-        <div className="flex items-center gap-4">
-          <Separator className="flex-1" />
-          <p className="text-tiny text-default-500 shrink-0">OR</p>
-          <Separator className="flex-1" />
-        </div>
         <CardFooter className="flex-col gap-2">
           <div className="flex w-full flex-col gap-3">
             {OAUTH_PROVIDERS.values.map(auth => (
