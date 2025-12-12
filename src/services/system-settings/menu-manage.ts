@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 11:35:19
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-11-04 11:37:38
+ * @LastEditTime: 2025-12-12 10:40:17
  * @Description: 菜单管理模块
  */
 import { httpRequest } from '@/lib/request';
@@ -12,7 +12,7 @@ const BASE_URL = '/system-settings/menu-manage';
 /**
  * @description: 获取菜单列表
  */
-export const getMenuList = (params?: Partial<Pick<System.Menu, 'path'>>) => {
+export const getMenuList = (params?: System.SearchMenuParams) => {
   return httpRequest.get<System.Menu[]>(BASE_URL, params);
 };
 

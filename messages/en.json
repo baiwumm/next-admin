@@ -31,9 +31,9 @@
     },
     "MenuManage":{
       "label":"Menu Name",
-      "desc":"Menu Desc",
       "path":"Route Path",
       "icon":"Menu Icon",
+      "hide_in_menu":"Hide in Menu",
       "redirect":"Redirect Path",
       "add":"Add Menu",
       "edit":"Edit Menu"
@@ -109,7 +109,13 @@
     "page-size-tip":"Rows per page",
     "request-error":"Request Error",
     "warm-tips":"Warm Tips",
-    "refresh":"Refresh"
+    "refresh":"Refresh",
+    "asc":"Asc",
+    "desc":"Desc",
+    "pin-to-left":"Pin to Left",
+    "pin-to-right":"Pin to Right",
+    "move-to-left":"Move to Left",
+    "move-to-right":"Move to Right"
   },
   "Enums":{
     "theme-mode":{

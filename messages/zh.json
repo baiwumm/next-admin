@@ -31,9 +31,9 @@
     },
     "MenuManage":{
       "label":"菜单名称",
-      "desc":"菜单描述",
       "path":"路由地址",
       "icon":"菜单图标",
+      "hide_in_menu":"隐藏菜单",
       "redirect":"重定向地址",
       "add":"新增菜单",
       "edit":"编辑菜单"
@@ -109,7 +109,13 @@
     "page-size-tip":"每页条数",
     "request-error":"加载失败",
     "warm-tips":"温馨提示",
-    "refresh":"刷新"
+    "refresh":"刷新",
+    "asc":"升序",
+    "desc":"降序",
+    "pin-to-left":"固定左侧",
+    "pin-to-right":"固定右侧",
+    "move-to-left":"向左移动",
+    "move-to-right":"向右移动"
   },
   "Enums":{
     "theme-mode":{

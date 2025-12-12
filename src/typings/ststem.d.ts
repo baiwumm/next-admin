@@ -6,7 +6,7 @@ declare namespace System {
     label: keyof import('next-intl').Messages['Route'];
     path: string;
     icon: import('lucide-react/dynamic').IconName;
-    desc?: keyof import('next-intl').Messages['Route'] | null;
+    hide_in_menu: boolean;
     redirect?: string;
     sort: number;
     parent_id?: string | null;
@@ -14,10 +14,13 @@ declare namespace System {
   } & App.ColumnTime;
 
   /** @description: 保存参数 */
-  type MenuSaveParams = Partial<Pick<Menu, 'id' | 'parent_id' | 'desc' | 'redirect'>> &
-    Pick<Menu, 'label' | 'path' | 'icon' | 'sort'> & {
+  type MenuSaveParams = Partial<Pick<Menu, 'id' | 'parent_id' | 'redirect'>> &
+    Pick<Menu, 'label' | 'path' | 'icon' | 'sort' | 'hide_in_menu'> & {
       user_id?: string;
     };
+
+  /** @description: 菜单查询参数 */
+  type SearchMenuParams = Partial<Pick<System.Menu, 'path'>>
 
   /** @description: 用户管理 */
   type User = {
