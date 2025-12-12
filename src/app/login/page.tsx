@@ -2,14 +2,14 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:26:18
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 08:38:21
+ * @LastEditTime: 2025-12-12 16:51:11
  * @Description: 登录页面
  */
 "use client";
 import { useRouter } from '@bprogress/next/app';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { track } from '@vercel/analytics';
-import { Check, Eye, EyeOff, Lock, Mail } from 'lucide-react'
+import { Check, Eye, EyeOff, Lock, Mail, OctagonAlert, TriangleAlert } from 'lucide-react'
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -18,6 +18,11 @@ import { toast } from 'sonner';
 import { z } from "zod"
 
 import {
+  Alert,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Button,
   Card,
   CardContent,
@@ -31,7 +36,7 @@ import {
   FormMessage,
   Input,
   InputWrapper,
-  Spinner,
+  Spinner
 } from "@/components/ui"
 import { OAUTH_PROVIDERS } from '@/enums';
 import { GithubIcon, GoogleIcon } from '@/lib/icons'
@@ -103,8 +108,7 @@ export default function Login() {
           return t('login-success');
         }
       },
-      error: (err: { message: string }) =>
-        `${t(`${action}-error`)}：${err.message}`,
+      error: (err: { message: string }) => `${t(`${action}-error`)}：${err.message}`,
       // ✅ 使用 finally 确保 loading 状态正确关闭
       finally: () => {
         setEmailLoading(false);
@@ -121,7 +125,36 @@ export default function Login() {
     track('Provider', { provider });
 
     // 加一个短提示，避免跳转等待时间过长无反馈
-    toast.info(t('login-in'), { duration: 2000 });
+    toast.custom(
+      (id) => (
+        <Alert appearance="outline" onClose={() => toast.dismiss(id)}>
+          <AlertIcon>
+            <TriangleAlert />
+          </AlertIcon>
+          <AlertTitle>{t('login-in')}</AlertTitle>
+        </Alert>
+      ),
+      {
+        duration: 2000,
+      },
+    )
+
+    // 错误提示
+    const errorToast = (msg: string) => {
+      toast.custom(
+        (id) => (
+          <Alert variant="destructive" appearance="outline" onClose={() => toast.dismiss(id)}>
+            <AlertIcon>
+              <OctagonAlert />
+            </AlertIcon>
+            <AlertContent>
+              <AlertTitle>{t('login-error')}</AlertTitle>
+              <AlertDescription>{msg}</AlertDescription>
+            </AlertContent>
+          </Alert>
+        )
+      )
+    }
 
     try {
       const { error } = await supabase.auth.signInWithOAuth({
@@ -131,15 +164,11 @@ export default function Login() {
         },
       })
       if (error) {
-        toast.error(t('login-error'), {
-          description: error.message
-        })
+        errorToast(error.message)
         setOauthLoading(false);
       }
     } catch (err) {
-      toast.error(t('login-error'), {
-        description: (err as Error).message
-      });
+      errorToast((err as Error).message)
       setOauthLoading(false);
     }
   }
