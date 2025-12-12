@@ -33,7 +33,7 @@
       "label":"Menu Name",
       "path":"Route Path",
       "icon":"Menu Icon",
-      "hide_in_menu":"Hide in Menu",
+      "show_in_menu":"Show in Menu",
       "redirect":"Redirect Path",
       "add":"Add Menu",
       "edit":"Edit Menu"

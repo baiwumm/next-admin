@@ -6,7 +6,7 @@ declare namespace System {
     label: keyof import('next-intl').Messages['Route'];
     path: string;
     icon: import('lucide-react/dynamic').IconName;
-    hide_in_menu: boolean;
+    show_in_menu: boolean;
     redirect?: string;
     sort: number;
     parent_id?: string | null;
@@ -15,7 +15,7 @@ declare namespace System {
 
   /** @description: 保存参数 */
   type MenuSaveParams = Partial<Pick<Menu, 'id' | 'parent_id' | 'redirect'>> &
-    Pick<Menu, 'label' | 'path' | 'icon' | 'sort' | 'hide_in_menu'> & {
+    Pick<Menu, 'label' | 'path' | 'icon' | 'sort' | 'show_in_menu'> & {
       user_id?: string;
     };
 

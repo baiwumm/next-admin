@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-12 13:42:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 14:38:24
+ * @LastEditTime: 2025-12-12 15:00:02
  * @Description: 列配置项
  */
 
@@ -104,23 +104,16 @@ export const createMenuColumns = ({ t, tRoute, tC }: ColumnsProps): ColumnDef<Sy
       },
     },
     {
-      accessorKey: "hide_in_menu",
-      header: t("hide_in_menu"),
-      cell: ({ row }) => {
-        const hide_in_menu = row.getValue("hide_in_menu") as System.Menu['hide_in_menu'];
-        return (
-          <div className="flex justify-center items-center">
-            <Switch
-              thumbIcon={hide_in_menu ? <Check className="text-black" /> : <X className="text-black" />}
-              checked={hide_in_menu}
-              disabled
-            />
-          </div>
-        )
-      },
+      accessorKey: "show_in_menu",
+      header: t("show_in_menu"),
+      cell: ({ row }) => (
+        <div className="flex items-center justify-center">
+          {row.getValue("show_in_menu") ? <Check className="size-4 text-green-600" /> : <X className="size-4 text-red-600" />}
+        </div>
+      ),
       meta: {
         headerClassName: 'text-center min-w-30',
-        headerTitle: t("hide_in_menu")
+        headerTitle: t("show_in_menu")
       },
     },
     {

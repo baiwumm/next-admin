@@ -33,7 +33,7 @@
       "label":"菜单名称",
       "path":"路由地址",
       "icon":"菜单图标",
-      "hide_in_menu":"隐藏菜单",
+      "show_in_menu":"在菜单中显示",
       "redirect":"重定向地址",
       "add":"新增菜单",
       "edit":"编辑菜单"
