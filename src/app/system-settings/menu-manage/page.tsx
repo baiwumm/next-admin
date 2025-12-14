@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:10:25
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 18:12:53
+ * @LastEditTime: 2025-12-14 12:11:20
  * @Description: 菜单管理
  */
 "use client"
@@ -19,6 +19,7 @@ import { useTranslations } from 'next-intl';
 import { type FC, useMemo, useState } from 'react';
 
 import { createMenuColumns } from './components/columns'
+import DeleteAlertDialog from './components/DeleteAlertDialog';
 import FormDialog from './components/FormDialog';
 import TopContent from './components/TopContent';
 
@@ -48,6 +49,9 @@ const MenuManage: FC = () => {
     right: ['actions']
   })
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [delDialogOpen, setDelDialogOpen] = useState(false);
+  // 当前行数据
+  const [currentRow, setCurrentRow] = useState<System.Menu | null>(null);
 
   /**
    * @description: 请求菜单列表
@@ -59,8 +63,20 @@ const MenuManage: FC = () => {
     run({ path: pathValue })
   }
 
+  // 编辑操作
+  const handleEdit = (row: System.Menu) => {
+    setCurrentRow(row);
+    setDialogOpen(true);
+  }
+
+  // 删除操作
+  const handleDel = (row: System.Menu) => {
+    setCurrentRow(row);
+    setDelDialogOpen(true);
+  }
+
   // 列配置项
-  const columns = useMemo<ColumnDef<System.Menu>[]>(() => createMenuColumns({ t, tRoute, tC }),
+  const columns = useMemo<ColumnDef<System.Menu>[]>(() => createMenuColumns({ t, tRoute, tC, handleEdit, handleDel }),
     [t, tRoute, tC],
   );
 
@@ -79,6 +95,7 @@ const MenuManage: FC = () => {
     getSubRows: (row: System.Menu) => row.children,
     onColumnPinningChange: setColumnPinning,
   })
+
   return (
     <>
       <DataGrid
@@ -114,7 +131,22 @@ const MenuManage: FC = () => {
         </Card>
       </DataGrid>
       {/* 表单弹窗 */}
-      <FormDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
+      <FormDialog
+        dialogOpen={dialogOpen}
+        setDialogOpen={setDialogOpen}
+        currentRow={currentRow}
+        setCurrentRow={setCurrentRow}
+        refresh={refresh}
+        menuList={data || []}
+      />
+      {/* 删除确认 */}
+      <DeleteAlertDialog
+        delDialogOpen={delDialogOpen}
+        setDelDialogOpen={setDelDialogOpen}
+        currentRow={currentRow}
+        setCurrentRow={setCurrentRow}
+        refresh={refresh}
+      />
     </>
   )
 }

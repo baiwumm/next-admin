@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-12 10:07:12
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 09:13:17
+ * @LastEditTime: 2025-12-14 13:16:57
  * @Description: 用户管理模块
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -32,11 +32,11 @@ export async function GET(request: NextRequest) {
 
     // 执行失败
     if (error) {
-      return responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL)
+      return responseMessage(null, error.message, RESPONSE.FAIL)
     }
 
     return NextResponse.json(responseMessage({ records: users, total, current: page, size: perPage }));
-  } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
+  } catch (err) {
+    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
 }

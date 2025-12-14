@@ -32,17 +32,17 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     if (error) {
       // 判断是否违反唯一性约束（PostgreSQL 错误代码 23505）
       if (error.code === '23505') {
-        return NextResponse.json(responseMessage(null, '路由地址已存在!', -1));
+        return NextResponse.json(responseMessage(null, '路由地址已存在！', -1));
       }
 
       // 其他错误
-      return NextResponse.json(responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL));
+      return NextResponse.json(responseMessage(null, error.message, RESPONSE.FAIL));
     }
 
     // 返回更新后的菜单数据
     return NextResponse.json(responseMessage(data ? data[0] : data));
   } catch (err) {
-    return NextResponse.json(responseMessage(err, RESPONSE.label(1), -1));
+    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
 }
 
@@ -68,7 +68,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
 
     // 如果有子菜单，不能删除
     if (children.length > 0) {
-      return NextResponse.json(responseMessage(null, '该菜单有子菜单，不能删除!', -1));
+      return NextResponse.json(responseMessage(null, '该菜单有子菜单，不能删除！', -1));
     }
 
     // 删除菜单
@@ -78,12 +78,12 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
       .eq('id', id); // 根据 ID 删除菜单
 
     if (error) {
-      return NextResponse.json(responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL));
+      return NextResponse.json(responseMessage(null, error.message, RESPONSE.FAIL));
     }
 
     // 返回成功响应
     return NextResponse.json(responseMessage(data ? data[0] : data));
-  } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
+  } catch (err) {
+    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
 }

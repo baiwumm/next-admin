@@ -7,7 +7,7 @@ declare namespace System {
     path: string;
     icon: import('lucide-react/dynamic').IconName;
     show_in_menu: boolean;
-    redirect?: string;
+    redirect?: string | null;
     sort: number;
     parent_id?: string | null;
     children: Menu[];

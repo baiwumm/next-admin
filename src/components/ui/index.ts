@@ -59,7 +59,16 @@ export {
   EmptyMedia,
   EmptyTitle,
 } from './empty'
-export { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./form";
+export {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "./form";
 export { Input, InputAddon, inputAddonVariants, InputGroup, inputVariants, InputWrapper } from "./input";
 export {
   InputGroupAddon,

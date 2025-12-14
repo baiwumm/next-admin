@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-04 10:19:02
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-03 09:10:38
+ * @LastEditTime: 2025-12-14 13:42:08
  * @Description: 菜单管理模块
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -39,12 +39,12 @@ export async function GET(request: NextRequest) {
 
     // 执行失败
     if (error) {
-      return responseMessage(error.message, RESPONSE.label(1), RESPONSE.FAIL)
+      return responseMessage(null, error.message, RESPONSE.FAIL)
     }
 
     return NextResponse.json(responseMessage(convertFlatDataToTree(menus || [])));
-  } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
+  } catch (err) {
+    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
 }
 
@@ -68,14 +68,14 @@ export async function POST(request: NextRequest) {
     if (error) {
       // 判断是否违反唯一性约束（PostgreSQL 错误代码 23505）
       if (error.code === '23505') {
-        return NextResponse.json(responseMessage(null, '路由地址已存在!', -1));
+        return NextResponse.json(responseMessage(null, '路由地址已存在！', -1));
       }
 
       // 其他错误
-      return NextResponse.json(responseMessage(error.message, RESPONSE.label(1), 500));
+      return NextResponse.json(responseMessage(null, error.message, RESPONSE.FAIL));
     }
     return NextResponse.json(responseMessage(data));
-  } catch (error) {
-    return NextResponse.json(responseMessage(error, RESPONSE.label(1), -1));
+  } catch (err) {
+    return NextResponse.json(responseMessage(null, (err as Error).message, -1));
   }
 }

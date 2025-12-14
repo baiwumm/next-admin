@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-12 13:42:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 17:37:02
+ * @LastEditTime: 2025-12-14 12:12:21
  * @Description: 列配置项
  */
 
@@ -19,9 +19,11 @@ type ColumnsProps = {
   t: (key: keyof Messages['Pages']['MenuManage']) => string;
   tRoute: (key: keyof Messages['Route']) => string;
   tC: (key: keyof Messages['Common']) => string;
+  handleEdit: (row: System.Menu) => void;
+  handleDel: (row: System.Menu) => void;
 }
 
-export const createMenuColumns = ({ t, tRoute, tC }: ColumnsProps): ColumnDef<System.Menu>[] => {
+export const createMenuColumns = ({ t, tRoute, tC, handleEdit, handleDel }: ColumnsProps): ColumnDef<System.Menu>[] => {
 
   // 核心逻辑：定义缩进占位符
   const IndentPlaceholder = ({ row }: { row: Row<System.Menu> }) => {
@@ -175,11 +177,11 @@ export const createMenuColumns = ({ t, tRoute, tC }: ColumnsProps): ColumnDef<Sy
       ),
       cell: ({ row }) => (
         <div className='flex justify-center items-center gap-1'>
-          <Button size='xs' variant="primary" appearance="ghost">
+          <Button size='xs' variant="primary" appearance="ghost" onClick={() => handleEdit(row.original)}>
             <SquarePen />
             {tC('edit')}
           </Button>
-          <Button size='xs' variant="destructive" appearance="ghost">
+          <Button size='xs' variant="destructive" appearance="ghost" onClick={() => handleDel(row.original)}>
             <Trash2 />
             {tC('delete')}
           </Button>

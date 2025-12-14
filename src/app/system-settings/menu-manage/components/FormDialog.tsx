@@ -2,17 +2,23 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-12 15:41:54
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 18:10:37
+ * @LastEditTime: 2025-12-14 13:39:01
  * @Description: 表单弹窗
  */
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Check, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { type FC } from 'react';
+import { useRequest } from 'ahooks';
+import { Check, CircleCheckBig, X } from 'lucide-react';
+import { DynamicIcon, type IconName, iconNames } from 'lucide-react/dynamic';
+import { useMessages, useTranslations } from 'next-intl';
+import { type FC, Fragment, type ReactNode, useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'sonner';
 import { z } from "zod";
 
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
   Button,
   Dialog,
   DialogClose,
@@ -23,6 +29,7 @@ import {
   DialogTitle,
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -30,17 +37,58 @@ import {
   Input,
   InputWrapper,
   NumberField,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Spinner,
   Switch
 } from '@/components/ui';
+import { RESPONSE } from '@/enums';
+import { addMenu, updateMenu } from '@/services/system-settings/menu-manage';
 
 type FormDialogProps = {
   dialogOpen: boolean;
   setDialogOpen: (open: boolean) => void;
+  currentRow: System.Menu | null;
+  setCurrentRow: (row: System.Menu | null) => void;
+  refresh: VoidFunction;
+  menuList: System.Menu[];
 }
 
-const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen }) => {
+const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen, currentRow, setCurrentRow, refresh, menuList = [] }) => {
   const t = useTranslations('Pages.MenuManage');
   const tC = useTranslations('Common');
+  const tR = useTranslations('Route');
+  const id = currentRow?.id || undefined;
+  const messages = useMessages();
+
+  // 新增保存接口
+  const { run, loading } = useRequest(id ? updateMenu : addMenu, {
+    manual: true,
+    onSuccess: ({ code }) => {
+      if (code === RESPONSE.SUCCESS) {
+        form.reset();
+        setCurrentRow(null);
+        setDialogOpen(false);
+        toast.custom(
+          (t) => (
+            <Alert variant="success" appearance="outline" onClose={() => toast.dismiss(t)}>
+              <AlertIcon>
+                <CircleCheckBig />
+              </AlertIcon>
+              <AlertTitle>{id ? tC('edit-success') : tC('add-success')}</AlertTitle>
+            </Alert>
+          )
+        )
+        refresh?.();
+      }
+    }
+  })
+
+
   // 最大字数限制
   const FIELD_MAX_LENGTHS = {
     label: 100,
@@ -57,11 +105,16 @@ const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen }) 
   };
 
   // 字段验证规则
+  const LUCIDE_ICON_SET = new Set(iconNames);
   const formSchema = z.object({
-    label: stringWithMaxLength('label'),
-    path: stringWithMaxLength('path'),
-    icon: stringWithMaxLength('icon'),
-    redirect: z.string(),
+    parent_id: z.string().min(1).nullable().optional(),
+    label: z.string().min(1, tC('not-empty')),
+    path: stringWithMaxLength('path').regex(/^\/[a-zA-Z0-9/_-]*[a-zA-Z0-9_-]$/, t('path-invalid')),
+    icon: z.string().min(1, tC('not-empty')).refine(
+      (val) => LUCIDE_ICON_SET.has(val as IconName),
+      { message: t('icon-invalid') }
+    ),
+    redirect: z.string().min(1).nullable().optional(),
     sort: z.number(),
     show_in_menu: z.boolean()
   })
@@ -70,10 +123,11 @@ const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen }) 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      parent_id: null,
       label: "",
       path: "",
       icon: "",
-      redirect: '',
+      redirect: null,
       sort: 1,
       show_in_menu: true
     },
@@ -109,27 +163,103 @@ const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen }) 
 
   // 关闭弹窗
   const handleOpenChange = (open: boolean) => {
+    setDialogOpen(open);
     if (!open) {
       form.reset();
+      setCurrentRow(null);
     }
-    setDialogOpen(open);
   };
+
+  // 渲染父级下拉菜单
+  const renderSelectMenus = (nodes: System.Menu[], level = 0): ReactNode => {
+    return nodes.map(({ id, icon, label, children }) => (
+      <Fragment key={id}>
+        <SelectItem key={id} value={id}>
+          <span className="flex items-center gap-2" style={{ paddingLeft: `${level * 12}px` }}>
+            <DynamicIcon name={icon} className="size-4 opacity-60" />
+            <span>{tR(label)}</span>
+          </span>
+        </SelectItem>
+        {children?.length ? renderSelectMenus(children, level + 1) : null}
+      </Fragment>
+    ))
+  }
 
   // 表单提交
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+    run({ id, ...values })
   }
+
+  useEffect(() => {
+    if (dialogOpen && currentRow) {
+      form.reset(currentRow, { keepDefaultValues: true });
+    }
+  }, [dialogOpen, currentRow, form])
   return (
-    <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
-      <DialogContent>
+    <Dialog open={dialogOpen} onOpenChange={handleOpenChange} >
+      <DialogContent
+        onInteractOutside={(e) => e.preventDefault()}
+        onEscapeKeyDown={(e) => e.preventDefault()}>
         <DialogHeader>
-          <DialogTitle>新增菜单</DialogTitle>
+          <DialogTitle>{id ? t('add') : t('edit')}</DialogTitle>
           <DialogDescription />
         </DialogHeader>
         {/* 主体表单 */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            {renderStringField('label')}
+            <FormField
+              control={form.control}
+              name="parent_id"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    {t('parent_id')}
+                  </FormLabel>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value || undefined}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={tC('select')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          {renderSelectMenus(menuList)}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormDescription>{t('parent_id_desc')}</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="label"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    <span className="text-red-500">*</span>
+                    {t('label')}
+                  </FormLabel>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={tC('select')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          {Object.keys(messages['Route']).map((value) => (
+                            <SelectItem key={value} value={value}>{tR(value as System.Menu['label'])}</SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormDescription>{t('label-desc')}</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             {renderStringField('path')}
             {renderStringField('icon')}
             <FormField
@@ -141,7 +271,7 @@ const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen }) 
                     {t('redirect')}
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder={`${tC('enter')}${t('redirect')}`} {...field} />
+                    <Input placeholder={tC('enter')} {...field} value={field.value || undefined} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -194,9 +324,12 @@ const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen }) 
             </div>
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="outline" onClick={() => form.reset()}>{tC('cancel')}</Button>
+                <Button variant="outline" onClick={() => form.reset()} disabled={loading}>{tC('cancel')}</Button>
               </DialogClose>
-              <Button type="submit">{tC('confirm')}</Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? <Spinner variant='circle' /> : null}
+                {tC('confirm')}
+              </Button>
             </DialogFooter>
           </form>
         </Form>
