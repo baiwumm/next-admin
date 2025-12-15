@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-12 11:18:59
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-12 13:52:37
+ * @LastEditTime: 2025-12-15 09:22:56
  * @Description: 顶部区域
  */
 import { type Table } from '@tanstack/react-table';
@@ -44,7 +44,7 @@ const TopContent: FC<TopContentProps> = ({ table, pathValue = '', setPathValue, 
   };
   return (
     <CardHeader className="py-3">
-      <CardTitle className="flex items-center gap-2">
+      <CardTitle className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
         <div className="w-60">
           <InputWrapper>
             <Input
@@ -59,14 +59,16 @@ const TopContent: FC<TopContentProps> = ({ table, pathValue = '', setPathValue, 
             </Button>
           </InputWrapper>
         </div>
-        <Button onClick={() => refresh?.()} size='sm' variant="secondary">
-          {loading ? <Spinner variant='circle' /> : <Search />}
-          {tC('search')}
-        </Button>
-        <Button size='sm' onClick={() => setDialogOpen(true)}>
-          <Plus />
-          {tC('add')}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button onClick={() => refresh?.()} size='sm' variant="secondary">
+            {loading ? <Spinner variant='circle' /> : <Search />}
+            {tC('search')}
+          </Button>
+          <Button size='sm' onClick={() => setDialogOpen(true)}>
+            <Plus />
+            {tC('add')}
+          </Button>
+        </div>
       </CardTitle>
       <CardToolbar>
         <DataGridColumnVisibility table={table} />

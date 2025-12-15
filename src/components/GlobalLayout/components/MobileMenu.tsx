@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:28:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 16:21:41
+ * @LastEditTime: 2025-12-15 10:41:49
  * @Description: 移动端菜单
  */
 "use client"
@@ -44,31 +44,20 @@ const MobileMenu: FC = () => {
   const menuLoading = useMenuStore((state) => state.loading);
   const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
 
-  // 渲染菜单
-  const renderMobileMenuItem = (nodes: System.Menu[]) => nodes.map(item => {
-    if (item?.children?.length) {
+  // 递归渲染单个菜单项（用于 Accordion 内部）
+  const renderMobileSubItem = (item: System.Menu): React.ReactNode => {
+    if (item.children?.length) {
       return (
-        <AccordionItem key={item.id} value={t(item.label)} className="border-b-0">
+        <AccordionItem key={item.id} value={item.id} className="border-b-0">
           <AccordionTrigger className="text-sm py-0 hover:no-underline">
             <div className="flex items-center gap-2 pl-2">
               <DynamicIcon name={item.icon} className="size-4" />
               <span>{t(item.label)}</span>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="mt-2">
-            <div className="flex flex-col gap-2 px-4">
-              {item.children.map((subItem) => subItem?.children?.length ? renderMobileMenuItem(subItem.children) : (
-                <Button
-                  key={subItem.id}
-                  size='sm'
-                  variant={isActive(subItem.path) ? "primary" : "ghost"}
-                  onClick={() => router.push(subItem.path)}
-                  className="justify-start"
-                >
-                  <DynamicIcon name={subItem.icon} />
-                  {t(subItem.label)}
-                </Button>
-              ))}
+          <AccordionContent className="mt-2 pb-0">
+            <div className="flex flex-col gap-2 pl-4"> {/* 注意：加 pl-4 缩进 */}
+              {item.children.map(child => renderMobileSubItem(child))}
             </div>
           </AccordionContent>
         </AccordionItem>
@@ -78,16 +67,16 @@ const MobileMenu: FC = () => {
     return (
       <Button
         key={item.id}
-        size='sm'
+        size="sm"
         variant={isActive(item.path) ? "primary" : "ghost"}
         onClick={() => router.push(item.path)}
         className="justify-start"
       >
-        <DynamicIcon name={item.icon} />
+        <DynamicIcon name={item.icon} className="mr-2 size-4" />
         {t(item.label)}
       </Button>
     );
-  })
+  };
 
   useEffect(() => {
     if (!menuList?.length) {
@@ -122,12 +111,8 @@ const MobileMenu: FC = () => {
           <SheetDescription />
         </SheetHeader>
         <div className="flex flex-col gap-6 p-4">
-          <Accordion
-            type="single"
-            collapsible
-            className="flex w-full flex-col gap-4"
-          >
-            {renderMobileMenuItem(menuList)}
+          <Accordion type="multiple" className="flex w-full flex-col gap-4">
+            {menuList.map(item => renderMobileSubItem(item))}
           </Accordion>
         </div>
       </SheetContent>

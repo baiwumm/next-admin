@@ -2,9 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-26 10:18:06
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 15:58:19
+ * @LastEditTime: 2025-12-15 10:02:09
  * @Description: 按钮风格拖拽子项
  */
+import { useRouter } from '@bprogress/next/app';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { X } from 'lucide-react';
@@ -38,9 +39,10 @@ const SortableButtonItem: FC<SortableItemProps> = ({ tag }) => {
 
   const t = useTranslations('Route');
   const { pending } = useLinkStatus();
-  const { activeKey, setActiveKey, removeTab } = useTabsStore(
-    useShallow((s) => pick(s, ['activeKey', 'setActiveKey', 'removeTab']))
+  const { activeKey, removeTab } = useTabsStore(
+    useShallow((s) => pick(s, ['activeKey', 'removeTab']))
   );
+  const router = useRouter();
 
   const style: CSSProperties = {
     transform: CSS.Transform.toString(transform ? { ...transform, scaleX: 1 } : transform),
@@ -59,7 +61,7 @@ const SortableButtonItem: FC<SortableItemProps> = ({ tag }) => {
         variant={activeKey === tag.path ? 'primary' : 'outline'}
         size='xs'
         disabled={pending}
-        onClick={() => setActiveKey(tag.path)}
+        onClick={() => router.push(tag.path)}
       >
         <div className="flex items-center gap-0.5">
           <div ref={dragHandleRef} {...listeners} {...attributes} className="flex items-center gap-0.5 cursor-grab active:cursor-grabbing">

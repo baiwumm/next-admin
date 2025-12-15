@@ -2,11 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 15:46:17
+ * @LastEditTime: 2025-12-15 10:05:30
  * @Description: 
  */
 "use client";
-import { useRouter } from '@bprogress/next/app';
 import { RotateCcw } from 'lucide-react';
 import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
@@ -30,11 +29,10 @@ type DynamicTabsProps = {
 
 const DynamicTabs: FC<DynamicTabsProps> = ({ onRefresh, isRefreshing }) => {
   const pathname = usePathname();
-  const router = useRouter();
   const tabStyle = useAppStore((s) => s.tabStyle);
   const tabsHeight = useAppStore((s) => s.tabsHeight);
-  const { activeKey, setActiveKey, addTab } = useTabsStore(
-    useShallow((s) => pick(s, ["activeKey", "setActiveKey", "addTab"])
+  const { setActiveKey, addTab } = useTabsStore(
+    useShallow((s) => pick(s, ["setActiveKey", "addTab"])
     ));
 
   const menuList = useMenuStore((s) => s.menuList);
@@ -73,13 +71,6 @@ const DynamicTabs: FC<DynamicTabsProps> = ({ onRefresh, isRefreshing }) => {
       addTab(menuItem);
     }
   }, [pathname, menuList, addTab, setActiveKey, findMenuByPath]);
-
-  /**
-   * 仅当 activeKey 变化时才跳转
-   */
-  useEffect(() => {
-    router.push(activeKey);
-  }, [activeKey, router]);
 
   if (menuLoading) return null;
 

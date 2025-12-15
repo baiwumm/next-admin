@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:52:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:18:41
+ * @LastEditTime: 2025-12-15 09:54:20
  * @Description: 侧栏布局
  */
 'use client';
@@ -14,7 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { type FC, type ReactNode } from 'react';
+import { type FC, type ReactNode, useCallback } from 'react';
 
 import UserAvatar from '../components/UserAvatar';
 import TopbarLayout from '../TopbarLayout';
@@ -51,12 +51,19 @@ type SidebarLayoutProps = {
 const SidebarLayout: FC<SidebarLayoutProps> = ({ children, mainMinH }) => {
   const t = useTranslations('Route');
   const tC = useTranslations('Common');
-
-  const pathname = usePathname();
   const router = useRouter();
 
-  // 判断菜单是否选中
-  const isActive = (url: string) => url === pathname || pathname.includes(url);
+  const pathname = usePathname();
+
+  // 判断当前菜单是否应默认展开（只要子树中有激活项）
+  const isMenuActive = useCallback((menu: System.Menu) => {
+    const collectPaths = (m: System.Menu): string[] => {
+      if (!m.children?.length) return m.path ? [m.path] : [];
+      return m.children.flatMap(collectPaths);
+    };
+    const allPaths = collectPaths(menu);
+    return allPaths.some(p => pathname === p || pathname.startsWith(p + '/'));
+  }, [pathname]);
 
   // 获取菜单数据
   const menuList = useMenuStore((state) => state.menuList);
@@ -82,13 +89,13 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, mainMinH }) => {
 
   // 渲染子级菜单
   const renderNestedMenu = (menu: System.Menu) => {
-    const { id, label, icon, path, children } = menu;
+    const { id, label, icon, children } = menu;
     const menuLabel = t(label);
     return (
       <Collapsible
         key={id}
         asChild
-        defaultOpen={isActive(path)}
+        defaultOpen={isMenuActive(menu)}
         className="group/collapsible"
       >
         <SidebarMenuItem>
@@ -101,7 +108,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, mainMinH }) => {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <SidebarMenuSub>
-              {children?.map((subItem) => subItem?.children?.length ? renderNestedMenu(menu) : (
+              {children?.map((subItem) => subItem?.children?.length ? renderNestedMenu(subItem) : (
                 <SidebarMenuSubItem key={subItem.id}>
                   <SidebarMenuSubButton asChild onClick={() => router.push(subItem.path)} isActive={subItem.path === pathname}>
                     <div>

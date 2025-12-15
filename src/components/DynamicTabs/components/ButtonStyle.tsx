@@ -2,9 +2,10 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 16:18:12
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 14:31:54
+ * @LastEditTime: 2025-12-15 10:01:31
  * @Description: 按钮风格
  */
+import { useRouter } from '@bprogress/next/app';
 import {
   closestCenter,
   DndContext,
@@ -34,9 +35,10 @@ type ButtonStyleProps = {
 const ButtonStyle: FC<ButtonStyleProps> = ({ dashboardTab }) => {
   const t = useTranslations('Route');
   const { pending } = useLinkStatus();
-  const { tabs, setTabs, activeKey, setActiveKey } = useTabsStore(
-    useShallow((s) => pick(s, ['tabs', 'setTabs', 'activeKey', 'setActiveKey']))
+  const { tabs, setTabs, activeKey } = useTabsStore(
+    useShallow((s) => pick(s, ['tabs', 'setTabs', 'activeKey']))
   );
+  const router = useRouter();
 
   // 配置传感器：只响应指针（鼠标/触摸）事件
   const sensors = useSensors(
@@ -86,7 +88,7 @@ const ButtonStyle: FC<ButtonStyleProps> = ({ dashboardTab }) => {
               variant={activeKey === dashboardTab.path ? 'primary' : 'outline'}
               size='xs'
               disabled={pending}
-              onClick={() => setActiveKey(dashboardTab.path)}
+              onClick={() => router.push(dashboardTab.path)}
             >
               <DynamicIcon name={dashboardTab.icon} />
               <span>{t(dashboardTab.label)}</span>
