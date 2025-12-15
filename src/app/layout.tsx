@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-05 10:37:25
+ * @LastEditTime: 2025-12-15 11:18:59
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
@@ -34,10 +34,16 @@ export async function generateMetadata({ params: { locale } }: MetaProps): Promi
   const segments = pathname.split('/').filter(Boolean);
   const pageKey = segments[segments.length - 1] as keyof Messages['Route'];
   // 如果路由不存在对应的翻译，则使用应用描述作为标题
-  const pageTitle = t.has(pageKey) ? t(pageKey) : process.env.NEXT_PUBLIC_APP_DESC;
+  let pageTitle = process.env.NEXT_PUBLIC_APP_DESC!;
+  if (pageKey && t.has(pageKey)) {
+    pageTitle = t(pageKey);
+  }
 
   return {
-    title: `${pageTitle} - ${process.env.NEXT_PUBLIC_APP_NAME}`
+    title: {
+      template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME}`,
+      absolute: `${pageTitle} - ${process.env.NEXT_PUBLIC_APP_NAME}`,
+    }
   };
 }
 
