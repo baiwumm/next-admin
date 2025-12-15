@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.6.0](///compare/2.5.0...2.6.0) (2025-12-15)
+
+### Features
+
+* 新增 Alert 组件，优化登录提示 45c182c
+* **MenuManage:** 删除不用的引用 229e64c
+* **MenuManage:** 完成菜单管理模块的 CURD 逻辑 e9db0aa
+* **MenuManage:** 完成菜单管理模块的排版布局 6a1f014
+* **MenuManage:** 细节优化 0efdcbb
+* **MenuManage:** 新增 FormDialog 表单 9e5cc65
+* **UserManage:** 细节优化 8b1c286
+* **UserManage:** 邮箱支持复制 813108a
+
+### Bug Fixes
+
+* 修复菜单跳转动画重复的问题，多级菜单渲染逻辑优化，细节调整 9e0ef72
+
+### Performance Improvements
+
+* 优化菜单高亮逻辑，处理路由不在菜单上显示的逻辑 c445d21
+* 优化路由标题显示逻辑 e3cbe93
+
 ## [2.5.0](///compare/2.4.1...2.5.0) (2025-12-11)
 
 ### Features
