@@ -161,3 +161,23 @@ export const initializeColorStyle = (value: typeof COLOR_STYLE.valueType) => {
     }
   }
 }
+
+/**
+ * 判断当前路径是否匹配菜单项或其任意子项的路径
+ * @param menu 菜单项（含 children）
+ * @param currentPath 当前页面路径（如 router.pathname）
+ * @returns 是否激活
+ */
+export const isMenuActive = (menu: System.Menu, currentPath: string): boolean => {
+  const collectPaths = (m: System.Menu): string[] => {
+    if (!m.children?.length) {
+      return m.path ? [m.path] : [];
+    }
+    return m.children.flatMap(collectPaths);
+  };
+
+  const allPaths = collectPaths(menu);
+  return allPaths.some(p =>
+    currentPath === p || currentPath.startsWith(p + '/')
+  );
+};

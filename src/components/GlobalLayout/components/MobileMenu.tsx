@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:28:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 10:41:49
+ * @LastEditTime: 2025-12-15 11:08:33
  * @Description: 移动端菜单
  */
 "use client"
@@ -28,6 +28,7 @@ import {
   SheetTrigger,
   Spinner
 } from '@/components/ui';
+import { isMenuActive } from '@/lib/utils';
 import { useMenuStore } from '@/store/useMenuStore';
 
 const MobileMenu: FC = () => {
@@ -37,7 +38,7 @@ const MobileMenu: FC = () => {
   const router = useRouter();
 
   // 判断菜单是否选中
-  const isActive = (url: string) => url === pathname || pathname.includes(url);
+  const isActive = (menu: System.Menu) => isMenuActive(menu, pathname);
 
   // 获取菜单数据
   const menuList = useMenuStore((state) => state.menuList);
@@ -46,7 +47,7 @@ const MobileMenu: FC = () => {
 
   // 递归渲染单个菜单项（用于 Accordion 内部）
   const renderMobileSubItem = (item: System.Menu): React.ReactNode => {
-    if (item.children?.length) {
+    if (item.children?.length && item.show_in_menu) {
       return (
         <AccordionItem key={item.id} value={item.id} className="border-b-0">
           <AccordionTrigger className="text-sm py-0 hover:no-underline">
@@ -62,20 +63,22 @@ const MobileMenu: FC = () => {
           </AccordionContent>
         </AccordionItem>
       );
+    } else if (item.show_in_menu) {
+      return (
+        <Button
+          key={item.id}
+          size="sm"
+          variant={isActive(item) ? "primary" : "ghost"}
+          onClick={() => router.push(item.path)}
+          className="justify-start"
+        >
+          <DynamicIcon name={item.icon} className="mr-2 size-4" />
+          {t(item.label)}
+        </Button>
+      );
+    } else {
+      return null
     }
-
-    return (
-      <Button
-        key={item.id}
-        size="sm"
-        variant={isActive(item.path) ? "primary" : "ghost"}
-        onClick={() => router.push(item.path)}
-        className="justify-start"
-      >
-        <DynamicIcon name={item.icon} className="mr-2 size-4" />
-        {t(item.label)}
-      </Button>
-    );
   };
 
   useEffect(() => {

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 16:23:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 10:23:39
+ * @LastEditTime: 2025-12-15 11:07:35
  * @Description: Desktop 菜单
  */
 "use client"
@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
   Spinner
 } from '@/components/ui';
+import { isMenuActive } from '@/lib/utils';
 import { useMenuStore } from '@/store/useMenuStore';
 
 const DesktopMenu: FC = () => {
@@ -34,7 +35,7 @@ const DesktopMenu: FC = () => {
   const router = useRouter();
 
   // 判断菜单是否选中
-  const isActive = (url: string) => url === pathname || pathname.includes(url);
+  const isActive = (menu: System.Menu) => isMenuActive(menu, pathname);
 
   // 获取菜单数据
   const menuList = useMenuStore((state) => state.menuList);
@@ -49,14 +50,14 @@ const DesktopMenu: FC = () => {
   // 渲染单个顶级菜单项（支持 Dropdown）
   const renderTopLevelItem = (item: System.Menu) => {
     const menuLabel = t(item.label);
-    if (item.children?.length) {
+    if (item.children?.length && item.show_in_menu) {
       // 有子菜单：用 DropdownMenu 包裹
       return (
         <DropdownMenu key={item.id}>
           <DropdownMenuTrigger asChild>
             <Button
               size="sm"
-              variant={isActive(item.path) ? "primary" : "ghost"}
+              variant={isActive(item) ? "primary" : "ghost"}
               className="text-xs"
             >
               <DynamicIcon name={item.icon} />
@@ -69,13 +70,13 @@ const DesktopMenu: FC = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       );
-    } else {
+    } else if (item.show_in_menu) {
       // 叶子节点：普通按钮
       return (
         <Button
           key={item.id}
           size="sm"
-          variant={isActive(item.path) ? "primary" : "ghost"}
+          variant={isActive(item) ? "primary" : "ghost"}
           className="text-xs"
           onClick={() => router.push(item.path)}
         >
@@ -83,13 +84,15 @@ const DesktopMenu: FC = () => {
           {menuLabel}
         </Button>
       );
+    } else {
+      return null
     }
   };
 
   // 递归渲染子菜单项（用于 DropdownMenuContent 内部）
   const renderMenuItem = (item: System.Menu) => {
     const menuLabel = t(item.label);
-    if (item.children?.length) {
+    if (item.children?.length && item.show_in_menu) {
       return (
         <DropdownMenuSub key={item.id}>
           <DropdownMenuSubTrigger>
@@ -101,17 +104,19 @@ const DesktopMenu: FC = () => {
           </DropdownMenuSubContent>
         </DropdownMenuSub>
       );
-    } else {
+    } else if (item.show_in_menu) {
       return (
         <DropdownMenuCheckboxItem
           key={item.id}
-          checked={isActive(item.path)}
+          checked={isActive(item)}
           onSelect={(e) => handleMenuSelect(e as Event, item.path)}
         >
           <DynamicIcon name={item.icon} />
           {menuLabel}
         </DropdownMenuCheckboxItem>
       );
+    } else {
+      return null;
     }
   };
   return menuLoading ? (
