@@ -51,6 +51,7 @@ export {
 } from './data-grid-table';
 export { DataGridTableDnd } from './data-grid-table-dnd'
 export { DataGridTableDndRowHandle, DataGridTableDndRows } from './data-grid-table-dnd-rows'
+export { Dock, DockIcon, dockVariants } from './dock'
 export {
   Empty,
   EmptyContent,
@@ -114,6 +115,15 @@ export {
   TableHeader,
   TableRow,
 } from './table'
+export {
+  Tooltip,
+  TooltipContent,
+  type TooltipContentProps,
+  type TooltipProps,
+  TooltipProvider,
+  TooltipTrigger,
+  type TooltipTriggerProps,
+} from "@/components/animate-ui/components/animate/tooltip";
 export { CopyButton, type CopyButtonProps } from '@/components/animate-ui/components/buttons/copy';
 export {
   Accordion,
@@ -245,12 +255,3 @@ export {
   TabsTrigger,
   type TabsTriggerProps,
 } from "@/components/animate-ui/components/radix/tabs";
-export {
-  Tooltip,
-  TooltipContent,
-  type TooltipContentProps,
-  type TooltipProps,
-  TooltipProvider,
-  TooltipTrigger,
-  type TooltipTriggerProps,
-} from "@/components/animate-ui/components/radix/tooltip";
