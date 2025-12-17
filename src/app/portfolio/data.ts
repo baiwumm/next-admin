@@ -86,7 +86,7 @@ export const data = {
           icon: "globe",
         }
       ],
-      image: "/portfolio/www.png",
+      video: "/portfolio/www.mp4"
     },
     {
       title: "Vue3 Admin",
@@ -105,14 +105,10 @@ export const data = {
           type: "Website",
           href: "https://vue3.baiwumm.com",
           icon: "globe",
-        },
-        {
-          type: "Source",
-          href: "https://github.com/baiwumm/vue3-admin",
-          icon: "github",
-        },
+        }
       ],
-      image: "/portfolio/vue3.png",
+      repo: "vue3-admin",
+      video: "/portfolio/vue3-admin.mp4"
     },
     {
       title: "Dream Site",
@@ -129,14 +125,10 @@ export const data = {
           type: "Website",
           href: "https://site.baiwumm.com",
           icon: "globe",
-        },
-        {
-          type: "Source",
-          href: "https://github.com/baiwumm/dream-site",
-          icon: "github",
-        },
+        }
       ],
-      image: "/portfolio/site.png",
+      repo: "dream-site",
+      video: "/portfolio/dream-site.mp4"
     },
     {
       title: "今日热榜",
@@ -153,14 +145,10 @@ export const data = {
           type: "Website",
           href: "https://hot.baiwumm.com",
           icon: "globe",
-        },
-        {
-          type: "Source",
-          href: "https://github.com/baiwumm/dream-site",
-          icon: "github",
-        },
+        }
       ],
-      image: "/portfolio/hot.png",
+      repo: "next-daily-hot",
+      video: "/portfolio/daily-hot.mp4"
     },
     {
       title: "Easy Api",
@@ -179,7 +167,7 @@ export const data = {
           icon: "globe",
         }
       ],
-      image: "/portfolio/api.png",
+      video: "/portfolio/easy-api.mp4"
     },
     {
       title: "Cover Magic",
@@ -197,13 +185,49 @@ export const data = {
           href: "https://cover.baiwumm.com",
           icon: "globe",
         },
+      ],
+      repo: "cover-magic",
+      video: "/portfolio/cover-magic.mp4"
+    },
+    {
+      title: "UptimeKeeper",
+      href: "https://monitor.baiwumm.com",
+      description: "基于 Next.js 构建的 UptimeRobot API 站点监控平台，实时监测网站运行状态，提供可视化报表与提醒功能，帮助你快速掌握服务可用性与性能健康状况。",
+      tags: [
+        "React.js",
+        "Next.js",
+        "Tailwindcss",
+        "Motion"
+      ],
+      links: [
         {
-          type: "Source",
-          href: "https://github.com/baiwumm/cover-magic",
-          icon: "github",
+          type: "Website",
+          href: "https://monitor.baiwumm.com",
+          icon: "globe",
         },
       ],
-      image: "/portfolio/cover.png",
+      repo: "UptimeKeeper",
+      video: "/portfolio/uptime-keeper.mp4"
+    },
+    {
+      title: "WeSplit",
+      href: "https://split.baiwumm.com",
+      description: "让聚餐、旅行、聚会的费用分摊变得简单透明，自动计算最优转账方案，告别复杂的账目计算",
+      tags: [
+        "React.js",
+        "Vite.js",
+        "Tailwindcss",
+        "Zustand"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://split.baiwumm.com",
+          icon: "globe",
+        }
+      ],
+      repo: "WeSplit",
+      video: "/portfolio/we-split.mp4"
     },
   ]
 }

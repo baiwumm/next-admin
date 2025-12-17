@@ -125,6 +125,7 @@ export {
   type TooltipTriggerProps,
 } from "@/components/animate-ui/components/animate/tooltip";
 export { CopyButton, type CopyButtonProps } from '@/components/animate-ui/components/buttons/copy';
+export { GitHubStarsButton, type GitHubStarsButtonProps } from "@/components/animate-ui/components/buttons/github-stars"
 export {
   Accordion,
   AccordionContent,
@@ -255,3 +256,4 @@ export {
   TabsTrigger,
   type TabsTriggerProps,
 } from "@/components/animate-ui/components/radix/tabs";
+export { SlidingNumber, type SlidingNumberProps } from '@/components/animate-ui/primitives/texts/sliding-number';

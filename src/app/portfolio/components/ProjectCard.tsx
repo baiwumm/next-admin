@@ -4,13 +4,16 @@ import Link from "next/link";
 
 import {
   Badge,
+  Button,
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle
+  CardTitle,
+  GitHubStarsButton
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import pkg from '#/package.json'
 
 interface Props {
   title: string;
@@ -18,12 +21,14 @@ interface Props {
   description: string;
   tags: readonly string[];
   link?: string;
-  image: string;
+  image?: string;
+  video?: string;
   links?: readonly {
     icon: IconName;
     type: string;
     href: string;
   }[];
+  repo?: string;
   className?: string;
 }
 
@@ -34,7 +39,9 @@ export default function ProjectCard({
   tags,
   link,
   image,
+  video,
   links,
+  repo,
   className,
 }: Props) {
   return (
@@ -48,13 +55,25 @@ export default function ProjectCard({
         target='_blank'
         className={cn("block cursor-pointer", className)}
       >
-        <Image
-          src={image}
-          alt={title}
-          width={526}
-          height={274}
-          className="w-full overflow-hidden object-cover object-top p-3 hover:scale-105 transition-all duration-300 ease-out"
-        />
+        {video ? (
+          <video
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+          />
+        ) : null}
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            width={526}
+            height={274}
+            className="w-full overflow-hidden object-cover object-top p-3 hover:scale-105 transition-all duration-300 ease-out"
+          />
+        ) : null}
       </Link>
       <CardHeader className="px-3 py-1 border-none">
         <div className="space-y-1">
@@ -72,8 +91,8 @@ export default function ProjectCard({
           <div className="mt-2 flex flex-wrap gap-1">
             {tags?.map((tag) => (
               <Badge
-                className="px-1 py-0 text-[10px]"
                 variant="secondary"
+                size="sm"
                 key={tag}
               >
                 {tag}
@@ -87,12 +106,22 @@ export default function ProjectCard({
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => (
               <Link href={link?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+                <Button size="xs">
                   <DynamicIcon name={link.icon} />
                   {link.type}
-                </Badge>
+                </Button>
               </Link>
             ))}
+            {repo ? (
+              <Link href={`https://github.com/${pkg.author.name}/${repo}`} target="_blank">
+                <GitHubStarsButton
+                  size='xs'
+                  username={pkg.author.name}
+                  repo={repo}
+                  className="gap-2"
+                />
+              </Link>
+            ) : null}
           </div>
         )}
       </CardFooter>
