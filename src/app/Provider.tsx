@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-17 09:12:52
+ * @LastEditTime: 2025-12-17 18:00:42
  * @Description: 上下文提供者
  */
 "use client"
@@ -12,6 +12,7 @@ import { usePathname } from 'next/navigation';
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useEffect, useState } from 'react';
 
+import BackTop from '@/components/BackTop'
 import GlobalLayout from '@/components/GlobalLayout';
 import { Toaster, TooltipProvider } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
@@ -80,6 +81,8 @@ export function Providers({ children }: ProvidersProps) {
             )}
           </TooltipProvider>
           <Toaster position="top-center" />
+          {/* 回到顶部按钮 */}
+          <BackTop />
         </ProgressProvider>
       </MotionConfig>
     </NextThemesProvider>

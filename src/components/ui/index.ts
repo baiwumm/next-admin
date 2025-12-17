@@ -78,6 +78,7 @@ export {
   InputGroupText,
   InputGroupTextarea,
 } from "./input-group";
+export { Progress, ProgressCircle, ProgressRadial } from './progress';
 export { ScrollArea, ScrollBar } from "./scroll-area";
 export {
   Select,
