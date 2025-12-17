@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.6.1](///compare/2.6.0...2.6.1) (2025-12-17)
+
+### Features
+
+* 新增 ScrollProgress 滚动进度条 df71609
+* 优化 中间件 逻辑，优化《个人档案》模块 1ab40db
+* **PersonalCenter:** 完成《个人中心》模块的功能开发 509d2da
+
+### Performance Improvements
+
+* **BreadcrumbContainer:** 移除 motion 废弃的 API 061d64e
+* **Portfolio:** 优化页面显示和用户体验 8fba512
+
 ## [2.6.0](///compare/2.5.0...2.6.0) (2025-12-15)
 
 ### Features
