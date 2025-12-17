@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:27:43
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-17 11:05:23
+ * @LastEditTime: 2025-12-17 17:42:23
  * @Description: 代理层
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -25,6 +25,11 @@ export default async function proxy(req: NextRequest) {
   // 🔒 如果是 API 且非 GET（仅当你包含 API 路由时生效）
   if (path.startsWith('/api/') && method !== 'GET') {
     return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
+  }
+
+  // ✅ 但如果是 GET 的 API，直接放行（不走登录检查）
+  if (path.startsWith('/api/')) {
+    return NextResponse.next();
   }
 
   // 注入当前请求的 pathname
