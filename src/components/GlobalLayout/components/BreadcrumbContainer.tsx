@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-09 15:37:51
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-10 16:19:18
+ * @LastEditTime: 2025-12-17 17:22:58
  * @Description: 面包屑
  */
 'use client'
@@ -16,8 +16,8 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator, Card, 
 import { useMenuStore } from '@/store/useMenuStore';
 
 // 包装 BreadcrumbItem 为 motion 组件
-const MotionBreadcrumbItem = motion(BreadcrumbItem);
-const MotionBreadcrumbSeparator = motion(BreadcrumbSeparator);
+const MotionBreadcrumbItem = motion.create(BreadcrumbItem);
+const MotionBreadcrumbSeparator = motion.create(BreadcrumbSeparator);
 
 type BreadcrumbContainerProps = {
   hideOnSingleItem?: boolean; // 只有一级是否显示，默认不显示

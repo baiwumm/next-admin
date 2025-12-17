@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-12 15:41:54
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-14 13:39:01
+ * @LastEditTime: 2025-12-17 17:26:34
  * @Description: 表单弹窗
  */
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -114,7 +114,7 @@ const FormDialog: FC<FormDialogProps> = ({ dialogOpen = false, setDialogOpen, cu
       (val) => LUCIDE_ICON_SET.has(val as IconName),
       { message: t('icon-invalid') }
     ),
-    redirect: z.string().min(1).nullable().optional(),
+    redirect: z.string().nullable().optional(),
     sort: z.number(),
     show_in_menu: z.boolean()
   })
