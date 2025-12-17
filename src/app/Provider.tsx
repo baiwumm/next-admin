@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 09:53:29
+ * @LastEditTime: 2025-12-17 09:12:52
  * @Description: 上下文提供者
  */
 "use client"
@@ -13,7 +13,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useEffect, useState } from 'react';
 
 import GlobalLayout from '@/components/GlobalLayout';
-import { Toaster } from '@/components/ui';
+import { Toaster, TooltipProvider } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
 import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
@@ -33,7 +33,7 @@ export function Providers({ children }: ProvidersProps) {
   const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
 
   // 受保护的路由，不需要 RootLayout
-  const protectedRoutes = ['/login']
+  const protectedRoutes = ['/login', '/portfolio']
 
   // 初始化主题色
   useEffect(() => {
@@ -72,11 +72,13 @@ export function Providers({ children }: ProvidersProps) {
           options={{ showSpinner: true }}
           shallowRouting
         >
-          {protectedRoutes.includes(pathname) ? children : (
-            <GlobalLayout>
-              {children}
-            </GlobalLayout>
-          )}
+          <TooltipProvider>
+            {protectedRoutes.includes(pathname) ? children : (
+              <GlobalLayout>
+                {children}
+              </GlobalLayout>
+            )}
+          </TooltipProvider>
           <Toaster position="top-center" />
         </ProgressProvider>
       </MotionConfig>

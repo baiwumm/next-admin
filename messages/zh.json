@@ -1,7 +1,7 @@
 {
   "Route":{
     "dashboard":"控制台",
-    "personal-center":"个人中心",
+    "portfolio":"个人档案",
     "system-settings":"系统设置",
     "user-manage":"用户管理",
     "menu-manage":"菜单管理"

@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-02 16:19:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-16 17:52:54
+ * @LastEditTime: 2025-12-17 09:21:02
  * @Description: 个人中心
  */
 "use client"
@@ -19,10 +19,10 @@ import LogoLoop from '@/components/LogoLoop'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
 
-export default function PersonalCenter() {
+export default function Portfolio() {
   const { resolvedTheme } = useTheme();
   return (
-    <div className="flex flex-col min-h-dvh space-y-10 max-w-3xl mx-auto px-4 py-2">
+    <main className="flex flex-col min-h-dvh space-y-10 max-w-3xl mx-auto px-4 py-8 pb-18">
       <BlurFade inView>
         <div className="mx-auto w-full space-y-8">
           <div className="gap-2 flex justify-between items-center">
@@ -153,6 +153,6 @@ export default function PersonalCenter() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

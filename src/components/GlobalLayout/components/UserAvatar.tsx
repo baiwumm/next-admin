@@ -131,9 +131,9 @@ const UserAvatar: FC = () => {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => router.push('/personal-center')}>
+          <DropdownMenuItem onClick={() => router.push('/portfolio')}>
             <IdCard />
-            <span>{tR('personal-center')}</span>
+            <span>{tR('portfolio')}</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setIsOpen(true)} variant="destructive">

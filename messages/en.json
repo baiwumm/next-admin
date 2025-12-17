@@ -1,7 +1,7 @@
 {
   "Route":{
     "dashboard":"Dashboard",
-    "personal-center":"Personal Center",
+    "portfolio":"Portfolio",
     "system-settings":"System Settings",
     "user-manage":"User Management",
     "menu-manage":"Menu Management"
