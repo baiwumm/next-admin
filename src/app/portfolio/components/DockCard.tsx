@@ -79,7 +79,7 @@ export default function DockCard() {
     document.documentElement.animate(
       { clipPath: !isDark ? clipPath.reverse() : clipPath },
       {
-        duration: 300,
+        duration: 500,
         easing: "ease-in",
         pseudoElement: `::view-transition-${!isDark ? "old" : "new"}(root)`,
       }

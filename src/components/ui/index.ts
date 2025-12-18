@@ -14,6 +14,15 @@ export {
 export { Button, type ButtonProps, buttonVariants } from "./button";
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardHeading, CardTable, CardTitle, CardToolbar } from "./card";
 export {
+  type ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartStyle,
+  ChartTooltip,
+  ChartTooltipContent
+} from './chart';
+export {
   Command,
   CommandCheck,
   CommandDialog,
