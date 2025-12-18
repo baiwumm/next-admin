@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.6.2](///compare/2.6.1...2.6.2) (2025-12-18)
+
+### Features
+
+* 新增 ProgressCircle 和 BackTop 组件 88afb07
+* **Portfolio:** 添加 Github 日历贡献图表 8950d3d
+* **proxy:** 修改中间件逻辑 9296ab5
+* **proxy:** 中间件过滤媒体文件 cc90012
+
 ## [2.6.1](///compare/2.6.0...2.6.1) (2025-12-17)
 
 ### Features
