@@ -80,7 +80,7 @@ export const get = <TDefault = unknown>(
  */
 export const responseMessage = (
   data: unknown,
-  msg: string = RESPONSE.labels[0],
+  msg: string = RESPONSE.label(RESPONSE.SUCCESS),
   code: number = RESPONSE.SUCCESS,
 ): Api.IResponse => ({ data, msg, code, timestamp: dayjs().valueOf() });
 

@@ -63,7 +63,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
       .eq('parent_id', id); // 查找所有 parent_id 等于该菜单 ID 的子菜单
 
     if (checkChildrenError) {
-      return NextResponse.json(responseMessage(checkChildrenError.message, RESPONSE.label(1), RESPONSE.FAIL));
+      return NextResponse.json(responseMessage(checkChildrenError.message, RESPONSE.label(RESPONSE.FAIL), RESPONSE.FAIL));
     }
 
     // 如果有子菜单，不能删除

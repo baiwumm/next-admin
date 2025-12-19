@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['cdn.simpleicons.org'],
+    domains: ['cdn.simpleicons.org', 'cdn.baiwumm.com'],
   },
 };
 

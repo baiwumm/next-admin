@@ -4,13 +4,14 @@ import { Enum } from 'enum-plus';
  * @description: 滚动描点
  */
 export const SCROLL_SPY = Enum({
-  AUTHOR: { value: 'author', label: '作者'},
-  ABOUT: { value: 'about', label: '关于'},
-  ACTIVITY: { value: 'github-activity', label: 'Github Activity'},
-  WORK: { value: 'work', label: '工作经历'},
-  EDUCATION: { value: 'education', label: '教育经历'},
-  SKILLS: { value: 'skills', label: '专业技能'},
-  PROJECTS: { value: 'projects', label: '个人小站'},
+  AUTHOR: { value: 'author', label: '作者' },
+  ABOUT: { value: 'about', label: '关于' },
+  ACTIVITY: { value: 'github-activity', label: 'Github Activity' },
+  WORK: { value: 'work', label: '工作经历' },
+  EDUCATION: { value: 'education', label: '教育经历' },
+  SKILLS: { value: 'skills', label: '专业技能' },
+  PROJECTS: { value: 'projects', label: '个人小站' },
+  POSTS: { value: 'posts', label: '近期文章' },
 });
 
 export const data = {

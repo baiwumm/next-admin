@@ -2,14 +2,16 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-02 16:19:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-19 09:05:14
+ * @LastEditTime: 2025-12-19 14:40:50
  * @Description: 个人中心
  */
 "use client"
+import { useRequest } from 'ahooks';
 import { useTheme } from "next-themes";
 import { Fragment } from 'react';
 
 import GithubActivity from './components/GithubActivity';
+import PostCard, { type PostCardProps } from './components/PostCard';
 import ProjectCard, { type ProjectCardProps } from './components/ProjectCard'
 import ResumeCard from './components/ResumeCard'
 import { data, SCROLL_SPY } from './data'
@@ -18,11 +20,25 @@ import BlurFade from '@/components/BlurFade';
 import BlurText from '@/components/BlurText';
 import Highlighter from '@/components/Highlighter';
 import LogoLoop from '@/components/LogoLoop'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui';
+import { Avatar, AvatarFallback, AvatarImage, Spinner } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
+import { get } from '@/lib/utils';
 
 export default function Portfolio() {
   const { resolvedTheme } = useTheme();
+
+  // 获取文章
+  const { data: posts = [], loading: postLoading } = useRequest(async () => {
+    const res = await fetch('/api/halo/posts?page=1&size=5', {
+      cache: 'no-store', // 确保获取最新数据
+    });
+    if (!res.ok) {
+      return [];
+    }
+    const result = await res.json();
+    return get(result, 'data.items', [])
+  });
+  console.log('posts', posts)
   return (
     <Fragment>
       <main className="flex flex-col min-h-dvh space-y-10 max-w-3xl mx-auto px-4 py-8 pb-18">
@@ -166,6 +182,28 @@ export default function Portfolio() {
                 </BlurFade>
               ))}
             </div>
+          </div>
+        </section>
+        <section id={SCROLL_SPY.POSTS}>
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade inView>
+              <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.POSTS)}</h2>
+            </BlurFade>
+            <BlurFade inView>
+              {postLoading ? (
+                <div className="flex justify-center items-center h-60">
+                  <Spinner />
+                </div>
+              ) : (
+                <div className="relative">
+                  {(posts || []).slice(0, 5).map((post: PostCardProps) => (
+                    <BlurFade key={post.post.spec.slug} inView>
+                      <PostCard {...post} />
+                    </BlurFade>
+                  ))}
+                </div>
+              )}
+            </BlurFade>
           </div>
         </section>
       </main>
