@@ -2,19 +2,17 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 16:16:36
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-16 17:51:39
+ * @LastEditTime: 2025-12-19 09:09:25
  * @Description: 底部版权
  */
 import Image from 'next/image'
 import { type FC } from 'react';
 
-import { useAppStore } from '@/store/useAppStore';
 import pkg from "#/package.json";
 
 const Footer: FC = () => {
-  const footerHeight = useAppStore((s) => s.footerHeight);
   return (
-    <footer className="p-4" style={{ minHeight: footerHeight }}>
+    <footer className="p-4" id="footer">
       <div className="flex flex-col items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
         <div>
           Copyright © {new Date().getFullYear()} by&nbsp;

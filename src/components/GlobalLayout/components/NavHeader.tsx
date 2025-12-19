@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 17:01:44
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-09 17:06:07
+ * @LastEditTime: 2025-12-19 09:10:34
  * @Description: 布局顶栏
  */
 import Image from 'next/image'
@@ -25,12 +25,11 @@ import { useAppStore } from '@/store/useAppStore';
 
 const NavHeader: FC = () => {
   const isMobile = useIsMobile();
-  const navHeight = useAppStore((s) => s.navHeight);
   const layoutMode = useAppStore((s) => s.layoutMode);
   // 是否侧栏布局
   const isSidebarLayout = layoutMode === LAYOUT_MODE.SIDEBAR;
   return (
-    <nav className="px-4 border-b border-default" style={{ height: navHeight }}>
+    <nav className="px-4 border-b border-default">
       <div className={cn("flex items-center justify-between h-15", isSidebarLayout ? "w-full" : "container mx-auto")}>
         {isSidebarLayout ? (
           <div className="flex gap-2 items-center">

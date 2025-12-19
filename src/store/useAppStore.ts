@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-06 17:21:40
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-08 16:47:27
+ * @LastEditTime: 2025-12-19 09:41:02
  * @Description: 全局状态
  */
 'use client'
@@ -30,12 +30,6 @@ type AppState = {
   setTabStyle: (val: typeof TABS_STYLE.valueType) => void; // 设置标签页风格
   themeModeDirection: Direction; // 主题切换动画方向
   setThemeModeDirection: (val: Direction) => void; // 设置主题切换动画方向
-  navHeight: number; // 菜单栏高度
-  setNavHeight: (val: number) => void; // 设置菜单栏高度
-  tabsHeight: number; // 标签页高度
-  setTabsHeight: (val: number) => void; // 设置标签页高度
-  footerHeight: number; // 底部高度
-  setFooterHeight: (val: number) => void; // 设置底部高度
   layoutMode: typeof LAYOUT_MODE.valueType; // 布局模式
   setLayoutMode: (val: typeof LAYOUT_MODE.valueType) => void; // 设置布局模式
 }
@@ -65,12 +59,6 @@ export const useAppStore = create(
       setTabStyle: (value) => set({ tabStyle: value }),
       themeModeDirection: "ltr",
       setThemeModeDirection: (value) => set({ themeModeDirection: value }),
-      navHeight: 60,
-      setNavHeight: (value) => set({ navHeight: value }),
-      tabsHeight: 40,
-      setTabsHeight: (value) => set({ tabsHeight: value }),
-      footerHeight: 72,
-      setFooterHeight: (value) => set({ footerHeight: value }),
       layoutMode: LAYOUT_MODE.TOPBAR,
       setLayoutMode: (value) => set({ layoutMode: value }),
     }),

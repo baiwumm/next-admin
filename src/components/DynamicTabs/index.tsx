@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-05 15:43:42
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 10:05:30
+ * @LastEditTime: 2025-12-19 09:12:21
  * @Description: 
  */
 "use client";
@@ -30,7 +30,6 @@ type DynamicTabsProps = {
 const DynamicTabs: FC<DynamicTabsProps> = ({ onRefresh, isRefreshing }) => {
   const pathname = usePathname();
   const tabStyle = useAppStore((s) => s.tabStyle);
-  const tabsHeight = useAppStore((s) => s.tabsHeight);
   const { setActiveKey, addTab } = useTabsStore(
     useShallow((s) => pick(s, ["setActiveKey", "addTab"])
     ));
@@ -76,7 +75,7 @@ const DynamicTabs: FC<DynamicTabsProps> = ({ onRefresh, isRefreshing }) => {
 
   const dashboardTab = menuList.find(item => item.path === "/dashboard");
   return (
-    <div className="flex gap-1 items-center px-4 py-2 border-b border-default" style={{ height: tabsHeight }}>
+    <div className="flex gap-1 items-center px-4 py-2 border-b border-default">
       {/* 左侧：自适应宽度的可滚动标签区 */}
       <AnimatePresence mode="wait">
         <motion.div

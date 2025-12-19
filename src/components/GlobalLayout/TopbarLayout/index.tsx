@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:51:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 10:34:13
+ * @LastEditTime: 2025-12-19 09:38:18
  * @Description: 顶栏布局
  */
 "use client";
@@ -37,7 +37,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, mainMinH }) => {
   const isSidebarLayout = layoutMode === LAYOUT_MODE.SIDEBAR;
   return (
     <div className="w-full">
-      <div className={cn('top-0 z-20 backdrop-blur-lg bg-white/80 dark:bg-black/80', fixedHeader ? 'sticky' : 'static')}>
+      <div id="header" className={cn('top-0 z-20 backdrop-blur-lg bg-white/80 dark:bg-black/80', fixedHeader ? 'sticky' : 'static')}>
         <NavHeader />
         <AnimatePresence mode="wait">
           {showTabs ? (
@@ -57,7 +57,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, mainMinH }) => {
         <main
           key={refreshKey}
           className={cn("p-4", isSidebarLayout ? "w-full" : "container mx-auto")}
-          style={{ minHeight: `calc(100vh - ${mainMinH}px)` }}
+          style={{ minHeight: mainMinH }}
         >
           {isSidebarLayout ? null : (
             <div className="mb-4">
