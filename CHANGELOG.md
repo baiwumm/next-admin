@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.3](///compare/2.6.2...2.6.3) (2025-12-19)
+
+### Features
+
+* 新增 Scrollspy 组件 7027b60
+* **Portfolio:** 新增 《近期文章》模块 6158c0b
+
+### Performance Improvements
+
+* 修改主体内容最小高度计算逻辑 6c5fdf4
+* **Portfolio:** 优化数据展示 7f48378
+
 ## [2.6.2](///compare/2.6.1...2.6.2) (2025-12-18)
 
 ### Features
