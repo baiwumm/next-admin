@@ -89,6 +89,7 @@ export {
 } from "./input-group";
 export { Progress, ProgressCircle, ProgressRadial } from './progress';
 export { ScrollArea, ScrollBar } from "./scroll-area";
+export { Scrollspy, type ScrollspyProps } from './scrollspy';
 export {
   Select,
   SelectContent,
