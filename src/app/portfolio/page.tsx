@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-02 16:19:01
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-18 17:14:05
+ * @LastEditTime: 2025-12-19 09:05:14
  * @Description: 个人中心
  */
 "use client"
@@ -10,9 +10,9 @@ import { useTheme } from "next-themes";
 import { Fragment } from 'react';
 
 import GithubActivity from './components/GithubActivity';
-import ProjectCard from './components/ProjectCard'
+import ProjectCard, { type ProjectCardProps } from './components/ProjectCard'
 import ResumeCard from './components/ResumeCard'
-import { data } from './data'
+import { data, SCROLL_SPY } from './data'
 
 import BlurFade from '@/components/BlurFade';
 import BlurText from '@/components/BlurText';
@@ -26,29 +26,31 @@ export default function Portfolio() {
   return (
     <Fragment>
       <main className="flex flex-col min-h-dvh space-y-10 max-w-3xl mx-auto px-4 py-8 pb-18">
-        <BlurFade inView>
-          <div className="mx-auto w-full space-y-8">
-            <div className="gap-2 flex justify-between items-center">
-              <div className="flex-col flex flex-1 space-y-1.5">
-                <BlurText
-                  className="text-lg font-bold tracking-tighter sm:text-4xl/none"
-                  text={`Hi, 我是${data.name} 👋`}
-                />
-                <BlurText
-                  className="max-w-[600px] md:text-lg"
-                  text={data.description}
-                />
-              </div>
-              <Avatar className="size-28">
-                <AvatarImage alt={data.name} src={data.avatarUrl} />
-                <AvatarFallback>{data.name.slice(0, 2)}</AvatarFallback>
-              </Avatar>
-            </div>
-          </div>
-        </BlurFade>
-        <section>
+        <section id={SCROLL_SPY.AUTHOR}>
           <BlurFade inView>
-            <h2 className="text-xl font-bold">关于</h2>
+            <div className="mx-auto w-full space-y-8">
+              <div className="gap-2 flex justify-between items-center">
+                <div className="flex-col flex flex-1 space-y-1.5">
+                  <BlurText
+                    className="text-lg font-bold tracking-tighter sm:text-4xl/none"
+                    text={`Hi, 我是${data.name} 👋`}
+                  />
+                  <BlurText
+                    className="max-w-[600px] md:text-lg"
+                    text={data.description}
+                  />
+                </div>
+                <Avatar className="size-28">
+                  <AvatarImage alt={data.name} src={data.avatarUrl} />
+                  <AvatarFallback>{data.name.slice(0, 2)}</AvatarFallback>
+                </Avatar>
+              </div>
+            </div>
+          </BlurFade>
+        </section>
+        <section id={SCROLL_SPY.ABOUT}>
+          <BlurFade inView>
+            <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.ABOUT)}</h2>
           </BlurFade>
           <BlurFade inView>
             <div className="flex flex-col justify-center text-sm text-muted-foreground gap-1 mt-1">
@@ -75,20 +77,20 @@ export default function Portfolio() {
             </div>
           </BlurFade>
         </section>
-        <section>
+        <section id={SCROLL_SPY.ACTIVITY}>
           <div className="flex flex-col gap-4">
             <BlurFade inView>
-              <h2 className="text-xl font-bold">Github Activity</h2>
+              <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.ACTIVITY)}</h2>
             </BlurFade>
             <BlurFade inView>
               <GithubActivity />
             </BlurFade>
           </div>
         </section>
-        <section>
+        <section id={SCROLL_SPY.WORK}>
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade inView>
-              <h2 className="text-xl font-bold">工作经历</h2>
+              <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.WORK)}</h2>
             </BlurFade>
             {data.work.map((work) => (
               <BlurFade key={work.company} inView>
@@ -107,10 +109,10 @@ export default function Portfolio() {
             ))}
           </div>
         </section>
-        <section>
+        <section id={SCROLL_SPY.EDUCATION}>
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade inView>
-              <h2 className="text-xl font-bold">教育经历</h2>
+              <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.EDUCATION)}</h2>
             </BlurFade>
             {data.education.map((education) => (
               <BlurFade key={education.school} inView>
@@ -127,10 +129,10 @@ export default function Portfolio() {
             ))}
           </div>
         </section>
-        <section>
+        <section id={SCROLL_SPY.SKILLS}>
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade inView>
-              <h2 className="text-xl font-bold">专业技能</h2>
+              <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.SKILLS)}</h2>
             </BlurFade>
             <BlurFade inView>
               <LogoLoop
@@ -148,10 +150,10 @@ export default function Portfolio() {
             </BlurFade>
           </div>
         </section>
-        <section>
+        <section id={SCROLL_SPY.PROJECTS}>
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade inView>
-              <h2 className="text-xl font-bold">个人小站</h2>
+              <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.PROJECTS)}</h2>
             </BlurFade>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
               {data.projects.map((project, id) => (
@@ -160,7 +162,7 @@ export default function Portfolio() {
                   delay={id * 0.05}
                   inView
                 >
-                  <ProjectCard key={project.title} {...project} />
+                  <ProjectCard key={project.title} {...project as ProjectCardProps} />
                 </BlurFade>
               ))}
             </div>

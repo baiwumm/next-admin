@@ -15,7 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import pkg from '#/package.json'
 
-interface Props {
+export interface ProjectCardProps {
   title: string;
   href?: string;
   description: string;
@@ -43,7 +43,7 @@ export default function ProjectCard({
   links,
   repo,
   className,
-}: Props) {
+}: ProjectCardProps) {
   return (
     <Card
       className={
