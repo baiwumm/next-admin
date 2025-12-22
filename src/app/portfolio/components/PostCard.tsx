@@ -2,10 +2,11 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-19 11:10:50
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-19 15:21:34
+ * @LastEditTime: 2025-12-22 11:01:53
  * @Description: 文章卡片
  */
 import { Folder, Tag } from 'lucide-react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from "next/link";
 import { type FC } from 'react';
@@ -61,9 +62,11 @@ const PostCard: FC<PostCardProps> = ({ categories = [], contributors = [], owner
           <div className="space-y-4">
             <div className="relative z-10 flex flex-col gap-2">
               <Link href={`${BLOG_URL}${post.status.permalink}`} target='_blank'>
-                <h2 className="text-2xl font-semibold tracking-tight overflow-hidden line-clamp-2 wrap-break-word">
+                <motion.h2 whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="text-2xl font-semibold tracking-tight overflow-hidden line-clamp-2 wrap-break-word">
                   {post.spec.title}
-                </h2>
+                </motion.h2>
               </Link>
               {/* 分类/标签 */}
               <div className="flex flex-wrap gap-2">

@@ -1,4 +1,4 @@
-import { DynamicIcon, type IconName } from 'lucide-react/dynamic';
+import { Globe } from 'lucide-react';
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,8 +6,6 @@ import {
   Badge,
   Button,
   Card,
-  CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
   GitHubStarsButton
@@ -20,14 +18,8 @@ export interface ProjectCardProps {
   href?: string;
   description: string;
   tags: readonly string[];
-  link?: string;
   image?: string;
   video?: string;
-  links?: readonly {
-    icon: IconName;
-    type: string;
-    href: string;
-  }[];
   repo?: string;
   className?: string;
 }
@@ -37,17 +29,15 @@ export default function ProjectCard({
   href,
   description,
   tags,
-  link,
   image,
   video,
-  links,
   repo,
   className,
 }: ProjectCardProps) {
   return (
     <Card
       className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
+        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full rounded-lg gap-2"
       }
     >
       <Link
@@ -76,55 +66,50 @@ export default function ProjectCard({
         ) : null}
       </Link>
       <CardHeader className="px-3 py-1 border-none">
-        <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <div className="hidden text-xs underline print:visible">
-            {link?.replace("https://", "").replace("www.", "").replace("/", "")}
+        <CardTitle className="text-base flex justify-between items-center gap-2">
+          <div className="relative flex">
+            <div className={cn('size-2 rounded-full', 'bg-green-500 dark:bg-green-400')} />
+            <div className={cn('absolute inset-0 size-2 rounded-full animate-ping opacity-75', 'bg-green-500 dark:bg-green-400')} />
           </div>
-          <div className="prose max-w-full text-pretty text-xs text-muted-foreground dark:prose-invert">
-            {description}
-          </div>
+          <span>{title}</span>
+        </CardTitle>
+        <div className="prose max-w-full text-pretty text-xs text-muted-foreground overflow-hidden line-clamp-3 wrap-break-word">
+          {description}
         </div>
       </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-3 py-1">
-        {tags && tags.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1">
-            {tags?.map((tag) => (
-              <Badge
-                variant="secondary"
-                size="sm"
-                key={tag}
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </CardContent>
-      <CardFooter className="p-3 border-none">
-        {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
-            {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
-                <Button size="xs">
-                  <DynamicIcon name={link.icon} />
-                  {link.type}
-                </Button>
-              </Link>
-            ))}
-            {repo ? (
-              <Link href={`https://github.com/${pkg.author.name}/${repo}`} target="_blank">
-                <GitHubStarsButton
-                  size='xs'
-                  username={pkg.author.name}
-                  repo={repo}
-                  className="gap-2"
-                />
-              </Link>
-            ) : null}
-          </div>
-        )}
-      </CardFooter>
+      {tags && tags.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-auto px-3">
+          {tags?.map((tag) => (
+            <Badge
+              variant="secondary"
+              size="sm"
+              key={tag}
+            >
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      )}
+      <div className="flex flex-row flex-wrap items-start gap-1 px-3 pb-3">
+        {href ? (
+          <Link href={href} target="_blank">
+            <Button size="xs">
+              <Globe />
+              Website
+            </Button>
+          </Link>
+        ) : null}
+        {repo ? (
+          <Link href={`https://github.com/${pkg.author.name}/${repo}`} target="_blank">
+            <GitHubStarsButton
+              size='xs'
+              username={pkg.author.name}
+              repo={repo}
+              className="gap-2"
+            />
+          </Link>
+        ) : null}
+      </div>
     </Card>
   );
 }

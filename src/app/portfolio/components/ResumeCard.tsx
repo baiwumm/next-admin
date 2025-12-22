@@ -83,7 +83,7 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
               {period}
             </div>
           </div>
-          {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
+          {subtitle && <div className="text-xs">{subtitle}</div>}
           {description && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}

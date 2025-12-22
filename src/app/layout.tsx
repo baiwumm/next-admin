@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 11:18:59
+ * @LastEditTime: 2025-12-19 16:02:41
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
@@ -11,13 +11,13 @@ import { headers } from 'next/headers';
 import { type Messages, NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 
-import pkg from "../../package.json";
 import { Providers } from "./Provider";
 
 import "@/styles/globals.css";
 import { ClarityAnalytics, GoogleAnalytics, PlausibleAnalytics, UmamiAnalytics } from '@/components/Analytics';
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import { INTL_LOCALES } from '@/enums';
+import pkg from "#/package.json";
 
 type MetaProps = {
   params: { locale: typeof INTL_LOCALES.valueType };
