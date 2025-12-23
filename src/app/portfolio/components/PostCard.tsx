@@ -10,7 +10,7 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from "next/link";
 import { type FC } from 'react';
-
+import pkg from '#/package.json';
 import { Badge, Button } from "@/components/ui";
 
 export type PostCardProps = {
@@ -22,8 +22,8 @@ export type PostCardProps = {
   tags: any[];
 }
 
-const PostCard: FC<PostCardProps> = ({ categories = [], contributors = [], owner = {}, post = {}, stats = {}, tags = [] }) => {
-  const BLOG_URL = 'https://baiwumm.com';
+const PostCard: FC<PostCardProps> = ({ categories = [], post = {}, stats = {}, tags = [] }) => {
+  const BLOG_URL = pkg.author.url;
 
   const formatDate = (date: Date): string => {
     return date.toLocaleDateString("zh-CN", {

@@ -28,7 +28,7 @@ export default function Portfolio() {
   const BLUR_FADE_DELAY = 0.04;
   // 获取文章
   const { data: posts = [], loading: postLoading } = useRequest(async () => {
-    const res = await fetch('/api/halo/posts?page=1&size=5', {
+    const res = await fetch('/api/halo/posts?page=1&size=5&publishPhase=PUBLISHED', {
       cache: 'no-store', // 确保获取最新数据
     });
     if (!res.ok) {
