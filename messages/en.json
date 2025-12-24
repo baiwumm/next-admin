@@ -7,6 +7,11 @@
     "menu-manage":"Menu Management"
   },
   "Pages":{
+    "Dashboard":{
+      "hour":"Hour",
+      "last-month":"Last Month",
+      "code-time":"Code Time"
+    },
     "Login":{
       "submit":"Login",
       "login-now":"Login Now",

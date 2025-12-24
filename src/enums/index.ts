@@ -97,3 +97,12 @@ export const OAUTH_PROVIDERS = Enum({
   GOOGLE: { value: 'google', label: 'Google' },
   GITHUB: { value: 'github', label: 'Github' },
 })
+
+/**
+ * @description: 趋势
+ */
+export const TREND = Enum({
+  UP: { value: 'up', label: 'up' },
+  DOWN: { value: 'down', label: 'down' },
+  SAME: { value: 'same', label: 'same' },
+})

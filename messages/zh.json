@@ -7,6 +7,11 @@
     "menu-manage":"菜单管理"
   },
   "Pages":{
+    "Dashboard":{
+      "hour":"小时",
+      "last-month":"上个月",
+      "code-time":"代码时间"
+    },
     "Login":{
       "submit":"登录",
       "login-now":"立即登录",
