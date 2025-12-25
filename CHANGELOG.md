@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.5](///compare/2.6.4...2.6.5) (2025-12-25)
+
+### Features
+
+* **Dashboard:** 新增 CodeTimeCard 代码时间统计组件 9f1b1d8
+* **Dashboard:** 新增统计卡片 aa7e3eb
+* Halo 文章列表添加只发布的文章 eb1c0e3
+
+### Performance Improvements
+
+* **config:** 使用 remotePatterns 代替 domains 476b33a
+
 ## [2.6.4](///compare/2.6.3...2.6.4) (2025-12-22)
 
 ### Features
