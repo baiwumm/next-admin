@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-24 14:56:38
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-25 14:45:21
+ * @LastEditTime: 2025-12-25 14:51:53
  * @Description: 实时浏览量
  */
 "use client";
@@ -56,7 +56,7 @@ const RealTimeCard: FC = () => {
   // 计算变化量
   const delta = data - prevData;
   return (
-    <Card className="relative">
+    <Card>
       <CardHeader className="border-0">
         <CardTitle className="flex items-center gap-2">
           <Activity className="size-6 text-blue-500 dark:text-blue-400" />

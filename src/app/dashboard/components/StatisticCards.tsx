@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-24 14:56:38
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-25 13:38:37
+ * @LastEditTime: 2025-12-25 14:51:29
  * @Description: 统计卡片
  */
 import { ArrowDown, ArrowUp, RotateCcw } from 'lucide-react'
@@ -37,7 +37,7 @@ const StatisticCards: FC<StatisticDataProps> = ({ title, titleIcon, data, loadin
           <span className="text-sm font-semibold text-foreground">{t(title)}</span>
         </CardTitle>
         <CardToolbar>
-          <Button variant="ghost" mode="icon" size='xs' onClick={handleRefresh}>
+          <Button variant="ghost" mode="icon" size='xs' radius='full' onClick={handleRefresh}>
             <RotateCcw />
           </Button>
         </CardToolbar>
