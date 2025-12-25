@@ -181,3 +181,13 @@ export const isMenuActive = (menu: System.Menu, currentPath: string): boolean =>
     currentPath === p || currentPath.startsWith(p + '/')
   );
 };
+
+/**
+ * 生成 [min, max] 范围内的随机整数（包含 min 和 max）
+ */
+export function randomNumber(min: number, max: number): number {
+  if (min > max) {
+    throw new Error('min must be less than or equal to max');
+  }
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

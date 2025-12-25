@@ -8,9 +8,13 @@
   },
   "Pages":{
     "Dashboard":{
-      "hour":"小时",
       "last-month":"上个月",
-      "code-time":"代码时间"
+      "real-time":"实时浏览量",
+      "page-views":"页面浏览量",
+      "visitors":"访客数",
+      "visits":"访问次数",
+      "trend-days":"近{day}天趋势",
+      "today-peak":"今日峰值"
     },
     "Login":{
       "submit":"登录",

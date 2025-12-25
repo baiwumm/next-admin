@@ -8,9 +8,13 @@
   },
   "Pages":{
     "Dashboard":{
-      "hour":"Hour",
       "last-month":"Last Month",
-      "code-time":"Code Time"
+      "real-time":"RealTime Page Views",
+      "page-views":"Page Views",
+      "visitors":"Visitors",
+      "visits":"Visits",
+      "trend-days":"Recent {day} trend",
+      "today-peak":"Today's peak"
     },
     "Login":{
       "submit":"Login",
