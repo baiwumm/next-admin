@@ -81,7 +81,7 @@ const StatisticCards: FC<StatisticDataProps> = ({ title, titleIcon, data, loadin
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: .8 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 flex items-center justify-center bg-background/25 backdrop-blur-sm rounded-md z-10"
+            className="absolute inset-0 flex items-center justify-center bg-background/25 backdrop-blur-xs rounded-md z-10"
           >
             <Spinner />
           </motion.div>

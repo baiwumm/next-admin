@@ -14,7 +14,14 @@
       "visitors":"访客数",
       "visits":"访问次数",
       "trend-days":"近{day}天趋势",
-      "today-peak":"今日峰值"
+      "today-peak":"今日峰值",
+      "day":"天",
+      "week":"周",
+      "month":"月",
+      "year":"年",
+      "sale-title":"销售数据",
+      "sale-volume":"销售额",
+      "order-quantity":"订单数"
     },
     "Login":{
       "submit":"登录",

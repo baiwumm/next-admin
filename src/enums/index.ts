@@ -106,3 +106,13 @@ export const TREND = Enum({
   DOWN: { value: 'down', label: 'down' },
   SAME: { value: 'same', label: 'same' },
 })
+
+/**
+ * @description: 统计时间
+ */
+export const PERIODS = Enum({
+  DAY: { value: 'day', label: 'day' },
+  WEEK: { value: 'week', label: 'week' },
+  MONTH: { value: 'month', label: 'month' },
+  YEAR: { value: 'year', label: 'year' },
+})

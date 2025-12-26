@@ -126,6 +126,8 @@ export {
   TableHeader,
   TableRow,
 } from './table'
+export { Toggle, toggleVariants } from './toggle'
+export { ToggleGroup, ToggleGroupItem } from './toggle-group'
 export {
   Tooltip,
   TooltipContent,

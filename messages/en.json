@@ -14,7 +14,14 @@
       "visitors":"Visitors",
       "visits":"Visits",
       "trend-days":"Recent {day} trend",
-      "today-peak":"Today's peak"
+      "today-peak":"Today's peak",
+      "day":"Day",
+      "week":"Week",
+      "month":"Month",
+      "year":"Year",
+      "sale-title":"Sale Ranking",
+      "sale-volume":"Sale Volume",
+      "order-quantity":"Order Quantity"
     },
     "Login":{
       "submit":"Login",
