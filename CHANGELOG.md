@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.6](///compare/2.6.5...2.6.6) (2025-12-26)
+
+### Features
+
+* **Dashboard:** 新增 SaleStatistics 销售统计卡片 bf3cb02
+* **Portfolio:** 新增 Github 贡献日历组件 4c3e021
+
 ## [2.6.5](///compare/2.6.4...2.6.5) (2025-12-25)
 
 ### Features
