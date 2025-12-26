@@ -9,7 +9,7 @@
 import { useRequest } from 'ahooks';
 import { useTheme } from "next-themes";
 
-import GithubActivity from './components/GithubActivity';
+import GithubCalendar from './components/GithubCalendar';
 import PostCard, { type PostCardProps } from './components/PostCard';
 import ProjectCard, { type ProjectCardProps } from './components/ProjectCard'
 import ResumeCard from './components/ResumeCard'
@@ -38,7 +38,7 @@ export default function Portfolio() {
     return get(result, 'data.items', [])
   });
   return (
-    <main className="flex flex-col min-h-dvh space-y-10 max-w-3xl mx-auto px-4 py-8 pb-18">
+    <main className="flex flex-col min-h-dvh space-y-10 max-w-4xl mx-auto px-4 py-8 pb-18">
       <section id={SCROLL_SPY.HERO}>
         <div className="flex justify-between items-center">
           <div className="flex-col flex flex-1 gap-4">
@@ -96,7 +96,7 @@ export default function Portfolio() {
             <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.ACTIVITY)}</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <GithubActivity />
+            <GithubCalendar />
           </BlurFade>
         </div>
       </section>
@@ -168,7 +168,7 @@ export default function Portfolio() {
           <BlurFade inView>
             <h2 className="text-xl font-bold">{SCROLL_SPY.label(SCROLL_SPY.PROJECTS)}</h2>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {data.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
