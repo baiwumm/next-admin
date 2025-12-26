@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:16:17
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-19 16:02:41
+ * @LastEditTime: 2025-12-26 17:07:27
  * @Description: 根布局
  */
 import { Analytics } from "@vercel/analytics/next";
@@ -43,7 +43,42 @@ export async function generateMetadata({ params: { locale } }: MetaProps): Promi
     title: {
       template: `%s - ${process.env.NEXT_PUBLIC_APP_NAME}`,
       absolute: `${pageTitle} - ${process.env.NEXT_PUBLIC_APP_NAME}`,
-    }
+    },
+    description: process.env.NEXT_PUBLIC_APP_DESC,
+    generator: process.env.NEXT_PUBLIC_APP_NAME,
+    applicationName: process.env.NEXT_PUBLIC_APP_NAME,
+    referrer: 'origin-when-cross-origin',
+    keywords: [process.env.NEXT_PUBLIC_APP_NAME!, 'Next.js', 'Shadcn UI', 'Tailwindcss', '模板', "Template", "Motion"],
+    authors: [{ name: process.env.NEXT_PUBLIC_AUTHOR_NAME, url: pkg.author.url }],
+    creator: process.env.NEXT_PUBLIC_AUTHOR_NAME,
+    publisher: process.env.NEXT_PUBLIC_AUTHOR_NAME,
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      title: process.env.NEXT_PUBLIC_APP_NAME,
+      description: process.env.NEXT_PUBLIC_APP_DESC,
+      url: process.env.NEXT_PUBLIC_APP_DOMAIN,
+      siteName: process.env.NEXT_PUBLIC_APP_NAME,
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_APP_DOMAIN}/og.png`,
+          width: 1200,
+          height: 630,
+        }
+      ],
+      locale: 'zh_CN',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: process.env.NEXT_PUBLIC_APP_NAME,
+      description: process.env.NEXT_PUBLIC_APP_DESC,
+      creator: 'baiwumm',
+      images: [`${process.env.NEXT_PUBLIC_APP_DOMAIN}/og.png`],
+    },
   };
 }
 
@@ -58,8 +93,8 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        {/* 插入版本 meta */}
         <meta name="version" content={pkg.version} />
+        <meta name="apple-mobile-web-app-title" content={process.env.NEXT_PUBLIC_APP_NAME} />
         <link
           rel="stylesheet"
           href="https://cdn.baiwumm.com/fonts/MapleMono-CN-Regular/result.css"
