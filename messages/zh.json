@@ -1,179 +1,194 @@
 {
-  "Route":{
-    "dashboard":"控制台",
-    "portfolio":"个人档案",
-    "system-settings":"系统设置",
-    "user-manage":"用户管理",
-    "menu-manage":"菜单管理"
+  "Route": {
+    "dashboard": "控制台",
+    "portfolio": "个人档案",
+    "system-settings": "系统设置",
+    "user-manage": "用户管理",
+    "menu-manage": "菜单管理"
   },
-  "Pages":{
-    "Dashboard":{
-      "last-month":"上个月",
-      "real-time":"实时浏览量",
-      "page-views":"页面浏览量",
-      "visitors":"访客数",
-      "visits":"访问次数",
-      "trend-days":"近{day}天趋势",
-      "today-peak":"今日峰值",
-      "day":"天",
-      "week":"周",
-      "month":"月",
-      "year":"年",
-      "sale-title":"销售数据",
-      "sale-volume":"销售额",
-      "order-quantity":"订单数"
+  "Pages": {
+    "Dashboard": {
+      "last-month": "上个月",
+      "real-time": "实时浏览量",
+      "page-views": "页面浏览量",
+      "visitors": "访客数",
+      "visits": "访问次数",
+      "trend-days": "近{day}天趋势",
+      "today-peak": "今日峰值",
+      "day": "天",
+      "week": "周",
+      "month": "月",
+      "year": "年",
+      "sale-title": "销售数据",
+      "sale-volume": "销售额",
+      "order-quantity": "订单数",
+      "backlog": "待办事项",
+      "progress": "进行中",
+      "done": "已完成",
+      "high": "高",
+      "medium": "中",
+      "low": "低",
+      "tasks": {
+        "add_auth": "添加身份验证",
+        "create_api": "创建 API 接口",
+        "write_docs": "编写文档",
+        "design_system": "设计系统更新",
+        "dark_mode": "实现深色模式",
+        "setup_project": "项目初始化",
+        "initial_commit": "首次提交"
+      }
     },
-    "Login":{
-      "submit":"登录",
-      "login-now":"立即登录",
-      "register":"注册",
-      "email":"邮箱地址",
-      "email-placeholder":"请输入邮箱地址",
-      "email-valid":"请输入有效的邮箱地址",
-      "password":"密码",
-      "password-placeholder":"请输入密码",
-      "password-min":"密码长度不能小于 {min} 个字符",
-      "google":"使用 Google 登录",
-      "github":"使用 Github 登录",
-      "login-error":"登录失败，请稍后重试",
-      "signup":"立即注册",
-      "signup-in":"注册中...",
-      "signup-error":"注册失败，请稍后重试",
-      "signup-success":"提交成功，请到邮箱验证后登录",
-      "need-account":"需要创建一个账户？",
-      "has-account":"已经有账户？",
-      "login-in":"登录中...",
-      "login-success":"登录成功，欢迎回来！"
+    "Login": {
+      "submit": "登录",
+      "login-now": "立即登录",
+      "register": "注册",
+      "email": "邮箱地址",
+      "email-placeholder": "请输入邮箱地址",
+      "email-valid": "请输入有效的邮箱地址",
+      "password": "密码",
+      "password-placeholder": "请输入密码",
+      "password-min": "密码长度不能小于 {min} 个字符",
+      "google": "使用 Google 登录",
+      "github": "使用 Github 登录",
+      "login-error": "登录失败，请稍后重试",
+      "signup": "立即注册",
+      "signup-in": "注册中...",
+      "signup-error": "注册失败，请稍后重试",
+      "signup-success": "提交成功，请到邮箱验证后登录",
+      "need-account": "需要创建一个账户？",
+      "has-account": "已经有账户？",
+      "login-in": "登录中...",
+      "login-success": "登录成功，欢迎回来！"
     },
-    "MenuManage":{
-      "parent_id":"父级菜单",
-      "parent_id_desc":"不选默认为顶级菜单。",
-      "label":"菜单名称",
-      "label-desc":"此标识将决定菜单在不同语言下的显示名称。",
-      "path":"路由地址",
-      "path-invalid":"路径必须以 '/' 开头，仅包含字母、数字、'-'、'_' 和 '/'，且不能以 '/' 结尾",
-      "icon":"菜单图标",
-      "icon-invalid":"图标地址不正确",
-      "show_in_menu":"在菜单中显示",
-      "redirect":"重定向地址",
-      "add":"新增菜单",
-      "edit":"编辑菜单"
+    "MenuManage": {
+      "parent_id": "父级菜单",
+      "parent_id_desc": "不选默认为顶级菜单。",
+      "label": "菜单名称",
+      "label-desc": "此标识将决定菜单在不同语言下的显示名称。",
+      "path": "路由地址",
+      "path-invalid": "路径必须以 '/' 开头，仅包含字母、数字、'-'、'_' 和 '/'，且不能以 '/' 结尾",
+      "icon": "菜单图标",
+      "icon-invalid": "图标地址不正确",
+      "show_in_menu": "在菜单中显示",
+      "redirect": "重定向地址",
+      "add": "新增菜单",
+      "edit": "编辑菜单"
     },
-    "UserManage":{
-      "user-info":"用户信息",
-      "email":"邮箱地址",
-      "provider":"认证方式",
-      "last_sign_in_at":"上次登录时间",
-      "created_at":"注册时间",
-      "email_confirmed_at":"邮箱验证时间",
-      "waiting":"等待验证..."
+    "UserManage": {
+      "user-info": "用户信息",
+      "email": "邮箱地址",
+      "provider": "认证方式",
+      "last_sign_in_at": "上次登录时间",
+      "created_at": "注册时间",
+      "email_confirmed_at": "邮箱验证时间",
+      "waiting": "等待验证..."
     },
-    "NotFound":{
-      "title":"看来这个页面去环球旅行了，还没寄明信片回来。",
-      "button":"回到首页"
+    "NotFound": {
+      "title": "看来这个页面去环球旅行了，还没寄明信片回来。",
+      "button": "回到首页"
     }
   },
-  "Components":{
-    "Layout":{
-      "logout":"退出登录",
-      "logout-in":"正在退出...",
-      "logout-comfirm":"确定要退出登录吗？",
-      "logout-error":"退出登录失败，请稍后重试",
-      "close-menu":"关闭菜单",
-      "open-menu":"打开菜单",
-      "anonymous-user":"匿名用户",
-      "menu-loading":"正在加载菜单..."
+  "Components": {
+    "Layout": {
+      "logout": "退出登录",
+      "logout-in": "正在退出...",
+      "logout-comfirm": "确定要退出登录吗？",
+      "logout-error": "退出登录失败，请稍后重试",
+      "close-menu": "关闭菜单",
+      "open-menu": "打开菜单",
+      "anonymous-user": "匿名用户",
+      "menu-loading": "正在加载菜单..."
     },
-    "FullLoading":{
-      "label":"正在加载资源，请稍后..."
+    "FullLoading": {
+      "label": "正在加载资源，请稍后..."
     },
-    "AppSettings":{
-      "primary-color":"主题色",
-      "theme-mode":"主题模式",
-      "theme-mode-direction":"动画方向",
-      "route-transition":"路由过渡动画",
-      "fixed-header":"固定顶栏",
-      "show-tabs":"显示标签页",
-      "show-footer":"显示底部",
-      "color-style":"色彩风格",
-      "tabs-style":"标签页风格",
-      "layout-mode":"布局模式"
+    "AppSettings": {
+      "primary-color": "主题色",
+      "theme-mode": "主题模式",
+      "theme-mode-direction": "动画方向",
+      "route-transition": "路由过渡动画",
+      "fixed-header": "固定顶栏",
+      "show-tabs": "显示标签页",
+      "show-footer": "显示底部",
+      "color-style": "色彩风格",
+      "tabs-style": "标签页风格",
+      "layout-mode": "布局模式"
     }
   },
-  "Common":{
-    "loading":"加载中...",
-    "user-error":"获取用户信息失败，请稍后重试",
-    "add":"新增",
-    "add-success":"新增成功",
-    "edit":"编辑",
-    "edit-success":"编辑成功",
-    "delete":"删除",
-    "delete-success":"删除成功",
+  "Common": {
+    "loading": "加载中...",
+    "user-error": "获取用户信息失败，请稍后重试",
+    "add": "新增",
+    "add-success": "新增成功",
+    "edit": "编辑",
+    "edit-success": "编辑成功",
+    "delete": "删除",
+    "delete-success": "删除成功",
     "delete-confirm-title": "确认删除",
     "delete-confirm-description": "此操作将永久删除数据，且无法恢复。请谨慎操作。",
-    "search":"搜索",
-    "reset":"重置",
-    "sort":"排序",
-    "created_at":"创建时间",
-    "updated_at":"最后更新时间",
-    "actions":"操作",
-    "enter":"请输入",
-    "select":"请选择",
-    "cancel":"取消",
-    "confirm":"确认",
-    "columns-settings":"列设置",
-    "empty":"暂无数据",
-    "copy":"复制",
-    "index":"序号",
-    "total":"第 {from} - {to} 条，共 {total} 条",
-    "page-size":"{pageSize}条/页",
-    "page-size-tip":"每页条数",
-    "request-error":"加载失败",
-    "warm-tips":"温馨提示",
-    "refresh":"刷新",
-    "asc":"升序",
-    "desc":"降序",
-    "pin-to-left":"固定左侧",
-    "pin-to-right":"固定右侧",
-    "move-to-left":"向左移动",
-    "move-to-right":"向右移动",
-    "not-empty":"不能为空",
+    "search": "搜索",
+    "reset": "重置",
+    "sort": "排序",
+    "created_at": "创建时间",
+    "updated_at": "最后更新时间",
+    "actions": "操作",
+    "enter": "请输入",
+    "select": "请选择",
+    "cancel": "取消",
+    "confirm": "确认",
+    "columns-settings": "列设置",
+    "empty": "暂无数据",
+    "copy": "复制",
+    "index": "序号",
+    "total": "第 {from} - {to} 条，共 {total} 条",
+    "page-size": "{pageSize}条/页",
+    "page-size-tip": "每页条数",
+    "request-error": "加载失败",
+    "warm-tips": "温馨提示",
+    "refresh": "刷新",
+    "asc": "升序",
+    "desc": "降序",
+    "pin-to-left": "固定左侧",
+    "pin-to-right": "固定右侧",
+    "move-to-left": "向左移动",
+    "move-to-right": "向右移动",
+    "not-empty": "不能为空",
     "max-length": "长度不能超过 {max} 个字符"
   },
-  "Enums":{
-    "theme-mode":{
-      "light":"浅色模式",
-      "dark":"深色模式",
-      "system":"跟随系统",
-      "ltr":"左到右",
-      "rtl":"右到左",
-      "btt":"下到上",
-      "ttb":"上到下"
+  "Enums": {
+    "theme-mode": {
+      "light": "浅色模式",
+      "dark": "深色模式",
+      "system": "跟随系统",
+      "ltr": "左到右",
+      "rtl": "右到左",
+      "btt": "下到上",
+      "ttb": "上到下"
     },
-    "color-style":{
-      "default":"正常模式",
-      "grey":"灰色模式",
-      "invert":"色弱模式"
+    "color-style": {
+      "default": "正常模式",
+      "grey": "灰色模式",
+      "invert": "色弱模式"
     },
-    "tabs-style":{
-      "button":"按钮风格",
-      "tag":"标签风格",
-      "google":"谷歌风格"
+    "tabs-style": {
+      "button": "按钮风格",
+      "tag": "标签风格",
+      "google": "谷歌风格"
     },
-    "route-transition":{
-      "blur-slide":"左右模糊渐变",
-      "fade":"淡入淡出",
-      "blur-fade":"模糊渐入",
-      "slide-fade":"滑动渐入",
-      "zoom":"缩放渐入",
-      "swing":"左右摆动",
-      "flip":"翻转效果",
-      "slide-up":"向上滑动渐入",
-      "diagonal":"对角渐入"
+    "route-transition": {
+      "blur-slide": "左右模糊渐变",
+      "fade": "淡入淡出",
+      "blur-fade": "模糊渐入",
+      "slide-fade": "滑动渐入",
+      "zoom": "缩放渐入",
+      "swing": "左右摆动",
+      "flip": "翻转效果",
+      "slide-up": "向上滑动渐入",
+      "diagonal": "对角渐入"
     },
-    "layout-mode":{
-      "sidebar":"侧栏风格",
-      "topbar":"顶栏风格"
+    "layout-mode": {
+      "sidebar": "侧栏风格",
+      "topbar": "顶栏风格"
     }
   }
 }

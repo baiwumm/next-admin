@@ -1,179 +1,194 @@
 {
-  "Route":{
-    "dashboard":"Dashboard",
-    "portfolio":"Portfolio",
-    "system-settings":"System Settings",
-    "user-manage":"User Management",
-    "menu-manage":"Menu Management"
+  "Route": {
+    "dashboard": "Dashboard",
+    "portfolio": "Portfolio",
+    "system-settings": "System Settings",
+    "user-manage": "User Management",
+    "menu-manage": "Menu Management"
   },
-  "Pages":{
-    "Dashboard":{
-      "last-month":"Last Month",
-      "real-time":"RealTime Page Views",
-      "page-views":"Page Views",
-      "visitors":"Visitors",
-      "visits":"Visits",
-      "trend-days":"Recent {day} trend",
-      "today-peak":"Today's peak",
-      "day":"Day",
-      "week":"Week",
-      "month":"Month",
-      "year":"Year",
-      "sale-title":"Sale Ranking",
-      "sale-volume":"Sale Volume",
-      "order-quantity":"Order Quantity"
+  "Pages": {
+    "Dashboard": {
+      "last-month": "Last Month",
+      "real-time": "RealTime Page Views",
+      "page-views": "Page Views",
+      "visitors": "Visitors",
+      "visits": "Visits",
+      "trend-days": "Recent {day} trend",
+      "today-peak": "Today's peak",
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "year": "Year",
+      "sale-title": "Sale Ranking",
+      "sale-volume": "Sale Volume",
+      "order-quantity": "Order Quantity",
+      "backlog": "TodoList",
+      "progress": "In Progress",
+      "done": "Done",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "tasks": {
+        "add_auth": "Add authentication",
+        "create_api": "Create API endpoints",
+        "write_docs": "Write documentation",
+        "design_system": "Design system updates",
+        "dark_mode": "Implement dark mode",
+        "setup_project": "Setup project",
+        "initial_commit": "Initial commit"
+      }
     },
-    "Login":{
-      "submit":"Login",
-      "login-now":"Login Now",
-      "register":"Register",
-      "email":"Email Address",
-      "email-placeholder":"Enter your email",
-      "email-valid":"Please enter a valid email address",
-      "password":"Password",
-      "password-placeholder":"Enter your password",
-      "password-min":"The password length cannot be less than {min} characters",
-      "google":"Continue with Google",
-      "github":"Continue with Github",
-      "login-error":"Login failed. Please try again later",
-      "signup":"Sign Up",
-      "signup-in":"Signing Up...",
-      "signup-error":"Sign Up try again later",
-      "signup-success":"Your submission has been successful. Please verify it in your email and then log in",
-      "need-account":"Need to create an account?",
-      "has-account":"Already have an account?",
-      "login-in":"Logged in...",
-      "login-success":"Login successful. Welcome back!"
+    "Login": {
+      "submit": "Login",
+      "login-now": "Login Now",
+      "register": "Register",
+      "email": "Email Address",
+      "email-placeholder": "Enter your email",
+      "email-valid": "Please enter a valid email address",
+      "password": "Password",
+      "password-placeholder": "Enter your password",
+      "password-min": "The password length cannot be less than {min} characters",
+      "google": "Continue with Google",
+      "github": "Continue with Github",
+      "login-error": "Login failed. Please try again later",
+      "signup": "Sign Up",
+      "signup-in": "Signing Up...",
+      "signup-error": "Sign Up try again later",
+      "signup-success": "Your submission has been successful. Please verify it in your email and then log in",
+      "need-account": "Need to create an account?",
+      "has-account": "Already have an account?",
+      "login-in": "Logged in...",
+      "login-success": "Login successful. Welcome back!"
     },
-    "MenuManage":{
-      "parent_id":"Parent menu",
-      "parent_id_desc":"If not selected, it will default to the top-level menu.",
-      "label":"Menu Name",
-      "label-desc":"This logo will determine the display name of the menu in different languages.",
-      "path":"Route Path",
-      "path-invalid":"The path must start with '/', contain only letters, numbers, '-', '_' and '/', and cannot end with '/'",
-      "icon":"Menu Icon",
-      "icon-invalid":"The icon address is incorrect",
-      "show_in_menu":"Show in Menu",
-      "redirect":"Redirect Path",
-      "add":"Add Menu",
-      "edit":"Edit Menu"
+    "MenuManage": {
+      "parent_id": "Parent menu",
+      "parent_id_desc": "If not selected, it will default to the top-level menu.",
+      "label": "Menu Name",
+      "label-desc": "This logo will determine the display name of the menu in different languages.",
+      "path": "Route Path",
+      "path-invalid": "The path must start with '/', contain only letters, numbers, '-', '_' and '/', and cannot end with '/'",
+      "icon": "Menu Icon",
+      "icon-invalid": "The icon address is incorrect",
+      "show_in_menu": "Show in Menu",
+      "redirect": "Redirect Path",
+      "add": "Add Menu",
+      "edit": "Edit Menu"
     },
-    "UserManage":{
-      "user-info":"User Info",
-      "email":"Email",
-      "provider":"Provider",
-      "last_sign_in_at":"Last Signin",
-      "created_at":"Created At",
-      "email_confirmed_at":"Email Confirmed At",
-      "waiting":"Waiting for verification..."
+    "UserManage": {
+      "user-info": "User Info",
+      "email": "Email",
+      "provider": "Provider",
+      "last_sign_in_at": "Last Signin",
+      "created_at": "Created At",
+      "email_confirmed_at": "Email Confirmed At",
+      "waiting": "Waiting for verification..."
     },
-    "NotFound":{
-      "title":"It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
-      "button":"Go back home"
+    "NotFound": {
+      "title": "It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
+      "button": "Go back home"
     }
   },
-  "Components":{
-    "Layout":{
-      "logout":"Logout",
-      "logout-in":"Logging out...",
-      "logout-comfirm":"Are you sure you want to log out?",
-      "logout-error":"Logout failed. Please try again later",
-      "close-menu":"Close Menu",
-      "open-menu":"Open Menu",
-      "anonymous-user":"Anonymous User",
-      "menu-loading":"Loading Menus..."
+  "Components": {
+    "Layout": {
+      "logout": "Logout",
+      "logout-in": "Logging out...",
+      "logout-comfirm": "Are you sure you want to log out?",
+      "logout-error": "Logout failed. Please try again later",
+      "close-menu": "Close Menu",
+      "open-menu": "Open Menu",
+      "anonymous-user": "Anonymous User",
+      "menu-loading": "Loading Menus..."
     },
-    "FullLoading":{
-      "label":"Resources are loading. Please wait a moment..."
+    "FullLoading": {
+      "label": "Resources are loading. Please wait a moment..."
     },
-    "AppSettings":{
-      "primary-color":"PrimaryColor",
-      "theme-mode":"Theme Mode",
-      "theme-mode-direction":"Animation Direction",
-      "route-transition":"RouteTranstion",
-      "fixed-header":"Fixed Header",
-      "show-tabs":"Show Tabs",
-      "show-footer":"Show Footer",
-      "color-style":"Color Style",
-      "tabs-style":"Tabs Style",
-      "layout-mode":"Layout Mode"
+    "AppSettings": {
+      "primary-color": "PrimaryColor",
+      "theme-mode": "Theme Mode",
+      "theme-mode-direction": "Animation Direction",
+      "route-transition": "RouteTranstion",
+      "fixed-header": "Fixed Header",
+      "show-tabs": "Show Tabs",
+      "show-footer": "Show Footer",
+      "color-style": "Color Style",
+      "tabs-style": "Tabs Style",
+      "layout-mode": "Layout Mode"
     }
   },
-  "Common":{
-    "loading":"Loading...",
-    "user-error":"Failed to fetch user information. Please try again later",
-    "add":"Add New",
-    "add-success":"Added successfully",
-    "edit":"Edit",
-    "edit-success":"Edited successfully",
-    "delete":"Delete",
-    "delete-success":"Deleted successfully",
+  "Common": {
+    "loading": "Loading...",
+    "user-error": "Failed to fetch user information. Please try again later",
+    "add": "Add New",
+    "add-success": "Added successfully",
+    "edit": "Edit",
+    "edit-success": "Edited successfully",
+    "delete": "Delete",
+    "delete-success": "Deleted successfully",
     "delete-confirm-title": "Confirm deletion",
     "delete-confirm-description": "This operation will permanently delete the data and it cannot be recovered. Please operate with caution.",
-    "search":"Search",
-    "reset":"Reset",
-    "sort":"Sort",
-    "created_at":"Created At",
-    "updated_at":"Updated At",
-    "actions":"Actions",
-    "enter":"Please enter",
-    "select":"Please Select",
-    "cancel":"Cancel",
-    "confirm":"Confirm",
-    "columns-settings":"Columns",
-    "empty":"No Data",
-    "copy":"Copy",
-    "index":"Index",
-    "total":"Showing {from} – {to} of {total} results",
-    "page-size":"{pageSize} entries/page",
-    "page-size-tip":"Rows per page",
-    "request-error":"Request Error",
-    "warm-tips":"Warm Tips",
-    "refresh":"Refresh",
-    "asc":"Asc",
-    "desc":"Desc",
-    "pin-to-left":"Pin to Left",
-    "pin-to-right":"Pin to Right",
-    "move-to-left":"Move to Left",
-    "move-to-right":"Move to Right",
-    "not-empty":"It cannot be empty",
+    "search": "Search",
+    "reset": "Reset",
+    "sort": "Sort",
+    "created_at": "Created At",
+    "updated_at": "Updated At",
+    "actions": "Actions",
+    "enter": "Please enter",
+    "select": "Please Select",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "columns-settings": "Columns",
+    "empty": "No Data",
+    "copy": "Copy",
+    "index": "Index",
+    "total": "Showing {from} – {to} of {total} results",
+    "page-size": "{pageSize} entries/page",
+    "page-size-tip": "Rows per page",
+    "request-error": "Request Error",
+    "warm-tips": "Warm Tips",
+    "refresh": "Refresh",
+    "asc": "Asc",
+    "desc": "Desc",
+    "pin-to-left": "Pin to Left",
+    "pin-to-right": "Pin to Right",
+    "move-to-left": "Move to Left",
+    "move-to-right": "Move to Right",
+    "not-empty": "It cannot be empty",
     "max-length": "The length cannot exceed {max} characters"
   },
-  "Enums":{
-    "theme-mode":{
-      "light":"Light",
-      "dark":"Dark",
-      "system":"System",
-      "ltr":"LTR",
-      "rtl":"RTL",
-      "btt":"BTT",
-      "ttb":"TTB"
+  "Enums": {
+    "theme-mode": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "ltr": "LTR",
+      "rtl": "RTL",
+      "btt": "BTT",
+      "ttb": "TTB"
     },
-    "color-style":{
-      "default":"Normal",
-      "grey":"Grey",
-      "invert":"Invert"
+    "color-style": {
+      "default": "Normal",
+      "grey": "Grey",
+      "invert": "Invert"
     },
-    "tabs-style":{
-      "button":"Button",
-      "tag":"Tag",
-      "google":"Google"
+    "tabs-style": {
+      "button": "Button",
+      "tag": "Tag",
+      "google": "Google"
     },
-    "route-transition":{
-      "blur-slide":"Blur Slide",
-      "fade":"Fade",
-      "blur-fade":"Blur",
-      "slide-fade":"Slide",
-      "zoom":"Zoom",
-      "swing":"Swing",
-      "flip":"Flip",
-      "slide-up":"Slide Up",
-      "diagonal":"Diagonal"
+    "route-transition": {
+      "blur-slide": "Blur Slide",
+      "fade": "Fade",
+      "blur-fade": "Blur",
+      "slide-fade": "Slide",
+      "zoom": "Zoom",
+      "swing": "Swing",
+      "flip": "Flip",
+      "slide-up": "Slide Up",
+      "diagonal": "Diagonal"
     },
-    "layout-mode":{
-      "sidebar":"SideBar",
-      "topbar":"TopBar"
+    "layout-mode": {
+      "sidebar": "SideBar",
+      "topbar": "TopBar"
     }
   }
 }

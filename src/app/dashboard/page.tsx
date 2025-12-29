@@ -2,12 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:29:20
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-26 10:06:16
+ * @LastEditTime: 2025-12-29 17:06:13
  * @Description: 控制台
  */
 import PageViewsCard from './components/PageViewsCard'
 import RealTimeCard from './components/RealTimeCard'
 import SaleStatistics from './components/SaleStatistics'
+import TodoList from './components/TodoList'
 import VisitorsCard from './components/VisitorsCard'
 import VisitsCard from './components/VisitsCard'
 
@@ -24,6 +25,8 @@ export default function Dashboard() {
         {/* 访问次数 */}
         <VisitsCard />
       </div>
+      {/* 待办事项 */}
+      <TodoList />
       {/* 销售数据统计 */}
       <SaleStatistics />
     </div>
