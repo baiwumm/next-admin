@@ -4,7 +4,9 @@
     "portfolio": "个人档案",
     "system-settings": "系统设置",
     "user-manage": "用户管理",
-    "menu-manage": "菜单管理"
+    "menu-manage": "菜单管理",
+    "playground":"沙盒",
+    "code-block": "代码块"
   },
   "Pages": {
     "Dashboard": {

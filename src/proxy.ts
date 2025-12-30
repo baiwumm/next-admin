@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:27:43
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-30 10:13:47
+ * @LastEditTime: 2025-12-30 10:18:41
  * @Description: 代理层
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -29,9 +29,9 @@ export default async function proxy(req: NextRequest) {
       return NextResponse.json(responseMessage(null, '客官，请先登录！', -1))
     }
     // 如果非 GET 请求，不允许操作
-    if (method !== 'GET') {
-      return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
-    }
+    // if (method !== 'GET') {
+    //   return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
+    // }
     return NextResponse.next()
   }
 

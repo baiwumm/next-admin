@@ -4,7 +4,9 @@
     "portfolio": "Portfolio",
     "system-settings": "System Settings",
     "user-manage": "User Management",
-    "menu-manage": "Menu Management"
+    "menu-manage": "Menu Management",
+    "playground": "Playground",
+    "code-block": "Code Block"
   },
   "Pages": {
     "Dashboard": {

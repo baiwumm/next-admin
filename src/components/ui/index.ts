@@ -129,6 +129,11 @@ export {
 export { Toggle, toggleVariants } from './toggle'
 export { ToggleGroup, ToggleGroupItem } from './toggle-group'
 export {
+  Code,
+  CodeBlock,
+  CodeHeader,
+} from '@/components/animate-ui/components/animate/code';
+export {
   Tooltip,
   TooltipContent,
   type TooltipContentProps,
