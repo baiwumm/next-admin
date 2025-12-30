@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.6.9](///compare/2.6.8...2.6.9) (2025-12-30)
+
+### Features
+
+* **playground:** 新增“code-block”代码模块 ec8ea32
+* **proxy:** 非登录状态不允许调用接口 eebb0c7
+
+### Performance Improvements
+
+* **layout:** 布局逻辑优化 1996f9d
+
 ## [2.6.8](///compare/2.6.7...2.6.8) (2025-12-29)
 
 ### Features
