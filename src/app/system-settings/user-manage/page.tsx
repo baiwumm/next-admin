@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-04 11:28:11
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 09:11:15
+ * @LastEditTime: 2025-12-30 14:08:20
  * @Description: 用户管理
  */
 "use client"
@@ -302,7 +302,7 @@ const UserManage: FC = () => {
           </CardToolbar>
         </CardHeader>
         <CardTable>
-          <ScrollArea className="max-h-[calc(100vh-340px)] max-w-full overflow-x-scroll">
+          <ScrollArea className="max-h-[calc(100vh-340px)]">
             <DataGridTable />
             <ScrollBar orientation="horizontal" />
           </ScrollArea>

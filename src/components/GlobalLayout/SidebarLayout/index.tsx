@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:52:45
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-15 11:05:39
+ * @LastEditTime: 2025-12-30 13:57:17
  * @Description: 侧栏布局
  */
 'use client';
@@ -195,7 +195,6 @@ const SidebarLayout: FC<SidebarLayoutProps> = ({ children, mainMinH }) => {
         <SidebarRail />
       </Sidebar>
       <SidebarInset>
-        {/* 直接使用顶栏布局 */}
         <TopbarLayout mainMinH={mainMinH}>
           {children}
         </TopbarLayout>

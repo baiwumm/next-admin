@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:37:13
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-19 09:39:27
+ * @LastEditTime: 2025-12-30 13:56:42
  * @Description: 全局布局
  */
 "use client"
@@ -28,14 +28,16 @@ const GlobalLayout: FC<GlobalLayoutProps> = ({ children }) => {
     elementIds: ['header', 'footer'],
     debounceMs: 150,
   });
+
+  if (layoutMode === LAYOUT_MODE.TOPBAR) {
+    return (
+      <TopbarLayout mainMinH={mainHeight}>{children}</TopbarLayout>
+    )
+  }
   return (
     <SidebarProvider>
       {/* 默认侧栏布局 */}
-      {layoutMode === LAYOUT_MODE.TOPBAR ? (
-        <TopbarLayout mainMinH={mainHeight}>{children}</TopbarLayout>
-      ) : (
-        <SidebarLayout mainMinH={mainHeight}>{children}</SidebarLayout>
-      )}
+      <SidebarLayout mainMinH={mainHeight}>{children}</SidebarLayout>
     </SidebarProvider>
   )
 }

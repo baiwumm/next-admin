@@ -2,13 +2,12 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-08 16:51:35
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-19 09:38:18
+ * @LastEditTime: 2025-12-30 14:06:38
  * @Description: 顶栏布局
  */
 "use client";
 import { AnimatePresence, motion } from 'motion/react';
 import { type FC, type ReactNode, ViewTransition } from 'react';
-import z from 'zod';
 import { useShallow } from "zustand/react/shallow";
 
 import BreadcrumbContainer from '../components/BreadcrumbContainer';
@@ -36,7 +35,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, mainMinH }) => {
   // 是否侧栏布局
   const isSidebarLayout = layoutMode === LAYOUT_MODE.SIDEBAR;
   return (
-    <div className="w-full">
+    <>
       <div id="header" className={cn('top-0 z-20 backdrop-blur-lg bg-white/80 dark:bg-black/80', fixedHeader ? 'sticky' : 'static')}>
         <NavHeader />
         <AnimatePresence mode="wait">
@@ -80,7 +79,7 @@ const TopMenuLayout: FC<TopMenuLayoutProps> = ({ children, mainMinH }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 export default TopMenuLayout;

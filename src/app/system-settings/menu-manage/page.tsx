@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:10:25
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-14 12:11:20
+ * @LastEditTime: 2025-12-30 14:09:03
  * @Description: 菜单管理
  */
 "use client"
@@ -123,7 +123,7 @@ const MenuManage: FC = () => {
           />
           {/* 表格区域 */}
           <CardTable>
-            <ScrollArea className="max-h-[calc(100vh-320px)] max-w-full overflow-x-scroll">
+            <ScrollArea className="max-h-[calc(100vh-320px)]">
               <DataGridTable />
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
