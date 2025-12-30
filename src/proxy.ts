@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:27:43
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-17 17:42:23
+ * @LastEditTime: 2025-12-30 10:13:47
  * @Description: 代理层
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -22,14 +22,17 @@ export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
   const method = req.method
 
-  // 🔒 如果是 API 且非 GET（仅当你包含 API 路由时生效）
-  if (path.startsWith('/api/') && method !== 'GET') {
-    return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
-  }
-
-  // ✅ 但如果是 GET 的 API，直接放行（不走登录检查）
+  // 针对 Api 路由
   if (path.startsWith('/api/')) {
-    return NextResponse.next();
+    // 如果未登录
+    if (!session) {
+      return NextResponse.json(responseMessage(null, '客官，请先登录！', -1))
+    }
+    // 如果非 GET 请求，不允许操作
+    if (method !== 'GET') {
+      return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
+    }
+    return NextResponse.next()
   }
 
   // 注入当前请求的 pathname
