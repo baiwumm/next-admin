@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "next dev -p 5173",
-    "build": "next build",
+    "build": "NEXT_PUBLIC_BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ) next build",
     "start": "next start",
     "lint": "eslint",
     "release": "release-it"

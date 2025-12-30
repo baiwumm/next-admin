@@ -6,7 +6,8 @@
     "user-manage": "User Management",
     "menu-manage": "Menu Management",
     "playground": "Playground",
-    "code-block": "Code Block"
+    "code-block": "Code Block",
+    "about":"About"
   },
   "Pages": {
     "Dashboard": {
@@ -88,6 +89,10 @@
     "NotFound": {
       "title": "It seems that this page has gone on a round-the-world trip and hasn't sent the postcard back yet.",
       "button": "Go back home"
+    },
+    "About":{
+      "dependencies": "Dependencies",
+      "devDependencies": "Development Dependencies"
     }
   },
   "Components": {

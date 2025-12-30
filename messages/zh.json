@@ -6,7 +6,8 @@
     "user-manage": "用户管理",
     "menu-manage": "菜单管理",
     "playground":"沙盒",
-    "code-block": "代码块"
+    "code-block": "代码块",
+    "about":"关于"
   },
   "Pages": {
     "Dashboard": {
@@ -88,6 +89,10 @@
     "NotFound": {
       "title": "看来这个页面去环球旅行了，还没寄明信片回来。",
       "button": "回到首页"
+    },
+    "About":{
+      "dependencies":"生产依赖",
+      "devDependencies":"开发依赖"
     }
   },
   "Components": {
