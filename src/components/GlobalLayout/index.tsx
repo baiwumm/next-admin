@@ -6,7 +6,7 @@
  * @Description: 全局布局
  */
 "use client"
-import { type FC, type ReactNode } from 'react';
+import { type FC, type ReactNode, useEffect } from 'react';
 
 import SidebarLayout from './SidebarLayout';
 import TopbarLayout from './TopbarLayout';
@@ -15,6 +15,7 @@ import { SidebarProvider } from '@/components/ui'
 import { LAYOUT_MODE } from '@/enums';
 import { useAvailableHeight } from '@/hooks/use-available-height';
 import { useAppStore } from '@/store/useAppStore';
+import { useMenuStore } from '@/store/useMenuStore';
 
 type GlobalLayoutProps = {
   children?: ReactNode;
@@ -22,12 +23,22 @@ type GlobalLayoutProps = {
 
 const GlobalLayout: FC<GlobalLayoutProps> = ({ children }) => {
   const layoutMode = useAppStore((s) => s.layoutMode);
+  // 获取菜单数据
+  const menuList = useMenuStore((state) => state.menuList);
+  const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
 
   // 计算主体内容高度
   const mainHeight = useAvailableHeight({
     elementIds: ['header', 'footer'],
     debounceMs: 150,
   });
+
+  useEffect(() => {
+    if (!menuList?.length) {
+      // 加载菜单数据
+      fetchMenuList()
+    }
+  }, [fetchMenuList, menuList])
 
   if (layoutMode === LAYOUT_MODE.TOPBAR) {
     return (

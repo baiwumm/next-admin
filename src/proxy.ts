@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 17:27:43
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-30 10:18:41
+ * @LastEditTime: 2025-12-30 16:44:57
  * @Description: 代理层
  */
 import { NextRequest, NextResponse } from 'next/server'
@@ -25,13 +25,13 @@ export default async function proxy(req: NextRequest) {
   // 针对 Api 路由
   if (path.startsWith('/api/')) {
     // 如果未登录
-    if (!session) {
+    if (!session && !path.startsWith('/api/auth')) {
       return NextResponse.json(responseMessage(null, '客官，请先登录！', -1))
     }
     // 如果非 GET 请求，不允许操作
-    // if (method !== 'GET') {
-    //   return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
-    // }
+    if (method !== 'GET') {
+      return NextResponse.json(responseMessage(null, '客官，不允许乱动哟！', -1))
+    }
     return NextResponse.next()
   }
 

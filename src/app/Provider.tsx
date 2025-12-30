@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-11-28 09:53:57
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-17 18:00:42
+ * @LastEditTime: 2025-12-30 16:42:51
  * @Description: 上下文提供者
  */
 "use client"
@@ -18,7 +18,6 @@ import { Toaster, TooltipProvider } from '@/components/ui';
 import { THEME_MODE } from '@/enums';
 import { initializeColorStyle, initializePrimaryColor } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
-import { useMenuStore } from '@/store/useMenuStore';
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -28,10 +27,6 @@ export function Providers({ children }: ProvidersProps) {
   const colorStyle = useAppStore((s) => s.colorStyle);
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-
-  // 获取菜单数据
-  const menuList = useMenuStore((state) => state.menuList);
-  const fetchMenuList = useMenuStore((state) => state.fetchMenuList);
 
   // 受保护的路由，不需要 RootLayout
   const protectedRoutes = ['/login', '/portfolio']
@@ -49,13 +44,6 @@ export function Providers({ children }: ProvidersProps) {
       initializeColorStyle(colorStyle);
     }
   }, [colorStyle])
-
-  useEffect(() => {
-    if (!menuList?.length) {
-      // 加载菜单数据
-      fetchMenuList()
-    }
-  }, [fetchMenuList, menuList])
 
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 0);
