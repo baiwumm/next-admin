@@ -126,6 +126,7 @@ export {
   TableHeader,
   TableRow,
 } from './table'
+export { AnimatedSpan, Terminal, TypingAnimation } from "./terminal"
 export { Toggle, toggleVariants } from './toggle'
 export { ToggleGroup, ToggleGroupItem } from './toggle-group'
 export {
