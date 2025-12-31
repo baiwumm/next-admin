@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2025-12-30 18:13:47
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2025-12-31 09:23:11
+ * @LastEditTime: 2025-12-31 09:47:50
  * @Description: 项目信息
  */
 'use client'
@@ -17,10 +17,23 @@ type Item = { name: string, value: string }
 const ProjectInfo: FC = () => {
   const t = useTranslations('Pages.About');
 
+  // 处理构建时间
+  const formatBuildTime = () => {
+    const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME; // e.g. "2025-12-31T01:26:00Z"
+
+    if (!buildTime) return '';
+
+    const formatted = new Date(buildTime).toLocaleString('sv-SE', {
+      hour12: false,
+    });
+
+    return formatted;
+  }
+
   const items: Item[] = [
     { name: t('name'), value: process.env.NEXT_PUBLIC_APP_NAME! },
     { name: t('version'), value: pkg.version },
-    { name: t('build-time'), value: process.env.NEXT_PUBLIC_BUILD_TIME! }
+    { name: t('build-time'), value: formatBuildTime() }
   ]
   return (
     <Card>
