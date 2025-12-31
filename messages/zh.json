@@ -92,7 +92,11 @@
     },
     "About":{
       "dependencies":"生产依赖",
-      "devDependencies":"开发依赖"
+      "devDependencies":"开发依赖",
+      "project-info": "项目信息",
+      "name": "项目名称",
+      "version": "当前版本",
+      "build-time": "最新构建时间"
     }
   },
   "Components": {

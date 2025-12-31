@@ -92,7 +92,11 @@
     },
     "About":{
       "dependencies": "Dependencies",
-      "devDependencies": "Development Dependencies"
+      "devDependencies": "Development Dependencies",
+      "project-info":"Project Info",
+      "name":"Project Name",
+      "version": "Project Version",
+      "build-time": "Build Time"
     }
   },
   "Components": {
